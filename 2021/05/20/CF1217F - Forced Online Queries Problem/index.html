@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>orangejuice&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="CF1217F - Forced Online Queries Problem题目大意$n$个点无向图，$m$次操作，每次加入&#x2F;删除一条边，或者查询两个点连通性 $lst$为上次查询的连通性情况，即$lst&#x3D;{0,1}$ 加密方式为$x&#x3D;(x’+lst-1)\mod n+1$   吐槽如果你管这叫Forced Online？   分析无强制在线如果没有这个假的强制在线，考虑用线段树分治解决 预处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="orangejuice&#39;s Blog">
+<meta property="og:url" content="http://example.com/2021/05/20/CF1217F%20-%20Forced%20Online%20Queries%20Problem/index.html">
+<meta property="og:site_name" content="orangejuice&#39;s Blog">
+<meta property="og:description" content="CF1217F - Forced Online Queries Problem题目大意$n$个点无向图，$m$次操作，每次加入&#x2F;删除一条边，或者查询两个点连通性 $lst$为上次查询的连通性情况，即$lst&#x3D;{0,1}$ 加密方式为$x&#x3D;(x’+lst-1)\mod n+1$   吐槽如果你管这叫Forced Online？   分析无强制在线如果没有这个假的强制在线，考虑用线段树分治解决 预处理">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-20T09:44:17.225Z">
+<meta property="article:modified_time" content="2021-05-07T04:08:02.947Z">
+<meta property="article:author" content="orangejuice">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">orangejuice&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CF1217F - Forced Online Queries Problem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/20/CF1217F%20-%20Forced%20Online%20Queries%20Problem/" class="article-date">
+  <time class="dt-published" datetime="2021-05-20T09:44:17.225Z" itemprop="datePublished">2021-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CF1217F-Forced-Online-Queries-Problem"><a href="#CF1217F-Forced-Online-Queries-Problem" class="headerlink" title="CF1217F - Forced Online Queries Problem"></a>CF1217F - Forced Online Queries Problem</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>$n$个点无向图，$m$次操作，每次加入/删除一条边，或者查询两个点连通性</p>
+<p>$lst$为上次查询的连通性情况，即$lst={0,1}$</p>
+<p>加密方式为$x=(x’+lst-1)\mod n+1$</p>
+<br>
+
+<h3 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h3><p><del>如果你管这叫Forced Online？</del></p>
+<br>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><h3 id="无强制在线"><a href="#无强制在线" class="headerlink" title="无强制在线"></a>无强制在线</h3><p>如果没有这个假的强制在线，考虑用线段树分治解决</p>
+<p>预处理每条边出现的时间区间$[L,R]$，加入线段树，用按秩合并并查集维护加边和回撤即可</p>
+<br>
+
+<h3 id="伪强制在线"><a href="#伪强制在线" class="headerlink" title="伪强制在线"></a>伪强制在线</h3><p>依然是预处理每条边的时间区间</p>
+<p>虽然我们无法确定一条边<strong>存在</strong>的时间区间</p>
+<p>但是我们可以确定一条边<strong>可能存在，或者说可能被修改</strong>的时间区间</p>
+<p>一次修改对应两条可能的边，对于两种可能都加入两条边对应的时间节点</p>
+<p>每次加边修改指定边，对于涉及的两条边，修改之后判断是否存在</p>
+<p>然后对于存在的边，将这条边从现在开始到 <strong>下一个时间节点</strong> 出现之间都插入即可</p>
+<p>注意这个线段树分治是”半在线”的，即要一边处理操作一边插入修改</p>
+<p>由于修改的区间和目前遍历的区间不交，所以容易实现</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,c;</span><br><span class="line">map &lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; M[N],I[N];</span><br><span class="line">vector &lt;<span class="keyword">int</span>&gt; T[N*<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> P[N*<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> stk[N],top,S[N],F[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(F[x]!=x) x=x[F][F];</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	x=<span class="built_in">Find</span>(x),y=<span class="built_in">Find</span>(y);</span><br><span class="line">	<span class="keyword">if</span>(x==y) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(S[x]&gt;S[y]) <span class="built_in">swap</span>(x,y);</span><br><span class="line">	F[x]=y,S[y]+=S[x],stk[++top]=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Back</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=stk[top--];</span><br><span class="line">	S[F[x]]-=S[x],F[x]=x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vector &lt;Pii&gt; G[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> ql,<span class="keyword">int</span> qr,Pii x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(ql&gt;qr) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(ql&lt;=l &amp;&amp; r&lt;=qr) <span class="keyword">return</span> G[p].<span class="built_in">pb</span>(x);</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(ql&lt;=mid) <span class="built_in">Add</span>(p&lt;&lt;<span class="number">1</span>,l,mid,ql,qr,x);</span><br><span class="line">	<span class="keyword">if</span>(qr&gt;mid) <span class="built_in">Add</span>(p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r,ql,qr,x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> opt[N],A[N],B[N],lst;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Solve</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> tmp=top;</span><br><span class="line">	<span class="keyword">for</span>(Pii t:G[p]) <span class="built_in">Union</span>(t.first,t.second);</span><br><span class="line">	<span class="keyword">if</span>(l==r) &#123;</span><br><span class="line">		<span class="keyword">int</span> x=(A[l]+lst<span class="number">-1</span>)%n+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> y=(B[l]+lst<span class="number">-1</span>)%n+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(x&gt;y) <span class="built_in">swap</span>(x,y);</span><br><span class="line">		<span class="keyword">if</span>(opt[l]==<span class="number">1</span>) &#123;</span><br><span class="line">			M[x][y]^=<span class="number">1</span>;</span><br><span class="line">			<span class="built_in">rep</span>(i,<span class="number">0</span>,<span class="number">1</span>) &#123;</span><br><span class="line">				<span class="keyword">int</span> x=(A[l]+i<span class="number">-1</span>)%n+<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">int</span> y=(B[l]+i<span class="number">-1</span>)%n+<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">if</span>(x&gt;y) <span class="built_in">swap</span>(x,y);</span><br><span class="line">				<span class="keyword">int</span> id=I[x][y];</span><br><span class="line">				P[id]++;</span><br><span class="line">				<span class="keyword">if</span>(M[x][y]) <span class="built_in">Add</span>(<span class="number">1</span>,<span class="number">1</span>,m,l+<span class="number">1</span>,T[id][P[id]]<span class="number">-1</span>,<span class="built_in">mp</span>(x,y));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			lst=<span class="built_in">Find</span>(x)==<span class="built_in">Find</span>(y);</span><br><span class="line">			<span class="built_in">putchar</span>(lst+<span class="number">48</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">Solve</span>(p&lt;&lt;<span class="number">1</span>,l,mid),<span class="built_in">Solve</span>(p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(top&gt;tmp) <span class="built_in">Back</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=<span class="built_in">rd</span>(),m=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) F[i]=i,S[i]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		opt[i]=<span class="built_in">rd</span>(),A[i]=<span class="built_in">rd</span>(),B[i]=<span class="built_in">rd</span>();</span><br><span class="line">		<span class="keyword">if</span>(opt[i]==<span class="number">1</span>) <span class="built_in">rep</span>(lst,<span class="number">0</span>,<span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> x=(A[i]+lst<span class="number">-1</span>)%n+<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> y=(B[i]+lst<span class="number">-1</span>)%n+<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(x&gt;y) <span class="built_in">swap</span>(x,y);</span><br><span class="line">			<span class="keyword">if</span>(!I[x][y]) I[x][y]=++c;</span><br><span class="line">			T[I[x][y]].<span class="built_in">pb</span>(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,c) T[i].<span class="built_in">pb</span>(m+<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">Solve</span>(<span class="number">1</span>,<span class="number">1</span>,m);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/20/CF1217F%20-%20Forced%20Online%20Queries%20Problem/" data-id="ckowpjb2t0001y4ua20ukde52" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/05/20/CF1221G%20-%20Graph%20And%20Numbers/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/05/20/CF1201E2%20-%20Knightmare%20(hard)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/20/CF1368G%20-%20Shifting%20Dominoes/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1366G%20-%20Construct%20the%20String/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1305G%20-%20Kuroni%20and%20Antihype/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1299D%20-%20Around%20the%20World/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1288F%20-%20Red-Blue%20Graph/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 orangejuice<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

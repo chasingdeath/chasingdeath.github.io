@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>orangejuice&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="CF1221G - Graph And Numbers题目大意给定一个$n$点$m$边的无向图，$n\leq 40$ 求给所有点01染色，满足 至少存在一条边两边的点均为0 至少存在一条边两边的点一个为0，一个为1 至少存在一条边两边的点均为1 的方案数   分析至少存在 问题并不好处理，由于限制有3个，可以通过$2^3$种情况容斥得到 设三种边类型为0,1,2 即计算 1.不存在0 2.不存在1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="orangejuice&#39;s Blog">
+<meta property="og:url" content="http://example.com/2021/05/20/CF1221G%20-%20Graph%20And%20Numbers/index.html">
+<meta property="og:site_name" content="orangejuice&#39;s Blog">
+<meta property="og:description" content="CF1221G - Graph And Numbers题目大意给定一个$n$点$m$边的无向图，$n\leq 40$ 求给所有点01染色，满足 至少存在一条边两边的点均为0 至少存在一条边两边的点一个为0，一个为1 至少存在一条边两边的点均为1 的方案数   分析至少存在 问题并不好处理，由于限制有3个，可以通过$2^3$种情况容斥得到 设三种边类型为0,1,2 即计算 1.不存在0 2.不存在1">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-20T09:44:17.228Z">
+<meta property="article:modified_time" content="2021-05-08T09:18:02.102Z">
+<meta property="article:author" content="orangejuice">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">orangejuice&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CF1221G - Graph And Numbers" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/20/CF1221G%20-%20Graph%20And%20Numbers/" class="article-date">
+  <time class="dt-published" datetime="2021-05-20T09:44:17.228Z" itemprop="datePublished">2021-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CF1221G-Graph-And-Numbers"><a href="#CF1221G-Graph-And-Numbers" class="headerlink" title="CF1221G - Graph And Numbers"></a>CF1221G - Graph And Numbers</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一个$n$点$m$边的无向图，$n\leq 40$</p>
+<p>求给所有点01染色，满足</p>
+<p>至少存在一条边两边的点均为0</p>
+<p>至少存在一条边两边的点一个为0，一个为1</p>
+<p>至少存在一条边两边的点均为1</p>
+<p>的方案数</p>
+<br>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><strong>至少存在</strong> 问题并不好处理，由于限制有3个，可以通过$2^3$种情况容斥得到</p>
+<p>设三种边类型为0,1,2</p>
+<p>即计算</p>
+<p>1.不存在0</p>
+<p>2.不存在1</p>
+<p>3.不存在2</p>
+<p>4.不存在01</p>
+<p>5.不存在02</p>
+<p>6.不存在12</p>
+<p>7.不存在012</p>
+<h3 id="逐个击破"><a href="#逐个击破" class="headerlink" title="逐个击破"></a>逐个击破</h3><p>2.即计算所有边连接两个点染色相同方案数，统计连通块即可</p>
+<p>4/6即统计所有点两边都是1/0的方案数</p>
+<p>5即统计所有边两端点颜色不同的方案数，即二分图染色数</p>
+<p>7.即m=0</p>
+<p>1,3类似，可以归纳为每条边两端的点至少有一个为1</p>
+<p><del>似乎有点类似一般图独立集个数的求解</del></p>
+<p>由于$n\leq 40$，考虑 $\text{meet in the middle}$ 做</p>
+<p>枚举半边，判断集合内部是否有非法边，然后根据集合之间的非法边以及自己集合内部为0的点</p>
+<p>确定另一个集合必须选择为1的点集</p>
+<p>因此需要一个父集前缀和</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">45</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> G[N][N];</span><br><span class="line">ll E[N]; <span class="comment">// 这东西居然要开long long</span></span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">Solve0</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> S[<span class="number">1</span>&lt;&lt;<span class="number">20</span>];</span><br><span class="line">	ll ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> m=n/<span class="number">2</span>,A=(<span class="number">1</span>&lt;&lt;m)<span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,(<span class="number">1</span>&lt;&lt;m)<span class="number">-1</span>) &#123;</span><br><span class="line">		ll T=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">rep</span>(j,<span class="number">0</span>,m<span class="number">-1</span>) <span class="keyword">if</span>(~i&amp;(<span class="number">1</span>&lt;&lt;j)) T|=E[j];</span><br><span class="line">		S[i]=(~i&amp;T&amp;A)==<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">// 父集前缀和</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=A;i&lt;&lt;=<span class="number">1</span>) <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;=A;l+=i*<span class="number">2</span>) <span class="keyword">for</span>(<span class="keyword">int</span> j=l;j&lt;l+i;++j) S[j]+=S[j+i];</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,(<span class="number">1</span>&lt;&lt;(n-m))<span class="number">-1</span>) &#123;</span><br><span class="line">		ll T=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">rep</span>(j,<span class="number">0</span>,n-m<span class="number">-1</span>) <span class="keyword">if</span>(~i&amp;(<span class="number">1</span>&lt;&lt;j)) T|=E[j+m];</span><br><span class="line">		<span class="keyword">if</span>((T&gt;&gt;m)&amp;~i) <span class="keyword">continue</span>;</span><br><span class="line">		T&amp;=A,ans+=S[T];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">Solve1</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> vis[N];</span><br><span class="line">	function&lt;<span class="built_in"><span class="keyword">void</span></span>(<span class="keyword">int</span>)&gt; dfs=[&amp;](<span class="keyword">int</span> u) &#123;</span><br><span class="line">		<span class="keyword">if</span>(vis[u]) <span class="keyword">return</span>;</span><br><span class="line">		vis[u]=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) <span class="keyword">if</span>(G[u][i]) <span class="built_in">dfs</span>(i);</span><br><span class="line">	&#125;;</span><br><span class="line">	ll ans=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) <span class="keyword">if</span>(!vis[i]) <span class="built_in">dfs</span>(i),ans&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">Solve01</span><span class="params">()</span></span>&#123;</span><br><span class="line">	ll ans=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) <span class="keyword">if</span>(!E[i]) ans&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">Solve02</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> vis[N],fl=<span class="number">1</span>;</span><br><span class="line">	function &lt;<span class="built_in"><span class="keyword">void</span></span>(<span class="keyword">int</span>,<span class="keyword">int</span>)&gt; dfs=[&amp;](<span class="keyword">int</span> u,<span class="keyword">int</span> c) &#123;</span><br><span class="line">		<span class="keyword">if</span>(vis[u]) &#123;</span><br><span class="line">			<span class="keyword">if</span>(vis[u]!=c) fl=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		vis[u]=c;</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) <span class="keyword">if</span>(G[u][i]) <span class="built_in">dfs</span>(i,<span class="number">3</span>-c);</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	ll ans=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) <span class="keyword">if</span>(!vis[i]) <span class="built_in">dfs</span>(i,<span class="number">1</span>),ans&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> fl*ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=<span class="built_in">rd</span>(),m=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		<span class="keyword">int</span> x=<span class="built_in">rd</span>()<span class="number">-1</span>,y=<span class="built_in">rd</span>()<span class="number">-1</span>;</span><br><span class="line">		G[x][y]=G[y][x]=<span class="number">1</span>;</span><br><span class="line">		E[x]|=<span class="number">1ll</span>&lt;&lt;y,E[y]|=<span class="number">1ll</span>&lt;&lt;x;</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans=<span class="number">1ll</span>&lt;&lt;n;</span><br><span class="line">	ans-=<span class="number">2</span>*<span class="built_in">Solve0</span>(),ans-=<span class="built_in">Solve1</span>();</span><br><span class="line">	ans+=<span class="number">2</span>*<span class="built_in">Solve01</span>()+<span class="built_in">Solve02</span>();</span><br><span class="line">	<span class="keyword">if</span>(m==<span class="number">0</span>) ans-=<span class="number">1ll</span>&lt;&lt;n;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/20/CF1221G%20-%20Graph%20And%20Numbers/" data-id="ckowpjb2v0002y4uaeawp0x1m" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/05/20/CF1264E%20-%20Beautiful%20League/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/05/20/CF1217F%20-%20Forced%20Online%20Queries%20Problem/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/20/CF1368G%20-%20Shifting%20Dominoes/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1366G%20-%20Construct%20the%20String/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1305G%20-%20Kuroni%20and%20Antihype/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1299D%20-%20Around%20the%20World/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1288F%20-%20Red-Blue%20Graph/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 orangejuice<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>orangejuice&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="CF1264E - Beautiful League题目大意给定一张竞赛图，其中一些边已经确定 现在求确定剩余边的方向，使得最终图上三元环个数最大   分析三元问题着实难以处理 考虑什么样的三个点$(x,y,z)$无法构成一个环： 三个点恰好存在一个点$x$得到两条入边，即$x\leftarrow y,x\leftarrow z$ 此时无法构成环   于是问题转化为统计$x$的入度$ind_x$，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="orangejuice&#39;s Blog">
+<meta property="og:url" content="http://example.com/2021/05/20/CF1264E%20-%20Beautiful%20League/index.html">
+<meta property="og:site_name" content="orangejuice&#39;s Blog">
+<meta property="og:description" content="CF1264E - Beautiful League题目大意给定一张竞赛图，其中一些边已经确定 现在求确定剩余边的方向，使得最终图上三元环个数最大   分析三元问题着实难以处理 考虑什么样的三个点$(x,y,z)$无法构成一个环： 三个点恰好存在一个点$x$得到两条入边，即$x\leftarrow y,x\leftarrow z$ 此时无法构成环   于是问题转化为统计$x$的入度$ind_x$，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-20T09:44:17.230Z">
+<meta property="article:modified_time" content="2021-05-11T09:53:03.886Z">
+<meta property="article:author" content="orangejuice">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">orangejuice&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CF1264E - Beautiful League" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/20/CF1264E%20-%20Beautiful%20League/" class="article-date">
+  <time class="dt-published" datetime="2021-05-20T09:44:17.230Z" itemprop="datePublished">2021-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CF1264E-Beautiful-League"><a href="#CF1264E-Beautiful-League" class="headerlink" title="CF1264E - Beautiful League"></a>CF1264E - Beautiful League</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一张竞赛图，其中一些边已经确定</p>
+<p>现在求确定剩余边的方向，使得最终图上三元环个数最大</p>
+<br>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><del>三元问题着实难以处理</del></p>
+<p>考虑什么样的三个点$(x,y,z)$无法构成一个环：</p>
+<p>三个点恰好存在一个点$x$得到两条入边，即$x\leftarrow y,x\leftarrow z$</p>
+<p>此时无法构成环</p>
+<br>
+
+<p>于是问题转化为统计$x$的入度$ind_x$，减少的三元环个数就是$\sum \binom{ind_i}{2}$</p>
+<p>考虑用网络流计算答案，每一条边$(u,v)$可以选择从$S$流向$u$或者$v$</p>
+<p>一个点得到$i$的流量付出$\binom{i}{2}$的代价流出$T$</p>
+<p>因此每个点向$T$连$n-1$条流量为$1$，代价分别为为$\binom{j}{2}-\binom{j-1}{2}$的边</p>
+<p>求满流最小费用即可，输出方案容易根据流量情况判断</p>
+<p>复杂度为$O(\text{MCMF}(n^2,n^2))$ 或者$O(\text{MCMF}(n,n^2))$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2e5</span>+<span class="number">10</span>,INF=<span class="number">1e9</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,S,T,V;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,nxt,w,c;</span><br><span class="line">&#125; e[N];</span><br><span class="line"><span class="keyword">int</span> head[N],ecnt=<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w,<span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">	e[++ecnt]=(Edge)&#123;v,head[u],w,c&#125;;</span><br><span class="line">	head[u]=ecnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Link</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w,<span class="keyword">int</span> c)</span></span>&#123; <span class="built_in">AddEdge</span>(u,v,w,c),<span class="built_in">AddEdge</span>(v,u,<span class="number">0</span>,-c); &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ans,dis[N];</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">int</span> inq[N],pre[N],w[N];</span><br><span class="line"><span class="keyword">int</span> mk[<span class="number">110</span>][<span class="number">110</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=<span class="built_in">rd</span>(),m=<span class="built_in">rd</span>(),S=n+<span class="number">1</span>,T=V=S+<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="built_in">rep</span>(j,<span class="number">1</span>,n<span class="number">-1</span>) <span class="built_in">Link</span>(i,T,<span class="number">1</span>,j*(j<span class="number">-1</span>)/<span class="number">2</span>-(j<span class="number">-1</span>)*(j<span class="number">-2</span>)/<span class="number">2</span>);</span><br><span class="line">	<span class="built_in">memset</span>(mk,<span class="number">-1</span>,<span class="keyword">sizeof</span> mk);</span><br><span class="line">	<span class="keyword">while</span>(m--) &#123;</span><br><span class="line">		<span class="keyword">int</span> u=<span class="built_in">rd</span>(),v=<span class="built_in">rd</span>();</span><br><span class="line">		<span class="keyword">if</span>(u&lt;v) mk[u][v]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> mk[v][u]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="built_in">rep</span>(j,i+<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">Link</span>(S,++V,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span>(mk[i][j]!=<span class="number">0</span>) <span class="built_in">Link</span>(V,j,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span>(mk[i][j]!=<span class="number">1</span>) <span class="built_in">Link</span>(V,i,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">static</span> queue &lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">1</span>,V) dis[i]=INF;</span><br><span class="line">		dis[S]=<span class="number">0</span>,que.<span class="built_in">push</span>(S),w[S]=INF;</span><br><span class="line">		<span class="keyword">while</span>(!que.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">			<span class="keyword">int</span> u=que.<span class="built_in">front</span>(); que.<span class="built_in">pop</span>();</span><br><span class="line">			inq[u]=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=e[i].nxt) &#123;</span><br><span class="line">				<span class="keyword">int</span> v=e[i].to,c=e[i].c;</span><br><span class="line">				<span class="keyword">if</span>(!e[i].w || dis[v]&lt;=dis[u]+c) <span class="keyword">continue</span>;</span><br><span class="line">				dis[v]=dis[u]+c,w[v]=<span class="built_in">min</span>(e[i].w,w[u]),pre[v]=i;</span><br><span class="line">				<span class="keyword">if</span>(!inq[v]) que.<span class="built_in">push</span>(v),inq[v]=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(dis[T]==INF) <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">int</span> c=w[T]; ans+=dis[T]*c;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> u=T;u!=S;u=e[pre[u]^<span class="number">1</span>].to) e[pre[u]].w-=c,e[pre[u]^<span class="number">1</span>].w+=c;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(mk,<span class="number">0</span>,<span class="keyword">sizeof</span> mk);</span><br><span class="line">	<span class="built_in">rep</span>(a,<span class="number">1</span>,n) <span class="built_in">rep</span>(b,a+<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="keyword">int</span> u=++T;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=e[i].nxt) <span class="keyword">if</span>(e[i].to&lt;=n &amp;&amp; !e[i].w) &#123;</span><br><span class="line">			<span class="keyword">if</span>(e[i].to==b) mk[a][b]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> mk[b][a]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">rep</span>(j,<span class="number">1</span>,n) <span class="built_in">putchar</span>(mk[i][j]+<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/20/CF1264E%20-%20Beautiful%20League/" data-id="ckowpjb2x0004y4uah2w6dxlk" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/05/20/CF1276F%20-%20Asterisk%20Substrings/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/05/20/CF1221G%20-%20Graph%20And%20Numbers/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/20/CF1368G%20-%20Shifting%20Dominoes/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1366G%20-%20Construct%20the%20String/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1305G%20-%20Kuroni%20and%20Antihype/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1299D%20-%20Around%20the%20World/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1288F%20-%20Red-Blue%20Graph/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 orangejuice<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

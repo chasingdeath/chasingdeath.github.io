@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>orangejuice&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="CF1276F - Asterisk Substrings题目大意给定串$S,|S|&#x3D;n$，设一个串的子串集合为$Sub(S)$ 求$|Sub(S) \cup Sub(+S[2:n])\cup Sub(S[1:1]++S[3:n])\cup \cdots|$ 其中*表示特殊字符而不是通配符   分析对于不包含*的串，显然就是$Sub(S)$，可以通过后缀数组，后缀自动机来计算 对于包含*的串，考虑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="orangejuice&#39;s Blog">
+<meta property="og:url" content="http://example.com/2021/05/20/CF1276F%20-%20Asterisk%20Substrings/index.html">
+<meta property="og:site_name" content="orangejuice&#39;s Blog">
+<meta property="og:description" content="CF1276F - Asterisk Substrings题目大意给定串$S,|S|&#x3D;n$，设一个串的子串集合为$Sub(S)$ 求$|Sub(S) \cup Sub(+S[2:n])\cup Sub(S[1:1]++S[3:n])\cup \cdots|$ 其中*表示特殊字符而不是通配符   分析对于不包含*的串，显然就是$Sub(S)$，可以通过后缀数组，后缀自动机来计算 对于包含*的串，考虑">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-20T09:44:17.240Z">
+<meta property="article:modified_time" content="2021-05-09T00:13:39.428Z">
+<meta property="article:author" content="orangejuice">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">orangejuice&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CF1276F - Asterisk Substrings" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/20/CF1276F%20-%20Asterisk%20Substrings/" class="article-date">
+  <time class="dt-published" datetime="2021-05-20T09:44:17.240Z" itemprop="datePublished">2021-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CF1276F-Asterisk-Substrings"><a href="#CF1276F-Asterisk-Substrings" class="headerlink" title="CF1276F - Asterisk Substrings"></a>CF1276F - Asterisk Substrings</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定串$S,|S|=n$，设一个串的子串集合为$Sub(S)$</p>
+<p>求$|Sub(S) \cup Sub(<em>+S[2:n])\cup Sub(S[1:1]+</em>+S[3:n])\cup \cdots|$</p>
+<p>其中*表示特殊字符而不是通配符</p>
+<br>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>对于不包含*的串，显然就是$Sub(S)$，可以通过后缀数组，后缀自动机来计算</p>
+<p>对于包含*的串，考虑分两部分计算</p>
+<br>
+
+<h4 id="1-对于后面接的串-T-分类"><a href="#1-对于后面接的串-T-分类" class="headerlink" title="1.对于后面接的串$T$分类"></a>1.对于后面接的串$T$分类</h4><p>对于后面接的串$T$，$T$在原串$S$出现的位置对应后缀数组上一段$\text{rank}$区间$[l,r]$</p>
+<p>考虑按照原串后缀数组的$\text{height}$建立笛卡尔树，此时容易发现，不同的$[l,r]$就是</p>
+<p>笛卡尔树上每一个节点对应的区间，而这个$[l,r]$出现的个数就是$height_u-height_{fa_u}$</p>
+<br>
+
+<h4 id="2-对于每一个-l-r-计算前面接的串-R-的种类"><a href="#2-对于每一个-l-r-计算前面接的串-R-的种类" class="headerlink" title="2.对于每一个$[l,r]$计算前面接的串$R$的种类"></a>2.对于每一个$[l,r]$计算前面接的串$R$的种类</h4><p>那么在前面接的串$R$就是从$[l,r]$中$sa[i]-2$对应的所有前缀中</p>
+<p>选择某一条后缀得到</p>
+<p>在笛卡尔树上计算时，我们需要从儿子中合并两段$[l,r],[l’,r’]$，计算不同串个数</p>
+<p>也就是说我们需要动态维护一个集合$Set$为反串后缀的子集，并且计算这些后缀能够构成的串种类</p>
+<p>对于$Set$为全集的情况，我们知道答案就是$\sum |suf_i|-\sum height_i$</p>
+<p>这条式子的意义实际上是：</p>
+<p>按照$\text{rank}$考虑每一个后缀，减去前面已经出现过的所有串，就是减去和前面串最大的$\text{LCP}$</p>
+<p>由于$\text{LCP}(i,j)$取决于中间$height$的最小值，按$\text{rank}$加入时$\text{LCP}$的最大值就是$height_{i-1}$</p>
+<br>
+
+<p>那么这个计算思路对于$Set$中元素不连续的情况显然依然成立</p>
+<p>只需要动态维护出现位置的$\text{rank}$，不断减去相邻两个位置$i,j$的$\text{LCP}$即可</p>
+<p>用$\text{std::set}$+启发式合并即可$O(n\log ^2n)$维护，$\text{LCP}$用后缀数组$\text{RMQ}$即可$O(1)$求（实际上带一个$\log $也不影响总复杂度）</p>
+<p>或许用线段树合并可以做到$O(n\log n)$</p>
+<p>代码的话$\downarrow $，有轻度封装</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(int i=a,i##end=b;i&lt;=i##end;++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> drep(i,a,b) for(int i=a,i##end=b;i&gt;=i##end;--i)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> IO;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>=</span><span class="keyword">int</span>&gt; <span class="function">T <span class="title">rd</span><span class="params">()</span></span>&#123;</span><br><span class="line">	T s=<span class="number">0</span>; <span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(IO=<span class="built_in">getchar</span>())) f|=IO==<span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">	<span class="keyword">do</span> s=(s&lt;&lt;<span class="number">1</span>)+(s&lt;&lt;<span class="number">3</span>)+(IO^<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(IO=<span class="built_in">getchar</span>()));</span><br><span class="line">	<span class="keyword">return</span> f?-s:s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span>&#123;</span>N=<span class="number">100010</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Suffix_Array</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> rk[N&lt;&lt;<span class="number">1</span>],tmp[N],cnt[N],sa[N],lcp[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) cnt[s[i]-<span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,<span class="number">25</span>) cnt[i]+=cnt[i<span class="number">-1</span>];</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) rk[i]=cnt[s[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">	<span class="built_in">drep</span>(i,n,<span class="number">1</span>) sa[cnt[s[i]-<span class="string">&#x27;a&#x27;</span>]--]=i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> m=n,k=<span class="number">1</span>;;k&lt;&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> h=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">rep</span>(i,n-k+<span class="number">1</span>,n) tmp[++h]=i;</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="keyword">if</span>(sa[i]&gt;k) tmp[++h]=sa[i]-k;</span><br><span class="line">	</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">1</span>,n) cnt[rk[sa[i]]]=i;</span><br><span class="line">		<span class="built_in">drep</span>(i,n,<span class="number">1</span>) sa[cnt[rk[tmp[i]]]--]=tmp[i];</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">1</span>,n) tmp[sa[i]]=tmp[sa[i<span class="number">-1</span>]]+(rk[sa[i]]!=rk[sa[i<span class="number">-1</span>]]||rk[sa[i<span class="number">-1</span>]+k]!=rk[sa[i]+k]);</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">1</span>,n) rk[i]=tmp[i];</span><br><span class="line">		<span class="keyword">if</span>((m=rk[sa[n]])==n) <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> h=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="keyword">int</span> j=sa[rk[i]<span class="number">-1</span>];</span><br><span class="line">		<span class="keyword">if</span>(h) h--;</span><br><span class="line">		<span class="keyword">while</span>(s[i+h]==s[j+h]) h++;</span><br><span class="line">		lcp[rk[i]<span class="number">-1</span>]=h;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125; ;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LCPer</span>:</span>Suffix_Array&#123;</span><br><span class="line"><span class="keyword">int</span> st[<span class="number">20</span>][N],Log[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">2</span>,n) Log[i]=Log[i&gt;&gt;<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) st[<span class="number">0</span>][i]=lcp[i];</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,Log[n]) &#123;</span><br><span class="line">		<span class="keyword">int</span> len=<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>);</span><br><span class="line">		<span class="built_in">rep</span>(j,<span class="number">1</span>,n-len+<span class="number">1</span>) st[i][j]=<span class="built_in">min</span>(st[i<span class="number">-1</span>][j],st[i<span class="number">-1</span>][j+len]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCP</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(i==j) <span class="keyword">return</span> n-sa[i]+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(i&gt;j) <span class="built_in">swap</span>(i,j);</span><br><span class="line">	j--;</span><br><span class="line">	<span class="keyword">int</span> d=Log[j-i+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">min</span>(st[d][i],st[d][j-(<span class="number">1</span>&lt;&lt;d)+<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line">&#125; S;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SA_Solver</span>:</span>Suffix_Array&#123;</span><br><span class="line"><span class="keyword">int</span> stk[N],top,ls[N],rs[N],mk[N];</span><br><span class="line">ll ans,F[N*<span class="number">2</span>];</span><br><span class="line">set &lt;<span class="keyword">int</span>&gt; st[N*<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> &amp;u,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> lst)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l==r) &#123;</span><br><span class="line">		u=++m;</span><br><span class="line">		<span class="keyword">int</span> p=sa[l];</span><br><span class="line">		<span class="keyword">if</span>(p&gt;<span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> q=n-(p<span class="number">-2</span>)+<span class="number">1</span>;</span><br><span class="line">			F[u]=n-q+<span class="number">1</span>;</span><br><span class="line">			st[u].<span class="built_in">insert</span>(S.rk[q]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(p&gt;<span class="number">1</span>) ans+=<span class="number">1ll</span>*(n-p+<span class="number">1</span>-lst)*(F[u]+<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">dfs</span>(ls[u],l,u,lcp[u]),<span class="built_in">dfs</span>(rs[u],u+<span class="number">1</span>,r,lcp[u]);</span><br><span class="line">	<span class="keyword">if</span>(st[ls[u]].<span class="built_in">size</span>()&gt;st[rs[u]].<span class="built_in">size</span>()) <span class="built_in">swap</span>(ls[u],rs[u]);</span><br><span class="line">	<span class="built_in">swap</span>(st[u],st[rs[u]]),F[u]=F[ls[u]]+F[rs[u]];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> t=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i:st[ls[u]]) &#123;</span><br><span class="line">		<span class="keyword">if</span>(~t) F[u]+=S.<span class="built_in">LCP</span>(t,i);</span><br><span class="line">		t=i;</span><br><span class="line">		<span class="keyword">auto</span> r=st[u].<span class="built_in">upper_bound</span>(i);</span><br><span class="line">		<span class="keyword">if</span>(r!=st[u].<span class="built_in">end</span>()) F[u]-=S.<span class="built_in">LCP</span>(i,*r);</span><br><span class="line">		<span class="keyword">if</span>(r!=st[u].<span class="built_in">begin</span>()) &#123;</span><br><span class="line">			<span class="keyword">auto</span> l=r; l--;</span><br><span class="line">			<span class="keyword">if</span>(r!=st[u].<span class="built_in">end</span>()) F[u]+=S.<span class="built_in">LCP</span>(*l,*r);</span><br><span class="line">			F[u]-=S.<span class="built_in">LCP</span>(*l,i);</span><br><span class="line">		&#125;</span><br><span class="line">		st[u].<span class="built_in">insert</span>(i);</span><br><span class="line">	&#125;</span><br><span class="line">	ans+=<span class="number">1ll</span>*(lcp[u]-lst)*(F[u]+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-1</span>) &#123;</span><br><span class="line">		<span class="keyword">while</span>(top &amp;&amp; lcp[stk[top]]&gt;lcp[i]) ls[i]=stk[top--];</span><br><span class="line">		<span class="keyword">if</span>(top) rs[stk[top]]=i;</span><br><span class="line">		stk[++top]=i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-1</span>) mk[ls[i]]=mk[rs[i]]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) ans+=n-i+<span class="number">1</span>-lcp[i];</span><br><span class="line">	ans++;</span><br><span class="line">	<span class="keyword">int</span> lst=<span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="keyword">if</span>(S.sa[i]&gt;<span class="number">1</span>) &#123;</span><br><span class="line">		ans+=n-S.sa[i]+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(~lst) ans-=<span class="built_in">min</span>(S.<span class="built_in">LCP</span>(i,lst),<span class="built_in">min</span>(n-S.sa[i]+<span class="number">1</span>,n-S.sa[lst]+<span class="number">1</span>));</span><br><span class="line">		lst=i;</span><br><span class="line">	&#125;</span><br><span class="line">	ans++;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-1</span>) <span class="keyword">if</span>(!mk[i]) <span class="built_in">dfs</span>(i,<span class="number">1</span>,n,<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line">&#125; T;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,s+<span class="number">1</span>),n=m=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">&quot;3&quot;</span>),<span class="number">0</span>;</span><br><span class="line">	T.<span class="built_in">Build</span>(),<span class="built_in">reverse</span>(s+<span class="number">1</span>,s+n+<span class="number">1</span>),S.<span class="built_in">Build</span>(),S.<span class="built_in">Init</span>();</span><br><span class="line">	T.<span class="built_in">Solve</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/20/CF1276F%20-%20Asterisk%20Substrings/" data-id="ckowpjb2y0005y4uagkgy6499" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/05/20/CF1288F%20-%20Red-Blue%20Graph/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/05/20/CF1264E%20-%20Beautiful%20League/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/20/CF1368G%20-%20Shifting%20Dominoes/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1366G%20-%20Construct%20the%20String/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1305G%20-%20Kuroni%20and%20Antihype/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1299D%20-%20Around%20the%20World/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1288F%20-%20Red-Blue%20Graph/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 orangejuice<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

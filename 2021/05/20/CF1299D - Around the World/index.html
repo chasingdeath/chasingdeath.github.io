@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>orangejuice&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="CF1299D - Around the World题目大意给定一张带权无向图，满足经过1号点不存在长度$&gt;3$的简单环 求删除1号点所连边的一个子集，使得剩下的边构成的图满足 不存在一条 非完全重复 回路 异或和为0 非完全重复即所有边恰好被经过偶数次的回路 边权$&lt;32$   分析考虑如何判定0回路 1.任意一个回路由同一连通块内的环叠加产生 2.将所有$\text{dfs}$树上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="orangejuice&#39;s Blog">
+<meta property="og:url" content="http://example.com/2021/05/20/CF1299D%20-%20Around%20the%20World/index.html">
+<meta property="og:site_name" content="orangejuice&#39;s Blog">
+<meta property="og:description" content="CF1299D - Around the World题目大意给定一张带权无向图，满足经过1号点不存在长度$&gt;3$的简单环 求删除1号点所连边的一个子集，使得剩下的边构成的图满足 不存在一条 非完全重复 回路 异或和为0 非完全重复即所有边恰好被经过偶数次的回路 边权$&lt;32$   分析考虑如何判定0回路 1.任意一个回路由同一连通块内的环叠加产生 2.将所有$\text{dfs}$树上">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-20T09:44:17.261Z">
+<meta property="article:modified_time" content="2021-05-09T11:37:49.531Z">
+<meta property="article:author" content="orangejuice">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">orangejuice&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CF1299D - Around the World" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/20/CF1299D%20-%20Around%20the%20World/" class="article-date">
+  <time class="dt-published" datetime="2021-05-20T09:44:17.261Z" itemprop="datePublished">2021-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CF1299D-Around-the-World"><a href="#CF1299D-Around-the-World" class="headerlink" title="CF1299D - Around the World"></a>CF1299D - Around the World</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一张带权无向图，满足经过1号点不存在长度$&gt;3$的简单环</p>
+<p>求删除1号点所连边的一个子集，使得剩下的边构成的图满足</p>
+<p>不存在一条 <strong>非完全重复</strong> 回路 异或和为0</p>
+<p>非完全重复即所有边恰好被经过偶数次的回路</p>
+<p>边权$&lt;32$</p>
+<br>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>考虑如何判定0回路</p>
+<p>1.任意一个回路由同一连通块内的环叠加产生</p>
+<p>2.将所有$\text{dfs}$树上的环边提取出来，无法加入线性基时则存在0回路</p>
+<p>线性基是重要的判断0回路的方法，因此考虑直接将线性基压进状态进行$dp$</p>
+<br>
+
+<h3 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h3><p>删除1所连边后，对于每个连通块考虑计算</p>
+<p>设连通块内环边的线性基为$D$（加入每条都能成功插入，否则直接跳过该连通块）</p>
+<p>包含$C$条连接1的边</p>
+<p>仍需考虑经过1的环边，题目限制了这样的环边在每个连通块内最多有一条</p>
+<p>不妨提取这条边，设其所在三元环权为$L$</p>
+<p>那么转移分为3种</p>
+<p>1.不选这个连通块</p>
+<p>2.选择连通块内所有边，但是不选三元环，即$3\cdot 2^{C-2}-1$ (如果存在$L$)</p>
+<p>暴力合并$dp$状态中的线性基和$D$即可，依次插入$D$中的每条基</p>
+<p>3.额外再选择$L$，$2^{C-2}$</p>
+<p>状压线性基容易发现线性基最多有15个位置可能出现1，可以暴力二进制存下来</p>
+<p>实际上，合法的线性基通过高斯消元之后种类非常少，因此复杂度有保证</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>,P=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line">vector &lt;Pii&gt; G[N];</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll x,ll k=P<span class="number">-2</span>)</span> </span>&#123;</span><br><span class="line">	ll res=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(;k;k&gt;&gt;=<span class="number">1</span>,x=x*x%P) <span class="keyword">if</span>(k&amp;<span class="number">1</span>) res=res*x%P;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Gauss   rep(i,0,4) <span class="meta-keyword">if</span>(d[i]) rep(j,i+1,4) <span class="meta-keyword">if</span>(d[j]&amp;(1&lt;&lt;i)) d[j]^=d[i];\</span></span><br><span class="line"><span class="meta">				drep(i,4,0) D=(D&lt;&lt;(i+1))|d[i];</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Ins</span><span class="params">(<span class="keyword">int</span> &amp;D,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> d[<span class="number">5</span>];</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,<span class="number">4</span>) d[i]=D&amp;((<span class="number">1</span>&lt;&lt;(i+<span class="number">1</span>))<span class="number">-1</span>),D&gt;&gt;=i+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">drep</span>(i,<span class="number">4</span>,<span class="number">0</span>) <span class="keyword">if</span>(x&amp;(<span class="number">1</span>&lt;&lt;i)) &#123;</span><br><span class="line">		<span class="keyword">if</span>(d[i]) x^=d[i];</span><br><span class="line">		<span class="keyword">else</span> &#123; f=<span class="number">1</span>,d[i]=x; <span class="keyword">break</span>; &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(!f) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	Gauss;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Uni</span><span class="params">(<span class="keyword">int</span> &amp;D,<span class="keyword">int</span> E)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!E) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> d[<span class="number">5</span>];</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,<span class="number">4</span>) d[i]=D&amp;((<span class="number">1</span>&lt;&lt;(i+<span class="number">1</span>))<span class="number">-1</span>),D&gt;&gt;=i+<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,<span class="number">4</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> x=E&amp;((<span class="number">1</span>&lt;&lt;(i+<span class="number">1</span>))<span class="number">-1</span>); E&gt;&gt;=i+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(!x) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">drep</span>(i,<span class="number">4</span>,<span class="number">0</span>) <span class="keyword">if</span>(x&amp;(<span class="number">1</span>&lt;&lt;i)) &#123;</span><br><span class="line">			<span class="keyword">if</span>(d[i]) x^=d[i];</span><br><span class="line">			<span class="keyword">else</span> &#123; f=<span class="number">1</span>,d[i]=x; <span class="keyword">break</span>; &#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(!f) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Gauss;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Table</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> val[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],a[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],c;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!val[x]) a[c++]=x;</span><br><span class="line">		val[x]+=v,<span class="built_in">Mod1</span>(val[x]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">clr</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">0</span>,c<span class="number">-1</span>) val[a[i]]=<span class="number">0</span>;</span><br><span class="line">		c=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; dp[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> vis[N],dfn,dis[N],D,F,E[N],L,C;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">	vis[u]=++dfn;</span><br><span class="line">	<span class="keyword">if</span>(~E[u]) C++;</span><br><span class="line">	<span class="keyword">for</span>(Pii i:G[u]) <span class="keyword">if</span>(i.first!=<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> v=i.first;</span><br><span class="line">		<span class="keyword">if</span>(~E[u] &amp;&amp; ~E[v]) L=E[u]^E[v]^i.second; <span class="comment">// 找到了一个经过1的三元环</span></span><br><span class="line">		<span class="keyword">if</span>(!vis[v]) dis[v]=dis[u]^i.second,<span class="built_in">dfs</span>(v);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(vis[v]&gt;vis[u]) &#123;</span><br><span class="line">			F&amp;=<span class="built_in">Ins</span>(D,dis[v]^dis[u]^i.second);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=<span class="built_in">rd</span>(),m=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		<span class="keyword">int</span> u=<span class="built_in">rd</span>(),v=<span class="built_in">rd</span>(),w=<span class="built_in">rd</span>();</span><br><span class="line">		G[u].<span class="built_in">pb</span>(<span class="built_in">mp</span>(v,w)),G[v].<span class="built_in">pb</span>(<span class="built_in">mp</span>(u,w));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) E[i]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(Pii i:G[<span class="number">1</span>]) E[i.first]=i.second;</span><br><span class="line">	<span class="keyword">int</span> cur=<span class="number">0</span>;</span><br><span class="line">	dp[<span class="number">0</span>].<span class="built_in">Add</span>(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(Pii i:G[<span class="number">1</span>]) &#123;</span><br><span class="line">		<span class="keyword">int</span> v=i.first;</span><br><span class="line">		<span class="keyword">if</span>(vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">		F=<span class="number">1</span>,D=C=<span class="number">0</span>,L=<span class="number">-1</span>,<span class="built_in">dfs</span>(v);</span><br><span class="line">		<span class="keyword">if</span>(!F) <span class="keyword">continue</span>;</span><br><span class="line">		dp[!cur].<span class="built_in">clr</span>();</span><br><span class="line">		<span class="keyword">if</span>(~L) C-=<span class="number">2</span>;</span><br><span class="line">		C=<span class="built_in">qpow</span>(<span class="number">2</span>,C);</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">0</span>,dp[cur].c<span class="number">-1</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> x=dp[cur].a[i],y=dp[cur].val[x];</span><br><span class="line">			dp[!cur].<span class="built_in">Add</span>(x,y);</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">Uni</span>(x,D)) &#123;</span><br><span class="line">				dp[!cur].<span class="built_in">Add</span>(x,((~L?<span class="number">3ll</span>:<span class="number">1ll</span>)*C<span class="number">-1</span>)*y%P);</span><br><span class="line">				<span class="keyword">if</span>(~L &amp;&amp; <span class="built_in">Ins</span>(x,L)) dp[!cur].<span class="built_in">Add</span>(x,<span class="number">1ll</span>*y*C%P);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		cur^=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,dp[cur].c<span class="number">-1</span>) (ans+=dp[cur].val[dp[cur].a[i]])%=P;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/20/CF1299D%20-%20Around%20the%20World/" data-id="ckowpjb300007y4ua90ezh0fm" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/05/20/CF1305G%20-%20Kuroni%20and%20Antihype/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/05/20/CF1288F%20-%20Red-Blue%20Graph/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/20/CF1368G%20-%20Shifting%20Dominoes/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1366G%20-%20Construct%20the%20String/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1305G%20-%20Kuroni%20and%20Antihype/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1299D%20-%20Around%20the%20World/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1288F%20-%20Red-Blue%20Graph/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 orangejuice<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>orangejuice&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="CF1187G - Gang Up题目大意有$k$个人在一张无向图上往1走，可以选择在原地不动或者走一条边 一个人在$x$时间到达目的地的代价是$c\cdot x$，$c$是常数 一条边同一时间被$x$个人经过的代价是$x^2\cdot d$，$d$是常数 最小化代价   分析无法贪心，无法最短路的题目，那就先试试网络流 考虑将时间和位置压在一起建立节点，时间$\leq n+k$ $(t,u)\r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="orangejuice&#39;s Blog">
+<meta property="og:url" content="http://example.com/2021/05/20/CF1187G%20-%20Gang%20Up/index.html">
+<meta property="og:site_name" content="orangejuice&#39;s Blog">
+<meta property="og:description" content="CF1187G - Gang Up题目大意有$k$个人在一张无向图上往1走，可以选择在原地不动或者走一条边 一个人在$x$时间到达目的地的代价是$c\cdot x$，$c$是常数 一条边同一时间被$x$个人经过的代价是$x^2\cdot d$，$d$是常数 最小化代价   分析无法贪心，无法最短路的题目，那就先试试网络流 考虑将时间和位置压在一起建立节点，时间$\leq n+k$ $(t,u)\r">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-20T09:44:17.207Z">
+<meta property="article:modified_time" content="2021-05-11T09:39:01.827Z">
+<meta property="article:author" content="orangejuice">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">orangejuice&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CF1187G - Gang Up" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/20/CF1187G%20-%20Gang%20Up/" class="article-date">
+  <time class="dt-published" datetime="2021-05-20T09:44:17.207Z" itemprop="datePublished">2021-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CF1187G-Gang-Up"><a href="#CF1187G-Gang-Up" class="headerlink" title="CF1187G - Gang Up"></a>CF1187G - Gang Up</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>有$k$个人在一张无向图上往1走，可以选择在原地不动或者走一条边</p>
+<p>一个人在$x$时间到达目的地的代价是$c\cdot x$，$c$是常数</p>
+<p>一条边同一时间被$x$个人经过的代价是$x^2\cdot d$，$d$是常数</p>
+<p>最小化代价</p>
+<br>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>无法贪心，无法最短路的题目，那就先试试网络流</p>
+<p>考虑将时间和位置压在一起建立节点，时间$\leq n+k$</p>
+<p>$(t,u)\rightarrow (t+1,u) $</p>
+<p>$(t,u)\rightarrow (t+1,v)$</p>
+<p>在原地保持的边代价为$c$，流量$\infty$</p>
+<p>在两点间移动的代价由于与个数有关，可以建立$k$条边</p>
+<p>每条代价是$d(i^2-(i-1)^2)+c=c+(2i-1)d$</p>
+<p>得到一个$O((n+k)n)$点数$O((n+k)m\cdot k)$边数的图</p>
+<p>然后可以考虑依次将每个人加入流量</p>
+<p>但是实际上，并不需要显式地将所有边连出来跑网络流</p>
+<p>每次加入一个点看做一个带回撤的最短路问题，有效的边只有$(n+k)m$条</p>
+<p>因此复杂度为$O(k\cdot \text{SPFA}((n+k)n,(n+k)m))$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">110</span>,INF=<span class="number">1e9</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,k,C,D;</span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,nxt;</span><br><span class="line">&#125; e[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> head[N],ecnt=<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	e[++ecnt]=(Edge)&#123;v,head[u]&#125;;</span><br><span class="line">	head[u]=ecnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dis[N][N],pre[N][N],inq[N][N],G[N][N],W[N][N];</span><br><span class="line"><span class="keyword">static</span> queue &lt;Pii&gt; que;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Upd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> d,<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(dis[x][y]&gt;d) &#123;</span><br><span class="line">		dis[x][y]=d,pre[x][y]=p;</span><br><span class="line">		<span class="keyword">if</span>(!inq[x][y]) inq[x][y]=<span class="number">1</span>,que.<span class="built_in">push</span>(<span class="built_in">mp</span>(x,y));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cnt[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=<span class="built_in">rd</span>(),m=<span class="built_in">rd</span>(),k=<span class="built_in">rd</span>(),C=<span class="built_in">rd</span>(),D=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,k) a[i]=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		<span class="keyword">int</span> u=<span class="built_in">rd</span>(),v=<span class="built_in">rd</span>();</span><br><span class="line">		<span class="built_in">AddEdge</span>(u,v),<span class="built_in">AddEdge</span>(v,u);</span><br><span class="line">		<span class="built_in">rep</span>(j,<span class="number">1</span>,n+k) G[j][i*<span class="number">2</span>]=G[j][i*<span class="number">2</span>+<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rep</span>(_,<span class="number">1</span>,k) &#123;</span><br><span class="line">		<span class="keyword">int</span> u=a[_];</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">1</span>,n+k) <span class="built_in">rep</span>(j,<span class="number">1</span>,n) dis[i][j]=INF;</span><br><span class="line">		dis[<span class="number">1</span>][u]=<span class="number">0</span>,que.<span class="built_in">push</span>(<span class="built_in">mp</span>(<span class="number">1</span>,u));</span><br><span class="line">		<span class="keyword">int</span> tu=<span class="number">1</span>,ti=<span class="number">-1</span>,mi=<span class="number">1e9</span>;</span><br><span class="line">		<span class="keyword">while</span>(!que.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">			<span class="keyword">int</span> t=que.<span class="built_in">front</span>().first,u=que.<span class="built_in">front</span>().second; que.<span class="built_in">pop</span>();</span><br><span class="line">			inq[t][u]=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(u==<span class="number">1</span> &amp;&amp; dis[t][u]&lt;mi) mi=dis[t][u],ti=t,tu=u;</span><br><span class="line">			<span class="keyword">if</span>(t&gt;<span class="number">1</span> &amp;&amp; W[t<span class="number">-1</span>][u]) <span class="built_in">Upd</span>(t<span class="number">-1</span>,u,dis[t][u]-C,<span class="number">1001</span>);</span><br><span class="line">			<span class="keyword">if</span>(t&lt;n+k) <span class="built_in">Upd</span>(t+<span class="number">1</span>,u,dis[t][u]+C,<span class="number">1002</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=e[i].nxt) &#123;</span><br><span class="line">				<span class="keyword">int</span> v=e[i].to;</span><br><span class="line">				<span class="keyword">if</span>(G[t<span class="number">-1</span>][i^<span class="number">1</span>]&gt;<span class="number">1</span>) <span class="built_in">Upd</span>(t<span class="number">-1</span>,v,dis[t][u]-(G[t<span class="number">-1</span>][i^<span class="number">1</span>]<span class="number">-2</span>)*D-C,-(i^<span class="number">1</span>));</span><br><span class="line">				<span class="keyword">if</span>(t&lt;n+k) <span class="built_in">Upd</span>(t+<span class="number">1</span>,v,dis[t][u]+G[t][i]*D+C,i);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		ans+=mi;</span><br><span class="line">		<span class="keyword">while</span>(tu!=u || ti!=<span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> t=pre[ti][tu];</span><br><span class="line">			<span class="keyword">if</span>(t==<span class="number">1001</span>) --W[ti++][tu];</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(t==<span class="number">1002</span>) W[--ti][tu]++;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(t&lt;<span class="number">0</span>) G[ti][-t]-=<span class="number">2</span>,tu=e[-t].to,ti++;</span><br><span class="line">			<span class="keyword">else</span> G[ti<span class="number">-1</span>][t]+=<span class="number">2</span>,tu=e[t^<span class="number">1</span>].to,ti--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/20/CF1187G%20-%20Gang%20Up/" data-id="ckowpjb2m0000y4uadtj55qcj" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/05/20/CF1201E2%20-%20Knightmare%20(hard)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/05/20/CF1379E%20-%20Inverse%20Genealogy/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/20/CF1368G%20-%20Shifting%20Dominoes/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1366G%20-%20Construct%20the%20String/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1305G%20-%20Kuroni%20and%20Antihype/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1299D%20-%20Around%20the%20World/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/20/CF1288F%20-%20Red-Blue%20Graph/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 orangejuice<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
