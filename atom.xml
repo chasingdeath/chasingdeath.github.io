@@ -6,7 +6,7 @@
   <link href="http://chasingdeath.github.io/atom.xml" rel="self"/>
   
   <link href="http://chasingdeath.github.io/"/>
-  <updated>2021-05-21T08:12:26.761Z</updated>
+  <updated>2021-05-21T08:45:09.271Z</updated>
   <id>http://chasingdeath.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「2020NOIP模拟题-广大附中」C </title>
+    <link href="http://chasingdeath.github.io/2021/05/21/%E3%80%8C2020NOIP%E6%A8%A1%E6%8B%9F%E9%A2%98-%E5%B9%BF%E5%A4%A7%E9%99%84%E4%B8%AD%E3%80%8DC%20/"/>
+    <id>http://chasingdeath.github.io/2021/05/21/%E3%80%8C2020NOIP%E6%A8%A1%E6%8B%9F%E9%A2%98-%E5%B9%BF%E5%A4%A7%E9%99%84%E4%B8%AD%E3%80%8DC%20/</id>
+    <published>2021-05-21T08:44:08.000Z</published>
+    <updated>2021-05-21T08:45:09.271Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="「2020NOIP模拟题-广大附中」C"><a href="#「2020NOIP模拟题-广大附中」C" class="headerlink" title="「2020NOIP模拟题-广大附中」C"></a>「2020NOIP模拟题-广大附中」C</h1><p>首先分析单对于LIS,LDS简单分析一下性质</p><p>不妨把选出的每个数$i,a_i$视为一个二维坐标系上的点，则显然在最优方案中</p><p>对于任意相邻的数，以$(i,a_i),(i+1,a_{i+1})$为顶点的矩形中不存在在任何一个未被选择的点</p><p>接下来分析选出的两个序列：</p><p>推论1：两个方案的位置关系</p><p>这两个序列不论是在$x$还是在$y$上都不能被剖成两个分离的段</p><p>实际上作出两条描述方案的折线，<strong>它们必然有交点</strong></p><p>推论2：交点的性质</p><p>只有两种情况，其中一种为</p><p><img src="https://i.loli.net/2020/11/19/CU5nRugpPOHXWEk.png" alt="QQ截图20201119145027.png"></p><p>相交的两个相邻折线，构成的矩形一定是这样的</p><p><img src="https://i.loli.net/2020/11/19/zboEaZCkXdMq67f.png" alt="QQ截图20201119145225.png"></p><p>即分别在$x,y$上的范围有一个包含另一个</p><p>以这个交点为界，两个取出的序列值域独立，只需要找到这样的交叉处即可得到答案</p><p>接下来的问题分两步</p><h3 id="Part1-找到候选折线"><a href="#Part1-找到候选折线" class="headerlink" title="Part1 找到候选折线"></a>Part1 找到候选折线</h3><p>对于LIS来说一个点的转移前驱构成一个递减的子序列，显然我们需要找到这个序列中下标最小的</p><p>LDS相反</p><p>用树状数组即可</p><h3 id="Part2-判断是否合法"><a href="#Part2-判断是否合法" class="headerlink" title="Part2 判断是否合法"></a>Part2 判断是否合法</h3><p>满足两个维度上分别包含看起来像是一个奇怪的二维问题</p><p>但是实际上可以现，不管是LIS还是LDS，在查询的矩形中间是不会出现点的</p><p>所以可以转化为二维区间前缀问题，用离线树状数组解决</p><p>具体的，不妨对于LIS来考虑，设选出的点为$(x,a_x),(y,a_y)$</p><p>设候选的LDS折线为$(u,a_u),(v,a_v)$</p><p>我们需要知道的就是在下标上满足$v<y,u>x$</p><p>在值上满足$a_u>a_y,a_v<a_x$</p><p>可以分成4次查询完成，但是实际操作时和这个式子略有不同，见代码</p><p>存在两种包含关系，还需要反过来再做一次</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;「2020NOIP模拟题-广大附中」C&quot;&gt;&lt;a href=&quot;#「2020NOIP模拟题-广大附中」C&quot; class=&quot;headerlink&quot; title=&quot;「2020NOIP模拟题-广大附中」C&quot;&gt;&lt;/a&gt;「2020NOIP模拟题-广大附中」C&lt;/h1&gt;&lt;p&gt;首先</summary>
+      
+    
+    
+    
+    <category term="题解" scheme="http://chasingdeath.github.io/categories/solutions/"/>
+    
+    
+    <category term="NOIP" scheme="http://chasingdeath.github.io/tags/NOIP/"/>
+    
+  </entry>
   
   <entry>
     <title>CF1477E - Nezzar and Tournaments</title>
@@ -207,7 +231,7 @@
     
     
     
-    <category term="游记" scheme="http://chasingdeath.github.io/categories/travel-notes/"/>
+    <category term="游记" scheme="http://chasingdeath.github.io/categories/travel/"/>
     
     
     <category term="default tag" scheme="http://chasingdeath.github.io/tags/default-tag/"/>
@@ -475,30 +499,6 @@
       
       
     <summary type="html">&lt;h1 id=&quot;CF1491G-Switch-and-Flip&quot;&gt;&lt;a href=&quot;#CF1491G-Switch-and-Flip&quot; class=&quot;headerlink&quot; title=&quot;CF1491G - Switch and Flip&quot;&gt;&lt;/a&gt;CF1491G - Switc</summary>
-      
-    
-    
-    
-    <category term="题解" scheme="http://chasingdeath.github.io/categories/solutions/"/>
-    
-    
-    <category term="Codeforces" scheme="http://chasingdeath.github.io/tags/Codeforces/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CF1264E - Beautiful League</title>
-    <link href="http://chasingdeath.github.io/2021/05/11/CF1264E%20-%20Beautiful%20League/"/>
-    <id>http://chasingdeath.github.io/2021/05/11/CF1264E%20-%20Beautiful%20League/</id>
-    <published>2021-05-11T09:53:03.000Z</published>
-    <updated>2021-05-21T08:12:26.706Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="CF1264E-Beautiful-League"><a href="#CF1264E-Beautiful-League" class="headerlink" title="CF1264E - Beautiful League"></a>CF1264E - Beautiful League</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一张竞赛图，其中一些边已经确定</p><p>现在求确定剩余边的方向，使得最终图上三元环个数最大</p><p><br></p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><del>三元问题着实难以处理</del></p><p>考虑什么样的三个点$(x,y,z)$无法构成一个环：</p><p>三个点恰好存在一个点$x$得到两条入边，即$x\leftarrow y,x\leftarrow z$</p><p>此时无法构成环</p><p><br></p><p>于是问题转化为统计$x$的入度$ind_x$，减少的三元环个数就是$\sum \binom{ind_i}{2}$</p><p>考虑用网络流计算答案，每一条边$(u,v)$可以选择从$S$流向$u$或者$v$</p><p>一个点得到$i$的流量付出$\binom{i}{2}$的代价流出$T$</p><p>因此每个点向$T$连$n-1$条流量为$1$，代价分别为为$\binom{j}{2}-\binom{j-1}{2}$的边</p><p>求满流最小费用即可，输出方案容易根据流量情况判断</p><p>复杂度为$O(\text{MCMF}(n^2,n^2))$ 或者$O(\text{MCMF}(n,n^2))$</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2e5</span>+<span class="number">10</span>,INF=<span class="number">1e9</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,S,T,V;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> to,nxt,w,c;</span><br><span class="line">&#125; e[N];</span><br><span class="line"><span class="keyword">int</span> head[N],ecnt=<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w,<span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">e[++ecnt]=(Edge)&#123;v,head[u],w,c&#125;;</span><br><span class="line">head[u]=ecnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Link</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w,<span class="keyword">int</span> c)</span></span>&#123; <span class="built_in">AddEdge</span>(u,v,w,c),<span class="built_in">AddEdge</span>(v,u,<span class="number">0</span>,-c); &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ans,dis[N];</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">int</span> inq[N],pre[N],w[N];</span><br><span class="line"><span class="keyword">int</span> mk[<span class="number">110</span>][<span class="number">110</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">n=<span class="built_in">rd</span>(),m=<span class="built_in">rd</span>(),S=n+<span class="number">1</span>,T=V=S+<span class="number">1</span>;</span><br><span class="line"><span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="built_in">rep</span>(j,<span class="number">1</span>,n<span class="number">-1</span>) <span class="built_in">Link</span>(i,T,<span class="number">1</span>,j*(j<span class="number">-1</span>)/<span class="number">2</span>-(j<span class="number">-1</span>)*(j<span class="number">-2</span>)/<span class="number">2</span>);</span><br><span class="line"><span class="built_in">memset</span>(mk,<span class="number">-1</span>,<span class="keyword">sizeof</span> mk);</span><br><span class="line"><span class="keyword">while</span>(m--) &#123;</span><br><span class="line"><span class="keyword">int</span> u=<span class="built_in">rd</span>(),v=<span class="built_in">rd</span>();</span><br><span class="line"><span class="keyword">if</span>(u&lt;v) mk[u][v]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span> mk[v][u]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="built_in">rep</span>(j,i+<span class="number">1</span>,n) &#123;</span><br><span class="line"><span class="built_in">Link</span>(S,++V,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(mk[i][j]!=<span class="number">0</span>) <span class="built_in">Link</span>(V,j,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(mk[i][j]!=<span class="number">1</span>) <span class="built_in">Link</span>(V,i,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line"><span class="keyword">static</span> queue &lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line"><span class="built_in">rep</span>(i,<span class="number">1</span>,V) dis[i]=INF;</span><br><span class="line">dis[S]=<span class="number">0</span>,que.<span class="built_in">push</span>(S),w[S]=INF;</span><br><span class="line"><span class="keyword">while</span>(!que.<span class="built_in">empty</span>()) &#123;</span><br><span class="line"><span class="keyword">int</span> u=que.<span class="built_in">front</span>(); que.<span class="built_in">pop</span>();</span><br><span class="line">inq[u]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=e[i].nxt) &#123;</span><br><span class="line"><span class="keyword">int</span> v=e[i].to,c=e[i].c;</span><br><span class="line"><span class="keyword">if</span>(!e[i].w || dis[v]&lt;=dis[u]+c) <span class="keyword">continue</span>;</span><br><span class="line">dis[v]=dis[u]+c,w[v]=<span class="built_in">min</span>(e[i].w,w[u]),pre[v]=i;</span><br><span class="line"><span class="keyword">if</span>(!inq[v]) que.<span class="built_in">push</span>(v),inq[v]=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(dis[T]==INF) <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">int</span> c=w[T]; ans+=dis[T]*c;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> u=T;u!=S;u=e[pre[u]^<span class="number">1</span>].to) e[pre[u]].w-=c,e[pre[u]^<span class="number">1</span>].w+=c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">memset</span>(mk,<span class="number">0</span>,<span class="keyword">sizeof</span> mk);</span><br><span class="line"><span class="built_in">rep</span>(a,<span class="number">1</span>,n) <span class="built_in">rep</span>(b,a+<span class="number">1</span>,n) &#123;</span><br><span class="line"><span class="keyword">int</span> u=++T;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=e[i].nxt) <span class="keyword">if</span>(e[i].to&lt;=n &amp;&amp; !e[i].w) &#123;</span><br><span class="line"><span class="keyword">if</span>(e[i].to==b) mk[a][b]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span> mk[b][a]=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">rep</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line"><span class="built_in">rep</span>(j,<span class="number">1</span>,n) <span class="built_in">putchar</span>(mk[i][j]+<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line"><span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;CF1264E-Beautiful-League&quot;&gt;&lt;a href=&quot;#CF1264E-Beautiful-League&quot; class=&quot;headerlink&quot; title=&quot;CF1264E - Beautiful League&quot;&gt;&lt;/a&gt;CF1264E - Be</summary>
       
     
     
