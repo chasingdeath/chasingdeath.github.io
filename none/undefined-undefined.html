@@ -18,7 +18,7 @@
 <link rel="shortcut icon" href="/images/Header1000.jpg">
 
 
-<title>「lych_cys模拟题2018」橘子树               - orangejuice&#39;s Blog</title>
+<title>「roi 2019 day2」模式串查找 (口胡) - orangejuice&#39;s Blog</title>
 
 <meta name="keywords" content="没什么东西">
 
@@ -26,7 +26,7 @@
 
 <!-- Jetpack Open Graph Tags -->
 <meta property="og:type" content="article" />
-<meta property="og:title" content="「lych_cys模拟题2018」橘子树               - orangejuice&#39;s Blog" />
+<meta property="og:title" content="「roi 2019 day2」模式串查找 (口胡) - orangejuice&#39;s Blog" />
 <meta property="og:description" content="搬运中..." />
 <meta property="og:url" content="http://chasingdeath.github.io" />
 <meta property="og:site_name" content="orangejuice&#39;s Blog" />
@@ -143,41 +143,44 @@
                 </p>
                 <p>来自ZJ的蒟蒻OIer</p>
             </div>
-            <h2 class="post-title">「Lych_cys模拟题2018」橘子树              </h2>
+            <h2 class="post-title">「ROI 2019 Day2」模式串查找 (口胡)</h2>
             <div class="post-meta">
-                本文共计1191个字 |
+                本文共计1085个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            <h1 id="「lych-cys模拟题2018」橘子树"><a href="#「lych-cys模拟题2018」橘子树" class="headerlink" title="「lych_cys模拟题2018」橘子树"></a>「lych_cys模拟题2018」橘子树</h1><p>你可能需要<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chasedeath/p/13092822.html">一点点简单知识</a></p>
-<p>你可能需要<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chasedeath/p/13492548.html">一点点预先知识</a></p>
-<p>设值域上限为$M=2\cdot 10^5,T=3\cdot 10^5$</p>
-<h3 id="求-F-n"><a href="#求-F-n" class="headerlink" title="求$F(n)$"></a>求$F(n)$</h3><p>筛去$n^{\frac{1}{3}}$以内的质因数，此时$n$剩下的质因数$&gt;n^{\frac{1}{3}}$</p>
-<p>剩下的$n$中，可能出现贡献的只有$n$是完全平方数的情况，$O(1)$判断即可</p>
-<p>复杂度为$O(n^{\frac{1}{3}})$</p>
-<script type="math/tex; mode=display">\</script><h3 id="求出-i-结点长了-t-时间的时候被收掉的答案"><a href="#求出-i-结点长了-t-时间的时候被收掉的答案" class="headerlink" title="求出$i$结点长了$t$时间的时候被收掉的答案"></a>求出$i$结点长了$t$时间的时候被收掉的答案</h3><p>预处理$a_i,b_i$的答案$c_i=F(a_i),d_i=F(b_i)$，复杂度为$O(n\pi(M^{\frac{1}{3}}))$</p>
-<p>那么此时查询的权值就是$a_i\cdot t$，如果$&gt;b_i$特判掉</p>
-<p>否则，显然$c_i$的贡献可以先分离掉考虑进答案</p>
-<p>对于剩下的部分，不妨设$x=\frac{a_i}{c_i}$，显然$x$不包含平方因子</p>
-<p>考虑$x$与$t$的合并所产生的贡献，实际上就是$\gcd(x,t)$ (让$x$的单个因子与$t$匹配一下)</p>
-<p>然后对于$t$剩下的部分$\frac{t}{\gcd(x,t)}$，由于$t\leq 3\cdot 10^5$，可以预处理一下答案</p>
-<p>综合一下上面的部分，那么一个点的答案就是$c_i\gcd(x,t)^2 F(\frac{x}{\gcd(t,x)})$</p>
-<p>因此查询一个点的复杂度就是$\gcd$的$O(\log T)$</p>
-<script type="math/tex; mode=display">\</script><p>综合利用上面的方法，勉强可以拿到$nm\log T$的20分</p>
-<p>剩下的部分，可以考虑把树树剖一下，然后每个查询可以化为在$\text{dfs}$序上的若干更新区间$L_i,R_i,t_i$</p>
-<p>由于题目考虑的实际上是查询总和，因此可以对于每个点计算答案</p>
-<p>不妨从$1-n$扫描$\text{dfs}$序，对于每个区间在$L_i$插入$t_i$，在$R_i+1$删除$t_i$</p>
-<p>用一个set来维护$t_i$的顺序，复杂度为$O(n\log ^2n)$</p>
-<p>在插入/删除set元素的同时，维护每一个$\Delta<em>i=t_i-t</em>{i-1}$，也就是我们要查询的每个数</p>
-<p>查询单点时，由于这样的$\sum \Delta_i\leq T$，所以最多包含$O(\sqrt T)$种不同的$\Delta_i$  </p>
-<p>用另一个set之类的东西维护这些不同的位置，然后暴力查询，复杂度为$O(n\sqrt T\log T)$</p>
-<p>总复杂度为$O(n\pi(M^{\frac{1}{3}})+n\sqrt T\log T)$左右</p>
-<script type="math/tex; mode=display">\</script><script type="math/tex; mode=display">\</script><script type="math/tex; mode=display">\</script><hr>
-<p>后记</p>
-<p>由于特(智)殊(力)的(缺)原(陷)因</p>
-<p>我考场上写了一个树剖+分块+莫比乌斯反演的做法，而且还没调出来，代码是<a target="_blank" rel="noopener" href="http://10.220.121.125/submission/70043">这个</a>，复杂度大概差不多$O(n\sqrt n \log_n^{\frac{3}{2}})$</p>
-<p>不提了。。。</p>
+            <h1 id="「ROI-2019-Day2」模式串查找-口胡"><a href="#「ROI-2019-Day2」模式串查找-口胡" class="headerlink" title="「ROI 2019 Day2」模式串查找 (口胡)"></a>「ROI 2019 Day2」模式串查找 (口胡)</h1><p>设$S=\sum |w_i|$</p>
+<p>显然我们需要一个树形数据结构来维护题目中添加字符的操作</p>
+<p>归纳一下，需要实现的操作就是：</p>
+<p>1.添加一个新串</p>
+<p>2.在当前串中分裂一段区间$[L,R]$</p>
+<p>3.将一个串复制$k$次</p>
+<p>将每一个单字符视为一个节点，考虑用一个可持久化的平衡树来维护上述操作，比如可持久化非旋$\text{Treap}$</p>
+<p>题解中给出的2-3-Tree不知道效果怎么样</p>
+<p>2,3操作增加的数量为$\log$级别，最终的节点总数为$O(S+n\log S)$</p>
+<p>接下来需要实现的操作是合并两个子串的信息，显然在合并时计算跨过两个节点的串匹配模板串的次数</p>
+<p>容易想到记录后缀匹配的$kmp$指针，但是这样的指针难以完成合并操作</p>
+<p>为了计算这个，我们需要维护这个串的前缀/后缀 在 原串上最长的匹配子段 </p>
+<p>此时一个节点的信息可以用$(l1,r1),(l2,r2),k$来表示，其中$k$标记了这个串是否整个出现在模板串中</p>
+<p>合并子串$A,B$信息：</p>
+<p>1.求出前缀/后缀匹配，以前缀为例：</p>
+<p>1-1.如果$A$无法完全匹配，则匹配前缀为$A$的匹配前缀</p>
+<p>1-2.$A$能够完全匹配，设$A$在原串对应$L,R$，$B$的最长匹配前缀在模板串匹配起始位置为$P$</p>
+<p>我们需要在$[L,R]$之后借上$P$开始的一段后缀，而$[L,R]$出现在模板串中的位置对应着后缀数组上一段$rank$区间</p>
+<p>取模板串反向后缀数组，求出与$R$匹配长度超过$R-L+1$的$rank$区间$[l,r]$</p>
+<p>则我们需要找到$[l,r]$中$sa[i]+1$与$P$最长的$LCP$，显然是一个求临近$rank$的问题，可以在线主席树二分解决</p>
+<p>由此得到最长前缀为$A$串再加上额外匹配得到的部分</p>
+<p>$O(\log m)$完成</p>
+<script type="math/tex; mode=display">\</script><p>2.求出跨过两个串的完美匹配个数</p>
+<p>容易得到前串后缀对应的$\text{kmp}$指针，后串前缀对应反向的$\text{kmp}$指针</p>
+<p>实际上就是求出这两个指针不断失配时相加恰好完全匹配的个数</p>
+<p>注意到，实际上这个询问是完全可以<strong>离线</strong>的</p>
+<p>可以通过在线得到的匹配情况，离线得到询问得到询问答案，再从叶子开始重新计算每个节点的答案</p>
+<p>比较暴力的做法是：</p>
+<p>建立两棵$\text{kmp}$树，在第一棵树上$\text{dfs}$，加入祖先对应的位置，然后再第二棵树上查询祖先匹配的个数</p>
+<p>可以用$\text{dfs}$序+差分树状数组维护，复杂度为$O(\log m)$</p>
+<script type="math/tex; mode=display">\</script><p>因此总体复杂度为$O((S+n\log S)\log m)$  <del>实际上常数非常大？</del></p>
 
             
                 
@@ -203,6 +206,34 @@
     
 
 </div>
+
+<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+    let isMathjaxConfig = false; // 防止重复调用Config，造成性能损耗
+    const initMathjaxConfig = () => {
+    if (!window.MathJax) {
+        return;
+    }
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["?", "?"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+        }
+    });
+        isMathjaxConfig = true; // 
+    };
+    if (isMathjaxConfig === false) {
+        initMathjaxConfig();
+    }
+</script>
 
 
         </div><!-- end #main-->
