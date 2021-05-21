@@ -1,652 +1,468 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <title>orangejuice&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="orangejuice&#39;s Blog">
-<meta property="og:url" content="http://example.com/page/2/index.html">
-<meta property="og:site_name" content="orangejuice&#39;s Blog">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="orangejuice">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternative" href="/atom.xml" title="orangejuice&#39;s Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/https://i.loli.net/2021/05/20/RuxJLz3aijVMgQs.jpg">
-  
-  
-      
-<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://chasingdeath.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta name="author" content="orangejuice">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://chasingdeath.github.io">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>orangejuice&#39;s Blog - 平凡的博客</title>
+
+<meta name="keywords" content="没什么东西">
+
+<meta name="description " content="搬运中...">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="blog" />
+<meta property="og:title" content="orangejuice&#39;s Blog - 平凡的博客" />
+<meta property="og:description" content="搬运中..." />
+<meta property="og:url" content="http://chasingdeath.github.io" />
+<meta property="og:site_name" content="orangejuice&#39;s Blog" />
+
+<link rel="dns-prefetch" href="http://chasingdeath.github.io">
+<link rel="prefetch" href="http://chasingdeath.github.io">
+<link rel="prerender" href="http://chasingdeath.github.io">
+<link rel="stylesheet" href="/css/JSimple.min.css">
+    <script type="text/javascript">
+        (function() {
+            let jsi_config = {
+                rootUrl: 'http://chasingdeath.github.io/',
+                isPost: 'false',
+                buildingTime: '05/21/2020',
+                snsQRCode: '',
+                donateImg: '',
+                readMode: 'day',
+                localSearch: { dbPath: '' }
+            };
+            
+                jsi_config.localSearch = {
+                    dbPath: '/search.json',
+                    trigger: 'auto',
+                    topN: '1',
+                    unescape: 'false'
+                }
+            
+            window.jsi_config = jsi_config;
+        })()
+    </script>
     
-    
-  
-  
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
-  <script>
-      var yiliaConfig = {
-          rootUrl: '/',
-          fancybox: true,
-          animate: true,
-          isHome: true,
-          isPost: false,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: false
-      }
-  </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<script src="/js/SimpleCore.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+</head>
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-        <a href="/" class="profilepic">
-            
-            <img lazy-src="https://i.loli.net/2021/05/20/RuxJLz3aijVMgQs.jpg" class="js-avatar">
-            
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="^_^">^_^</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
         </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/"></a></h1>
-        </hgroup>
         
-        
-            <form>
-                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
-            </form>
-            <div id="local-search-result"></div>
-        
-        
-            <script type="text/javascript">
-                (function() {
-                    'use strict';
-                    function getMatchData(keyword, data) {
-                        var matchData = [];
-                        for(var i =0;i<data.length;i++){
-                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
-                                matchData.push(data[i])
-                        }
-                        return matchData;
-                    }
-                    var $input = $('#local-search-input');
-                    var $resultContent = $('#local-search-result');
-                    $input.keyup(function(){
-                        $.ajax({
-                            url: '/search.json',
-                            dataType: "json",
-                            success: function( json ) {
-                                var str='<ul class=\"search-result-list\">';                
-                                var keyword = $input.val().trim().toLowerCase();
-                                $resultContent.innerHTML = "";
-                                if ($input.val().trim().length <= 0) {
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
-                                }
-                                var results = getMatchData(keyword, json);
-                                if(results.length === 0){
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
-                                } 
-                                for(var i =0; i<results.length; i++){
-                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
-                                }
-                                str += "</ul>";
-                                $resultContent.empty();
-                                $resultContent.append(str);
-                                $('#switch-area').hide();
-                            }
-                        });
-                    });
-                })();
-            </script>
-        
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a  href="/null">博客首页</a></li>
-                        
-                            <li><a  href="/archives">文章归档</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fl github"  target="_blank" href="https://github.com/chasingdeath/" title="github">github</a>
-                            
-                                <a class="fl weibo"  target="_blank" href="https://weibo.com/3950662532/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
-                            
-                                <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/orange-juice-24" title="zhihu">zhihu</a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        
-                    </div>
-                </section>
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://ring3.xyz/">Yllen</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://mxny.org/">麦香浓郁</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://whereisk0shl.top/">K0sh1</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.ycjcl.cc/">信鑫</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://bystudent.com/">ByStundet表哥</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.jarviswang.me/">汪神_Jarvis</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sh3ll.me/">Chu</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.hackfun.org/">4ido10n</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/iamstudy">L3m0n</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://o0xmuhe.me/">muhe</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.nuptzj.cn/">_画船听雨</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.virzz.com/index.html">Virink</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.sqlsec.com/">国光</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bodkin.ren/">老锥</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cizel.cn/">C1zel</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://1phan.cc">1phan</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.liuil.top/">liuil</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/Ox9A82/">Ox9A82</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://burnegg.com/">burnegg</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://jwrsec.cn/">jwr-sec</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sudalover.cn/">苏打</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.binklac.com">VeroFess</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bendawang.site/">bendawang</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://weeklyalgo.codes/">hook</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.flier.net.cn/">Flier&#39;blog</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.mutepig.club">mutepig</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://blog.iret.xyz/list.aspx">Silver</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://simp1e.leanote.com/">Simple</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://processor.pub/">Processor</a>
-                    
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">一只淹死在二进制海洋里的二进制狗</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>
-</div>
-
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me"></a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                
-                    <img lazy-src="/https://i.loli.net/2021/05/20/RuxJLz3aijVMgQs.jpg" class="js-avatar">
-                
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="Me"></a></h1>
-            </hgroup>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/null">博客首页</a></li>
-                
-                    <li><a href="/archives">文章归档</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a class="github" target="_blank" href="https://github.com/chasingdeath/" title="github">github</a>
-                    
-                        <a class="weibo" target="_blank" href="https://weibo.com/3950662532/profile?rightmod=1&wvr=6&mod=personinfo" title="weibo">weibo</a>
-                    
-                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/orange-juice-24" title="zhihu">zhihu</a>
-                    
-                </div>
-            </nav>
-        </header>                
-    </div>
-</nav>
-      <div class="body-wrap">
-  
-    <article id="post-CF1187G - Gang Up" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/05/20/CF1187G%20-%20Gang%20Up/" class="article-date">
-      <time datetime="2021-05-20T09:44:17.207Z" itemprop="datePublished">2021-05-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="CF1187G-Gang-Up"><a href="#CF1187G-Gang-Up" class="headerlink" title="CF1187G - Gang Up"></a>CF1187G - Gang Up</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>有$k$个人在一张无向图上往1走，可以选择在原地不动或者走一条边</p>
-<p>一个人在$x$时间到达目的地的代价是$c\cdot x$，$c$是常数</p>
-<p>一条边同一时间被$x$个人经过的代价是$x^2\cdot d$，$d$是常数</p>
-<p>最小化代价</p>
-<p><br></p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>无法贪心，无法最短路的题目，那就先试试网络流</p>
-<p>考虑将时间和位置压在一起建立节点，时间$\leq n+k$</p>
-<p>$(t,u)\rightarrow (t+1,u) $</p>
-<p>$(t,u)\rightarrow (t+1,v)$</p>
-<p>在原地保持的边代价为$c$，流量$\infty$</p>
-<p>在两点间移动的代价由于与个数有关，可以建立$k$条边</p>
-<p>每条代价是$d(i^2-(i-1)^2)+c=c+(2i-1)d$</p>
-<p>得到一个$O((n+k)n)$点数$O((n+k)m\cdot k)$边数的图</p>
-<p>然后可以考虑依次将每个人加入流量</p>
-<p>但是实际上，并不需要显式地将所有边连出来跑网络流</p>
-<p>每次加入一个点看做一个带回撤的最短路问题，有效的边只有$(n+k)m$条</p>
-<p>因此复杂度为$O(k\cdot \text{SPFA}((n+k)n,(n+k)m))$</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">110</span>,INF=<span class="number">1e9</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,k,C,D;</span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,nxt;</span><br><span class="line">&#125; e[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> head[N],ecnt=<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	e[++ecnt]=(Edge)&#123;v,head[u]&#125;;</span><br><span class="line">	head[u]=ecnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dis[N][N],pre[N][N],inq[N][N],G[N][N],W[N][N];</span><br><span class="line"><span class="keyword">static</span> queue &lt;Pii&gt; que;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Upd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> d,<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(dis[x][y]&gt;d) &#123;</span><br><span class="line">		dis[x][y]=d,pre[x][y]=p;</span><br><span class="line">		<span class="keyword">if</span>(!inq[x][y]) inq[x][y]=<span class="number">1</span>,que.<span class="built_in">push</span>(<span class="built_in">mp</span>(x,y));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cnt[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=<span class="built_in">rd</span>(),m=<span class="built_in">rd</span>(),k=<span class="built_in">rd</span>(),C=<span class="built_in">rd</span>(),D=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,k) a[i]=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		<span class="keyword">int</span> u=<span class="built_in">rd</span>(),v=<span class="built_in">rd</span>();</span><br><span class="line">		<span class="built_in">AddEdge</span>(u,v),<span class="built_in">AddEdge</span>(v,u);</span><br><span class="line">		<span class="built_in">rep</span>(j,<span class="number">1</span>,n+k) G[j][i*<span class="number">2</span>]=G[j][i*<span class="number">2</span>+<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rep</span>(_,<span class="number">1</span>,k) &#123;</span><br><span class="line">		<span class="keyword">int</span> u=a[_];</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">1</span>,n+k) <span class="built_in">rep</span>(j,<span class="number">1</span>,n) dis[i][j]=INF;</span><br><span class="line">		dis[<span class="number">1</span>][u]=<span class="number">0</span>,que.<span class="built_in">push</span>(<span class="built_in">mp</span>(<span class="number">1</span>,u));</span><br><span class="line">		<span class="keyword">int</span> tu=<span class="number">1</span>,ti=<span class="number">-1</span>,mi=<span class="number">1e9</span>;</span><br><span class="line">		<span class="keyword">while</span>(!que.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">			<span class="keyword">int</span> t=que.<span class="built_in">front</span>().first,u=que.<span class="built_in">front</span>().second; que.<span class="built_in">pop</span>();</span><br><span class="line">			inq[t][u]=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(u==<span class="number">1</span> &amp;&amp; dis[t][u]&lt;mi) mi=dis[t][u],ti=t,tu=u;</span><br><span class="line">			<span class="keyword">if</span>(t&gt;<span class="number">1</span> &amp;&amp; W[t<span class="number">-1</span>][u]) <span class="built_in">Upd</span>(t<span class="number">-1</span>,u,dis[t][u]-C,<span class="number">1001</span>);</span><br><span class="line">			<span class="keyword">if</span>(t&lt;n+k) <span class="built_in">Upd</span>(t+<span class="number">1</span>,u,dis[t][u]+C,<span class="number">1002</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=e[i].nxt) &#123;</span><br><span class="line">				<span class="keyword">int</span> v=e[i].to;</span><br><span class="line">				<span class="keyword">if</span>(G[t<span class="number">-1</span>][i^<span class="number">1</span>]&gt;<span class="number">1</span>) <span class="built_in">Upd</span>(t<span class="number">-1</span>,v,dis[t][u]-(G[t<span class="number">-1</span>][i^<span class="number">1</span>]<span class="number">-2</span>)*D-C,-(i^<span class="number">1</span>));</span><br><span class="line">				<span class="keyword">if</span>(t&lt;n+k) <span class="built_in">Upd</span>(t+<span class="number">1</span>,v,dis[t][u]+G[t][i]*D+C,i);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		ans+=mi;</span><br><span class="line">		<span class="keyword">while</span>(tu!=u || ti!=<span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> t=pre[ti][tu];</span><br><span class="line">			<span class="keyword">if</span>(t==<span class="number">1001</span>) --W[ti++][tu];</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(t==<span class="number">1002</span>) W[--ti][tu]++;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(t&lt;<span class="number">0</span>) G[ti][-t]-=<span class="number">2</span>,tu=e[-t].to,ti++;</span><br><span class="line">			<span class="keyword">else</span> G[ti<span class="number">-1</span>][t]+=<span class="number">2</span>,tu=e[t^<span class="number">1</span>].to,ti--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CF1379E - Inverse Genealogy" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/05/20/CF1379E%20-%20Inverse%20Genealogy/" class="article-date">
-      <time datetime="2021-05-20T09:44:17.187Z" itemprop="datePublished">2021-05-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="CF1379E-Inverse-Genealogy"><a href="#CF1379E-Inverse-Genealogy" class="headerlink" title="CF1379E - Inverse Genealogy"></a>CF1379E - Inverse Genealogy</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定$n,k$，要求构造一棵二叉树满足</p>
-<p>1.除了叶子以外的节点有两个儿子</p>
-<p>2.称一个节点是特殊的：两个儿子中，一个儿子$size$至少是另一个的两倍  </p>
-<p>要求特殊的节点恰好有$k$个</p>
-<p><br></p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先考虑一些简单的情况</p>
-<p>1.$2|n$时不存在合法二叉树</p>
-<p>2.$n$个节点的树，能够包含$0$个特殊节点当且仅当$\exists 2^i-1=n$</p>
-<p>也就是能够构成一棵完美二叉树</p>
-<p>3.除了$2$情况外的树，顺次放置每个节点得到的二叉树恰好包含1一个特殊点</p>
-<p>那么当$k\leq 1$时的情况均可以被解决</p>
-<p>否则，考虑通过加上一条极长的链来构造</p>
-<p>即构造一个一边儿子大小为1，另一边顺次相接的链，这样能够做到最大利用点数</p>
-<p>最多能得到$\frac{n-3}{2}$个特殊点</p>
-<p>然而我们必须处理剩余点的分配，下面给出的构造能够解决$k\in [2,\frac{n-3}{2}]$的情况</p>
-<h3 id="通用构造"><a href="#通用构造" class="headerlink" title="通用构造"></a>通用构造</h3><p><del>经过不断尝试得到的构造方法，好像很强</del></p>
-<p>假设得到一条长度为$m$且右偏的上述链，将剩下的点分配到两个地方</p>
-<p>1.根的左儿子</p>
-<p>2.链底的右儿子</p>
-<p>分配方式就是顺次放置每个节点得到的二叉树</p>
-<p>设剩下节点个数+根的左儿+链底的右儿子$=c$</p>
-<p>设$f(n)=1-[\exists 2^i-1=n]$，特别的，当$2|n$时，$f(n)=\infty$</p>
-<p>假设根的左儿子分配大小为$x$，则新的树特殊点数目就是</p>
-<p>$m-2+f(x)+f(c-x)+[c-x\ge 3]+[x\ge 2(n-1-x) \text{  or  } (n-1-x)\ge 2x]$</p>
-<p>枚举每一个$x\in[1,c-1]$，判定上式是否成立即可</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NO puts(<span class="meta-string">&quot;NO&quot;</span>),exit(0)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> fa[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">chk</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a&gt;b) <span class="built_in">swap</span>(a,b);</span><br><span class="line">	<span class="keyword">return</span> a*<span class="number">2</span>&lt;=b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Out</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">&quot;YES&quot;</span>);</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,fa[i]);</span><br><span class="line">	<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Get</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">rep</span>(i,l+<span class="number">1</span>,r) fa[i]=l<span class="number">-1</span>+(i-l+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Mincost</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(~x&amp;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1e9</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,<span class="number">17</span>) <span class="keyword">if</span>(x+<span class="number">1</span>==(<span class="number">1</span>&lt;&lt;i)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=<span class="built_in">rd</span>(),m=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">Mincost</span>(n)==m) <span class="built_in">Get</span>(<span class="number">1</span>,n),<span class="built_in">Out</span>();</span><br><span class="line">	<span class="keyword">if</span>(m==<span class="number">0</span>) NO;</span><br><span class="line">	<span class="keyword">if</span>(~n&amp;<span class="number">1</span>) NO;</span><br><span class="line">	<span class="keyword">if</span>((m+<span class="number">1</span>)*<span class="number">2</span>&gt;=n) NO;</span><br><span class="line">	<span class="keyword">int</span> r=(m+<span class="number">1</span>)*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(r==n) &#123;</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">1</span>,m+<span class="number">1</span>) fa[i*<span class="number">2</span>]=i*<span class="number">2</span><span class="number">-1</span>,fa[i*<span class="number">2</span>+<span class="number">1</span>]=i*<span class="number">2</span><span class="number">-1</span>;</span><br><span class="line">		<span class="built_in">Out</span>();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	r-=<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> c=n-r+<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span>(m&gt;<span class="number">1</span>) <span class="built_in">rep</span>(x,<span class="number">1</span>,c<span class="number">-1</span>) <span class="keyword">if</span>(<span class="built_in">Mincost</span>(x)+<span class="built_in">Mincost</span>(c-x)-!<span class="built_in">chk</span>(c-x,n<span class="number">-1</span>-(c-x))+(x&gt;=<span class="number">3</span>)==<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">1</span>,m) fa[i*<span class="number">2</span>]=i*<span class="number">2</span><span class="number">-1</span>,fa[i*<span class="number">2</span>+<span class="number">1</span>]=i*<span class="number">2</span><span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">int</span> t=<span class="built_in">max</span>(<span class="number">0</span>,r<span class="number">-2</span>);</span><br><span class="line">		fa[<span class="built_in">Get</span>(r<span class="number">-1</span>,r+x<span class="number">-2</span>)]=t;</span><br><span class="line">		fa[<span class="number">2</span>]=t;</span><br><span class="line">		fa[<span class="built_in">Get</span>(r+x<span class="number">-1</span>,n)]=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">Out</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	NO;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/05/20/hello-world/" class="article-date">
-      <time datetime="2021-05-20T09:42:04.377Z" itemprop="datePublished">2021-05-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/20/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
     </nav>
-  
 </div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                &copy; 2021 orangejuice
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="http://bestwing.me" target="_blank">Sw'blog</a> by Swing
-            </div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <img class="cover-img" src="https://shuoit.net/images/cover-day.jpg" alt="cover-img" loading="lazy" />
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">orangejuice&#39;s blog</h1>
+        <h3 class="cover-siteTitle">orangejuice&#39;s blog</h3>
+        <p class="cover-siteDesc">测试中博客</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/chasingdeath" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+
         </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li class="active">
+            <a href="/" data-name="最近">最近</a>
+        </li>
         
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >海贼到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索~" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    
         
+            
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="https://chasingdeath.github.io" target="_blank">
+                <strong>chasedeath</strong>
+            </a>
+            <em>·</em>2021-05-21
+            
+        </div>
+        <a class="post-title" href="/none/undefined-undefined.html" target="_blank" title="[CosmicBlocks - TopCoder- 12034] (网络流)">[CosmicBlocks - TopCoder- 12034] (网络流)</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://chasingdeath.github.io/tags/default-tag/" target="_blank">default tag</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        [CosmicBlocks - TopCoder- 12034] (网络流)
+    </div>
+</article>
+
+
+
+        
+            
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="https://chasingdeath.github.io" target="_blank">
+                <strong>chasedeath</strong>
+            </a>
+            <em>·</em>2021-05-21
+            
+        </div>
+        <a class="post-title" href="/none/undefined-undefined.html" target="_blank" title="[HDU - 6833] a Very Easy Math Problem (莫比乌斯反演)">[HDU - 6833] a Very Easy Math Problem (莫比乌斯反演)</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://chasingdeath.github.io/tags/default-tag/" target="_blank">default tag</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        [HDU - 6833] a Very Easy Math Problem (莫比乌斯反演)
+    </div>
+</article>
+
+
+
+        
+            
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="https://chasingdeath.github.io" target="_blank">
+                <strong>chasedeath</strong>
+            </a>
+            <em>·</em>2021-05-21
+            
+        </div>
+        <a class="post-title" href="/none/undefined-undefined.html" target="_blank" title="[HDU-6834] Yukikaze and Smooth Numbers">[HDU-6834] Yukikaze and Smooth Numbers</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://chasingdeath.github.io/tags/default-tag/" target="_blank">default tag</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        [HDU-6834] Yukikaze and Smooth Numbers
+    </div>
+</article>
+
+
+
+        
+            
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="https://chasingdeath.github.io" target="_blank">
+                <strong>chasedeath</strong>
+            </a>
+            <em>·</em>2021-05-21
+            
+        </div>
+        <a class="post-title" href="/none/undefined-undefined.html" target="_blank" title="[HDU-6883] Coin Game(2020HDU多校第十场T7)">[HDU-6883] Coin Game(2020HDU多校第十场T7)</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://chasingdeath.github.io/tags/default-tag/" target="_blank">default tag</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        [HDU-6883] Coin Game(2020HDU多校第十场T7)
+    </div>
+</article>
+
+
+
+        
+            
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="https://chasingdeath.github.io" target="_blank">
+                <strong>chasedeath</strong>
+            </a>
+            <em>·</em>2021-05-21
+            
+        </div>
+        <a class="post-title" href="/none/undefined-undefined.html" target="_blank" title="[MapGuessing TopCoder - 12152]">[MapGuessing TopCoder - 12152]</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://chasingdeath.github.io/tags/default-tag/" target="_blank">default tag</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        [MapGuessing TopCoder - 12152]
+    </div>
+</article>
+
+
+
+        
+            
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="https://chasingdeath.github.io" target="_blank">
+                <strong>chasedeath</strong>
+            </a>
+            <em>·</em>2021-05-21
+            
+        </div>
+        <a class="post-title" href="/none/undefined-undefined.html" target="_blank" title="[NOI Online  3 提高组] 优秀子序列">[NOI Online  3 提高组] 优秀子序列</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://chasingdeath.github.io/tags/default-tag/" target="_blank">default tag</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        [NOI Online  3 提高组] 优秀子序列
+    </div>
+</article>
+
+
+
+        
+            
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="https://chasingdeath.github.io" target="_blank">
+                <strong>chasedeath</strong>
+            </a>
+            <em>·</em>2021-05-21
+            
+        </div>
+        <a class="post-title" href="/none/undefined-undefined.html" target="_blank" title="[NOI Online 2021 提高组] 愤怒的小N">[NOI Online 2021 提高组] 愤怒的小N</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://chasingdeath.github.io/tags/default-tag/" target="_blank">default tag</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        [NOI Online 2021 提高组] 愤怒的小N
+    </div>
+</article>
+
+
+
+        
+            
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="https://chasingdeath.github.io" target="_blank">
+                <strong>chasedeath</strong>
+            </a>
+            <em>·</em>2021-05-21
+            
+        </div>
+        <a class="post-title" href="/none/undefined-undefined.html" target="_blank" title="[NOI Online 2021 提高组] 积木小赛">[NOI Online 2021 提高组] 积木小赛</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://chasingdeath.github.io/tags/default-tag/" target="_blank">default tag</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        [NOI Online 2021 提高组] 积木小赛
+    </div>
+</article>
+
+
+
+        
+            
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="https://chasingdeath.github.io" target="_blank">
+                <strong>chasedeath</strong>
+            </a>
+            <em>·</em>2021-05-21
+            
+        </div>
+        <a class="post-title" href="/none/undefined-undefined.html" target="_blank" title="[SweetFruits TopCoder - 12141](Matrix-Tree)">[SweetFruits TopCoder - 12141](Matrix-Tree)</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://chasingdeath.github.io/tags/default-tag/" target="_blank">default tag</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        [SweetFruits TopCoder - 12141](Matrix-Tree)
+    </div>
+</article>
+
+
+
+        
+            
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="https://chasingdeath.github.io" target="_blank">
+                <strong>chasedeath</strong>
+            </a>
+            <em>·</em>2021-05-21
+            
+        </div>
+        <a class="post-title" href="/none/undefined-undefined.html" target="_blank" title="[TopCoder - 12244 SRM 559 Round1 Div1] CircusTents">[TopCoder - 12244 SRM 559 Round1 Div1] CircusTents</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://chasingdeath.github.io/tags/default-tag/" target="_blank">default tag</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        [TopCoder - 12244 SRM 559 Round1 Div1] CircusTents
+    </div>
+</article>
+
+
+
+        
+    
+</div>
+
+<div id="btn-pager">
+    
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+</div>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: left">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://chasingdeath.github.io" target="_blank" rel="friend">chasedeath</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+            
+        </p>
     </div>
 </footer>
-
-    </div>
-    
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-
-<script src="/js/main.js"></script>
-
-
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 24;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
-    </script>
-
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-<div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
 </div>
-<script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
-</script>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
-
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
-        });
-    });
-</script>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
 
 
-    <script type="text/javascript">
-      window.onload = function(){
-        document.getElementById("search").onclick = function(){
-            console.log("search")
-            search();
-        }
-      }
-      function search(){
-        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
-      }
-    </script>
-
-  </div>
 </body>
 </html>
