@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://chasingdeath.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta name="author" content="orangejuice">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://chasingdeath.github.io">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+<link rel="shortcut icon" href="/images/Header1000.jpg">
+
+
+<title>[codechef march challenge 2021 random walk queries(rwalks) (动态点分治) ] - orangejuice&#39;s Blog</title>
+
+<meta name="keywords" content="没什么东西">
+
+<meta name="description " content="搬运中...">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="[codechef march challenge 2021 random walk queries(rwalks) (动态点分治) ] - orangejuice&#39;s Blog" />
+<meta property="og:description" content="搬运中..." />
+<meta property="og:url" content="http://chasingdeath.github.io" />
+<meta property="og:site_name" content="orangejuice&#39;s Blog" />
+
+<link rel="dns-prefetch" href="http://chasingdeath.github.io">
+<link rel="prefetch" href="http://chasingdeath.github.io">
+<link rel="prerender" href="http://chasingdeath.github.io">
+<link rel="stylesheet" href="/css/JSimple.min.css">
+    <script type="text/javascript">
+        (function() {
+            let jsi_config = {
+                rootUrl: 'http://chasingdeath.github.io/',
+                isPost: 'true',
+                buildingTime: '05/21/2020',
+                snsQRCode: '',
+                donateImg: '',
+                readMode: 'day',
+                localSearch: { dbPath: '' }
+            };
+            
+                jsi_config.localSearch = {
+                    dbPath: '/search.json',
+                    trigger: 'auto',
+                    topN: '1',
+                    unescape: 'false'
+                }
+            
+            window.jsi_config = jsi_config;
+        })()
+    </script>
+    
+<script src="/js/SimpleCore.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="^_^">^_^</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <img class="cover-img" src="https://shuoit.net/images/cover-day.jpg" alt="cover-img" loading="lazy" />
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/images/Header1000.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">orangejuice&#39;s blog</h1>
+        <h3 class="cover-siteTitle">orangejuice&#39;s blog</h3>
+        <p class="cover-siteDesc">测试中博客</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/chasingdeath" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索~" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://chasingdeath.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/Header1000.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://chasingdeath.github.io"
+                       target="_blank">chasedeath</a>
+                    <span title="最后编辑于&nbsp;2021-05-21">2021-05-21</span>
+                </p>
+                <p>来自ZJ的蒟蒻OIer</p>
+            </div>
+            <h2 class="post-title">[Codechef March Challenge 2021 Random Walk Queries(RWALKS) (动态点分治) ]</h2>
+            <div class="post-meta">
+                本文共计3057个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="Codechef-March-Challenge-2021-Random-Walk-Queries-RWALKS-动态点分治"><a href="#Codechef-March-Challenge-2021-Random-Walk-Queries-RWALKS-动态点分治" class="headerlink" title="Codechef March Challenge 2021 Random Walk Queries(RWALKS) (动态点分治) "></a><a target="_blank" rel="noopener" href="https://www.codechef.com/MARCH21B/problems/RWALKS">Codechef March Challenge 2021 Random Walk Queries(RWALKS) (动态点分治) </a></h1><p>题目大意：</p>
+<p>对于给定的无根树$T$，要求强制在线维护两种操作</p>
+<p>1.游走$(u,d)$，以$u$为根在树上游走，从$u$开始，最多走$d$步，每次随机从儿子中选择一个点</p>
+<p>2.查询$u$，当前$u$被遍历的期望次数</p>
+<script type="math/tex; mode=display">\</script><p><del>灵光一闪想到这么个憨批树上结构</del></p>
+<p>对于更新$(u,d)$，考虑$u$ <strong>跨过当前点分根</strong> 到达其他点分子树里的贡献</p>
+<p>一个点由当前点分根到达的概率是一个定值，可以预处理出来，并在查询时计算</p>
+<p>因此更新贡献时，可以描述为$dep\leq d$的点接受到 以$x$的概率访问当前点分根</p>
+<p>可以简单用树状数组维护</p>
+<p>为了剔除对于自己所在子树的非法贡献，需要额外开一些树状数组来维护</p>
+<p>一个节点有$\log n$个点分父节点，每次需要两次树状数组查询</p>
+<p>因此查询部分复杂度为$O(m\log ^2n)$，预处理以及空间复杂度为$O(n\log n)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2e5</span>+<span class="number">10</span>,K=<span class="number">19</span>,P=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,I[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,nxt;</span><br><span class="line">&#125;e[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> head[N],ecnt,deg[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	e[++ecnt]=(Edge)&#123;v,head[u]&#125;;</span><br><span class="line">	head[u]=ecnt,deg[v]++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> erep(u) for(int i=head[u],v=e[i].to;i;i=e[i].nxt,v=e[i].to)</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BIT</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	vector &lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line">	<span class="built_in">BIT</span>()&#123;&#125;;</span><br><span class="line">	<span class="built_in">BIT</span>(<span class="keyword">int</span> n):<span class="built_in">n</span>(n)&#123; s.<span class="built_in">resize</span>(n+<span class="number">1</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> x)</span></span>&#123; </span><br><span class="line">		<span class="keyword">for</span>(<span class="built_in">cmin</span>(p,n);p;p-=p&amp;-p) s[p]+=x,<span class="built_in">Mod1</span>(s[p]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">Que</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(p&lt;=n) res+=s[p],<span class="built_in">Mod1</span>(res),p+=p&amp;-p;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; T[N];</span><br><span class="line">vector &lt;BIT&gt; G[N];</span><br><span class="line"><span class="comment">//  Dep:点分树上的dep，id:节点在每层的编号， dep:节点在每层的dep，s:节点在每层由根到达的系数</span></span><br><span class="line"><span class="keyword">int</span> Dep[N],id[K][N],dep[K][N],s[K][N],vis[N],sz[N],fa[N],Root;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> mi,rt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FindRt</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> u,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ma=<span class="number">0</span>; sz[u]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">erep</span>(u) <span class="keyword">if</span>(v!=f &amp;&amp; !vis[v]) &#123;</span><br><span class="line">		<span class="built_in">FindRt</span>(n,v,u);</span><br><span class="line">		sz[u]+=sz[v],<span class="built_in">cmax</span>(ma,sz[v]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cmax</span>(ma,n-sz[u]);</span><br><span class="line">	<span class="keyword">if</span>(mi&gt;ma) mi=ma,rt=u;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> D,maxd;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> f,<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">	<span class="built_in">cmax</span>(maxd,dep[D][u]=dep[D][f]+<span class="number">1</span>),::id[D][u]=id;</span><br><span class="line">	<span class="built_in">erep</span>(u) <span class="keyword">if</span>(v!=f &amp;&amp; !vis[v]) &#123;</span><br><span class="line">		s[D][v]=<span class="number">1ll</span>*s[D][u]*I[deg[u]<span class="number">-1</span>]%P;</span><br><span class="line">		<span class="built_in">dfs</span>(v,u,id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 预处理点分治，开树状数组</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Divide</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">	mi=<span class="number">1e9</span>,<span class="built_in">FindRt</span>(n,u,<span class="number">0</span>),u=rt;</span><br><span class="line">	<span class="keyword">int</span> sonc=<span class="number">0</span>;</span><br><span class="line">	vis[u]=s[Dep[u]=D][u]=<span class="number">1</span>,id[D][u]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">int</span> t=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">erep</span>(u) <span class="keyword">if</span>(!vis[v]) &#123;</span><br><span class="line">		maxd=<span class="number">0</span>;</span><br><span class="line">		s[D][v]=<span class="number">1</span>,<span class="built_in">dfs</span>(v,u,sonc);</span><br><span class="line">		G[u].<span class="built_in">pb</span>(<span class="built_in">BIT</span>(maxd));</span><br><span class="line">		sonc++;</span><br><span class="line">		<span class="built_in">cmax</span>(t,maxd);</span><br><span class="line">	&#125;</span><br><span class="line">	T[u]=<span class="built_in">BIT</span>(t);</span><br><span class="line">	<span class="built_in">erep</span>(u) <span class="keyword">if</span>(!vis[v]) &#123;</span><br><span class="line">		<span class="keyword">if</span>(sz[v]&gt;sz[u]) sz[v]=n-sz[u];</span><br><span class="line">		D++,fa[<span class="built_in">Divide</span>(sz[v],v)]=u,D--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> u;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sum[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Que</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">	ll ans=sum[u];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> v=u,d=Dep[v];(d--,v=fa[v]);) </span><br><span class="line">		ans=(ans+ <span class="number">1ll</span>* (T[v].<span class="built_in">Que</span>(dep[d][u])+G[v][id[d][u]].<span class="built_in">Que</span>(dep[d][u])) *s[d][u])%P;</span><br><span class="line">	<span class="keyword">return</span> (ans%P+P)%P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Upd</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">	sum[u]++,<span class="built_in">Mod1</span>(sum[u]),T[u].<span class="built_in">Add</span>(d,I[deg[u]]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> v=fa[u],D=Dep[u]<span class="number">-1</span>;v;v=fa[v],D--) &#123;</span><br><span class="line">		<span class="keyword">if</span>(d&lt;dep[D][u]) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">int</span> x=<span class="number">1ll</span>*I[deg[u]]*s[D][u]%P;</span><br><span class="line">		sum[v]+=x,<span class="built_in">Mod1</span>(sum[v]);</span><br><span class="line">		x=<span class="number">1ll</span>*x*I[deg[v]<span class="number">-1</span>]%P;</span><br><span class="line">		T[v].<span class="built_in">Add</span>(d-dep[D][u],x),G[v][id[D][u]].<span class="built_in">Add</span>(d-dep[D][u],P-x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> lst;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Get</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> (<span class="built_in">rd</span>()+lst)%n+<span class="number">1</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	I[<span class="number">0</span>]=I[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">2</span>,N<span class="number">-1</span>) I[i]=<span class="number">1ll</span>*(P-P/i)*I[P%i]%P;</span><br><span class="line">	n=<span class="built_in">rd</span>(),m=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">2</span>,n)&#123;</span><br><span class="line">		<span class="keyword">int</span> u=<span class="built_in">rd</span>(),v=<span class="built_in">rd</span>();</span><br><span class="line">		<span class="built_in">AddEdge</span>(u,v),<span class="built_in">AddEdge</span>(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">	Root=<span class="built_in">Divide</span>(n,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span>(m--) &#123;</span><br><span class="line">		<span class="keyword">int</span> opt=<span class="built_in">rd</span>();</span><br><span class="line">		<span class="keyword">if</span>(opt==<span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> u=<span class="built_in">Get</span>(),d=<span class="built_in">Get</span>();</span><br><span class="line">			<span class="built_in">Upd</span>(u,d);</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,lst=<span class="built_in">Que</span>(<span class="built_in">Get</span>()));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+                
+            
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/default-tag/">default tag</a>
+            
+        </div>
+        
+    </article>
+    
+        <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+
+</div>
+
+<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+    let isMathjaxConfig = false; // 防止重复调用Config，造成性能损耗
+    const initMathjaxConfig = () => {
+    if (!window.MathJax) {
+        return;
+    }
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["?", "?"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+        }
+    });
+        isMathjaxConfig = true; // 
+    };
+    if (isMathjaxConfig === false) {
+        initMathjaxConfig();
+    }
+</script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://chasingdeath.github.io" target="_blank" rel="friend">chasedeath</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+            
+        </p>
+    </div>
+</footer>
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+
+
+</body>
+</html>
