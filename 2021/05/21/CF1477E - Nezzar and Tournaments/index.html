@@ -152,7 +152,7 @@
         <div class="post-content markdown-body">
             <h1 id="CF1477E-Nezzar-and-Tournaments"><a href="#CF1477E-Nezzar-and-Tournaments" class="headerlink" title="CF1477E - Nezzar and Tournaments"></a>CF1477E - Nezzar and Tournaments</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>有两队人$a_i,i\in[1,n],b_j,j\in[1,m]$，现在把他们放在一起排成一行$c_i$</p>
 <p>顺次给每个人计分，初始$s_0=k$</p>
-$s_i=\max\{0,s_{i-1}+c_i-c_{\max\{i-1,0\}}\}$}
+$s_i=\max\{0,s_{i-1}+c_i-c_{\max\{i-1,1\}}\}$}
 <p>现在要最大化每个$a_i$所在位置的$s_i$之和 与 $b_i$所在$s_i$之和 的差</p>
 <p>支持修改和对于不同$k$查询</p>
 <p><br></p>
