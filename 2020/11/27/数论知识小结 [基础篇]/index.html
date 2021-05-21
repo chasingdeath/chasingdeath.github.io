@@ -1,0 +1,396 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://chasingdeath.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta name="author" content="orangejuice">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://chasingdeath.github.io">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+<link rel="shortcut icon" href="/images/Header1000.jpg">
+
+
+<title>数论知识小结 [基础篇] - orangejuice&#39;s Blog</title>
+
+<meta name="keywords" content="没什么东西">
+
+<meta name="description " content="搬运中...">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="数论知识小结 [基础篇] - orangejuice&#39;s Blog" />
+<meta property="og:description" content="搬运中..." />
+<meta property="og:url" content="http://chasingdeath.github.io" />
+<meta property="og:site_name" content="orangejuice&#39;s Blog" />
+
+<link rel="dns-prefetch" href="http://chasingdeath.github.io">
+<link rel="prefetch" href="http://chasingdeath.github.io">
+<link rel="prerender" href="http://chasingdeath.github.io">
+<link rel="stylesheet" href="/css/JSimple.min.css">
+    <script type="text/javascript">
+        (function() {
+            let jsi_config = {
+                rootUrl: 'http://chasingdeath.github.io/',
+                isPost: 'true',
+                buildingTime: '05/21/2021',
+                snsQRCode: '',
+                donateImg: '',
+                readMode: 'night',
+                localSearch: { dbPath: '' }
+            };
+            
+                jsi_config.localSearch = {
+                    dbPath: '/search.json',
+                    trigger: 'auto',
+                    topN: '1',
+                    unescape: 'false'
+                }
+            
+            window.jsi_config = jsi_config;
+        })()
+    </script>
+    
+<script src="/js/SimpleCore.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="^_^">^_^</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <img class="cover-img" src="https://shuoit.net/images/cover-day.jpg" alt="cover-img" loading="lazy" />
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/images/Header1000.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">orangejuice&#39;s blog</h1>
+        <h3 class="cover-siteTitle">按ctrl会跳搜索，右上角选择day/night mode</h3>
+        <p class="cover-siteDesc">测试中博客</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/chasingdeath" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/3950662532/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索~" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://chasingdeath.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/Header1000.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://chasingdeath.github.io"
+                       target="_blank">chasedeath</a>
+                    <span title="最后编辑于&nbsp;2020-11-27">2020-11-27</span>
+                </p>
+                <p>来自ZJ的蒟蒻OIer</p>
+            </div>
+            <h2 class="post-title">数论知识小结 [基础篇]</h2>
+            <div class="post-meta">
+                本文共计5244个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="数论知识小结-基础篇"><a href="#数论知识小结-基础篇" class="headerlink" title="数论知识小结 [基础篇]"></a>数论知识小结 [基础篇]</h1><p>(latest updated on 2020.08.12)</p>
+<hr>
+<p>符号$(a,b)=\gcd(a,b)$</p>
+<p>乘除$a|b\rightarrow b=ka (k\in \N^+)$</p>
+$\sum$求和,$\prod$求积
+
+任意$\forall$，存在$\exists$
+$\lfloor x\rfloor $ 向下取整，$\lceil x\rceil $ 向上取整
+
+$[a,b]$区间，通常指整数即$[a,b]\cap \Z$
+<h3 id="调和级数"><a href="#调和级数" class="headerlink" title="调和级数"></a>调和级数</h3><p>数学上，调和级数为$H_n=\sum_{i=1}^{n}\frac{1}{i}$</p>
+<p>在<strong>OI</strong>中，我们常用调和级数分析$\sum_{i=1}^n\frac{n}{i}\approx n\ln n$</p>
+<p>把它近似看成是$f(x)=\frac{n}{x}$在$[1,n]$上的积分，它的原函数$F(x)=n\ln x$</p>
+<p>即$\begin{aligned} \sum_{i=1}^n\frac{n}{i}\approx \int_1^nf(x) dx=F(n)-F(1)=n\ln n-n\approx n\ln n\end{aligned}$</p>
+<p>附：广义调和级数 $\begin{aligned} H^z_n=\sum_{i=1}^{n}\frac{1}{i^z} \end{aligned}$它的无穷形式为黎曼函数$\begin{aligned}\zeta(z)=H^{z}_{\infty}\end{aligned}$</p>
+$$ \ $$
+<h3 id="向下取整的性质-数论分段"><a href="#向下取整的性质-数论分段" class="headerlink" title="向下取整的性质/数论分段"></a>向下取整的性质/数论分段</h3><p>性质:$\lfloor \frac{n}{ab}\rfloor =\lfloor \frac{\lfloor \frac{n}{a}\rfloor }{b}\rfloor $</p>
+$$ \ $$
+<p>数论分段：即对于$i=[1,n]$，把$i$按照$\lfloor \frac{n}{i}\rfloor$的值分成$O(\sqrt n)$段，(通常为$2\cdot \sqrt n$段左右)</p>
+<p>证明：对于$i\leq \sqrt n$，显然只有$\sqrt n$个不同的值</p>
+<p>对于$i>\sqrt n$，此时$\frac{n}{i}<\sqrt n$，也只有$\sqrt n$个不同的值</p>
+$$ \ $$
+<h3 id="素数-质数-质数密度"><a href="#素数-质数-质数密度" class="headerlink" title="素数/质数/质数密度"></a>素数/质数/质数密度</h3><p>对于$x>1$，若$\nexists y\in[2,n-1],y|x$，则$x$是一个质数，下文称素数集合为$prime$集合</p>
+$n$以内的素数个数用函数$\pi(n)=|prime\cap[1,n]|$表示，素数密度在**渐进意义**上是$O(\log n)$的
+
+即可以认为$\pi(n)=O(\frac{n}{\log n})$(实际在$n$较小时完全看不出这一点)
+
+$n$的唯一分解: $n=\prod_{p_i\in prime} p_i^{c_i}$
+<p>朴素的素数判别法:</p>
+<p>一个显然方法的如果$x$不是质数，则$\exists y\in [2,\sqrt n] ,y|x$</p>
+<p>所以可以朴素写出一个$O(\sqrt n)$的素数判别法</p>
+<p>利用这一点预先处理小素数，每次只判断素数，可以写出一个$O(\pi(\sqrt n))$的素数判别法</p>
+<p>朴素的质因数分解法:</p>
+<p>即求$n=\prod p_i^{c_i},p_i\in prime$，其中$\sum c_i\leq \log _2^n$</p>
+<p>由于对于一个数$n$，最多存在一个$y\in prime \cap [\sqrt n,n],y|n$，因此可以先分解掉$y<\sqrt n$的部分，剩下的一个就知道了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Factor</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i*i&lt;=n;++i) <span class="keyword">if</span>(n%i==<span class="number">0</span>)  </span><br><span class="line">        <span class="keyword">while</span>(n%i==<span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,i),n/=i; <span class="comment">// 分解掉&lt;sqrt(n)的部分</span></span><br><span class="line">    <span class="keyword">if</span>(n&gt;<span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,n); <span class="comment">// 如果还剩下，那么就是&gt;sqrt(n)的一个质数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>复杂度是$O(\sqrt n +\log n)$</p>
+<p>更优化的只枚举质数作为因子，复杂度是$O(\pi(\sqrt n)+\log n)$</p>
+$$  \ $$
+<p>朴素的素数筛法：埃氏筛</p>
+<p>对于$[2,n]$每个数$i$，$x=ki(k>1)$均不是质数，直接枚举复杂度为调和级数$O(n\ln n)$</p>
+<p>更优化的，对于$[2,n]$中每个质数$i$，$x=ki(k>1)$均不是质数，由于素数密度为$O(\log n)$,所以可以近似认为是$O(n\log \log n)$(实际我不会证明。。)</p>
+<h3 id="线性筛-欧拉筛"><a href="#线性筛-欧拉筛" class="headerlink" title="线性筛(欧拉筛)"></a>线性筛(欧拉筛)</h3><p>筛素数知识一个基础，可以筛很多函数，尤其是适用于积性函数</p>
+<p>直接上代码背板子好了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> notpri[N],prime[N],primecnt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sieve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    notpri[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!notpri[i]) prime[++primecnt]=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=primecnt &amp;&amp; <span class="number">1ll</span>*i*prime[j]&lt;=n;++j)&#123;</span><br><span class="line">            notpri[i*prime[j]]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>其中$i\mod prime_j= 0$意味着后面的数已经被$\frac{i}{prime_j}$筛掉了，所以可以break</p>
+<p>复杂度是带有一定常数的$O(n)$,还可以用来筛其他的一些函数</p>
+$$ \ $$
+$$ \ $$
+<h3 id=""><a href="#" class="headerlink" title=""></a>$\gcd,\text{lcm}$</h3><p>最大公因数$\text{gcd(greatest common divisor)}$常用$\gcd(x,y)=(x,y)$表示</p>
+<p>最小公倍数$\text{lcm(least common multiple)}$</p>
+<p>特别的：$(a,0)=a$</p>
+<p>求$\gcd(a,b)$可以用辗转相除法(也称为欧几里得算法)，即利用性质$(a,b)=(a\mod b,b)$</p>
+<p>每次递归调用$\gcd(b,a\mod b)$即可，边界为$(a,0)=a$</p>
+<p>复杂度分析：</p>
+<p>首先是取模的分析，对于$\forall a,b,a\ge b$，必然满足$a\mod b \leq \frac{a}{2}$</p>
+<p>所以每次取模至少会减少一倍，复杂度为$O(\log a)$</p>
+$$ \ $$
+<h4 id="附：扩展欧几里得算法"><a href="#附：扩展欧几里得算法" class="headerlink" title="附：扩展欧几里得算法"></a>附：扩展欧几里得算法</h4><p>用于求解不定方程$ax+by =1$的一组解$(x,y)$</p>
+<p>存在解的条件是$(a,b)=1$，否则$(a,b)|ax+by$，即$ax+by>1$</p>
+<p>用类似求$\text{gcd}$的方法求出</p>
+$ax+by=1$
+$( a\mod b)\cdot x+ \lfloor \frac{a}{b}\rfloor\cdot b\cdot x + by=1$
+$( a\mod b)\cdot x+ b\cdot (\lfloor \frac{a}{b}\rfloor\cdot x + y)=1$
+<p>那么如果求出$(a\mod b)\cdot x'+b\cdot y'=1$的解</p>
+<p>则$x'=x,y'=\lfloor \frac{a}{b}\rfloor \cdot x+y$</p>
+<p>即$x=x',y=y'-\lfloor \frac{a}{b}\rfloor x$</p>
+<p>每次都递归求出$(a\mod b) \cdot x+ by =1 $</p>
+<p>复杂度与$\gcd$相同，最后的$(a,b)=a=1,b=0$是边界条件，此时$x+0\cdot y=1$的一组解是$(1,0)$</p>
+<p>写成代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ax + by =1</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Exgcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> &amp;x,<span class="keyword">int</span> &amp;y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)&#123; </span><br><span class="line">        <span class="keyword">if</span>(a!=<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// (a,b)!=1 ,不存在解</span></span><br><span class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>; <span class="comment">// 初始解</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">Exgcd</span>(b,a%b,y,x),y-=a/b*x; <span class="comment">// 带入上面的式子，注意这里带入的是(b,a%b),所以x,y要反过来</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意求出的$x,y$不保证为正数</p>
+$$ \ $$
+$$ \ $$
+$$ \ $$
+<h3 id="因数个数"><a href="#因数个数" class="headerlink" title="因数个数"></a>因数个数</h3><p>似乎没有找到规范的函数定义，所以下称$d(n)$</p>
+<p>即$d(n)=|\{i|i\in[1,n]\and i|n\}|$</p>
+<p>对于$n=\prod p_i^{c_i}$，列一条小学的公式$d(n)=\prod (c_i+1)$</p>
+<p>因数个数一个非常松的上界是$O(\sqrt n)$，证明这里略去</p>
+<p>实际上，搜索得到的上界大致是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">maxn=10^ 1  max= 4</span><br><span class="line">maxn=10^ 2  max= 12</span><br><span class="line">maxn=10^ 3  max= 32</span><br><span class="line">maxn=10^ 4  max= 64</span><br><span class="line">maxn=10^ 5  max= 128</span><br><span class="line">maxn=10^ 6  max= 240</span><br><span class="line">maxn=10^ 7  max= 448</span><br><span class="line">maxn=10^ 8  max= 768</span><br><span class="line">maxn=10^ 9  max= 1344</span><br><span class="line">maxn=10^10  max= 2304</span><br><span class="line">maxn=10^11  max= 4032</span><br><span class="line">maxn=10^12  max= 6720</span><br><span class="line">maxn=10^13  max= 10752</span><br><span class="line">maxn=10^14  max= 17280</span><br><span class="line">maxn=10^15  max= 26880</span><br><span class="line">maxn=10^16  max= 41472</span><br><span class="line">maxn=10^17  max= 64512</span><br><span class="line">maxn=10^18  max= 103680</span><br></pre></td></tr></table></figure>
+<p>可以看到，因数个数是非常少的</p>
+<p>附: </p>
+<p>质因数个数$\Omega(n)=|prime\cap [1,n]|$，非常松的上界是$\Omega(n)=O(\log n)$</p>
+<p>约数和函数$\sigma(n)=\sum_{i|n}i$</p>
+$$ \ $$
+<h3 id="费马小定理-欧拉定理-欧拉函数-阶"><a href="#费马小定理-欧拉定理-欧拉函数-阶" class="headerlink" title="费马小定理/欧拉定理/欧拉函数/阶"></a>费马小定理/欧拉定理/欧拉函数/阶</h3>$$ \ $$
+<p>费马小定理： 对于任意质数$P,x>0,x^{p-1}\equiv 1 \pmod P$</p>
+$$ \ $$
+<p>欧拉函数：$\varphi(n)$为$[1,n-1]$中与$n$互质的数个数，特别的$\varphi(1)=1$</p>
+<p>设$n=\prod p_i^{c_i}$其中$p_i$是质数,$c_i>0$，则$\varphi(n)=\prod p_i^{c_i-1}(p_i-1)=n\prod\frac{p_i-1}{p_i}$</p>
+<p>对于可以通过类似筛素数的方法求出来$[1,n]$的$\varphi(i)$</p>
+<p>对于数$n$，需要采用质因数分解求出，朴素的做法为$O(\sqrt n)$，用$\text{Pollard's Rho}$算法复杂度更低</p>
+$$ \  $$
+<p>欧拉定理：对于任意数$P>1,x>0,x^{\varphi(P)}\equiv 1\pmod P$</p>
+<p>推论：$x^c\equiv x^{c\mod \varphi (P)} \pmod P$</p>
+<p>很显然，费马小定理是欧拉定理的特殊情况</p>
+$$ \ $$
+<p> 阶：对于$(a,n)=1$的整数，满足$a^r≡1 \pmod n$ 的最小整数$r$,称为$a$模$n$的阶，以下简称$d(a)$</p>
+<p>显然$a^i \mod n$构成了一个以$r$为最小正周期的循环</p>
+<p>性质：根据欧拉定理$a^{\varphi(n)}\mod n=1$，所以有$d(a)|\varphi(n)$ </p>
+<p>求解阶：先对于 $\varphi(n)$质因数分解，然后可以</p>
+<p>1.依次枚举每个因数判断是否有$a^i\mod n=1$，取最小的$i$，复杂度为$O(\sqrt n\log n)$</p>
+<p>2.设$\varphi(n)=p_i^{c_i}$，令$x=\varphi(P)$，从$x$开始，如果$a^{\frac{x}{p_i}}\mod n=1$，则$x\rightarrow \frac{x}{p_i}$</p>
+<p>预处理复杂度受限于质因数分解(下文有介绍)</p>
+<p>单次查询复杂度上限是$O(\log ^2 P)$(为快速幂复杂度乘上$\sum c_i$)</p>
+$$ \ $$
+<h3 id="模逆元"><a href="#模逆元" class="headerlink" title="模逆元"></a>模逆元</h3><p>对于任意数$x>1,P>1,(x,P)=1$，存在一个数$\frac{1}{x}\equiv y\pmod P$</p>
+<p>即$xy\equiv 1 \pmod P$，$y$为$x$的一个模逆元</p>
+<p>当$P$为质数时，由于$x^{P-1}\equiv 1 \pmod P$，所以$y\equiv x^{P-2}\pmod P$为$x$的一个逆元</p>
+<p>当$P$不为质数时，如果已知$\varphi (P)$，可以类似得做，否则可以构造$a\cdot x+b\cdot P=1$，用扩展欧几里得算法求出一组合法解$(a,b)$，则$a$即为一个答案</p>
+$$ \ $$
+<h3 id="原根-指标"><a href="#原根-指标" class="headerlink" title="原根/指标"></a>原根/指标</h3><p>原根：一个数$P$有原根的条件是他可以表示为$P=1,2,4,p,2p,p^n(p\in prime)$</p>
+<p>对于$P$，令$d(x)$为$x$模$P$的原根，若存在$d(x)=\varphi(P)$,则$x$是$P$的一个原根</p>
+<p>找原根：</p>
+<p>设$\varphi(P)=\prod p_i^{c_i}$，其中$p_i$是质数</p>
+<p>由于$d(x)|\varphi(P)$，如果$d(x)<\varphi(P)$那么必然存在一个$x^{\frac{\varphi(P)}{p_i}}\equiv 1\pmod P$</p>
+<p>所以先求一遍质因数分解，然后快速幂判断就可以做到$O(\log ^2 P)$判断原根</p>
+<p>显然原根不唯一</p>
+<p>已经被证明对于任意的$P$如果存在原根，则其最小原根最多是$O(P^{\frac{1}{4}})$级别的</p>
+$$ \ $$
+<p>指标：</p>
+<p>对于一个数$P$和它的一个原根$x$，对于$\gcd(y,P)=1$，则$y$一定可以用$x^i$表示，那么$i$就是$y$的指标</p>
+<p>同时，$y$模$P$的阶就是$d(y)=\frac{\varphi(P)}{\gcd(\varphi(P),i)}$，可以认为是数列$a_j=i\cdot j\mod \varphi(P)$的周期问题</p>
+<p>可以使用$\text{BSGS}$算法在$O(\sqrt P\log P)$或者$O(\sqrt P)$的时间内求出一个数的指标</p>
+<p>(关于去掉$\log P$：只需要处理出模逆元直接累乘，每次用$\text{Hash Table}$访问即可)</p>
+<p>指标在二次剩余的较劣做法中也有应用，同时也可以直接套用性质用于阶的求解</p>
+$$ \ $$
+<h3 id="快速乘"><a href="#快速乘" class="headerlink" title="快速乘"></a>快速乘</h3><p>求$x,y\in[0,P-1],P\leq 10^{18},x\cdot y \mod P$</p>
+<p>直接乘法会爆long long </p>
+<p>可以用类似快速幂的方法写，复杂度为$O(\log P)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">qmul</span><span class="params">(ll x,ll y,ll P)</span></span>&#123;</span><br><span class="line">    ll res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=(x+x)%P) <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=(res+x)%P;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另一种方法是强行用long double 保证精度，然后计算的时候用unsigned long long 溢出回来，$O(1)$但是很奇怪，通常不会挂</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">qmul</span><span class="params">(ll x,ll y,ll P)</span></span>&#123;</span><br><span class="line">    ull z=(<span class="keyword">long</span> <span class="keyword">double</span>)x/P*y;</span><br><span class="line">    ll res=(ull)x*y-(ull)z*P;</span><br><span class="line">    <span class="keyword">return</span> (res%P+P)%P;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+$$\ $$
+
+            
+                
+            
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/default-tag/">default tag</a>
+            
+        </div>
+        
+    </article>
+    
+        <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+
+</div>
+
+<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+    let isMathjaxConfig = false; // 防止重复调用Config，造成性能损耗
+    const initMathjaxConfig = () => {
+    if (!window.MathJax) {
+        return;
+    }
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["?", "?"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+        }
+    });
+        isMathjaxConfig = true; // 
+    };
+    if (isMathjaxConfig === false) {
+        initMathjaxConfig();
+    }
+</script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://chasingdeath.github.io" target="_blank" rel="friend">chasedeath</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+            
+        </p>
+    </div>
+</footer>
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+
+
+</body>
+</html>

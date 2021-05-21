@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://chasingdeath.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta name="author" content="orangejuice">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://chasingdeath.github.io">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+<link rel="shortcut icon" href="/images/Header1000.jpg">
+
+
+<title>cf1499g - graph coloring - orangejuice&#39;s Blog</title>
+
+<meta name="keywords" content="没什么东西">
+
+<meta name="description " content="搬运中...">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="cf1499g - graph coloring - orangejuice&#39;s Blog" />
+<meta property="og:description" content="搬运中..." />
+<meta property="og:url" content="http://chasingdeath.github.io" />
+<meta property="og:site_name" content="orangejuice&#39;s Blog" />
+
+<link rel="dns-prefetch" href="http://chasingdeath.github.io">
+<link rel="prefetch" href="http://chasingdeath.github.io">
+<link rel="prerender" href="http://chasingdeath.github.io">
+<link rel="stylesheet" href="/css/JSimple.min.css">
+    <script type="text/javascript">
+        (function() {
+            let jsi_config = {
+                rootUrl: 'http://chasingdeath.github.io/',
+                isPost: 'true',
+                buildingTime: '05/21/2021',
+                snsQRCode: '',
+                donateImg: '',
+                readMode: 'night',
+                localSearch: { dbPath: '' }
+            };
+            
+                jsi_config.localSearch = {
+                    dbPath: '/search.json',
+                    trigger: 'auto',
+                    topN: '1',
+                    unescape: 'false'
+                }
+            
+            window.jsi_config = jsi_config;
+        })()
+    </script>
+    
+<script src="/js/SimpleCore.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="^_^">^_^</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <img class="cover-img" src="https://shuoit.net/images/cover-day.jpg" alt="cover-img" loading="lazy" />
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/images/Header1000.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">orangejuice&#39;s blog</h1>
+        <h3 class="cover-siteTitle">按ctrl会跳搜索，右上角选择day/night mode</h3>
+        <p class="cover-siteDesc">测试中博客</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/chasingdeath" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/3950662532/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索~" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://chasingdeath.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/Header1000.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://chasingdeath.github.io"
+                       target="_blank">chasedeath</a>
+                    <span title="最后编辑于&nbsp;2021-05-11">2021-05-11</span>
+                </p>
+                <p>来自ZJ的蒟蒻OIer</p>
+            </div>
+            <h2 class="post-title">CF1499G - Graph Coloring</h2>
+            <div class="post-meta">
+                本文共计1697个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="CF1499G-Graph-Coloring"><a href="#CF1499G-Graph-Coloring" class="headerlink" title="CF1499G - Graph Coloring"></a>CF1499G - Graph Coloring</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>有一个二分图，$m$条边，每条边可以选择为+1或者-1，表示两端的点权值$a_u,a_v\pm 1$</p>
+<p>最终的权值总和是$\sum |a_u|$</p>
+<p>现在要维护一个动态加边操作</p>
+<p>每次加边之后动态维护一个最优的方案最小化权值和，输出其$\text{Hash}$和</p>
+<p><br></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>容易发现在最优中方案$|a_u|\leq 1$</p>
+<p>且一个点$a_u=\pm 1$当且仅当$deg_u \mod 2=1$</p>
+<p>在依次加入每条边的过程中，一旦出现环，显然环上的边经交错染色之后贡献可以忽略</p>
+<p>且奇点总是成对地出现，两个成对的奇点能够确定一条路径</p>
+<p>我们只需要在动态加边的过程中，维护对于这样奇点的路径以及环的交替染色即可</p>
+<p>注意：</p>
+<p>一个点可以被多条路径经过，但是在奇点成对地过程中</p>
+<p>我们只认为其中一条的端点是它</p>
+<p><br></p>
+<p>那么我们在路径两端记录这条路径，每次加入一条边之后，可能产生多条路径的合并</p>
+<p>而在实际实现的过程中，并没有必要把环从路径上删除</p>
+<p>假设当前得到路径$x\rightarrow y$，加入一条边$y,z$且$z$在$x\rightarrow y$上</p>
+<p>此时，我们直接认为新的路径端点就是$(x,z)$即可</p>
+<p>环的部分依然可以保留在路径上，跟随路径进行交替染色而不影响答案</p>
+<p>此时操作被简化为了合并两段交替路径（实际上就是在合并欧拉路径）</p>
+<p>可以用带权并查集维护</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">4e5</span>+<span class="number">10</span>,P=<span class="number">998244353</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n1,n2,m,w=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> S[N][<span class="number">2</span>],F[N],K[N],D[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(F[x]==x) <span class="keyword">return</span> F[x];</span><br><span class="line">	<span class="keyword">int</span> f=F[x]; F[x]=<span class="built_in">Find</span>(F[x]);</span><br><span class="line">	D[x]^=D[f];</span><br><span class="line">	<span class="keyword">return</span> F[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Uni</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fx=<span class="built_in">Find</span>(x),fy=<span class="built_in">Find</span>(y),d=D[x]^D[y]^<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(fx==fy) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(d) &#123;</span><br><span class="line">		ans-=S[fx][<span class="number">1</span>],<span class="built_in">Mod2</span>(ans);</span><br><span class="line">		<span class="built_in">swap</span>(S[fx][<span class="number">0</span>],S[fx][<span class="number">1</span>]);</span><br><span class="line">		ans+=S[fx][<span class="number">1</span>],<span class="built_in">Mod1</span>(ans);</span><br><span class="line">		D[fx]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	F[fx]=fy; </span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,<span class="number">1</span>) S[fy][i]+=S[fx][i],<span class="built_in">Mod1</span>(S[fy][i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="built_in">rd</span>(),y=<span class="built_in">rd</span>()+n1;</span><br><span class="line">	w*=<span class="number">2</span>,<span class="built_in">Mod1</span>(w),S[++m][<span class="number">0</span>]=w,F[m]=m;</span><br><span class="line">	<span class="keyword">if</span>(K[x]&lt;K[y]) <span class="built_in">swap</span>(x,y);</span><br><span class="line">	<span class="keyword">if</span>(!K[x]&amp;&amp;!K[y]) K[x]=K[y]=m;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(!K[y]) <span class="built_in">Uni</span>(K[x],m),K[x]=<span class="number">0</span>,K[y]=m;</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">Uni</span>(K[x],m),<span class="built_in">Uni</span>(K[y],m),K[x]=K[y]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> A[N],C;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n1=<span class="built_in">rd</span>(),n2=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="built_in">rep</span>(_,<span class="number">1</span>,<span class="built_in">rd</span>()) <span class="built_in">Add</span>();</span><br><span class="line">	<span class="built_in">rep</span>(_,<span class="number">1</span>,<span class="built_in">rd</span>()) &#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">rd</span>()==<span class="number">1</span>) <span class="built_in">Add</span>(),<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans),<span class="built_in">fflush</span>(stdout);</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			C=<span class="number">0</span>;</span><br><span class="line">			<span class="built_in">rep</span>(i,<span class="number">1</span>,m) <span class="keyword">if</span>(<span class="built_in">Find</span>(i),D[i]==<span class="number">1</span>) A[++C]=i;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,C);</span><br><span class="line">			<span class="built_in">rep</span>(i,<span class="number">1</span>,C) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,A[i]);</span><br><span class="line">			<span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>),<span class="built_in">fflush</span>(stdout);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+                
+            
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/default-tag/">default tag</a>
+            
+        </div>
+        
+    </article>
+    
+        <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+
+</div>
+
+<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+    let isMathjaxConfig = false; // 防止重复调用Config，造成性能损耗
+    const initMathjaxConfig = () => {
+    if (!window.MathJax) {
+        return;
+    }
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["?", "?"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+        }
+    });
+        isMathjaxConfig = true; // 
+    };
+    if (isMathjaxConfig === false) {
+        initMathjaxConfig();
+    }
+</script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://chasingdeath.github.io" target="_blank" rel="friend">chasedeath</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+            
+        </p>
+    </div>
+</footer>
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+
+
+</body>
+</html>

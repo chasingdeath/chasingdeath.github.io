@@ -1,0 +1,340 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://chasingdeath.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta name="author" content="orangejuice">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://chasingdeath.github.io">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+<link rel="shortcut icon" href="/images/Header1000.jpg">
+
+
+<title>stirling数小记 - orangejuice&#39;s Blog</title>
+
+<meta name="keywords" content="没什么东西">
+
+<meta name="description " content="搬运中...">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="stirling数小记 - orangejuice&#39;s Blog" />
+<meta property="og:description" content="搬运中..." />
+<meta property="og:url" content="http://chasingdeath.github.io" />
+<meta property="og:site_name" content="orangejuice&#39;s Blog" />
+
+<link rel="dns-prefetch" href="http://chasingdeath.github.io">
+<link rel="prefetch" href="http://chasingdeath.github.io">
+<link rel="prerender" href="http://chasingdeath.github.io">
+<link rel="stylesheet" href="/css/JSimple.min.css">
+    <script type="text/javascript">
+        (function() {
+            let jsi_config = {
+                rootUrl: 'http://chasingdeath.github.io/',
+                isPost: 'true',
+                buildingTime: '05/21/2021',
+                snsQRCode: '',
+                donateImg: '',
+                readMode: 'night',
+                localSearch: { dbPath: '' }
+            };
+            
+                jsi_config.localSearch = {
+                    dbPath: '/search.json',
+                    trigger: 'auto',
+                    topN: '1',
+                    unescape: 'false'
+                }
+            
+            window.jsi_config = jsi_config;
+        })()
+    </script>
+    
+<script src="/js/SimpleCore.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="^_^">^_^</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <img class="cover-img" src="https://shuoit.net/images/cover-day.jpg" alt="cover-img" loading="lazy" />
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/images/Header1000.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">orangejuice&#39;s blog</h1>
+        <h3 class="cover-siteTitle">按ctrl会跳搜索，右上角选择day/night mode</h3>
+        <p class="cover-siteDesc">测试中博客</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/chasingdeath" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/3950662532/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索~" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://chasingdeath.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/Header1000.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://chasingdeath.github.io"
+                       target="_blank">chasedeath</a>
+                    <span title="最后编辑于&nbsp;2020-12-03">2020-12-03</span>
+                </p>
+                <p>来自ZJ的蒟蒻OIer</p>
+            </div>
+            <h2 class="post-title">Stirling数小记</h2>
+            <div class="post-meta">
+                本文共计3585个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="Stirling数小记"><a href="#Stirling数小记" class="headerlink" title="Stirling数小记"></a>Stirling数小记</h1><hr>
+<h3 id="定义-组合意义"><a href="#定义-组合意义" class="headerlink" title="定义/组合意义"></a>定义/组合意义</h3><p>第一类斯特林数：$\begin{bmatrix}n\\ m\end{bmatrix}$表示$n$个不同元素分为$m$个圆排列的方案数</p>
+<p>有标号的第一类斯特林数$s(n,m)=(-1)^{n-m}\begin{bmatrix}n\\ m\end{bmatrix}$</p>
+<p>第二类斯特林数：$\begin{Bmatrix}n\\ m\end{Bmatrix}$表示$n$个不同元素分为$m$个集合的方案数</p>
+<p>注意圆排列和集合都是相互之间无序的</p>
+$$ \ $$
+<hr>
+<h3 id="递推方法"><a href="#递推方法" class="headerlink" title="递推方法"></a>递推方法</h3><p>第一类斯特林数</p>
+$\begin{bmatrix}n\\ m\end{bmatrix}=\begin{bmatrix}n-1\\ m-1\end{bmatrix}+(n-1)\begin{bmatrix}n-1\\ m\end{bmatrix}$
+<p>即新建一个圆排列，或者插入前面$n-1$个元素中任意一个的后面</p>
+<p>显然的，有标号的第一类斯特林数递推式就是</p>
+$\begin{bmatrix}n\\ m\end{bmatrix}=\begin{bmatrix}n-1\\ m-1\end{bmatrix}-(n-1)\begin{bmatrix}n-1\\ m\end{bmatrix}$
+$$ \ $$
+<p>第二类斯特林数</p>
+$\begin{Bmatrix}n\\ m\end{Bmatrix}=\begin{Bmatrix}n-1\\ m-1\end{Bmatrix}+m\begin{Bmatrix}n-1\\ m\end{Bmatrix}$
+<p>即新建一个集合，或者加入前面的$m$个集合</p>
+$$ \ $$
+<hr>
+<h3 id="第二类斯特林数的通项公式"><a href="#第二类斯特林数的通项公式" class="headerlink" title="第二类斯特林数的通项公式"></a>第二类斯特林数的通项公式</h3>$\begin{aligned} \begin{Bmatrix} n \\ m \end{Bmatrix}=\frac{1}{m!}\sum_{i=0}^{\infty} (-1)^{m-i}\binom{m}{i} i^n \end{aligned}$
+<p>其组合意义是枚举生成了多少个有序的集合，然后容斥，最后除去集合的顺序</p>
+$$ \ $$
+<hr>
+<h3 id="生成函数表示与行-列求解"><a href="#生成函数表示与行-列求解" class="headerlink" title="生成函数表示与行/列求解"></a>生成函数表示与行/列求解</h3><p>固定$n$，以$m$为形式幂指数，则第一类斯特林数的普通生成函数</p>
+$\begin{aligned}\text{OGF}=\prod_{i=0}^{n-1}(x+i)=x^{\overline{n}}\end{aligned}$
+<p>(其意义就是上面的递推公式)</p>
+<p>倍增+卷积二项展开求出$F(x+i)$即可做到$O(n\log n)$求出一行</p>
+$$ \ $$
+<p>固定$m$，以$n$为形式幂指数，则第一类斯特林数的指数型生成函数</p>
+$\begin{aligned}\text{EGF}= & \frac{1}{m!}\cdot (\sum_{i=1}^{\infty}\frac{(i-1)!}{i!}x^i)^m\\= & \frac{1}{m!}\cdot  (\sum_{i=1}^{\infty}\frac{x^i}{i})^m\end{aligned}$
+<p>设$F(x)=\sum_{i=1}^{\infty}\frac{x^i}{i}$</p>
+$\begin{aligned} \because F'(x)=&\sum_{i=1}^{\infty}x^{i-1}=\frac{1}{1-x}\end{aligned}$
+$\begin{aligned} \therefore F(x)=\int \frac{1}{1-x}=-\ln(1-x)\end{aligned}$
+$\begin{aligned}\therefore \text{EGF} = & \frac{1}{m!}\cdot  (-\ln(1-x))^m\\= & \frac{1}{m!}\cdot (-1)^m\cdot \ln^m(1-x)\end{aligned}$
+<p>(就是百度百科上的那个，它什么都没讲清楚)</p>
+<p>多项式快速幂即可做到$O(n\log n-n\log ^2n)$求一列</p>
+$$ \ $$
+<p>而在上式的推导过程中额外加入$(-1)^m$的常数，并且把$x^i$换成$(-x)^i$可以得到有标号第一类斯特林数的指数型生成函数</p>
+$\begin{aligned} \text{EGF} = & \frac{1}{m!}\cdot  (\sum_{i=1}^{\infty}\frac{(-x)^i}{i})^m\\=& \frac{1}{m!}\cdot  \ln^m(1+x)\end{aligned}$
+$$ \ $$
+$$ \ $$
+<p>第二类斯特林数的一行可以直接由通项公式做卷积得到</p>
+$$ \ $$
+<p>固定$m$，以$n$为形式幂指数，则第二类斯特林数的指数型生成函数表示为</p>
+$\begin{aligned} \text{EGF} &=\frac{1}{m!}({\sum_{i=1}^{\infty} \frac{x^i}{i!}})^m\\ &=\frac{1}{m!}(e^x-1)^m \\ &=\frac{1}{m!}\sum_{i=0}^m (-1)^{m-1} \binom{m}{i}e^{ix}\end{aligned}$
+<p>实际上由这个二项展开的形式也可以发现，它就是上面通项公式的生成函数推导</p>
+<p>可以求一列，复杂度为$O(n\log n-n\log ^2n)$常数很大</p>
+$$ \ $$
+<p>虽然没什么意义，但是还是写一下二元形式</p>
+<p>第一类斯特林数:</p>
+$\begin{aligned} \text{EGF}=e^{-\ln (1-x)y}\end{aligned}$
+<p>第二类斯特林数:</p>
+$\begin{aligned}\text{EGF}=e^{\begin{aligned}(e^x-1)y\end{aligned}}\end{aligned}$
+<p>注意元$x$为指数型，$y$是普通型</p>
+$$ \ $$
+<hr>
+<h3 id="斯特林数与幂指数-上升幂-下降幂"><a href="#斯特林数与幂指数-上升幂-下降幂" class="headerlink" title="斯特林数与幂指数/上升幂/下降幂"></a>斯特林数与幂指数/上升幂/下降幂</h3><p>第一类斯特林数：</p>
+<p>上面已经说过$\begin{aligned}x^{\overline{n}}=\sum_{i=0}^{n}\begin{bmatrix}n\\i\end{bmatrix}x^i\end{aligned}$</p>
+<p>同理，用有标号的第一类斯特林数将$x^{\underline{n}}$展开的式子是</p>
+$\begin{aligned}x^{\underline{n}}=\sum_{i=0}^{n}(-1)^{n- i}\begin{bmatrix}n\\i\end{bmatrix}x^i\end{aligned}$
+$$ \ $$
+<p>第二类斯特林数：</p>
+<p>类似通项公式的求解，组合意义将幂指数展开，视$x^n$为将$n$个元素随意放在$x$个位置，则枚举$x$个位置中那些被选择</p>
+$\begin{aligned} x^n=\sum_{i=0}^n \binom{x}{i}i!\begin{Bmatrix}n\\i\end{Bmatrix} \end{aligned}$
+<p>把$\binom{x}{i}i!$写成下降幂的形式，得到优美的式子</p>
+$\begin{aligned} x^n=\sum_{i=0}^n \begin{Bmatrix}n\\i\end{Bmatrix}x^{\underline{i}}\end{aligned}$
+$$ \ $$
+<p>而实际上由上式二项反演也可以得到通项公式</p>
+$\begin{aligned} \begin{Bmatrix} n \\ m \end{Bmatrix}=\frac{1}{m!}\sum_{i=0}^{\infty} (-1)^{m-i}\binom{m}{i} i^n \end{aligned}$
+<p>关于下降幂多项式的快速转化，可以再借鉴<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chasedeath/p/13073206.html">这个</a></p>
+$$ \ $$
+<hr>
+<h3 id="斯特林变换-斯特林反演"><a href="#斯特林变换-斯特林反演" class="headerlink" title="斯特林变换/斯特林反演"></a>斯特林变换/斯特林反演</h3><p>对于斯特林变换</p>
+$\begin{aligned} a_n=\sum_{i=0}^n\begin{Bmatrix}n\\i\end{Bmatrix}b_i \end{aligned}$
+<p>设$A(x),B(x)$为数列$a,b$的指数型生成函数，带入前文推导的式子，则得到上式的生成函数表达就是</p>
+$A(x)=B(e^x-1)$
+<p>显然得到$B(x)=A(\ln(x+1))$，而$\ln(x+1)$显然转化为有标号的第一类斯特林数</p>
+<p>因此得到斯特林反演的表达形式是 </p>
+$\begin{aligned}b_n=\sum_{i=0}^{n}(-1)^{n-i}\begin{bmatrix}n\\i\end{bmatrix}a_i\end{aligned}$
+<p><del>(不大可能搞类似多项式复合的方法处理这个反演吧，最多可能也就是求一个位置)</del></p>
+
+            
+                
+            
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/default-tag/">default tag</a>
+            
+        </div>
+        
+    </article>
+    
+        <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+
+</div>
+
+<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+    let isMathjaxConfig = false; // 防止重复调用Config，造成性能损耗
+    const initMathjaxConfig = () => {
+    if (!window.MathJax) {
+        return;
+    }
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["?", "?"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+        }
+    });
+        isMathjaxConfig = true; // 
+    };
+    if (isMathjaxConfig === false) {
+        initMathjaxConfig();
+    }
+</script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://chasingdeath.github.io" target="_blank" rel="friend">chasedeath</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+            
+        </p>
+    </div>
+</footer>
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+
+
+</body>
+</html>

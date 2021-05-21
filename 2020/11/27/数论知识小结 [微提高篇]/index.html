@@ -1,0 +1,358 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://chasingdeath.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta name="author" content="orangejuice">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://chasingdeath.github.io">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+<link rel="shortcut icon" href="/images/Header1000.jpg">
+
+
+<title>数论知识小结 [微提高篇] - orangejuice&#39;s Blog</title>
+
+<meta name="keywords" content="没什么东西">
+
+<meta name="description " content="搬运中...">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="数论知识小结 [微提高篇] - orangejuice&#39;s Blog" />
+<meta property="og:description" content="搬运中..." />
+<meta property="og:url" content="http://chasingdeath.github.io" />
+<meta property="og:site_name" content="orangejuice&#39;s Blog" />
+
+<link rel="dns-prefetch" href="http://chasingdeath.github.io">
+<link rel="prefetch" href="http://chasingdeath.github.io">
+<link rel="prerender" href="http://chasingdeath.github.io">
+<link rel="stylesheet" href="/css/JSimple.min.css">
+    <script type="text/javascript">
+        (function() {
+            let jsi_config = {
+                rootUrl: 'http://chasingdeath.github.io/',
+                isPost: 'true',
+                buildingTime: '05/21/2021',
+                snsQRCode: '',
+                donateImg: '',
+                readMode: 'night',
+                localSearch: { dbPath: '' }
+            };
+            
+                jsi_config.localSearch = {
+                    dbPath: '/search.json',
+                    trigger: 'auto',
+                    topN: '1',
+                    unescape: 'false'
+                }
+            
+            window.jsi_config = jsi_config;
+        })()
+    </script>
+    
+<script src="/js/SimpleCore.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="^_^">^_^</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <img class="cover-img" src="https://shuoit.net/images/cover-day.jpg" alt="cover-img" loading="lazy" />
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/images/Header1000.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">orangejuice&#39;s blog</h1>
+        <h3 class="cover-siteTitle">按ctrl会跳搜索，右上角选择day/night mode</h3>
+        <p class="cover-siteDesc">测试中博客</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/chasingdeath" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/3950662532/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索~" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://chasingdeath.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/Header1000.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://chasingdeath.github.io"
+                       target="_blank">chasedeath</a>
+                    <span title="最后编辑于&nbsp;2020-11-27">2020-11-27</span>
+                </p>
+                <p>来自ZJ的蒟蒻OIer</p>
+            </div>
+            <h2 class="post-title">数论知识小结 [微提高篇]</h2>
+            <div class="post-meta">
+                本文共计4193个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="数论知识小结-微提高篇"><a href="#数论知识小结-微提高篇" class="headerlink" title="数论知识小结 [微提高篇]"></a>数论知识小结 [微提高篇]</h1><p>(lastest updated on 2020.08.12)</p>
+<h3 id="二次剩余和高次剩余"><a href="#二次剩余和高次剩余" class="headerlink" title="二次剩余和高次剩余"></a>二次剩余和高次剩余</h3>$y^c\equiv x\pmod P$则$y$为$x$模$P$的$c$次剩余
+
+关于[二次剩余](https://www.cnblogs.com/chasedeath/p/13043597.html)
+
+$$ \ $$
+<h3 id="素数检测"><a href="#素数检测" class="headerlink" title="素数检测"></a>$\text{Miller_Rabin}$素数检测</h3>$x$是质数的必要条件是
+
+$\forall a,a^{x-1}\equiv 1\pmod x$
+<p>同于对于一个质数$x$，必然有</p>
+$a^2\equiv 1\pmod x$的解只有$1,x-1$
+<p>证明是</p>
+$\because a^2\equiv 1 \pmod x$
+$\therefore (a-1)(a+1)\equiv 0 \pmod x$
+<p>因为$x$是质数，所以$a-1\mod x=0$ 或 $a+1\mod x=0$，即$a\in\{1,x-1\}$</p>
+$$ \ $$
+<h4 id="算法的步骤"><a href="#算法的步骤" class="headerlink" title="算法的步骤"></a>$\text{Miller_Rabin}$算法的步骤</h4><p>将$x-1$分解为$x-1=2^s\cdot t$</p>
+<p>找一个$<x$的质数$a$，求出$b\equiv a^t \pmod x$</p>
+<p>将$b$进行$s$次平方，设这一次平方的结果$b^2\equiv c \pmod x$</p>
+<p>当出现$c=1$时，$b$只能为$1$,$x-1$否则$x$就不是质数</p>
+$s$次平方后，$b\equiv a^{x-1}\pmod x$，若$b\ne 1$，则$x$不是质数
+
+不知道为什么，[模板题](https://loj.ac/problem/143)跑5次就能过了。。。
+
+注意$x\leq 2\or 2|x$要特判
+
+注意取模需要快速乘
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Miller_Rabin</span><span class="params">(ll x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x==<span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=<span class="number">1</span> || ~x&amp;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	ll s=<span class="number">0</span>,t=x<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(~t&amp;<span class="number">1</span>) s++,t&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,<span class="number">20</span>) &#123;</span><br><span class="line">		ll a=prime[<span class="built_in">rand</span>()%primecnt+<span class="number">1</span>],b=<span class="built_in">qpow</span>(a,t,x),c;</span><br><span class="line">		<span class="built_in">rep</span>(j,<span class="number">1</span>,s) &#123;</span><br><span class="line">			c=<span class="built_in">qmul</span>(b,b,x);</span><br><span class="line">			<span class="keyword">if</span>(c==<span class="number">1</span> &amp;&amp; b!=<span class="number">1</span> &amp;&amp; b!=x<span class="number">-1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			b=c;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(b!=<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+$$ \ $$
+<h3 id="可以结合的特殊情况质因数分解"><a href="#可以结合的特殊情况质因数分解" class="headerlink" title="可以结合的特殊情况质因数分解"></a>可以结合$\text{Miller_Rabin}$的$n^{\frac{1}{3}}$特殊情况质因数分解</h3><p>实际上，这种方法常用于求$n$的因子个数</p>
+<p>方法非常简单，先对于所有$pri_i\le n^{\frac{1}{3}}$的因子对于$n$筛去，剩下的部分中，所有质因子$>n^{\frac{1}{3}}$</p>
+<p>因此最多包含两个质因数(可能相同)</p>
+<p>用$\text{Miller_Rabin}$判断是否只包含一个质数，然后简单判别两个质因数是否相同即可</p>
+<p>复杂度为$O(\log n+\pi (n^{\frac{1}{3}}))$</p>
+<p>小范围内比下面的$\text{Pollard's_Rho}$更快，更简单</p>
+$$ \ $$
+<h3 id="质因数分解"><a href="#质因数分解" class="headerlink" title="质因数分解"></a>$\text{Pollard's_Rho}$质因数分解</h3><p>核心就是名字里的Rho($\rho$)，是伪循环的一个形象的表示</p>
+<p>伪循环：从某一个时刻开始，进入一个真循环，之前的时间就是$\rho$的脚</p>
+<p>构造<strong>伪随机函数</strong>$G_n(x)=(x^2+c)\mod n$</p>
+<p>构造数列$a_i=G_n(a_{i-1})$</p>
+<p>由于函数的值域只有$[0,n-1]$，必然出现伪循环，即在从个位置开始，进入一个未知长度的循环，也就是长成了一个$\rho$的形状</p>
+<p>由于这个函数是<strong>伪随机函数</strong>，所以这个循环大小在期望情况下是$O(\sqrt n)$的</p>
+$$ \ $$
+$\text{Pollard's_Rho}$算法要找到一个$p\in[2,n-2],p|n$
+<p>考虑用$\text{Floyd}$算法找环，即定义两个变量，一个每次走一步，一个每次走两步，设他们为$x,y$</p>
+<p>当$x=y$时，显然出现循环</p>
+<p>由于$p|n$，所以当$x \equiv y \pmod p$时，实际上是$G_p(x)$这个函数出现了循环</p>
+<p>所以在找$G_n(x)$的循环时，可以通过求出$\gcd(x-y,n)$判断是否出现$G_p(x)$的循环</p>
+<p>注意如果出现$x=y$情况已经找到$n$的循环，说明这个我们这次构造的这个函数找不到$p$的循环</p>
+<p>由于$\forall n\notin prime,\exist p\in[1,\sqrt n],p|n$</p>
+<p>所以期望情况下每$\sqrt p\leq \sqrt {\sqrt n}=n^{\frac{1}{4}}$的长度会出现循环</p>
+<p>算法复杂度是期望$O(n^{\frac{1}{4}}\log n)$的</p>
+<p>那么写出$\text{Pollard's_Rho}$算法的代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">Pollards_Rho</span><span class="params">(ll n)</span></span>&#123;</span><br><span class="line">	ll c=<span class="built_in">rand</span>(); <span class="comment">// 随机生成一个函数</span></span><br><span class="line">    ll x=<span class="built_in">rand</span>(),y=x,d=<span class="number">1</span>; <span class="comment">// 随机一个初始值</span></span><br><span class="line">    <span class="keyword">while</span>(d==<span class="number">1</span>)&#123;</span><br><span class="line">		x=(<span class="built_in">qmul</span>(x,x)+c)%n;</span><br><span class="line">		y=(<span class="built_in">qmul</span>(y,y)+c)%n;</span><br><span class="line">		y=(<span class="built_in">qmul</span>(y,y)+c)%n;</span><br><span class="line">		d=<span class="built_in">gcd</span>(n,<span class="built_in">abs</span>(x-y));</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">if</span>(d==n) <span class="keyword">return</span> <span class="built_in">Pollards_Rho</span>(n); <span class="comment">// 构造失败</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> d; <span class="comment">// 找到了p</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不断调用即可完成对于n的质因数分解</p>
+<p>对于质因数分解，更高级的算法可以参考<a target="_blank" rel="noopener" href="https://loj.ac/problem/6466">LOJ-6466</a></p>
+<h3 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h3><p>设$n=\prod_1^m p_i^{c_i}$，其中$c_i>0,p_i$为质数</p>
+<p>则莫比乌斯函数 $\mu(n)=\left\{\begin{aligned}1 && n=1\\ (-1)^m && \nexists c_i>1 \\ 0 && \exists c_i>1\end{aligned}\right.$</p>
+<h3 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积"></a>狄利克雷卷积</h3><p>对于数列$F,G$，他们的狄利克雷卷积(下简称$F\oplus G$)为</p>
+$$\begin{aligned} (F\oplus G)_i=\sum_{d|i}F_d\cdot G_{\frac{i}{d}}\end{aligned}$$
+$$ \ $$
+<h3 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h3><p>设元函数$E_i=1$</p>
+$G=F\oplus E$，即$G_i=\sum_{d|i}F_d$
+<p>由$G$反解$F$得到莫比乌斯反演$F_i=\sum_{d|i}\mu(d) G_{\frac{i}{d}}$</p>
+$$ \ $$
+<h3 id="积性函数"><a href="#积性函数" class="headerlink" title="积性函数"></a>积性函数</h3><p><strong>积性函数</strong>的定义，对于一个定义在$\Z$上的函数$F(n)$，若满足</p>
+$F(1)=1,\forall (u,v)=1,F(u)\cdot F(v)=F(u\cdot v)$，则$F(u)$是一个积性函数
+
+**完全积性函数**对于任意的$u,v$对满足上述性质
+
+常见的积性函数有
+
+1.元函数$e(n)=[n=1]$
+<p>2.因数个数函数$d(n)$</p>
+<p>3.欧拉函数$\varphi(n)$</p>
+<p>4.莫比乌斯系数$\mu(n)$</p>
+<p>5.约数和函数$\sigma(n)$</p>
+<p>推论：任意两个积性函数的狄利克雷函数卷积 仍然是积性函数</p>
+<h4 id="线性筛筛法求解积性函数"><a href="#线性筛筛法求解积性函数" class="headerlink" title="线性筛筛法求解积性函数"></a>线性筛筛法求解积性函数</h4><p>把积性函数$F(n)$表示为</p>
+$F(n)=\left\{\begin{aligned} 1 && n=1 \\ G(n) && n=p_i^t \\ \prod G(p_i^{c_i}) && n=\prod p_i^{c_i}\end{aligned}\right.$
+<p>如果能在较短的时间内求得$G(p_i^t)$，则可以用线性筛法求解积性函数$F(n)$的前$n$项</p>
+<h5 id="一个最简单的应用-在时间求解"><a href="#一个最简单的应用-在时间求解" class="headerlink" title="一个最简单的应用: 在时间求解"></a>一个最简单的应用: 在$O(n)$时间求解$id^z(n)=n^z$</h5><p>显然，$id^z(n)$是一个完全积性函数，且直接求复杂度为$O(n\log z)$</p>
+<p>因为是完全积性函数，所以只需要求解$id^z(p_i)$，这一部分复杂度为$O(\pi(n)\cdot \log z)=O(n)$</p>
+<p>线性筛法的复杂度为$O(n)$，因此总复杂度也为$O(n)$</p>
+<p><del>(这就是传说中的魔法吗！！)</del></p>
+<h5 id="一个简单的应用：求解"><a href="#一个简单的应用：求解" class="headerlink" title="一个简单的应用：求解"></a>一个简单的应用：求解$\mu(n)$</h5><p>鉴于$\mu(n)$的特殊性，也只需要求出$\mu(p_i)$</p>
+<p>写出的代码大致是这样的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> pri[N],notpri[N],pc,mu[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sieve_Mobius</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!notpri[i]) pri[++pc]=i,mu[i]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=pc &amp;&amp; <span class="number">1ll</span>*i*pri[j]&lt;=n;++j) &#123;</span><br><span class="line">            notpri[i*pri[j]]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i%pri[j]==<span class="number">0</span>) &#123;</span><br><span class="line">                mu[i*pri[j]]=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            mu[i*pri[j]]=-mu[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="真-应用-大型模板"><a href="#真-应用-大型模板" class="headerlink" title="真-应用: 大型模板"></a>真-应用: 大型模板</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CalcG</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> prime[N],primecnt,notprime[N];</span><br><span class="line"><span class="keyword">int</span> F[N],D[N];</span><br><span class="line"><span class="comment">// F存储函数值</span></span><br><span class="line"><span class="comment">// D存储质因数出现的幂次积</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sieve_Multiplicative_Function</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    F[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!notprime[i]) &#123;</span><br><span class="line">            prime[++primecnt]=i;</span><br><span class="line">            <span class="keyword">for</span>(ll j=i;j&lt;=n;j*=i) F[j]=<span class="built_in">CalcG</span>(j),D[j]=j;</span><br><span class="line">            <span class="comment">// 计算F(p_i^t)</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=primecnt &amp;&amp; <span class="number">1ll</span>*i*prime[j]&lt;=n;++j) &#123;</span><br><span class="line">            notprime[i*prime[j]]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> k=i*prime[j];</span><br><span class="line">            <span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) &#123;</span><br><span class="line">                D[k]=D[i] * prime[j];</span><br><span class="line">                F[k]=F[i/D[i]] * F[D[k]];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            D[k]=prime[j];</span><br><span class="line">            F[k]=F[i] * F[prime[j]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+$$ \ $$
+$$\ $$
+<h3 id="杜教筛"><a href="#杜教筛" class="headerlink" title="杜教筛"></a>杜教筛</h3><p>用于求解 <strong>较大范围</strong> 且 <strong>可以构造出一些性质</strong>的积性函数 前缀和</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chasedeath/p/13092808.html">不推荐看我的，但是还是放一下链接</a></p>
+$$ \ $$
+<h3 id="Min25筛"><a href="#Min25筛" class="headerlink" title="Min25筛"></a>Min25筛</h3><p>用于求 <strong>较大范围</strong> 且 <strong>使用范围更广</strong> 的积性函数前缀和 ， 但在效率上不敌杜教筛</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chasedeath/p/12751225.html">还是放一下链接</a></p>
+
+            
+                
+            
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/default-tag/">default tag</a>
+            
+        </div>
+        
+    </article>
+    
+        <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+
+</div>
+
+<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+    let isMathjaxConfig = false; // 防止重复调用Config，造成性能损耗
+    const initMathjaxConfig = () => {
+    if (!window.MathJax) {
+        return;
+    }
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["?", "?"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+        }
+    });
+        isMathjaxConfig = true; // 
+    };
+    if (isMathjaxConfig === false) {
+        initMathjaxConfig();
+    }
+</script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://chasingdeath.github.io" target="_blank" rel="friend">chasedeath</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+            
+        </p>
+    </div>
+</footer>
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+
+
+</body>
+</html>

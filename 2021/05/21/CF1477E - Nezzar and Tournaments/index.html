@@ -40,7 +40,7 @@
             let jsi_config = {
                 rootUrl: 'http://chasingdeath.github.io/',
                 isPost: 'true',
-                buildingTime: '05/21/2020',
+                buildingTime: '05/21/2021',
                 snsQRCode: '',
                 donateImg: '',
                 readMode: 'night',
@@ -105,6 +105,12 @@
         </a>
     </div>
 
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/3950662532/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
 
         </div>
     </div>
@@ -145,20 +151,20 @@
             </div>
             <h2 class="post-title">CF1477E - Nezzar and Tournaments</h2>
             <div class="post-meta">
-                本文共计3199个字 |
+                本文共计296个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="CF1477E-Nezzar-and-Tournaments"><a href="#CF1477E-Nezzar-and-Tournaments" class="headerlink" title="CF1477E - Nezzar and Tournaments"></a>CF1477E - Nezzar and Tournaments</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>有两队人$a_i,i\in[1,n],b_j,j\in[1,m]$，现在把他们放在一起排成一行$c_i$</p>
 <p>顺次给每个人计分，初始$s_0=k$</p>
-$s_i=\max\{0,s_{i-1}+c_i-c_{\max\{i-1,1\}}\}$}
+$s_i=\max\{0,s_{i-1}+c_i-c_{\max\{i-1,1\}}\}$
 <p>现在要最大化每个$a_i$所在位置的$s_i$之和 与 $b_i$所在$s_i$之和 的差</p>
 <p>支持修改和对于不同$k$查询</p>
 <p><br></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>考虑$k=0$简单情况</p>
 <p>1.若$s_i$不清零，则$s_i=c_i-lst$，其中$lst$表示上一个被清零位置的$c_j$</p>
-<p>2.$s_i$清零，则$c_i&lt;lst$</p>
+<p>2.$s_i$清零，则$c_i<lst$</p>
 <p>容易发现，$\displaystyle s_i=c_i-\min_{j\leq i}\{ c_j\}$</p>
 <p><br></p>
 <p>那么对于含$k$的情况，类似可以得到</p>
@@ -169,12 +175,12 @@ $\displaystyle s_i=k-c_1+c_i+\max\{0,c_1-k-\min_{j\leq i}\{c_j\}\}$
 <p>那么容易发现可以先降序排列$b_j$，再正序排列$a_i$</p>
 <p>此时$b_{\min}$可以贡献给$a_i$的前缀最小值，同时$b_j$的前缀最小值能够取到最大</p>
 <p><br></p>
-<p>此时，不妨设$c_1=t$，$\min{a_i,b_i}=Min$</p>
-<p>在$\min{c_j}=c_1$时，$\max$里的东西没有贡献，故可以得到</p>
-<p>1.对于每个$a_i$，若它没有被放在$c_1$，则贡献$k-t+a_i+\max{0,t-k-Min}$</p>
-<p>2.对于每个$b_i$（不特殊考虑第一个），则贡献$-(k-t+b_i+\max{0,t-k-b_i})$（忽略最小值为$t$的情况）</p>
+<p>此时，不妨设$c_1=t$，$\min\{a_i,b_i\}=Min$</p>
+<p>在$\min\{c_j\}=c_1$时，$\max$里的东西没有贡献，故可以得到</p>
+<p>1.对于每个$a_i$，若它没有被放在$c_1$，则贡献$k-t+a_i+\max\{0,t-k-Min\}$</p>
+<p>2.对于每个$b_i$（不特殊考虑第一个），则贡献$-(k-t+b_i+\max\{0,t-k-b_i\})$（忽略最小值为$t$的情况）</p>
 <p>则最终式子为</p>
-<p>$\displaystyle f(t)=(n-[t\in a_i])\cdot  \max{0,t-k-Min}-\sum \max{0,t-k-b_i}+(m-n)t+C$</p>
+$\displaystyle f(t)=(n-[t\in a_i])\cdot  \max\{0,t-k-Min\}-\sum \max\{0,t-k-b_i\}+(m-n)t+C$
 <p>其中$C=(n-m)k+\sum a_i-\sum b_i$</p>
 <p>容易发现$f(t)$是关于$t$的分段一次函数，根据斜率变化情况分析，极值位置仅$O(1)$个</p>
 <p>那么对于$a_i$作为$t$和$b_j$作为$t$的情况，分别计算$f(t)$的极值位置</p>
@@ -195,9 +201,7 @@ $\displaystyle s_i=k-c_1+c_i+\max\{0,c_1-k-\min_{j\leq i}\{c_j\}\}$
         
         <div class="post-tags">标签：
             
-            <a href="/tags/%E8%B4%AA%E5%BF%83/">贪心</a>
-            
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+            <a href="/tags/default-tag/">default tag</a>
             
         </div>
         

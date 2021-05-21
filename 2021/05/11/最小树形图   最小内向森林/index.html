@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://chasingdeath.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta name="author" content="orangejuice">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://chasingdeath.github.io">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+<link rel="shortcut icon" href="/images/Header1000.jpg">
+
+
+<title>最小树形图 | 最小内向森林 - orangejuice&#39;s Blog</title>
+
+<meta name="keywords" content="没什么东西">
+
+<meta name="description " content="搬运中...">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="最小树形图 | 最小内向森林 - orangejuice&#39;s Blog" />
+<meta property="og:description" content="搬运中..." />
+<meta property="og:url" content="http://chasingdeath.github.io" />
+<meta property="og:site_name" content="orangejuice&#39;s Blog" />
+
+<link rel="dns-prefetch" href="http://chasingdeath.github.io">
+<link rel="prefetch" href="http://chasingdeath.github.io">
+<link rel="prerender" href="http://chasingdeath.github.io">
+<link rel="stylesheet" href="/css/JSimple.min.css">
+    <script type="text/javascript">
+        (function() {
+            let jsi_config = {
+                rootUrl: 'http://chasingdeath.github.io/',
+                isPost: 'true',
+                buildingTime: '05/21/2021',
+                snsQRCode: '',
+                donateImg: '',
+                readMode: 'night',
+                localSearch: { dbPath: '' }
+            };
+            
+                jsi_config.localSearch = {
+                    dbPath: '/search.json',
+                    trigger: 'auto',
+                    topN: '1',
+                    unescape: 'false'
+                }
+            
+            window.jsi_config = jsi_config;
+        })()
+    </script>
+    
+<script src="/js/SimpleCore.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="^_^">^_^</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <img class="cover-img" src="https://shuoit.net/images/cover-day.jpg" alt="cover-img" loading="lazy" />
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/images/Header1000.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">orangejuice&#39;s blog</h1>
+        <h3 class="cover-siteTitle">按ctrl会跳搜索，右上角选择day/night mode</h3>
+        <p class="cover-siteDesc">测试中博客</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/chasingdeath" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/3950662532/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索~" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://chasingdeath.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/Header1000.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://chasingdeath.github.io"
+                       target="_blank">chasedeath</a>
+                    <span title="最后编辑于&nbsp;2021-05-11">2021-05-11</span>
+                </p>
+                <p>来自ZJ的蒟蒻OIer</p>
+            </div>
+            <h2 class="post-title">最小树形图 | 最小内向森林</h2>
+            <div class="post-meta">
+                本文共计4015个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="最小树形图-最小内向森林"><a href="#最小树形图-最小内向森林" class="headerlink" title="最小树形图 | 最小内向森林"></a>最小树形图 | 最小内向森林</h1><h2 id="最小树形图"><a href="#最小树形图" class="headerlink" title="最小树形图"></a>最小树形图</h2><p>对于带权有向图$G=(V,E)$</p>
+<p>对于根$root$最小树形图为以$root$为根的外向树最小边权和</p>
+<h3 id="有根树的树形图"><a href="#有根树的树形图" class="headerlink" title="有根树的树形图"></a>有根树的树形图</h3><p>对于确定的$root$求最小树形图</p>
+<h3 id="朱刘算法"><a href="#朱刘算法" class="headerlink" title="朱刘算法"></a>朱刘算法</h3><p>核心:</p>
+<p>1:对于有向图上的一个非根节点，对于它的所有入边加减一个权值$v$，最优解的树形图形态不变</p>
+<p>因为所有非根点必然有一条入边，所以可以对于每个点，取入边边权最小值减去，把减去的部分加入答案</p>
+<p>经过这样的操作使得每条边边权非负，且每个点都有一条为0的入边</p>
+$$ \ $$
+<p>2:对于权<strong>非负</strong>的有向图上，如果存在<strong>一个边权均为0的环</strong>，可以把环上的点收缩</p>
+<p>因为无论最后得到的树形图如何连边，一定可以通过断掉环上的一条边来生成一个可行的树形图</p>
+<p>算法流程</p>
+<p>1.为每个点的入边更改边权</p>
+<p>2.收缩0环</p>
+<p>​    2.1 存在环 : 回到1</p>
+<p>​    2.2 不存在环：结束算法</p>
+<p>此时存在两种情况</p>
+<p>1.图不连通，无解</p>
+<p>2.图联通，每个点一定存在一条为0的入边，取出一个合法边集，</p>
+<p>然后依次展开每个被收缩的0环，即可得到一个最小树形图方案</p>
+<p>复杂度分析：</p>
+<p>每次收缩环需要依次遍历，每次至少缩小一个点，因此复杂度上限为$O(nm)$</p>
+$$ \ $$
+<p>Tips:</p>
+<p>1.注意不要更改根的入边</p>
+<p>2.0边构成的的图不连通</p>
+<p>实现：只记录一条0边指向的点，找环</p>
+<p><br></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">10010</span>,INF=<span class="number">1e9</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,rt,ans;</span><br><span class="line"><span class="keyword">int</span> U[N],V[N],W[N];</span><br><span class="line"><span class="keyword">int</span> id[N],inw[N],pre[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Reweight</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) inw[i]=INF,pre[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,m) <span class="keyword">if</span>(U[i]!=V[i] &amp;&amp; V[i]!=rt) <span class="keyword">if</span>(inw[V[i]]&gt;W[i]) inw[V[i]]=W[i],pre[V[i]]=U[i];</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="keyword">if</span>(i!=rt &amp;&amp; id[i]==i) &#123;</span><br><span class="line">		 <span class="keyword">if</span>(inw[i]==INF) <span class="built_in">puts</span>(<span class="string">&quot;-1&quot;</span>),<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		 ans+=inw[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,m) <span class="keyword">if</span>(U[i]!=V[i] &amp;&amp; V[i]!=rt) W[i]-=inw[V[i]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> vis[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Union</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fl=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) vis[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="keyword">if</span>(id[i]==i &amp;&amp; !vis[i]) &#123;</span><br><span class="line">		<span class="keyword">int</span> u=i;</span><br><span class="line">		<span class="keyword">while</span>(u &amp;&amp; !vis[u]) vis[u]=i,u=pre[u];</span><br><span class="line">		<span class="keyword">if</span>(vis[u]==i) &#123;</span><br><span class="line">			<span class="keyword">int</span> v=pre[u];</span><br><span class="line">			fl=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span>(v!=u) id[v]=u,v=pre[v];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> fl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=<span class="built_in">rd</span>(),m=<span class="built_in">rd</span>(),rt=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) id[i]=i;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,m) U[i]=<span class="built_in">rd</span>(),V[i]=<span class="built_in">rd</span>(),W[i]=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="built_in">Reweight</span>();</span><br><span class="line">		<span class="keyword">if</span>(!<span class="built_in">Union</span>()) <span class="keyword">break</span>;</span><br><span class="line">		<span class="built_in">rep</span>(i,<span class="number">1</span>,m) U[i]=id[U[i]],V[i]=id[V[i]];</span><br><span class="line">		rt=id[rt];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="可并堆优化朱刘算法"><a href="#可并堆优化朱刘算法" class="headerlink" title="可并堆优化朱刘算法"></a>可并堆优化朱刘算法</h3><p>涉及到的操作：</p>
+<p>1.依次插入每个点，为其确定一条最小的出边</p>
+<p>2.如果出边（0边）构成了环，将环上的点缩点</p>
+<p>3.合并环上点的点出边集合，并将这个点重新加入待定点集</p>
+<p><br></p>
+<p>3操作要用可并堆维护合并点集入边的最小权值，并且支持全局减操作</p>
+<p>2操作用并查集维护判断是否出现了环，我写得比较丑，一个并查集存缩点之后新点的编号，一个存点所在连通块</p>
+<p>比较常见的实现是左偏树，因为便于全局修改的标记下传操作，代码也比较好写</p>
+<p>用可并堆维护朱刘算法的操作，单次合并操作为$O(\log m)$，因此复杂度为$O((n+m)\log m)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,rt,ans;</span><br><span class="line"><span class="comment">// 轻度封装的左偏树</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Heap</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Heap *ls,*rs;</span><br><span class="line">    Pii val;</span><br><span class="line">    <span class="keyword">int</span> tag,dis;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Down</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(ls) ls-&gt;val.first+=tag,ls-&gt;tag+=tag;</span><br><span class="line">        <span class="keyword">if</span>(rs) rs-&gt;val.first+=tag,rs-&gt;tag+=tag;</span><br><span class="line">        tag=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Up</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(rs &amp;&amp; (!ls || rs-&gt;dis&gt;ls-&gt;dis)) <span class="built_in">swap</span>(ls,rs);</span><br><span class="line">        dis=rs?rs-&gt;dis+<span class="number">1</span>:<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Heap</span>()&#123;&#125;</span><br><span class="line">    <span class="built_in">Heap</span>(Pii x)&#123; ls=rs=<span class="number">0</span>,val=x,tag=<span class="number">0</span>,dis=<span class="number">1</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">friend</span> Heap* <span class="title">Union</span><span class="params">(Heap* a,Heap *b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!a) <span class="keyword">return</span> b;</span><br><span class="line">        <span class="keyword">if</span>(!b) <span class="keyword">return</span> a;</span><br><span class="line">        <span class="keyword">if</span>(a-&gt;val&gt;b-&gt;val) <span class="built_in">swap</span>(a,b);</span><br><span class="line">        a-&gt;<span class="built_in">Down</span>(),a-&gt;rs=<span class="built_in">Union</span>(a-&gt;rs,b);</span><br><span class="line">        <span class="keyword">return</span> a-&gt;<span class="built_in">Up</span>(),a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; tag+=x,val.first+=x; &#125;</span><br><span class="line">    <span class="function">Pii <span class="title">top</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> val; &#125;</span><br><span class="line">    <span class="function">Heap* <span class="title">pop</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> <span class="built_in">Down</span>(),<span class="built_in">Union</span>(ls,rs); &#125;</span><br><span class="line">&#125; *H[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> F[N],J[N]; <span class="comment">// F存连通块，J存编号</span></span><br><span class="line">Pii G[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> F[x]==x?x:F[x]=<span class="built_in">Find</span>(F[x]); &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">I</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> J[x]==x?x:J[x]=<span class="built_in">I</span>(J[x]); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Work</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 依次加入每个点，先把自环弹掉</span></span><br><span class="line">    <span class="keyword">while</span>(H[i] &amp;&amp; <span class="built_in">I</span>(H[i]-&gt;<span class="built_in">top</span>().second)==i) H[i]=H[i]-&gt;<span class="built_in">pop</span>();</span><br><span class="line">    <span class="keyword">if</span>(!H[i]) <span class="built_in">puts</span>(<span class="string">&quot;-1&quot;</span>),<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    G[i]=H[i]-&gt;<span class="built_in">top</span>(),H[i]-&gt;<span class="built_in">Add</span>(-G[i].first),H[i]=H[i]-&gt;<span class="built_in">pop</span>();</span><br><span class="line">    ans+=G[i].first;</span><br><span class="line">    <span class="keyword">int</span> v=<span class="built_in">I</span>(G[i].second);</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">Find</span>(i)!=<span class="built_in">Find</span>(v)) F[<span class="built_in">Find</span>(i)]=<span class="built_in">Find</span>(v);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> u=v;u!=i;u=<span class="built_in">I</span>(G[u].second)) J[<span class="built_in">I</span>(u)]=i,H[i]=<span class="built_in">Union</span>(H[i],H[u]);</span><br><span class="line">        <span class="built_in">Work</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n=<span class="built_in">rd</span>(),m=<span class="built_in">rd</span>(),rt=<span class="built_in">rd</span>();</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n) J[i]=F[i]=i;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">        <span class="keyword">int</span> u=<span class="built_in">rd</span>(),v=<span class="built_in">rd</span>(),w=<span class="built_in">rd</span>();</span><br><span class="line">        H[v]=<span class="built_in">Union</span>(H[v],<span class="keyword">new</span> <span class="built_in">Heap</span>(<span class="built_in">mp</span>(w,u)));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="keyword">if</span>(<span class="built_in">I</span>(i)==i &amp;&amp; i!=rt) <span class="built_in">Work</span>(i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="无根树的最小树形图"><a href="#无根树的最小树形图" class="headerlink" title="无根树的最小树形图"></a>无根树的最小树形图</h3><p>建立超级原点$S$向$V$中的点连边权极大的边，以限制每次只选一条这样的边</p>
+<p>单次得到答案后减去这个极大值即可，注意如果答案中出现多个这样的极大值，说明原图无解是无解的</p>
+<p><br></p>
+<h2 id="最小内向森林"><a href="#最小内向森林" class="headerlink" title="最小内向森林"></a>最小内向森林</h2><p>对于给定的值$k$，最小内向森林是一个有根树集合，且其恰好包含$k$条边</p>
+<p><br></p>
+<h3 id="凸优化-朱刘算法"><a href="#凸优化-朱刘算法" class="headerlink" title="凸优化+朱刘算法"></a>凸优化+朱刘算法</h3><p>最小内向森林问题是一个<strong>凸函数问题</strong>，可以考虑$\text{wqs}$二分</p>
+<p>同样建立超级原点$S$，二分原点$S$向$V$中点连的边权$\alpha$</p>
+<p>通过朱刘算法得到新图的最小树形图</p>
+<p>二分使得最终的树形图包含原点度数为$|V|-1-k$即可</p>
+<p><br></p>
+<h3 id="优先内向树扩张算法"><a href="#优先内向树扩张算法" class="headerlink" title="优先内向树扩张算法"></a>优先内向树扩张算法</h3><p>考虑在上面二分的过程中，一个点向原点连边当且仅当这个点不再有边边权$<\alpha$</p>
+<p>同时一旦这个点向原点连边，就不再会与其他任何点合并</p>
+<p>也就是这点的所有出边再减去下一条最小树边权值之后，存在一个$\alpha'<0$</p>
+<p>容易想到按照每个点最小边的边权为优先级进行操作</p>
+<p>最后被扩展的边的实际上就是我们要找的$\alpha$</p>
+<p>令$dec_u$表示$u$节点中，被合并上来所有节点已经减掉的值的最大值</p>
+$dec_u'=dec_u+\min \{w_{v,u}\}$，合并时$dec_u$取$\max$
+<p>按照$dec'_u$递增的顺序考虑每个点的扩张，最后一个$dec'_u$就是我们所需要的$\alpha$</p>
+<p>用一个额外的堆维护$dec'_u$的权值，直到扩张满$k$次即可</p>
+<p>复杂度为$O((n+m)\log m+n\log n)$</p>
+<p><br></p>
+
+            
+                
+            
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/default-tag/">default tag</a>
+            
+        </div>
+        
+    </article>
+    
+        <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+
+</div>
+
+<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+    let isMathjaxConfig = false; // 防止重复调用Config，造成性能损耗
+    const initMathjaxConfig = () => {
+    if (!window.MathJax) {
+        return;
+    }
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["?", "?"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+        }
+    });
+        isMathjaxConfig = true; // 
+    };
+    if (isMathjaxConfig === false) {
+        initMathjaxConfig();
+    }
+</script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://chasingdeath.github.io" target="_blank" rel="friend">chasedeath</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+            
+        </p>
+    </div>
+</footer>
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+
+
+</body>
+</html>

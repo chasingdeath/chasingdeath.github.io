@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://chasingdeath.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta name="author" content="orangejuice">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://chasingdeath.github.io">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+<link rel="shortcut icon" href="/images/Header1000.jpg">
+
+
+<title>cf715e - complete the permutations - orangejuice&#39;s Blog</title>
+
+<meta name="keywords" content="没什么东西">
+
+<meta name="description " content="搬运中...">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="cf715e - complete the permutations - orangejuice&#39;s Blog" />
+<meta property="og:description" content="搬运中..." />
+<meta property="og:url" content="http://chasingdeath.github.io" />
+<meta property="og:site_name" content="orangejuice&#39;s Blog" />
+
+<link rel="dns-prefetch" href="http://chasingdeath.github.io">
+<link rel="prefetch" href="http://chasingdeath.github.io">
+<link rel="prerender" href="http://chasingdeath.github.io">
+<link rel="stylesheet" href="/css/JSimple.min.css">
+    <script type="text/javascript">
+        (function() {
+            let jsi_config = {
+                rootUrl: 'http://chasingdeath.github.io/',
+                isPost: 'true',
+                buildingTime: '05/21/2021',
+                snsQRCode: '',
+                donateImg: '',
+                readMode: 'night',
+                localSearch: { dbPath: '' }
+            };
+            
+                jsi_config.localSearch = {
+                    dbPath: '/search.json',
+                    trigger: 'auto',
+                    topN: '1',
+                    unescape: 'false'
+                }
+            
+            window.jsi_config = jsi_config;
+        })()
+    </script>
+    
+<script src="/js/SimpleCore.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="^_^">^_^</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <img class="cover-img" src="https://shuoit.net/images/cover-day.jpg" alt="cover-img" loading="lazy" />
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/images/Header1000.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">orangejuice&#39;s blog</h1>
+        <h3 class="cover-siteTitle">按ctrl会跳搜索，右上角选择day/night mode</h3>
+        <p class="cover-siteDesc">测试中博客</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/chasingdeath" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/3950662532/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索~" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://chasingdeath.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/Header1000.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://chasingdeath.github.io"
+                       target="_blank">chasedeath</a>
+                    <span title="最后编辑于&nbsp;2021-05-12">2021-05-12</span>
+                </p>
+                <p>来自ZJ的蒟蒻OIer</p>
+            </div>
+            <h2 class="post-title">CF715E - Complete the Permutations</h2>
+            <div class="post-meta">
+                本文共计3792个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="CF715E-Complete-the-Permutations"><a href="#CF715E-Complete-the-Permutations" class="headerlink" title="CF715E - Complete the Permutations"></a>CF715E - Complete the Permutations</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>对于两个排列$p,q$，令$p\rightarrow q$代价为通过交换使得$p$变成$q$的最小步数</p>
+<p>现在部分给定了$p$和$q$，求所有情况下，$p\rightarrow q=i,i\in[0,n-1]$的排列组数目</p>
+<p><br></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>排列变换显然要放到置换环上考虑，考虑两个排列之间的变换有多种等价的方式</p>
+<p>不妨认为连的边就是$p_i\rightarrow q_i$，最终操作步数就是$n-$置换环的个数</p>
+<p>对于已经确定的部分，能够确定的边可以直接连，能够确定的链可以缩成点</p>
+<p>那么最终，图上只剩下三种待定的边</p>
+$0\rightarrow 0,0\rightarrow x,x\rightarrow 0$，其中$0\rightarrow x,x\rightarrow 0$表示一条出现了一半的边
+
+ps: 如果有$0\rightarrow x\rightarrow 0$，那么直接缩成一个$0\rightarrow 0$看待
+
+不妨设这三种边个数分别为$A,B,C$，已经确定的环可以数出是$D$最后加入答案
+
+由于一个$A$由两边确定，实际上确定一个边组之后，排列$0\rightarrow 0$的位置得到$A!$种方案，也可以最后加入答案
+
+考虑什么样的边可以接成环
+
+仅A:$0\rightarrow 0,0\rightarrow 0\cdots$
+<p>仅B: $0\rightarrow x,0\rightarrow x\cdots$</p>
+<p>仅C: $x\rightarrow 0,x\rightarrow 0,\cdots$</p>
+<p>A+B=A,$0\rightarrow x+0\rightarrow 0=0\rightarrow 0$</p>
+<p>C+A=A,$0\rightarrow 0+x\rightarrow 0=0\rightarrow 0$</p>
+<p>实际上，组合环的情况</p>
+<p>B前面要么是B要么是A，最终将A后面跟着的小弟B都缩在一起看待</p>
+<p>C后面要么是C要么是A，最终将A前面跟着的大哥C都缩在一起看待</p>
+<p>实际上B,C计算类似，我们能够得到一个计算思路</p>
+<p>将每个B,C加入组合环对于组合环缩点之后的点数无影响，那么可以将A,B,C分离计算</p>
+<p>那么考虑一个B要么在单纯的B环上要么在组合环上</p>
+<p>枚举有$i$个$B$在单纯B环上，构成$j$个环的方案数（当然要先组合数将$j$个点选出）</p>
+<p>这就是第一类斯特林数$\begin{bmatrix}i\\j\end{bmatrix}$，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chasedeath/p/14049870.html">参考</a></p>
+<p>剩下的加入组合环中，考虑依次加入每个B，每个B可以接在B后面也可以接在A后面</p>
+<p>方案数即$A^{\overline{B-i}}$，最终计算得到$G_i$表示B构成了i个单纯B环的方案数，复杂度为$O(n^2)$</p>
+<p><br></p>
+<p>A的贡献不需要将组合环和单纯A环分开考虑，直接就是$F_i=\begin{bmatrix}A\\i\end{bmatrix}$</p>
+<p>最后将三种点背包合并，加入前面提到的常量即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(int i=a,i##end=b;i&lt;=i##end;++i)</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span>&#123;</span>N=<span class="number">300</span>,P=<span class="number">998244353</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> p[N],q[N],pre[N],nxt[N],A,B,E,D;</span><br><span class="line"><span class="keyword">int</span> F[N],G[N],H[N],V[N];</span><br><span class="line"><span class="keyword">int</span> S[N][N],T[N][N],C[N][N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) pre[i]=nxt[i]=<span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,**S=<span class="number">1</span>,n) <span class="built_in">rep</span>(j,<span class="number">1</span>,i) S[i][j]=(S[i<span class="number">-1</span>][j<span class="number">-1</span>]+<span class="number">1ll</span>*(i<span class="number">-1</span>)*S[i<span class="number">-1</span>][j])%P;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,n) <span class="built_in">rep</span>(j,*T[i]=<span class="number">1</span>,n) T[i][j]=<span class="number">1ll</span>*T[i][j<span class="number">-1</span>]*(i+j<span class="number">-1</span>)%P;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,n) <span class="built_in">rep</span>(j,*C[i]=<span class="number">1</span>,i) C[i][j]=(C[i<span class="number">-1</span>][j]+C[i<span class="number">-1</span>][j<span class="number">-1</span>])%P;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,p+i);</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,q+i);</span><br><span class="line">		<span class="keyword">if</span>(p[i] &amp;&amp; q[i]) nxt[p[i]]=q[i],pre[q[i]]=p[i];</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(p[i]) nxt[p[i]]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(q[i]) pre[q[i]]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="keyword">if</span>(pre[i]&lt;=<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> j=i;</span><br><span class="line">		<span class="keyword">for</span>(;nxt[j]&gt;<span class="number">0</span>;j=nxt[j]) V[j]=<span class="number">1</span>;</span><br><span class="line">		V[j]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(pre[i]==nxt[j]) A+=pre[i]==<span class="number">-1</span>; <span class="comment">// ==0 || ==-1 ,but we can&#x27;t count 0 in </span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(~pre[i]) B++;</span><br><span class="line">		<span class="keyword">else</span> E++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="keyword">if</span>(!V[i]) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i;!V[j];j=nxt[j]) V[j]=<span class="number">1</span>;</span><br><span class="line">		D++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> c=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,A) c=<span class="number">1ll</span>*c*i%P;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,A) F[i]=<span class="number">1ll</span>*c*S[A][i]%P;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,B) <span class="built_in">rep</span>(j,<span class="number">0</span>,i) G[j]=(G[j]+<span class="number">1ll</span>*S[i][j]*T[A][B-i]%P*C[B][i])%P;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,E) <span class="built_in">rep</span>(j,<span class="number">0</span>,i) H[j]=(H[j]+<span class="number">1ll</span>*S[i][j]*T[A][E-i]%P*C[E][i])%P;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,n) V[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,A) <span class="built_in">rep</span>(j,<span class="number">0</span>,B) V[i+j+D]=(V[i+j+D]+<span class="number">1ll</span>*F[i]*G[j])%P;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,n) F[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,A+B+D) <span class="built_in">rep</span>(j,<span class="number">0</span>,E) F[n-i-j]=(F[n-i-j]+<span class="number">1ll</span>*V[i]*H[j])%P;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,F[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="进一步的优化？"><a href="#进一步的优化？" class="headerlink" title="进一步的优化？"></a>进一步的优化？</h3>$F_i$的计算时标准的第一类斯特林数行，用倍增法求上升幂即可
+
+$\displaystyle G(x)=\sum_{i=0}^B A^{\overline{B-i}}\binom{B}{i} x^{\overline{i}}$
+<p>把系数拿出来，可以直接做一个上升幂多项式转普通多项式</p>
+<p>复杂度为$O(n\log ^2n)$</p>
+<p>（听说可以$O(n\log n)$<del>但是我没有脑子只会套板子哈哈哈哈</del>）</p>
+<p><br></p>
+<p>以下未上传！！！如果看到说明我在搞笑！！！看到叫我</p>
+$\displaystyle G_i=\sum_{j=i}^B \binom{B}{j}A^{\overline{B-j}}\cdot [x^j]\frac{1}{i!}(-1)^i\ln^i(1-x)$
+$\displaystyle G_i=\sum_{j=i}^B \frac{B!}{j!(B-j)!}\frac{(A+B-j-1)!}{(A-1)!}\cdot [x^j]\frac{1}{i!}(-1)^i\ln^i(1-x)$
+$\displaystyle G_i=\frac{(-1)^iB!}{(A-1)!i!} \sum_{j=i}^B \frac{(A+B-j-1)!}{j!(B-j)!}\cdot [x^j]\ln^i(1-x)$
+<p>由于对于每个$i$，$\displaystyle \sum_{j=i}^B \frac{(A+B-j-1)!}{j!(B-j)!}$是常量，设</p>
+$\displaystyle \varphi(x)=\sum_{j=0}^B x^{-1-j} \frac{(A+B-j-1)!}{j!(B-j)!}$(为什么是是$-1-j$会在下面出现)
+
+$\displaystyle G_i=\frac{(-1)^iB!}{(A-1)!i!} [x^{-1}] \varphi(x)\ln^i(1-x)$
+<p>对比扩展拉格朗日反演的形式</p>
+$\displaystyle [x^n]H(G(x))=\frac{1}{n}[x^{-1}]H'(x)(\frac{1}{F(x)})^n$，其中$G(x)$为$F(x)$的复合逆
+
+得到$\displaystyle H(x)=\int \varphi(x),F(x)=\frac{1}{\ln(1-x)}$
+<p>从而得到$F(x)$的复合逆为$\displaystyle 1-e^{x^{-1}}$</p>
+<p>现在要算$H(1-e^{x^{-1}})=\sum$</p>
+
+            
+                
+            
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/default-tag/">default tag</a>
+            
+        </div>
+        
+    </article>
+    
+        <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+
+</div>
+
+<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+    let isMathjaxConfig = false; // 防止重复调用Config，造成性能损耗
+    const initMathjaxConfig = () => {
+    if (!window.MathJax) {
+        return;
+    }
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["?", "?"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+        }
+    });
+        isMathjaxConfig = true; // 
+    };
+    if (isMathjaxConfig === false) {
+        initMathjaxConfig();
+    }
+</script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://chasingdeath.github.io" target="_blank" rel="friend">chasedeath</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+            
+        </p>
+    </div>
+</footer>
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://chasingdeath.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta name="author" content="orangejuice">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://chasingdeath.github.io">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+<link rel="shortcut icon" href="/images/Header1000.jpg">
+
+
+<title>fwt (快速沃尔什变换)详解 以及 k进制fwt - orangejuice&#39;s Blog</title>
+
+<meta name="keywords" content="没什么东西">
+
+<meta name="description " content="搬运中...">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="fwt (快速沃尔什变换)详解 以及 k进制fwt - orangejuice&#39;s Blog" />
+<meta property="og:description" content="搬运中..." />
+<meta property="og:url" content="http://chasingdeath.github.io" />
+<meta property="og:site_name" content="orangejuice&#39;s Blog" />
+
+<link rel="dns-prefetch" href="http://chasingdeath.github.io">
+<link rel="prefetch" href="http://chasingdeath.github.io">
+<link rel="prerender" href="http://chasingdeath.github.io">
+<link rel="stylesheet" href="/css/JSimple.min.css">
+    <script type="text/javascript">
+        (function() {
+            let jsi_config = {
+                rootUrl: 'http://chasingdeath.github.io/',
+                isPost: 'true',
+                buildingTime: '05/21/2021',
+                snsQRCode: '',
+                donateImg: '',
+                readMode: 'night',
+                localSearch: { dbPath: '' }
+            };
+            
+                jsi_config.localSearch = {
+                    dbPath: '/search.json',
+                    trigger: 'auto',
+                    topN: '1',
+                    unescape: 'false'
+                }
+            
+            window.jsi_config = jsi_config;
+        })()
+    </script>
+    
+<script src="/js/SimpleCore.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="^_^">^_^</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <img class="cover-img" src="https://shuoit.net/images/cover-day.jpg" alt="cover-img" loading="lazy" />
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/images/Header1000.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">orangejuice&#39;s blog</h1>
+        <h3 class="cover-siteTitle">按ctrl会跳搜索，右上角选择day/night mode</h3>
+        <p class="cover-siteDesc">测试中博客</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/chasingdeath" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/3950662532/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索~" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://chasingdeath.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/Header1000.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://chasingdeath.github.io"
+                       target="_blank">chasedeath</a>
+                    <span title="最后编辑于&nbsp;2020-11-15">2020-11-15</span>
+                </p>
+                <p>来自ZJ的蒟蒻OIer</p>
+            </div>
+            <h2 class="post-title">FWT (快速沃尔什变换)详解 以及 K进制FWT</h2>
+            <div class="post-meta">
+                本文共计5751个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="FWT-快速沃尔什变换-详解-以及-K进制FWT"><a href="#FWT-快速沃尔什变换-详解-以及-K进制FWT" class="headerlink" title="FWT (快速沃尔什变换)详解 以及 K进制FWT"></a>FWT (快速沃尔什变换)详解 以及 K进制FWT</h1><p>约定：$F'=FWT(F)$</p>
+<p>卷积的问题，事实上就是要构造$F'G'=(FG)'$</p>
+<p>我们常见的卷积，是二进制位上的or ,and ,xor </p>
+<p>但正式来说，是<strong>集合幂指数</strong> 上的 <strong>并 ， 交 ， 对称差</strong></p>
+<p>为了说人话，这里就不带入集合幂指数的概念了</p>
+<blockquote>
+<p>一个常识：$\sum_{T\sube S}(-1)^{|T|}=[S=\empty]$</p>
+</blockquote>
+<hr>
+<h2 id="or-和-and-卷积"><a href="#or-和-and-卷积" class="headerlink" title="or 和 and 卷积"></a>or 和 and 卷积</h2><p>ps: 虽然这两个并不是$\text{FWT}$，应该叫$\text{FMT}$(快速莫比乌斯变换)，但是由于常用的是这3个，所以放到一起</p>
+<p>这两种卷积的本质是相同的，所以只解释$or$卷积</p>
+<p><strong>or卷积的本质就是高位前缀和</strong></p>
+<p>即:$F'_S=\sum _{T\sube S}F_T$</p>
+<h4 id="正确性："><a href="#正确性：" class="headerlink" title="正确性："></a>正确性：</h4><p>即$\forall S,F'_S \cdot G'_S=(F\cup G)'_S$</p>
+<p>左边=</p>
+$F'_S \cdot G'_S=\sum _{T\sube S}\sum _{R\sube S}F_T\cdot G_R$
+<p>右边=</p>
+$(F\cup G)'_S=\sum_{T\sube S}(F \cup G)_S$
+$=\sum_{T\sube S}\sum_{A,B,A\cup B=S}F_A\cdot G_B$
+$=\sum_{T \sube S}\sum_{R \sube S}F_T \cdot G_R$
+$$ \ $$
+<h3 id="卷积实现"><a href="#卷积实现" class="headerlink" title="卷积实现"></a>卷积实现</h3><p>其实第一次层循环的意思是<strong>枚举子集中和自己不同的位最高是</strong>$i$</p>
+<p>让$0$向$1$转移即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>) </span><br><span class="line">        <span class="built_in">rep</span>(j,i,n<span class="number">-1</span>) <span class="keyword">if</span>(j&amp;i) s[j]+=s[j^i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;n;l+=i*<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;l+i;++j) </span><br><span class="line">                s[j+i]+=s[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Tips:如果要卡常，可以写成类似$\text{FFT}$的形式，因为优化了访问顺序会快一些</p>
+$$\ $$
+<h3 id="实现逆卷积"><a href="#实现逆卷积" class="headerlink" title="实现逆卷积"></a>实现逆卷积</h3><p>把上面的加换成减，这是一个类似容斥的东西</p>
+<p>但是因为是反解，所以这个过程我么通常称为<strong>子集反演</strong></p>
+<p>那么每次$0$向$1$的转移意味着多了一个不同的位置</p>
+<p>设$F'_S=\sum_{T\sube S}F_T$</p>
+<p>实际逆卷积就是$F_S=\sum_{T\sube S}(-1)^{|T\oplus S|} F'_S$</p>
+<p>证明如下：</p>
+$\Leftrightarrow F_S=\sum_{T\sube S}(-1)^{|T\oplus S|} \sum _{R\in T}F_R$
+$\Leftrightarrow F_S=\sum_{T\sube S}F_R\sum _{T\sube R,R\sube S}(-1)^{|S\oplus R|}$
+$\Leftrightarrow F_S=\sum_{T\sube S}F_R\sum _{R\sube (S\oplus T)}(-1)^{|R|}$
+<p>带入上面所提到的$\sum_{T\sube S}(-1)^{|T|}=[S=\empty]$，成立</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>) </span><br><span class="line">        <span class="built_in">rep</span>(j,i,n<span class="number">-1</span>) <span class="keyword">if</span>(j&amp;i) s[j]+=f*s[j^i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;n;l+=i*<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;l+i;++j) </span><br><span class="line">                s[j+i]+=f*s[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+$$ \ $$
+$$ \ $$
+<h3 id="应用-子集卷积-可以看luogu"><a href="#应用-子集卷积-可以看luogu" class="headerlink" title="应用 : 子集卷积(可以看luogu)"></a>应用 : 子集卷积(可以看luogu)</h3><p>问题描述： 给定$F_S,G_T$，求出$H_{R}=\sum_{S\cup T=R,S\cap T=\empty}F_S\cdot G_T$，设有$2^n$个元素</p>
+<p>我们知道直接枚举的复杂度为$O(3^n)$</p>
+<p>直接应用or卷积无法保证$S\cap T=\empty$，但是可以再记录一个占位数量，即把$F,G$按照每一位包含1的数量分开成$n+1$部分，卷积完成之后</p>
+<p>应该满足1的个数恰好为两者之和，否则清空</p>
+<p>需要$n$次卷积，$n^2$次转移，因此复杂度为$O(n^22^n)$，在渐进意义上更优于$O(3^n)$</p>
+<hr>
+<h2 id="Xor-卷积"><a href="#Xor-卷积" class="headerlink" title="Xor 卷积"></a>Xor 卷积</h2><p>这里要用到一个小性质</p>
+$|A\cap B|+|A\cap C|\equiv |A\cap (B\bigoplus C)| \pmod 2$
+<p>思路介绍： </p>
+<p>我们是要构造一个$F_S\rightarrow G_T$的变换，使得该变换满足Xor的性质，且能在较优的时间复杂度内完成，并且能够在较优的时间内<strong>完成反演</strong></p>
+<p>由于上面的这条式子，考虑可以构造$F'_S=\sum_{T}(-1)^{|S\cap T|}F_T$，这样$(-1)^k$的系数在$\mod 2$意义下可以抵消</p>
+<h4 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h4><p>即$\forall S,F'_S \cdot G'_S=(F\bigoplus G)'_S$</p>
+$F'_S\cdot G'_S=\sum_{T} \sum_{R}(-1)^{|S\cap T|+|S\cap R|}F_T\cdot G_R$
+$=\sum _T\sum _R(-1)^{|(T\bigoplus R)\cap S|}F_T\cdot G_R$
+<p>显然这个式子与右边相同</p>
+$$ \  $$
+<h3 id="卷积实现-1"><a href="#卷积实现-1" class="headerlink" title="卷积实现"></a>卷积实现</h3><p>考虑和前面相同的方法，枚举二进制位上最高的$1$</p>
+<p>之前由于转移是单向的，所以只需要一次加法，这里由于有了系数同时还是双向的转移，所以要格外注意</p>
+<p>转移系数也是比较明显的</p>
+$0\rightarrow 0 = 1$
+$0\rightarrow 1 = 1$
+$1\rightarrow 0 = 1$
+$1\rightarrow 1 = -1$
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">rep</span>(j,<span class="number">0</span>,n<span class="number">-1</span>) <span class="keyword">if</span>(~j&amp;i) &#123;</span><br><span class="line">            ll t=a[j+i];</span><br><span class="line">            a[j+i]=a[j]-t;</span><br><span class="line">            a[j]=a[j]+t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;n;l+=i*<span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=l;j&lt;l+i;++j)&#123;</span><br><span class="line">                ll t=a[j+i];</span><br><span class="line">                a[j+i]=a[j]-t;</span><br><span class="line">                a[j]+=t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="实现逆卷积-1"><a href="#实现逆卷积-1" class="headerlink" title="实现逆卷积"></a>实现逆卷积</h3><p>考虑再卷一次</p>
+$F''_S=\sum_T\sum_R(-1)^{|S\cap R|+|T\cap R|}F_T$
+$=\sum_T \sum_R (-1)^{|(S\bigoplus T)\cap R|}F_T$
+$\because \sum_T (-1)^{|S\cap T|}=\sum_{T\sube S}(-1)^{|T|}2^{|U|-|S|}=[S=\empty]2^{|U|-|S|}$(其中$U$是全集)
+
+$\therefore F''_S=\sum_S2^{|U|}F_S$
+<p>所以逆卷积就是再卷一遍，最后除去$n$即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">rep</span>(j,<span class="number">0</span>,n<span class="number">-1</span>) <span class="keyword">if</span>(~j&amp;i) &#123;</span><br><span class="line">            ll t=a[j+i];</span><br><span class="line">            a[j+i]=a[j]-t;</span><br><span class="line">            a[j]=a[j]+t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">if</span>(f==<span class="number">-1</span>) <span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) a[i]/=n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;n;l+=i*<span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=l;j&lt;l+i;++j)&#123;</span><br><span class="line">                ll t=a[j+i];</span><br><span class="line">                a[j+i]=a[j]-t;</span><br><span class="line">                a[j]+=t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(f==<span class="number">-1</span>) <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i) a[i]/=n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和上面一样的，可以写成类似$\text{FFT}$的形式卡常</p>
+$$ \ $$
+$$ \ $$
+<h2 id="拓展-K-FWT"><a href="#拓展-K-FWT" class="headerlink" title="拓展 K - FWT"></a>拓展 K - FWT</h2><p>实际上学习了这个拓展能让你更好地理解$\text{FWT}$</p>
+<p>不妨考虑$n$个维度的情况，每个维度是一个$0,1,\cdots k-1$中的数</p>
+<p>由于$k$进制下不好用集合描述，因此考虑用一个向量$\vec{V}=\lbrace V_0,V_1,\cdots,V_{n-1}\rbrace,V_i\in[0,k-1]$表示</p>
+<p>一个多项式可以具象地用$0,1,\cdots,k^n-1$这个$k^n$个位置上的系数表示</p>
+$\text{and,or}$卷积在$k$进制下可以拓展为按位取$\min,\max$，这个直接累前缀和就可以了，不作赘述
+
+而$k$进制下的$\text{xor}$可以扩展为两个向量列的取模加法
+
+$\vec{A}+\vec{B}=\vec{C},C_i=(A_i+B_i)\bmod k$
+<p>也可以描述为<strong>不进位的</strong>$k$进制数加法</p>
+<p>其实用$\text{K-FWT}$称呼这个似乎不是很形象，更好的可以称之为$\text{n-DFT}$</p>
+<p>也就是说$\text{K-FWT}$实际上就是在$n$个维度上<strong>分别做大小为$k$的循环卷积</strong>，使用一种结合$\text{FWT-DFT}$的方法(因此需要用到$k$次单位根$\omega_k$)</p>
+<h3 id="卷积构造"><a href="#卷积构造" class="headerlink" title="卷积构造"></a>卷积构造</h3><p>原多项式$F$向卷积多项式$F'$的转换系数为$[x^A]F\rightarrow [x^B]F':\omega_k^{A\cdot B}$</p>
+<p>其中$A\cdot B$为向量内积，即$\sum A_i\cdot B_i$</p>
+<p>从中也可以很好地看到$\text{xor}$卷积的影子</p>
+<p>实现方法上，可以依次枚举$0,1,\cdots,n-1$每一位，将除了这一位上都相同的数取出来</p>
+<p>按照这一位上的值做一次$\text{DFT}$</p>
+<p>需要$n$位枚举，每次枚举需要做$k^{n-1}$次$k^2$的$\text{DFT}$，因而复杂度为$O(nk^{n+1})$</p>
+<p>对于$k$比较大的情况，如果$k=2^t$可以直接用$\text{FFT/NTT}$，否则还可以参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chasedeath/p/13498798.html">这个</a></p>
+<p>可以优化到$O(nk^n\log k)$ </p>
+<h3 id="逆卷积"><a href="#逆卷积" class="headerlink" title="逆卷积"></a>逆卷积</h3><p>当然是换成$\text{IDFT}$，最后全部除掉$k^n$</p>
+<p>正确性上，如果你对于$\text{IDFT}$的原理(单位根反演) 有所了解，就能发现</p>
+<p>只有所有位置上都相同的情况才会转移出$k^n$的系数</p>
+$$ \ $$
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> w[<span class="number">20</span>]; <span class="comment">// 单位根的幂次</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">K_FWT</span><span class="params">(<span class="keyword">int</span> *F,<span class="keyword">int</span> n,<span class="keyword">int</span> f)</span></span>&#123; <span class="comment">// 这个n实际上是上面叙述中的n^k</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> t[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i*=k)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;n;l+=i*k)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=l;j&lt;l+i;++j)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">0</span>;a&lt;k;++a) </span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> b=t[a]=<span class="number">0</span>;b&lt;k;++b) </span><br><span class="line">                        t[a]=(t[a]+<span class="number">1ll</span>*F[j+b*i]%P*w[b*(k+f*a)%k])%P;</span><br><span class="line">                <span class="keyword">for</span>(reg <span class="keyword">int</span> a=<span class="number">0</span>;a&lt;k;++a) F[j+a*i]=t[a];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">if</span>(f==<span class="number">-1</span>) &#123;</span><br><span class="line">        ll base=<span class="built_in">qpow</span>(n);</span><br><span class="line">        <span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) F[i]=F[i]*base%P;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+                
+            
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/default-tag/">default tag</a>
+            
+        </div>
+        
+    </article>
+    
+        <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+
+</div>
+
+<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+    let isMathjaxConfig = false; // 防止重复调用Config，造成性能损耗
+    const initMathjaxConfig = () => {
+    if (!window.MathJax) {
+        return;
+    }
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["?", "?"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+        }
+    });
+        isMathjaxConfig = true; // 
+    };
+    if (isMathjaxConfig === false) {
+        initMathjaxConfig();
+    }
+</script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://chasingdeath.github.io" target="_blank" rel="friend">chasedeath</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+            
+        </p>
+    </div>
+</footer>
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+
+
+</body>
+</html>

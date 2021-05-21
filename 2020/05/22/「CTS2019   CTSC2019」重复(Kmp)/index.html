@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://chasingdeath.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta name="author" content="orangejuice">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://chasingdeath.github.io">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+<link rel="shortcut icon" href="/images/Header1000.jpg">
+
+
+<title>「cts2019 | ctsc2019」重复(kmp) - orangejuice&#39;s Blog</title>
+
+<meta name="keywords" content="没什么东西">
+
+<meta name="description " content="搬运中...">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="「cts2019 | ctsc2019」重复(kmp) - orangejuice&#39;s Blog" />
+<meta property="og:description" content="搬运中..." />
+<meta property="og:url" content="http://chasingdeath.github.io" />
+<meta property="og:site_name" content="orangejuice&#39;s Blog" />
+
+<link rel="dns-prefetch" href="http://chasingdeath.github.io">
+<link rel="prefetch" href="http://chasingdeath.github.io">
+<link rel="prerender" href="http://chasingdeath.github.io">
+<link rel="stylesheet" href="/css/JSimple.min.css">
+    <script type="text/javascript">
+        (function() {
+            let jsi_config = {
+                rootUrl: 'http://chasingdeath.github.io/',
+                isPost: 'true',
+                buildingTime: '05/21/2021',
+                snsQRCode: '',
+                donateImg: '',
+                readMode: 'night',
+                localSearch: { dbPath: '' }
+            };
+            
+                jsi_config.localSearch = {
+                    dbPath: '/search.json',
+                    trigger: 'auto',
+                    topN: '1',
+                    unescape: 'false'
+                }
+            
+            window.jsi_config = jsi_config;
+        })()
+    </script>
+    
+<script src="/js/SimpleCore.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="^_^">^_^</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <img class="cover-img" src="https://shuoit.net/images/cover-day.jpg" alt="cover-img" loading="lazy" />
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/images/Header1000.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">orangejuice&#39;s blog</h1>
+        <h3 class="cover-siteTitle">按ctrl会跳搜索，右上角选择day/night mode</h3>
+        <p class="cover-siteDesc">测试中博客</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/chasingdeath" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/3950662532/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索~" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://chasingdeath.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/Header1000.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://chasingdeath.github.io"
+                       target="_blank">chasedeath</a>
+                    <span title="最后编辑于&nbsp;2020-05-22">2020-05-22</span>
+                </p>
+                <p>来自ZJ的蒟蒻OIer</p>
+            </div>
+            <h2 class="post-title">「CTS2019 | CTSC2019」重复(Kmp)</h2>
+            <div class="post-meta">
+                本文共计2895个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="「CTS2019-CTSC2019」重复-Kmp"><a href="#「CTS2019-CTSC2019」重复-Kmp" class="headerlink" title="「CTS2019 | CTSC2019」重复(Kmp)"></a>「CTS2019 | CTSC2019」重复(Kmp)</h1><hr>
+<h2 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h2><p>首先我们考虑对于一个已经确定的$t$串，如何检查是否合法</p>
+<p>对于$s$串建立$\text{kmp}$($\text{kmp}$自动机当然可以)，</p>
+<p>如果当前$\text{kmp}$指针$j$在$\text{fail}$树上的祖先所对应的所有下一个位置$s[ancestor+1]$中，存在一个字符，$t$中当前位置的字符$t[i]<s[ancestor+1]$</p>
+<p>那么就是存在一个”有意义的串”,并且这个串和s串第一个不同的位置就是$ancestor+1$</p>
+<p>所以可以预处理一个$fail$树上祖先最大的$s[ancestor+1],Max[state]$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rep</span>(i,<span class="number">1</span>,n) Max[i<span class="number">-1</span>]=s[i];</span><br><span class="line">Max[n]=<span class="string">&#x27;a&#x27;</span>;<span class="comment">//边界条件</span></span><br><span class="line"><span class="built_in">cmax</span>(Max[<span class="number">1</span>],Max[<span class="number">0</span>]);</span><br><span class="line"><span class="built_in">rep</span>(i,<span class="number">2</span>,n) &#123;</span><br><span class="line">	<span class="keyword">int</span> j=nxt[i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">while</span>(j &amp;&amp; s[i]!=s[j+<span class="number">1</span>]) j=nxt[j];</span><br><span class="line">	<span class="keyword">if</span>(s[i]==s[j+<span class="number">1</span>]) ++j;</span><br><span class="line">	nxt[i]=j;</span><br><span class="line">	<span class="built_in">cmax</span>(Max[i],Max[j]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//预处理Max</span></span><br><span class="line"><span class="built_in">rep</span>(i,<span class="number">0</span>,n) &#123;</span><br><span class="line">	<span class="keyword">if</span>(i&lt;n) Trans[i][s[i+<span class="number">1</span>]-<span class="string">&#x27;a&#x27;</span>]=i+<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(j,<span class="number">0</span>,<span class="number">25</span>) <span class="keyword">if</span>(j!=s[i+<span class="number">1</span>]-<span class="string">&#x27;a&#x27;</span>) Trans[i][j]=Trans[nxt[i]][j];</span><br><span class="line">&#125;<span class="comment">//kmp自动机，不要再暴力了</span></span><br><span class="line"><span class="built_in">rep</span>(i,m+<span class="number">1</span>,n+m) t[i]=t[i-m]; <span class="comment">// 延长到n+m就够了</span></span><br><span class="line"><span class="keyword">int</span> j=<span class="number">0</span>,f=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">rep</span>(i,<span class="number">1</span>,n+m)&#123;</span><br><span class="line">	<span class="keyword">if</span>(t[i]&lt;Max[j]) &#123; <span class="comment">// 存在一个位置满足即可</span></span><br><span class="line">		f=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	j=Trans[j][t[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配合dfs枚举，可以拿到pts10</p>
+<hr>
+<h2 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h2><p>设状态转移为$Trans[state][c]$</p>
+<p>把kmp状态压进dp状态里</p>
+<p>如果把问题直接放到无穷意义下来看</p>
+<p>那么跑够长度之后，后面的任意加入$m$次字符都会构成一个循环</p>
+<p>枚举循环开始状态为$st$，$\text{dp}$走了$m$步回到$st$的方案数</p>
+<p>如果计算合法方案数，那么还要多一维，所以直接计算不合法方案，也就是</p>
+$Trans[state][Max[state]..25]$这一段转移是不会出现合法情况的
+
+最后减一下
+
+复杂度$O(m\cdot n^2)$
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> pt2&#123;</span><br><span class="line">	<span class="keyword">int</span> dp[<span class="number">2</span>][N];</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> cur=<span class="number">0</span>,ans=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">rep</span>(st,<span class="number">0</span>,n) &#123; <span class="comment">// 枚举初始状态</span></span><br><span class="line">			<span class="built_in">rep</span>(i,<span class="number">0</span>,n) dp[cur][i]=dp[!cur][i]=<span class="number">0</span>;</span><br><span class="line">			dp[cur][st]=<span class="number">1</span>;</span><br><span class="line">			<span class="built_in">rep</span>(t,<span class="number">1</span>,m) &#123;</span><br><span class="line">				cur^=<span class="number">1</span>;</span><br><span class="line">				<span class="built_in">rep</span>(i,<span class="number">0</span>,n) <span class="keyword">if</span>(dp[!cur][i])&#123;</span><br><span class="line">					<span class="built_in">rep</span>(c,Max[i]-<span class="string">&#x27;a&#x27;</span>,<span class="number">25</span>) &#123;<span class="comment">//只转移不合法的</span></span><br><span class="line">						dp[cur][Trans[i][c]]+=dp[!cur][i];</span><br><span class="line">						<span class="built_in">Mod1</span>(dp[cur][Trans[i][c]]);</span><br><span class="line">					&#125;</span><br><span class="line">					dp[!cur][i]=<span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;<span class="comment">// 走m步回到st</span></span><br><span class="line">			ans+=dp[cur][st],<span class="built_in">Mod1</span>(ans);</span><br><span class="line">		&#125;</span><br><span class="line">		ans=(<span class="built_in">qpow</span>(<span class="number">26</span>,m)-ans+P)%P;<span class="comment">//减一下</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Part3"><a href="#Part3" class="headerlink" title="Part3"></a>Part3</h2><p>观察上面一档情况，合法的转移$Trans[state][Max[state]..25]$</p>
+<p>如果枚举下一个字符$c>Max[state]$，那么在$s$串中就找不到任何匹配了，下一个状态就是$0$</p>
+<p>否则，下一个状态就是$Trans[state][c]$</p>
+<p>也就是说，每个点出发其实只有两种情况，一种是一定会经过$0$的</p>
+<p>所以对于这个环是否经过$0$进行讨论</p>
+<p>如果不经过$0$，那么考虑直接从$st$出发走$m$步非0转移即可</p>
+<p>经过$0$的，预处理一个从$0$出发，走了$i$步第一次回到$0$的方案数</p>
+$[st\rightarrow 0,0\rightarrow 0,0\rightarrow 0...,0\rightarrow st]$
+<p>长成这个样子的转移</p>
+<p>枚举第一个$st\rightarrow 0$的时间，后面可以预处理出来</p>
+<p>复杂度$O(n\cdot m)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> reg register</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Mod1(x) ((x&gt;=P)&amp;&amp;(x-=P))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Mod2(x) ((x&lt;0)&amp;&amp;(x+=P))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(int i=a,i##end=b;i&lt;=i##end;++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> drep(i,a,b) for(int i=a,i##end=b;i&gt;=i##end;--i)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span> <span class="function"><span class="keyword">void</span> <span class="title">cmin</span><span class="params">(T &amp;a, T b)</span></span>&#123; ((a&gt;b)&amp;&amp;(a=b)); &#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span> <span class="function"><span class="keyword">void</span> <span class="title">cmax</span><span class="params">(T &amp;a, T b)</span></span>&#123; ((a&lt;b)&amp;&amp;(a=b)); &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> IO;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>=</span><span class="keyword">int</span>&gt; <span class="function">T <span class="title">rd</span><span class="params">()</span></span>&#123;</span><br><span class="line">	T s=<span class="number">0</span>; <span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(IO=<span class="built_in">getchar</span>())) <span class="keyword">if</span>(IO==<span class="string">&#x27;-&#x27;</span>) f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">do</span> s=(s&lt;&lt;<span class="number">1</span>)+(s&lt;&lt;<span class="number">3</span>)+(IO^<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(IO=<span class="built_in">getchar</span>()));</span><br><span class="line">	<span class="keyword">return</span> f?-s:s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2010</span>,P=<span class="number">998244353</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">int</span> Max[N],nxt[N],Trans[N][<span class="number">26</span>];</span><br><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll x,ll k=P<span class="number">-2</span>)</span> </span>&#123;</span><br><span class="line">	ll res=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(;k;k&gt;&gt;=<span class="number">1</span>,x=x*x%P) <span class="keyword">if</span>(k&amp;<span class="number">1</span>) res=res*x%P;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> st[N][N]; <span class="comment">// 从i出发，走了j步第一次到0</span></span><br><span class="line"><span class="keyword">int</span> dp[N][N]; <span class="comment">// 从0出发，走了i步，到了j,如果到0就不进行转移 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">freopen</span>(<span class="string">&quot;repeat.in&quot;</span>,<span class="string">&quot;r&quot;</span>,stdin),<span class="built_in">freopen</span>(<span class="string">&quot;repeat.out&quot;</span>,<span class="string">&quot;w&quot;</span>,stdout);</span><br><span class="line">	m=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,s+<span class="number">1</span>),n=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) Max[i<span class="number">-1</span>]=s[i];</span><br><span class="line">	Max[n]=<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">	<span class="built_in">cmax</span>(Max[<span class="number">1</span>],Max[<span class="number">0</span>]);</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">2</span>,n) &#123;</span><br><span class="line">		<span class="keyword">int</span> j=nxt[i<span class="number">-1</span>];</span><br><span class="line">		<span class="keyword">while</span>(j &amp;&amp; s[i]!=s[j+<span class="number">1</span>]) j=nxt[j];</span><br><span class="line">		<span class="keyword">if</span>(s[i]==s[j+<span class="number">1</span>]) ++j;</span><br><span class="line">		nxt[i]=j;</span><br><span class="line">		<span class="built_in">cmax</span>(Max[i],Max[j]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,n) &#123;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;n) Trans[i][s[i+<span class="number">1</span>]-<span class="string">&#x27;a&#x27;</span>]=i+<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">rep</span>(j,<span class="number">0</span>,<span class="number">25</span>) <span class="keyword">if</span>(j!=s[i+<span class="number">1</span>]-<span class="string">&#x27;a&#x27;</span>) Trans[i][j]=Trans[nxt[i]][j];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;	</span><br><span class="line">	st[<span class="number">0</span>][<span class="number">0</span>]++;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="keyword">int</span> j=i,f=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">rep</span>(k,<span class="number">1</span>,m) &#123;</span><br><span class="line">			st[i][k]+=<span class="number">25</span>-(Max[j]-<span class="string">&#x27;a&#x27;</span>),j=Trans[j][Max[j]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">			<span class="keyword">if</span>(!j) &#123;</span><br><span class="line">				st[i][k]++,f=<span class="number">0</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(j==i) ans+=f;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		<span class="built_in">rep</span>(j,<span class="number">0</span>,n) <span class="keyword">if</span>(dp[i<span class="number">-1</span>][j]) &#123;</span><br><span class="line">			dp[i][Trans[j][Max[j]-<span class="string">&#x27;a&#x27;</span>]]+=dp[i<span class="number">-1</span>][j],<span class="built_in">Mod1</span>(dp[i][Trans[j][Max[j]-<span class="string">&#x27;a&#x27;</span>]]);</span><br><span class="line">			dp[i][<span class="number">0</span>]=(dp[i][<span class="number">0</span>]+<span class="number">1ll</span>*(<span class="number">25</span>-(Max[j]-<span class="string">&#x27;a&#x27;</span>))*dp[i<span class="number">-1</span>][j])%P;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,n) &#123; <span class="comment">// 枚举初始状态</span></span><br><span class="line">		<span class="built_in">rep</span>(j,<span class="number">0</span>,m) <span class="keyword">if</span>(st[i][j] &amp;&amp; dp[m-j][i]) &#123; <span class="comment">// 枚举走了几步第一次到0</span></span><br><span class="line">			ans=(ans+<span class="number">1ll</span>*st[i][j]*dp[m-j][i])%P;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	ans=(<span class="built_in">qpow</span>(<span class="number">26</span>,m)-ans+P)%P;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+            
+                
+            
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/default-tag/">default tag</a>
+            
+        </div>
+        
+    </article>
+    
+        <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+
+</div>
+
+<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+    let isMathjaxConfig = false; // 防止重复调用Config，造成性能损耗
+    const initMathjaxConfig = () => {
+    if (!window.MathJax) {
+        return;
+    }
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["?", "?"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+        }
+    });
+        isMathjaxConfig = true; // 
+    };
+    if (isMathjaxConfig === false) {
+        initMathjaxConfig();
+    }
+</script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://chasingdeath.github.io" target="_blank" rel="friend">chasedeath</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+            
+        </p>
+    </div>
+</footer>
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+
+
+</body>
+</html>

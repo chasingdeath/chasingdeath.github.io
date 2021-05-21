@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://chasingdeath.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta name="author" content="orangejuice">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://chasingdeath.github.io">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+<link rel="shortcut icon" href="/images/Header1000.jpg">
+
+
+<title>「usaco 2021.1 platinum」paint by letters - orangejuice&#39;s Blog</title>
+
+<meta name="keywords" content="没什么东西">
+
+<meta name="description " content="搬运中...">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="「usaco 2021.1 platinum」paint by letters - orangejuice&#39;s Blog" />
+<meta property="og:description" content="搬运中..." />
+<meta property="og:url" content="http://chasingdeath.github.io" />
+<meta property="og:site_name" content="orangejuice&#39;s Blog" />
+
+<link rel="dns-prefetch" href="http://chasingdeath.github.io">
+<link rel="prefetch" href="http://chasingdeath.github.io">
+<link rel="prerender" href="http://chasingdeath.github.io">
+<link rel="stylesheet" href="/css/JSimple.min.css">
+    <script type="text/javascript">
+        (function() {
+            let jsi_config = {
+                rootUrl: 'http://chasingdeath.github.io/',
+                isPost: 'true',
+                buildingTime: '05/21/2021',
+                snsQRCode: '',
+                donateImg: '',
+                readMode: 'night',
+                localSearch: { dbPath: '' }
+            };
+            
+                jsi_config.localSearch = {
+                    dbPath: '/search.json',
+                    trigger: 'auto',
+                    topN: '1',
+                    unescape: 'false'
+                }
+            
+            window.jsi_config = jsi_config;
+        })()
+    </script>
+    
+<script src="/js/SimpleCore.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="orangejuice's Blog" type="application/atom+xml">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="^_^">^_^</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    
+</div>
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <img class="cover-img" src="https://shuoit.net/images/cover-day.jpg" alt="cover-img" loading="lazy" />
+    <div class="cover-info">
+        
+        <img class="avatar" width="72" src="/images/Header1000.jpg" alt="avatar"/>
+        
+        <h1 class="cover-siteName">orangejuice&#39;s blog</h1>
+        <h3 class="cover-siteTitle">按ctrl会跳搜索，右上角选择day/night mode</h3>
+        <p class="cover-siteDesc">测试中博客</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/chasingdeath" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/3950662532/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索~" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://chasingdeath.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/Header1000.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://chasingdeath.github.io"
+                       target="_blank">chasedeath</a>
+                    <span title="最后编辑于&nbsp;2021-03-02">2021-03-02</span>
+                </p>
+                <p>来自ZJ的蒟蒻OIer</p>
+            </div>
+            <h2 class="post-title">「USACO 2021.1 Platinum」Paint by Letters</h2>
+            <div class="post-meta">
+                本文共计2822个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="「USACO-2021-1-Platinum」Paint-by-Letters"><a href="#「USACO-2021-1-Platinum」Paint-by-Letters" class="headerlink" title="「USACO 2021.1 Platinum」Paint by Letters"></a>「USACO 2021.1 Platinum」Paint by Letters</h1><p>统计连通块问题，暴力是$O(qn^2)$，而且常数大</p>
+<p>容易想到 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/chasedeath/p/14246463.html">平面图的欧拉定理</a> 优化</p>
+<p>下文和代码中，$V,E,F$分别为点集，边集，区域集合</p>
+<p>其中$|V|$可以直接得到，$|E|$可以$O(n^2)$前缀和预处理出来，$O(1)$查询</p>
+<p>下面处理区域个数</p>
+<h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h3><p>前缀和所有大小为1（即被四个点包住的）区域，暴力预处理所有大小$>1$的区域，个数为$O(\frac{nm}{4})$</p>
+<p>然后可以转化为一个对于给定矩形查询包含的 矩形个数 的问题</p>
+<p>实际上这个题目$q$小直接枚举就是了。。</p>
+<p>复杂度为$O(nm+q\frac{nm}{4})$，足够通过时限</p>
+<p>写的够丑可以得到这个<a target="_blank" rel="noopener" href="https://loj.ac/s/1080403">代码</a></p>
+<p>矩形区间查询问题 ，不知道有没有什么更好的方法</p>
+<p>ps:垃圾数据没有卡，因此实际上数据中的空白块数量非常少，预处理写得稍微好一点可能还比下面的做法常数小</p>
+$$ \ $$
+<h3 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h3><p>用$(x,y)$表示$(x,y),(x+1,y),(x,y+1),(x+1,y+1)$中间的一个空白区域</p>
+<p>这些空白块会被染色块之间的边隔开，但是依然可以形成四联通块</p>
+<p>预处理出所有空白区域的连通块，每个连通块选取一个代表点$S_i$</p>
+<p>我们要统计一个区域中的空白连通块个数，注意到</p>
+<p>跨出区域范围的空白点，并不是断开了，而是和最外层的无穷空白区合并在一起</p>
+<p>因此可以先求出在区域中存在的连通块个数，然后将连通到区域外的部分去掉</p>
+<p>具体实现上：</p>
+<p>前缀和预处理出$S_i$的位置，每次查询区域中的$S_i$个数（这样的统计不完全）</p>
+<p>然后将$S_i$在区域中，且跨出区域的白色连通块删掉即可</p>
+<p>跨出部分枚举四条边界即可</p>
+<p>每次查询枚举边界，因此复杂度为$O(nm+q(n+m))$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(int i=a,i##end=b;i&lt;=i##end;++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> drep(i,a,b) for(int i=a,i##end=b;i&gt;=i##end;--i)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e3</span>+<span class="number">10</span>,INF=<span class="number">1e9</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dx[]=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>&#125;,dy[]=&#123;<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,q;</span><br><span class="line"><span class="keyword">char</span> A[N][N];</span><br><span class="line"><span class="keyword">int</span> vis[N*N],I[N][N],E[<span class="number">4</span>][N][N],S[N][N];</span><br><span class="line"><span class="comment">// B,C预处理上/左边个数</span></span><br><span class="line"><span class="keyword">int</span> B[N][N],C[N][N];</span><br><span class="line"><span class="keyword">int</span> X[N*N],Y[N*N],cnt;</span><br><span class="line"><span class="comment">// 搜索空白连通块</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	I[x][y]=cnt;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,<span class="number">3</span>) <span class="keyword">if</span>(E[x][y][i]) &#123;</span><br><span class="line">		<span class="keyword">int</span> x1=x+dx[i],y1=y+dy[i];</span><br><span class="line">		<span class="keyword">if</span>(!x1 || !y1||x1&gt;=n || y1&gt;=m || I[x1][y1]) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">dfs</span>(x1,y1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Sum</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> A[N][N],<span class="keyword">int</span> x1,<span class="keyword">int</span> y1,<span class="keyword">int</span> x2,<span class="keyword">int</span> y2)</span></span>&#123;</span><br><span class="line">	x1--,y1--;</span><br><span class="line">	<span class="keyword">return</span> A[x2][y2]-A[x1][y2]-A[x2][y1]+A[x1][y1];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;n,&amp;m,&amp;q);</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,A[i]+<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="built_in">rep</span>(j,<span class="number">1</span>,m) &#123;</span><br><span class="line">		E[<span class="number">0</span>][i][j<span class="number">-1</span>]=E[<span class="number">1</span>][i][j]=A[i][j]!=A[i+<span class="number">1</span>][j];</span><br><span class="line">		E[<span class="number">2</span>][i<span class="number">-1</span>][j]=E[<span class="number">3</span>][i][j]=A[i][j]!=A[i][j+<span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 处理一下空白点之间的边</span></span><br><span class="line">		<span class="keyword">if</span>(A[i<span class="number">-1</span>][j]==A[i][j]) B[i][j]++;</span><br><span class="line">		<span class="keyword">if</span>(A[i][j]==A[i][j<span class="number">-1</span>]) C[i][j]++;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">// 预处理空白点之间的集合</span></span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-1</span>) <span class="built_in">rep</span>(j,<span class="number">1</span>,m<span class="number">-1</span>) <span class="keyword">if</span>(!I[i][j]) &#123;</span><br><span class="line">		X[++cnt]=i,Y[cnt]=j,vis[cnt]=q+<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">dfs</span>(i,j),S[i][j]++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="built_in">rep</span>(j,<span class="number">1</span>,m) &#123;</span><br><span class="line">		B[i][j]+=B[i<span class="number">-1</span>][j]+B[i][j<span class="number">-1</span>]-B[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">		C[i][j]+=C[i<span class="number">-1</span>][j]+C[i][j<span class="number">-1</span>]-C[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">		S[i][j]+=S[i<span class="number">-1</span>][j]+S[i][j<span class="number">-1</span>]-S[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(q--) &#123;</span><br><span class="line">		<span class="keyword">int</span> lx,ly,rx,ry; <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d%d&quot;</span>,&amp;lx,&amp;ly,&amp;rx,&amp;ry);</span><br><span class="line">		<span class="keyword">int</span> V=(rx-lx+<span class="number">1</span>)*(ry-ly+<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">int</span> E=<span class="built_in">Sum</span>(B,lx+<span class="number">1</span>,ly,rx,ry)+<span class="built_in">Sum</span>(C,lx,ly+<span class="number">1</span>,rx,ry);</span><br><span class="line">		<span class="keyword">int</span> F=<span class="built_in">Sum</span>(S,lx,ly,rx<span class="number">-1</span>,ry<span class="number">-1</span>);</span><br><span class="line">		<span class="keyword">auto</span> Check=[&amp;](<span class="keyword">int</span> i)&#123; <span class="keyword">if</span>(vis[i]!=q &amp;&amp; lx&lt;=X[i] &amp;&amp; X[i]&lt;rx &amp;&amp; ly&lt;=Y[i] &amp;&amp; Y[i]&lt;ry) vis[i]=q,F--; &#125;;</span><br><span class="line">		<span class="built_in">rep</span>(i,lx,rx<span class="number">-1</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span>(::E[<span class="number">0</span>][i][ry<span class="number">-1</span>]) <span class="built_in">Check</span>(I[i][ry<span class="number">-1</span>]);</span><br><span class="line">			<span class="keyword">if</span>(::E[<span class="number">1</span>][i][ly]) <span class="built_in">Check</span>(I[i][ly]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">rep</span>(i,ly,ry<span class="number">-1</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span>(::E[<span class="number">2</span>][rx<span class="number">-1</span>][i]) <span class="built_in">Check</span>(I[rx<span class="number">-1</span>][i]);</span><br><span class="line">			<span class="keyword">if</span>(::E[<span class="number">3</span>][lx][i]) <span class="built_in">Check</span>(I[lx][i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,V-E+F);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+                
+            
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/default-tag/">default tag</a>
+            
+        </div>
+        
+    </article>
+    
+        <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+
+</div>
+
+<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+    let isMathjaxConfig = false; // 防止重复调用Config，造成性能损耗
+    const initMathjaxConfig = () => {
+    if (!window.MathJax) {
+        return;
+    }
+    window.MathJax.Hub.Config({
+        showProcessingMessages: false, //关闭js加载过程信息
+        messageStyle: "none", //不显示信息
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["?", "?"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+        },
+        "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+        }
+    });
+        isMathjaxConfig = true; // 
+    };
+    if (isMathjaxConfig === false) {
+        initMathjaxConfig();
+    }
+</script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://chasingdeath.github.io" target="_blank" rel="friend">chasedeath</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+            
+        </p>
+    </div>
+</footer>
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+
+
+</body>
+</html>
