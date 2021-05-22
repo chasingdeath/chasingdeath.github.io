@@ -163,25 +163,25 @@
             </div>
             <h2 class="post-title">CF1276F - Asterisk Substrings</h2>
             <div class="post-meta">
-                本文共计4307个字 |
+                本文共计4305个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="CF1276F-Asterisk-Substrings"><a href="#CF1276F-Asterisk-Substrings" class="headerlink" title="CF1276F - Asterisk Substrings"></a>CF1276F - Asterisk Substrings</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定串$S,|S|=n$，设一个串的子串集合为$Sub(S)$</p>
-<p>求$|Sub(S) \cup Sub(*+S[2:n])\cup Sub(S[1:1]+*+S[3:n])\cup \cdots|$</p>
+<p>求$|Sub(S) \cup Sub(<em>+S[2:n])\cup Sub(S[1:1]+</em>+S[3:n])\cup \cdots|$</p>
 <p>其中*表示特殊字符而不是通配符</p>
 <p><br></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>对于不包含*的串，显然就是$Sub(S)$，可以通过后缀数组，后缀自动机来计算</p>
 <p>对于包含*的串，考虑分两部分计算</p>
 <p><br></p>
-<h4 id="1-对于后面接的串分类"><a href="#1-对于后面接的串分类" class="headerlink" title="1.对于后面接的串分类"></a>1.对于后面接的串$T$分类</h4><p>对于后面接的串$T$，$T$在原串$S$出现的位置对应后缀数组上一段$\text{rank}$区间$[l,r]$</p>
+<h4 id="1-对于后面接的串-T-分类"><a href="#1-对于后面接的串-T-分类" class="headerlink" title="1.对于后面接的串$T$分类"></a>1.对于后面接的串$T$分类</h4><p>对于后面接的串$T$，$T$在原串$S$出现的位置对应后缀数组上一段$\text{rank}$区间$[l,r]$</p>
 <p>考虑按照原串后缀数组的$\text{height}$建立笛卡尔树，此时容易发现，不同的$[l,r]$就是</p>
 <p>笛卡尔树上每一个节点对应的区间，而这个$[l,r]$出现的个数就是$height_u-height_{fa_u}$</p>
 <p><br></p>
-<h4 id="2-对于每一个计算前面接的串的种类"><a href="#2-对于每一个计算前面接的串的种类" class="headerlink" title="2.对于每一个计算前面接的串的种类"></a>2.对于每一个$[l,r]$计算前面接的串$R$的种类</h4><p>那么在前面接的串$R$就是从$[l,r]$中$sa[i]-2$对应的所有前缀中</p>
+<h4 id="2-对于每一个-l-r-计算前面接的串-R-的种类"><a href="#2-对于每一个-l-r-计算前面接的串-R-的种类" class="headerlink" title="2.对于每一个$[l,r]$计算前面接的串$R$的种类"></a>2.对于每一个$[l,r]$计算前面接的串$R$的种类</h4><p>那么在前面接的串$R$就是从$[l,r]$中$sa[i]-2$对应的所有前缀中</p>
 <p>选择某一条后缀得到</p>
-<p>在笛卡尔树上计算时，我们需要从儿子中合并两段$[l,r],[l',r']$，计算不同串个数</p>
+<p>在笛卡尔树上计算时，我们需要从儿子中合并两段$[l,r],[l’,r’]$，计算不同串个数</p>
 <p>也就是说我们需要动态维护一个集合$Set$为反串后缀的子集，并且计算这些后缀能够构成的串种类</p>
 <p>对于$Set$为全集的情况，我们知道答案就是$\sum |suf_i|-\sum height_i$</p>
 <p>这条式子的意义实际上是：</p>

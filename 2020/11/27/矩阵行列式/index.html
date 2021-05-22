@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">矩阵行列式</h2>
             <div class="post-meta">
-                本文共计829个字 |
+                本文共计814个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -172,20 +172,17 @@
 <h3 id="行列式的意义"><a href="#行列式的意义" class="headerlink" title="行列式的意义"></a>行列式的意义</h3><p>如果将矩阵的每一行视为一个$n$维向量，则$n$阶行列式的意义可以看做是:</p>
 <p>有向长度/面积/体积在$n$为空间下的扩展</p>
 <p>具体的例子</p>
-$n=1$时，$|A|=A_{1,1}$，即有向长度
-
-$n=2$时，$|A|=A_{1,1}A_{2,2}-A_{1,2}A_{2,1}=\vec{A_1}\times \vec{A_2}$
+<p>$n=1$时，$|A|=A_{1,1}$，即有向长度</p>
+<p>$n=2$时，$|A|=A_{1,1}A_{2,2}-A_{1,2}A_{2,1}=\vec{A_1}\times \vec{A_2}$</p>
 <p>因此也可以得到常用的一个3维向量外积的表达式</p>
-$\vec{a}\times \vec{b}=\begin{vmatrix} \vec{x}\ \ \vec{y}\ \ \vec{z} \\ a_1\ a_2\ a_3\\ b_1\ b_2\ b_3\end{vmatrix}$
+<p>$\vec{a}\times \vec{b}=\begin{vmatrix} \vec{x}\ \ \vec{y}\ \ \vec{z} \\ a_1\ a_2\ a_3\\ b_1\ b_2\ b_3\end{vmatrix}$</p>
 <p>其中$\vec{x},\vec{y},\vec{z}$是三维平面的三个维度的单位向量</p>
 <p>上式即将有向体积中的一个向量改为单位向量后压缩到一个平面上</p>
-$$ \ $$
-<h3 id="最基本的求法："><a href="#最基本的求法：" class="headerlink" title="最基本的求法："></a>最基本的求法：</h3><p>枚举$1,2,\cdots,n$的一个排列$p_i$，设排列$p$的逆序对为$f(p)$</p>
+<script type="math/tex; mode=display">\</script><h3 id="最基本的求法："><a href="#最基本的求法：" class="headerlink" title="最基本的求法："></a>最基本的求法：</h3><p>枚举$1,2,\cdots,n$的一个排列$p_i$，设排列$p$的逆序对为$f(p)$</p>
 <p>则$\begin{aligned} |A|=\sum (-1)^{f(p)} \Pi A_{i,p_i}\end{aligned}$</p>
-$$ \ $$
-<h3 id="矩阵行列式的性质："><a href="#矩阵行列式的性质：" class="headerlink" title="矩阵行列式的性质："></a>矩阵行列式的性质：</h3><p>1.交换任意两行(列)得到矩阵$A'$，则$|A'|=-|A|$ (交换后每个排列$f(p)$的奇偶性改变)</p>
-<p>2.对于某一行(列)乘上一个值$k$得到矩阵$A'$，则$|A'|=k|A|$</p>
-<p>3.某一行减去另一行的$k$倍得到矩阵$A'$，则$|A'|=|A|$</p>
+<script type="math/tex; mode=display">\</script><h3 id="矩阵行列式的性质："><a href="#矩阵行列式的性质：" class="headerlink" title="矩阵行列式的性质："></a>矩阵行列式的性质：</h3><p>1.交换任意两行(列)得到矩阵$A’$，则$|A’|=-|A|$ (交换后每个排列$f(p)$的奇偶性改变)</p>
+<p>2.对于某一行(列)乘上一个值$k$得到矩阵$A’$，则$|A’|=k|A|$</p>
+<p>3.某一行减去另一行的$k$倍得到矩阵$A’$，则$|A’|=|A|$</p>
 <h3 id="根据性质得到的快速求法"><a href="#根据性质得到的快速求法" class="headerlink" title="根据性质得到的快速求法"></a>根据性质得到的快速求法</h3><p>根据性质1,2,3可以对于矩阵进行高斯消元</p>
 <p>而对于一个上三角/下三角矩阵，带入上面的基本求法，显然能够得到非0值的排列只有对角线$p_i=i$</p>
 <p>因此得到上/下三角矩阵之后就可以快速求解,复杂度为高斯消元的$O(n^3)$</p>

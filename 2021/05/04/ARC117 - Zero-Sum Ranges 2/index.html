@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">ARC117 - Zero-Sum Ranges 2</h2>
             <div class="post-meta">
-                本文共计230个字 |
+                本文共计1540个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -172,13 +172,10 @@
 <p>显然需要转化为前缀和，通过前缀和相等的二元组数确定和为0的数量</p>
 <p>而恰好$n$个$+1,-1$可以转化为$s_{2n}=0$</p>
 <p>设$m=2n+1$，接下来我们要计算$m$个元素，且$s_1=s_m=0,s_{i}=s_{i-1}\pm 1$的序列</p>
-$s_i$的变化是连续的，考虑分为$s_i\ge 0,s_i<0$的两部分
-
-以$\ge 0$为例，从高到低确定每个连续的峰折线的情况，折线组的位置不重要，只需要知道个数
-
-令$dp_{i,j,c}$表示当前$i$个元素确定，且已经确定的元素分成了$j$段，得到$c$个相同对的方案数
-
-每个段中可能包含折线组，且两端一定是当前的最低值，状态数为$O(n^4)$
+<p>$s_i$的变化是连续的，考虑分为$s_i\ge 0,s_i&lt;0$的两部分</p>
+<p>以$\ge 0$为例，从高到低确定每个连续的峰折线的情况，折线组的位置不重要，只需要知道个数</p>
+<p>令$dp_{i,j,c}$表示当前$i$个元素确定，且已经确定的元素分成了$j$段，得到$c$个相同对的方案数</p>
+<p>每个段中可能包含折线组，且两端一定是当前的最低值，状态数为$O(n^4)$</p>
 <p>每次$dp$在当前状态上扩展下一层的情况，由于变化连续，得到新的状态</p>
 <p>1.每个段两边应该出现新的位置</p>
 <p>2.两个段向两边扩展时，可能共用一个位置</p>
@@ -189,7 +186,7 @@ $s_i$的变化是连续的，考虑分为$s_i\ge 0,s_i<0$的两部分
 <p>具体的，对于新出现的$j+1$个位置（也就是每两个段之间的间隔）是一定会出现的，用这$j+1$个可以合并为一整个段</p>
 <p>剩余的情况，额外插入一个元素，就是在$j+1$个位置中分配，且每额外加入一个就能额外产生一个新的段</p>
 <p>复杂度为$O(n^5)$</p>
-<p>最终合并$s_i\ge 0,s_i<0$的两部分，由于$s_1=s_m=0$，所以开头结尾两端必须是0，然后两部分的段交替排列</p>
+<p>最终合并$s_i\ge 0,s_i&lt;0$的两部分，由于$s_1=s_m=0$，所以开头结尾两端必须是0，然后两部分的段交替排列</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(int i=a,i##end=b;i&lt;=i##end;++i)</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span>&#123;</span>N=<span class="number">62</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> n,m,k;</span><br><span class="line">ll C[N][N],dp[N][N][<span class="number">910</span>];</span><br><span class="line"><span class="comment">// dp[i][j][s]</span></span><br><span class="line"><span class="comment">// i places taken</span></span><br><span class="line"><span class="comment">// j elements </span></span><br><span class="line"><span class="comment">// s ranges generated</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">D2</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123; <span class="keyword">return</span> n*(n<span class="number">-1</span>)/<span class="number">2</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k),m=n*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,m) <span class="built_in">rep</span>(j,*C[i]=<span class="number">1</span>,i) C[i][j]=C[i<span class="number">-1</span>][j]+C[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,m) <span class="keyword">if</span>(<span class="built_in">D2</span>(i)&lt;=k) dp[i][i][<span class="built_in">D2</span>(i)]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,m) <span class="built_in">rep</span>(j,<span class="number">1</span>,i) <span class="built_in">rep</span>(s,<span class="number">0</span>,k) <span class="keyword">if</span>(dp[i][j][s]) &#123;</span><br><span class="line">		<span class="built_in">rep</span>(d,j+<span class="number">1</span>,m-i) &#123;</span><br><span class="line">			<span class="keyword">if</span>(s+<span class="built_in">D2</span>(d)&gt;k) <span class="keyword">break</span>;</span><br><span class="line">			dp[i+d][d-j][s+<span class="built_in">D2</span>(d)]+=dp[i][j][s]*C[d<span class="number">-1</span>][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,m) <span class="built_in">rep</span>(j,<span class="number">1</span>,i) <span class="built_in">rep</span>(s,<span class="number">0</span>,k) <span class="keyword">if</span>(dp[i][j][s]) &#123;</span><br><span class="line">		ans+=dp[i][j][s]*dp[m-i][j<span class="number">-1</span>][k-s];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
             

@@ -163,13 +163,13 @@
             </div>
             <h2 class="post-title">「CEOI2018」斐波那契表示法</h2>
             <div class="post-meta">
-                本文共计99个字 |
+                本文共计6326个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="「CEOI2018」斐波那契表示法"><a href="#「CEOI2018」斐波那契表示法" class="headerlink" title="「CEOI2018」斐波那契表示法"></a>「CEOI2018」斐波那契表示法</h1><p>思路：维护当前数值的唯一表示法，然后根据唯一表示法来确定答案</p>
-<h3 id="Part1-唯一表示法"><a href="#Part1-唯一表示法" class="headerlink" title="Part1 唯一表示法"></a>Part1 唯一表示法</h3><p>任何一个数$x$有唯一表示$P_i$，满足$x=\sum F_{P_i},P_i<P_{i+1}-1$</p>
+<h3 id="Part1-唯一表示法"><a href="#Part1-唯一表示法" class="headerlink" title="Part1 唯一表示法"></a>Part1 唯一表示法</h3><p>任何一个数$x$有唯一表示$P_i$，满足$x=\sum F_{P_i},P_i&lt;P_{i+1}-1$</p>
 <p>即不会出现相邻两项</p>
 <p>依次插入每一个数$x$，考虑可能出现的情况</p>
 <p>1.$x$一位以及前后为空，那么直接插入</p>
@@ -186,12 +186,11 @@
 <p><del>大致如此，实际情况比较复杂，要讨论x-2=0,x-2&lt;0等等情况</del></p>
 <p>用一棵平衡树维护$P_i-P_{i-1}$的值即可，4操作可以二分左边第一个&gt;2的元素，然后进行平移</p>
 <p>最终复杂度为$O(n\log n)$</p>
-$$ \ $$
-<h3 id="Part2-dp求答案"><a href="#Part2-dp求答案" class="headerlink" title="Part2 dp求答案"></a>Part2 dp求答案</h3><p>令边界$P_0=0$，根据上面维护的$\delta_i=P_i-P_{i-1}$</p>
+<script type="math/tex; mode=display">\</script><h3 id="Part2-dp求答案"><a href="#Part2-dp求答案" class="headerlink" title="Part2 dp求答案"></a>Part2 dp求答案</h3><p>令边界$P_0=0$，根据上面维护的$\delta_i=P_i-P_{i-1}$</p>
 <p>考虑根据$\delta_i$求解答案</p>
 <p>显然一个数$x$可以下分为$x$或者$x-1,x-2$ 或 $x-1,x-3,x-4$ 或$x-1,x-3,x-5,x-6\ldots$</p>
 <p>且不能碰到前面的数</p>
-<p>简单分析发现$P_i$有$\lceil \frac{\delta_i}{2}\rceil $种下分方案</p>
+<p>简单分析发现$P_i$有$\lceil \frac{\delta_i} {2}\rceil $种下分方案</p>
 <p>然而，$P_{i-1}$如果被下分，那么$P_{i-1}$这一位会消失，变成$P_{i-1}-1$作为限制点</p>
 <p>也就是说，$P_{i-1}$的下分会影响到$\delta_i$，使得$\delta_i\rightarrow \delta_i+1$</p>
 <p>那么依次考虑每个$\delta_i$，令$dp_{i,f}$表示前$i$个，最后一个是否下分的方案数，可以$dp$求解</p>

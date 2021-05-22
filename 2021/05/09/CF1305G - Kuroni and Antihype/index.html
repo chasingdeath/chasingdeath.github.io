@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">CF1305G - Kuroni and Antihype</h2>
             <div class="post-meta">
-                本文共计1076个字 |
+                本文共计1077个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -184,9 +184,8 @@
 <p><br></p>
 <h3 id="计算生成树"><a href="#计算生成树" class="headerlink" title="计算生成树"></a>计算生成树</h3><p><del>只有暴力解法</del></p>
 <p>倒着枚举$a_i+a_j=S$，枚举$S$的子集$T$就能确定两个点</p>
-<p>并查集处理加边即可，复杂度为$O(\cfrac{3^{18}}{2}\cdot \alpha(n))$</p>
-$\text{CodeForces}$真的有点快！！
-
+<p>并查集处理加边即可，复杂度为$O(\cfrac{3^{18} } {2}\cdot \alpha(n))$</p>
+<p>$\text{CodeForces}$真的有点快！！</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1</span>&lt;&lt;<span class="number">18</span>,INF=<span class="number">1e9</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[N],F[N];</span><br><span class="line">ll ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> F[x]==x?x:F[x]=<span class="built_in">Find</span>(F[x]); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=<span class="built_in">rd</span>();</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="keyword">int</span> x=<span class="built_in">rd</span>();</span><br><span class="line">		a[x]++,ans-=x;</span><br><span class="line">	&#125;</span><br><span class="line">	a[<span class="number">0</span>]++;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,N<span class="number">-1</span>) F[i]=i;</span><br><span class="line">	<span class="built_in">drep</span>(i,N<span class="number">-1</span>,<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> S=i,T;(S^i)&lt;=S;S=(S<span class="number">-1</span>)&amp;i) <span class="keyword">if</span>(a[S] &amp;&amp; a[T=S^i] &amp;&amp; <span class="built_in">Find</span>(S)!=<span class="built_in">Find</span>(T)) &#123;</span><br><span class="line">			ans+=<span class="number">1ll</span>*(a[S]+a[T]<span class="number">-1</span>)*i;</span><br><span class="line">			a[S]=a[T]=<span class="number">1</span>,F[<span class="built_in">Find</span>(S)]=<span class="built_in">Find</span>(T);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
             

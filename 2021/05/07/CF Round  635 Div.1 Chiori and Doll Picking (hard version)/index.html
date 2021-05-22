@@ -163,62 +163,50 @@
             </div>
             <h2 class="post-title">CF Round  635 Div.1 Chiori and Doll Picking (Hard Version)</h2>
             <div class="post-meta">
-                本文共计4033个字 |
+                本文共计3963个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="CF-Round-635-Div-1-Chiori-and-Doll-Picking-hard-version"><a href="#CF-Round-635-Div-1-Chiori-and-Doll-Picking-hard-version" class="headerlink" title="CF Round #635 Div.1 Chiori and Doll Picking (hard version)"></a>CF Round #635 Div.1 Chiori and Doll Picking (hard version)</h1><p>考虑对于$a_i$建立线性基$d$，并且通过高斯消元重整，使得$d$中 每一个元素的最高位 仅自己包含</p>
 <p>不妨设$k=|d|$，一个基底的生成集合为$S(d)$，设$A=S(d)$，预处理部分复杂度为$O(nm+k^2)$</p>
-$$ \ $$
-<p>根据线性基的基本性质，我们知道任何一个$x\in S(d)$有$2^{n-k}$种生成方法</p>
+<script type="math/tex; mode=display">\</script><p>根据线性基的基本性质，我们知道任何一个$x\in S(d)$有$2^{n-k}$种生成方法</p>
 <p>因此我们只需要计算线性基元素异或的答案即可，这样我们将问题规模降低到了$k$</p>
-$$ \ $$
-$$ \ $$
-<h3 id="暴力1"><a href="#暴力1" class="headerlink" title="暴力1"></a>暴力1</h3><p>对于$k\leq 27$，暴力枚举每个元素是否选择，可以通过预处理让复杂度降至$O(2^k)$</p>
+<script type="math/tex; mode=display">\</script><script type="math/tex; mode=display">\</script><h3 id="暴力1"><a href="#暴力1" class="headerlink" title="暴力1"></a>暴力1</h3><p>对于$k\leq 27$，暴力枚举每个元素是否选择，可以通过预处理让复杂度降至$O(2^k)$</p>
 <p><br></p>
-<h3 id="暴力2"><a href="#暴力2" class="headerlink" title="暴力2"></a>暴力2</h3>$m\leq 35，k>27$时
-
-由于线性基包含$k$个关键01位，$m-k$个非关键01位
-
-通过高斯消元可以使得基的每一位仅包含一个关键01位
-
-令$dp_{S,i}$表示选择了$i$个基，非关键01位异或和为$S$的方案数
-
-复杂度为$O(2^{m-k}m^2)$
+<h3 id="暴力2"><a href="#暴力2" class="headerlink" title="暴力2"></a>暴力2</h3><p>$m\leq 35，k&gt;27$时</p>
+<p>由于线性基包含$k$个关键01位，$m-k$个非关键01位</p>
+<p>通过高斯消元可以使得基的每一位仅包含一个关键01位</p>
+<p>令$dp_{S,i}$表示选择了$i$个基，非关键01位异或和为$S$的方案数</p>
+<p>复杂度为$O(2^{m-k}m^2)$</p>
 <p><br></p>
 <hr>
 <h2 id="对称暴力"><a href="#对称暴力" class="headerlink" title="对称暴力"></a>对称暴力</h2><p>由于$m\leq 53$，而我们能够暴力解决$k\leq 27$，则可以考虑剩下的$m-k$个位，想办法在$O(2^{m-k})$时间内求解</p>
-$$ \ $$
-<p>考虑计算个数为$c$的方案数，我们用一个卷积形式来描述，令$\displaystyle F_c(x)=\sum_{|T|=c}x^{T}$</p>
-<p>则容易发现 $ans_c=[x^{\empty}](A\bigoplus F_c)$，其中$\bigoplus$表示 异或 <del>(集合对称差)</del> 卷积</p>
+<script type="math/tex; mode=display">\</script><p>考虑计算个数为$c$的方案数，我们用一个卷积形式来描述，令$\displaystyle F_c(x)=\sum_{|T|=c}x^{T}$</p>
+<p>则容易发现 $ans_c=<a href="A\bigoplus F_c">x^{\empty}</a>$，其中$\bigoplus$表示 异或 <del>(集合对称差)</del> 卷积</p>
 <p>显然我们需要$\text{FWT}$来计算这个东西，也就是计算</p>
-$[x^{\empty}]\text{FWT}(\text{FWT}(A)\cdot \text{FWT}(F_c))$
+<p>$[x^{\empty}]\text{FWT}(\text{FWT}(A)\cdot \text{FWT}(F_c))$</p>
 <p>先考虑比较复杂的$G=\text{FWT}(A)$的计算</p>
 <p>下面你需要良好掌握$\text{FWT}$，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chasedeath/p/12785842.html">参考</a></p>
 <p><br></p>
-<h4 id="1-中每一非零项系数为"><a href="#1-中每一非零项系数为" class="headerlink" title="1: 中每一非零项系数为"></a>1: $G(x)$中每一非零项系数为$2^k$</h4><p>考虑线性基$A$的元素是封闭的，则有$A\bigoplus A=A\cdot |A|$</p>
+<h4 id="1-G-x-中每一非零项系数为-2-k"><a href="#1-G-x-中每一非零项系数为-2-k" class="headerlink" title="1: $G(x)$中每一非零项系数为$2^k$"></a>1: $G(x)$中每一非零项系数为$2^k$</h4><p>考虑线性基$A$的元素是封闭的，则有$A\bigoplus A=A\cdot |A|$</p>
 <p>即$G\cdot G=G\cdot 2^k$，解方程得到$[x^S]G\in\{0,2^k\}$</p>
 <p><br></p>
-<h4 id="2"><a href="#2" class="headerlink" title="2:"></a>2:$[x^S]G(x)=2^k\Longleftrightarrow \forall T,|S\cap T|\equiv 0\pmod 2$</h4><p>由$\text{FWT}$式子</p>
-$[x^S]G(x)=\sum (-1)^{|S\cap T|} [x^T]A(x)$
+<h4 id="2-x-S-G-x-2-k-Longleftrightarrow-forall-T-S-cap-T-equiv-0-pmod-2"><a href="#2-x-S-G-x-2-k-Longleftrightarrow-forall-T-S-cap-T-equiv-0-pmod-2" class="headerlink" title="2:$[x^S]G(x)=2^k\Longleftrightarrow \forall T,|S\cap T|\equiv 0\pmod 2$"></a>2:$[x^S]G(x)=2^k\Longleftrightarrow \forall T,|S\cap T|\equiv 0\pmod 2$</h4><p>由$\text{FWT}$式子</p>
+<p>$[x^S]G(x)=\sum (-1)^{|S\cap T|} [x^T]A(x)$</p>
 <p>而$A(x)$由$2^k$个1构成，故得结论</p>
 <p><br></p>
 <h4 id="确定非零项"><a href="#确定非零项" class="headerlink" title="确定非零项"></a>确定非零项</h4><p>由恒等式$|X\cap S|+|Y\cap S|\equiv|(X\oplus Y)\cap S|\pmod 2$，得到简化</p>
 <p>1.若$X,Y$对于$S$合法，则$X\oplus Y$同样合法，只需要考虑线性基$d$中元素对于$S$的限制</p>
-<p>2.假设已知$S,T$非零，则$S\oplus T$非零，因此可以考虑用一个线性基$d'$来描述合法元素</p>
+<p>2.假设已知$S,T$非零，则$S\oplus T$非零，因此可以考虑用一个线性基$d’$来描述合法元素</p>
 <p><br></p>
-<h4 id="确定大小"><a href="#确定大小" class="headerlink" title="确定大小"></a>确定$|d'|$大小</h4><p>则$2^kS(d')=G$，$\text{IFWT}(2^k\cdot S(d'))=A$</p>
-<p>带入两边$x^{\empty}$项的值，容易得到$|S(d')|=2^{m-k}$，故$|d'|=m-k$</p>
-$|d'|=m-k$是接近前面猜想的一大跳跃
-
-<br>
-
-#### 构造$d'$?
-
-考虑用0/1矩阵形式描述线性基$d$
+<h4 id="确定-d’-大小"><a href="#确定-d’-大小" class="headerlink" title="确定$|d’|$大小"></a>确定$|d’|$大小</h4><p>则$2^kS(d’)=G$，$\text{IFWT}(2^k\cdot S(d’))=A$</p>
+<p>带入两边$x^{\empty}$项的值，容易得到$|S(d’)|=2^{m-k}$，故$|d’|=m-k$</p>
+<p>$|d’|=m-k$是接近前面猜想的一大跳跃</p>
+<p><br></p>
+<h4 id="构造-d’"><a href="#构造-d’" class="headerlink" title="构造$d’$?"></a>构造$d’$?</h4><p>考虑用0/1矩阵形式描述线性基$d$</p>
 <p>将$d$中的元素中的最高位移动到主对角线上最高的$k$个位置，此时每一行一定是一个主对角线元素后面跟上一些位置$\ge k+1$的元素</p>
-<p>此时$d'$的构造即：主对角线取反，其余位置为转置</p>
+<p>此时$d’$的构造即：主对角线取反，其余位置为转置</p>
 <div class="table-container">
 <table>
 <thead>
@@ -270,17 +258,15 @@ $|d'|=m-k$是接近前面猜想的一大跳跃
 </table>
 </div>
 <p>Proof:</p>
-<p>显然这样构造出的$d'$元素最低位独立，因此不线性相关，只需要证明满足限制即可</p>
-<p>首先$d_i$与$d'_j$在主对角线上无交，有交部分一定是一个主对角线元素与一个非主对角线元素交</p>
-<p>若$d_{i}$与$d'_j$在$d_{i,j},d'_{j,j}$有交，则在其关于主对角线对称的位置$d_{i,i},d'_{i,j}$处同样有交</p>
+<p>显然这样构造出的$d’$元素最低位独立，因此不线性相关，只需要证明满足限制即可</p>
+<p>首先$d_i$与$d’_j$在主对角线上无交，有交部分一定是一个主对角线元素与一个非主对角线元素交</p>
+<p>若$d_{i}$与$d’_j$在$d_{i,j},d’_{j,j}$有交，则在其关于主对角线对称的位置$d_{i,i},d’_{i,j}$处同样有交</p>
 <p>因此交都是成对出现的</p>
-$$ \ $$
-$$ \ $$
-<hr>
+<script type="math/tex; mode=display">\</script><script type="math/tex; mode=display">\</script><hr>
 <p>由此我们可以在$2^{m-k}$时间内通过暴力枚举得到$G$中每个非零项</p>
 <p>下面考虑$\text{FWT}(F^c)$的贡献的部分实际极其简单</p>
 <p>可以根据$G$中每一项$x^S$的$|S|$确定$\text{FWT}(F^c)$</p>
-$[x^S]\text{FWT}(F^c)=\sum_{|T|=c}(-1)^{|S\cup T|}$
+<p>$[x^S]\text{FWT}(F^c)=\sum_{|T|=c}(-1)^{|S\cup T|}$</p>
 <p>对于$G$中不同的$|S|$分类，对于$|T|=c$，枚举$|S\cup T|$，添加组合数系数即可计算贡献</p>
 <p>注意最后求出的答案$[x^{\empty}]$为对应项相乘之后求和除去$\text{IFWT}$的$2^k$</p>
 <p>复杂度为$O(2^{m-k}+m^3+nm)$</p>

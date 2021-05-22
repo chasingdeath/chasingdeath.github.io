@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">Stirling数小记</h2>
             <div class="post-meta">
-                本文共计3585个字 |
+                本文共计3517个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -173,76 +173,62 @@
 <p>有标号的第一类斯特林数$s(n,m)=(-1)^{n-m}\begin{bmatrix}n\\ m\end{bmatrix}$</p>
 <p>第二类斯特林数：$\begin{Bmatrix}n\\ m\end{Bmatrix}$表示$n$个不同元素分为$m$个集合的方案数</p>
 <p>注意圆排列和集合都是相互之间无序的</p>
-$$ \ $$
-<hr>
+<script type="math/tex; mode=display">\</script><hr>
 <h3 id="递推方法"><a href="#递推方法" class="headerlink" title="递推方法"></a>递推方法</h3><p>第一类斯特林数</p>
-$\begin{bmatrix}n\\ m\end{bmatrix}=\begin{bmatrix}n-1\\ m-1\end{bmatrix}+(n-1)\begin{bmatrix}n-1\\ m\end{bmatrix}$
+<p>$\begin{bmatrix}n\\ m\end{bmatrix}=\begin{bmatrix}n-1\\ m-1\end{bmatrix}+(n-1)\begin{bmatrix}n-1\\ m\end{bmatrix}$</p>
 <p>即新建一个圆排列，或者插入前面$n-1$个元素中任意一个的后面</p>
 <p>显然的，有标号的第一类斯特林数递推式就是</p>
-$\begin{bmatrix}n\\ m\end{bmatrix}=\begin{bmatrix}n-1\\ m-1\end{bmatrix}-(n-1)\begin{bmatrix}n-1\\ m\end{bmatrix}$
-$$ \ $$
-<p>第二类斯特林数</p>
-$\begin{Bmatrix}n\\ m\end{Bmatrix}=\begin{Bmatrix}n-1\\ m-1\end{Bmatrix}+m\begin{Bmatrix}n-1\\ m\end{Bmatrix}$
+<p>$\begin{bmatrix}n\\ m\end{bmatrix}=\begin{bmatrix}n-1\\ m-1\end{bmatrix}-(n-1)\begin{bmatrix}n-1\\ m\end{bmatrix}$</p>
+<script type="math/tex; mode=display">\</script><p>第二类斯特林数</p>
+<p>$\begin{Bmatrix}n\\ m\end{Bmatrix}=\begin{Bmatrix}n-1\\ m-1\end{Bmatrix}+m\begin{Bmatrix}n-1\\ m\end{Bmatrix}$</p>
 <p>即新建一个集合，或者加入前面的$m$个集合</p>
-$$ \ $$
-<hr>
-<h3 id="第二类斯特林数的通项公式"><a href="#第二类斯特林数的通项公式" class="headerlink" title="第二类斯特林数的通项公式"></a>第二类斯特林数的通项公式</h3>$\begin{aligned} \begin{Bmatrix} n \\ m \end{Bmatrix}=\frac{1}{m!}\sum_{i=0}^{\infty} (-1)^{m-i}\binom{m}{i} i^n \end{aligned}$
+<script type="math/tex; mode=display">\</script><hr>
+<h3 id="第二类斯特林数的通项公式"><a href="#第二类斯特林数的通项公式" class="headerlink" title="第二类斯特林数的通项公式"></a>第二类斯特林数的通项公式</h3>$\begin{aligned} \begin{Bmatrix} n \\ m \end{Bmatrix}=\frac{1} {m!}\sum_{i=0}^{\infty} (-1)^{m-i}\binom{m} {i} i^n \end{aligned}$
 <p>其组合意义是枚举生成了多少个有序的集合，然后容斥，最后除去集合的顺序</p>
-$$ \ $$
-<hr>
+<script type="math/tex; mode=display">\</script><hr>
 <h3 id="生成函数表示与行-列求解"><a href="#生成函数表示与行-列求解" class="headerlink" title="生成函数表示与行/列求解"></a>生成函数表示与行/列求解</h3><p>固定$n$，以$m$为形式幂指数，则第一类斯特林数的普通生成函数</p>
-$\begin{aligned}\text{OGF}=\prod_{i=0}^{n-1}(x+i)=x^{\overline{n}}\end{aligned}$
+$\begin{aligned}\text{OGF}=\prod_{i=0}^{n-1}(x+i)=x^{\overline{n} }\end{aligned}$
 <p>(其意义就是上面的递推公式)</p>
 <p>倍增+卷积二项展开求出$F(x+i)$即可做到$O(n\log n)$求出一行</p>
-$$ \ $$
-<p>固定$m$，以$n$为形式幂指数，则第一类斯特林数的指数型生成函数</p>
-$\begin{aligned}\text{EGF}= & \frac{1}{m!}\cdot (\sum_{i=1}^{\infty}\frac{(i-1)!}{i!}x^i)^m\\= & \frac{1}{m!}\cdot  (\sum_{i=1}^{\infty}\frac{x^i}{i})^m\end{aligned}$
-<p>设$F(x)=\sum_{i=1}^{\infty}\frac{x^i}{i}$</p>
-$\begin{aligned} \because F'(x)=&\sum_{i=1}^{\infty}x^{i-1}=\frac{1}{1-x}\end{aligned}$
-$\begin{aligned} \therefore F(x)=\int \frac{1}{1-x}=-\ln(1-x)\end{aligned}$
-$\begin{aligned}\therefore \text{EGF} = & \frac{1}{m!}\cdot  (-\ln(1-x))^m\\= & \frac{1}{m!}\cdot (-1)^m\cdot \ln^m(1-x)\end{aligned}$
+<script type="math/tex; mode=display">\</script><p>固定$m$，以$n$为形式幂指数，则第一类斯特林数的指数型生成函数</p>
+$\begin{aligned}\text{EGF}= & \frac{1} {m!}\cdot (\sum_{i=1}^{\infty}\frac{(i-1)!} {i!}x^i)^m\\= & \frac{1} {m!}\cdot  (\sum_{i=1}^{\infty}\frac{x^i} {i})^m\end{aligned}$
+<p>设$F(x)=\sum_{i=1}^{\infty}\frac{x^i} {i}$</p>
+$\begin{aligned} \because F'(x)=&\sum_{i=1}^{\infty}x^{i-1}=\frac{1} {1-x}\end{aligned}$
+$\begin{aligned} \therefore F(x)=\int \frac{1} {1-x}=-\ln(1-x)\end{aligned}$
+$\begin{aligned}\therefore \text{EGF} = & \frac{1} {m!}\cdot  (-\ln(1-x))^m\\= & \frac{1} {m!}\cdot (-1)^m\cdot \ln^m(1-x)\end{aligned}$
 <p>(就是百度百科上的那个，它什么都没讲清楚)</p>
 <p>多项式快速幂即可做到$O(n\log n-n\log ^2n)$求一列</p>
-$$ \ $$
-<p>而在上式的推导过程中额外加入$(-1)^m$的常数，并且把$x^i$换成$(-x)^i$可以得到有标号第一类斯特林数的指数型生成函数</p>
-$\begin{aligned} \text{EGF} = & \frac{1}{m!}\cdot  (\sum_{i=1}^{\infty}\frac{(-x)^i}{i})^m\\=& \frac{1}{m!}\cdot  \ln^m(1+x)\end{aligned}$
-$$ \ $$
-$$ \ $$
-<p>第二类斯特林数的一行可以直接由通项公式做卷积得到</p>
-$$ \ $$
-<p>固定$m$，以$n$为形式幂指数，则第二类斯特林数的指数型生成函数表示为</p>
-$\begin{aligned} \text{EGF} &=\frac{1}{m!}({\sum_{i=1}^{\infty} \frac{x^i}{i!}})^m\\ &=\frac{1}{m!}(e^x-1)^m \\ &=\frac{1}{m!}\sum_{i=0}^m (-1)^{m-1} \binom{m}{i}e^{ix}\end{aligned}$
+<script type="math/tex; mode=display">\</script><p>而在上式的推导过程中额外加入$(-1)^m$的常数，并且把$x^i$换成$(-x)^i$可以得到有标号第一类斯特林数的指数型生成函数</p>
+$\begin{aligned} \text{EGF} = & \frac{1} {m!}\cdot  (\sum_{i=1}^{\infty}\frac{(-x)^i} {i})^m\\=& \frac{1} {m!}\cdot  \ln^m(1+x)\end{aligned}$
+<script type="math/tex; mode=display">\</script><script type="math/tex; mode=display">\</script><p>第二类斯特林数的一行可以直接由通项公式做卷积得到</p>
+<script type="math/tex; mode=display">\</script><p>固定$m$，以$n$为形式幂指数，则第二类斯特林数的指数型生成函数表示为</p>
+$\begin{aligned} \text{EGF} &=\frac{1} {m!}({\sum_{i=1}^{\infty} \frac{x^i} {i!} })^m\\ &=\frac{1} {m!}(e^x-1)^m \\ &=\frac{1} {m!}\sum_{i=0}^m (-1)^{m-1} \binom{m} {i}e^{ix}\end{aligned}$
 <p>实际上由这个二项展开的形式也可以发现，它就是上面通项公式的生成函数推导</p>
 <p>可以求一列，复杂度为$O(n\log n-n\log ^2n)$常数很大</p>
-$$ \ $$
-<p>虽然没什么意义，但是还是写一下二元形式</p>
+<script type="math/tex; mode=display">\</script><p>虽然没什么意义，但是还是写一下二元形式</p>
 <p>第一类斯特林数:</p>
 $\begin{aligned} \text{EGF}=e^{-\ln (1-x)y}\end{aligned}$
 <p>第二类斯特林数:</p>
-$\begin{aligned}\text{EGF}=e^{\begin{aligned}(e^x-1)y\end{aligned}}\end{aligned}$
+$\begin{aligned}\text{EGF}=e^{\begin{aligned}(e^x-1)y\end{aligned} }\end{aligned}$
 <p>注意元$x$为指数型，$y$是普通型</p>
-$$ \ $$
-<hr>
+<script type="math/tex; mode=display">\</script><hr>
 <h3 id="斯特林数与幂指数-上升幂-下降幂"><a href="#斯特林数与幂指数-上升幂-下降幂" class="headerlink" title="斯特林数与幂指数/上升幂/下降幂"></a>斯特林数与幂指数/上升幂/下降幂</h3><p>第一类斯特林数：</p>
-<p>上面已经说过$\begin{aligned}x^{\overline{n}}=\sum_{i=0}^{n}\begin{bmatrix}n\\i\end{bmatrix}x^i\end{aligned}$</p>
-<p>同理，用有标号的第一类斯特林数将$x^{\underline{n}}$展开的式子是</p>
-$\begin{aligned}x^{\underline{n}}=\sum_{i=0}^{n}(-1)^{n- i}\begin{bmatrix}n\\i\end{bmatrix}x^i\end{aligned}$
-$$ \ $$
-<p>第二类斯特林数：</p>
+<p>上面已经说过$\begin{aligned}x^{\overline{n} }=\sum_{i=0}^{n}\begin{bmatrix}n\\i\end{bmatrix}x^i\end{aligned}$</p>
+<p>同理，用有标号的第一类斯特林数将$x^{\underline{n} }$展开的式子是</p>
+$\begin{aligned}x^{\underline{n} }=\sum_{i=0}^{n}(-1)^{n- i}\begin{bmatrix}n\\i\end{bmatrix}x^i\end{aligned}$
+<script type="math/tex; mode=display">\</script><p>第二类斯特林数：</p>
 <p>类似通项公式的求解，组合意义将幂指数展开，视$x^n$为将$n$个元素随意放在$x$个位置，则枚举$x$个位置中那些被选择</p>
-$\begin{aligned} x^n=\sum_{i=0}^n \binom{x}{i}i!\begin{Bmatrix}n\\i\end{Bmatrix} \end{aligned}$
-<p>把$\binom{x}{i}i!$写成下降幂的形式，得到优美的式子</p>
-$\begin{aligned} x^n=\sum_{i=0}^n \begin{Bmatrix}n\\i\end{Bmatrix}x^{\underline{i}}\end{aligned}$
-$$ \ $$
-<p>而实际上由上式二项反演也可以得到通项公式</p>
-$\begin{aligned} \begin{Bmatrix} n \\ m \end{Bmatrix}=\frac{1}{m!}\sum_{i=0}^{\infty} (-1)^{m-i}\binom{m}{i} i^n \end{aligned}$
+$\begin{aligned} x^n=\sum_{i=0}^n \binom{x} {i}i!\begin{Bmatrix}n\\i\end{Bmatrix} \end{aligned}$
+<p>把$\binom{x} {i}i!$写成下降幂的形式，得到优美的式子</p>
+$\begin{aligned} x^n=\sum_{i=0}^n \begin{Bmatrix}n\\i\end{Bmatrix}x^{\underline{i} }\end{aligned}$
+<script type="math/tex; mode=display">\</script><p>而实际上由上式二项反演也可以得到通项公式</p>
+$\begin{aligned} \begin{Bmatrix} n \\ m \end{Bmatrix}=\frac{1} {m!}\sum_{i=0}^{\infty} (-1)^{m-i}\binom{m} {i} i^n \end{aligned}$
 <p>关于下降幂多项式的快速转化，可以再借鉴<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chasedeath/p/13073206.html">这个</a></p>
-$$ \ $$
-<hr>
+<script type="math/tex; mode=display">\</script><hr>
 <h3 id="斯特林变换-斯特林反演"><a href="#斯特林变换-斯特林反演" class="headerlink" title="斯特林变换/斯特林反演"></a>斯特林变换/斯特林反演</h3><p>对于斯特林变换</p>
 $\begin{aligned} a_n=\sum_{i=0}^n\begin{Bmatrix}n\\i\end{Bmatrix}b_i \end{aligned}$
 <p>设$A(x),B(x)$为数列$a,b$的指数型生成函数，带入前文推导的式子，则得到上式的生成函数表达就是</p>
-$A(x)=B(e^x-1)$
+<p>$A(x)=B(e^x-1)$</p>
 <p>显然得到$B(x)=A(\ln(x+1))$，而$\ln(x+1)$显然转化为有标号的第一类斯特林数</p>
 <p>因此得到斯特林反演的表达形式是 </p>
 $\begin{aligned}b_n=\sum_{i=0}^{n}(-1)^{n-i}\begin{bmatrix}n\\i\end{bmatrix}a_i\end{aligned}$

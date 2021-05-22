@@ -163,35 +163,32 @@
             </div>
             <h2 class="post-title">任意模数NTT(MTT)</h2>
             <div class="post-meta">
-                本文共计371个字 |
+                本文共计2805个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="任意模数NTT-MTT"><a href="#任意模数NTT-MTT" class="headerlink" title="任意模数NTT(MTT)"></a>任意模数NTT(MTT)</h1><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4245">模板题传送门</a></p>
 <p>问题的简单描述为，求解两个值域为$\leq 10^9$的多项式卷积对于$P\leq 10^9$取模的结果</p>
-$$  \ $$
-<p>问题不能直接用NTT/FFT求解，因为均超过了值域范围(double值域承受不了)</p>
-$$ \ $$
-<h3 id="Solution1-3模数NTT"><a href="#Solution1-3模数NTT" class="headerlink" title="Solution1: 3模数NTT"></a>Solution1: 3模数NTT</h3><p>取几个互质的模数分别做一次，然后用中国剩余定理合并</p>
+<script type="math/tex; mode=display">\</script><p>问题不能直接用NTT/FFT求解，因为均超过了值域范围(double值域承受不了)</p>
+<script type="math/tex; mode=display">\</script><h3 id="Solution1-3模数NTT"><a href="#Solution1-3模数NTT" class="headerlink" title="Solution1: 3模数NTT"></a>Solution1: 3模数NTT</h3><p>取几个互质的模数分别做一次，然后用中国剩余定理合并</p>
 <p>由于值域大，通常需要多次NTT，且中国剩余定理合并常数也不小</p>
 <p>实际代码实现也复杂，因此笔者认为不可取</p>
-$$\ $$
-<h3 id="Solution2-拆系数FFT"><a href="#Solution2-拆系数FFT" class="headerlink" title="Solution2: 拆系数FFT"></a>Solution2: 拆系数FFT</h3><p>设$f(x)=\sum a_ix^i$</p>
+<script type="math/tex; mode=display">\</script><h3 id="Solution2-拆系数FFT"><a href="#Solution2-拆系数FFT" class="headerlink" title="Solution2: 拆系数FFT"></a>Solution2: 拆系数FFT</h3><p>设$f(x)=\sum a_ix^i$</p>
 <p>核心：将系数$a_i$分解成$a_i=A_i\cdot S+C_i,b_i=B_i\cdot S+D_i$ </p>
-<p>(其中$S\ge \sqrt{P}$是一个常数，$0 \leq A_i,B_i,C_i,D_i<S$)</p>
+<p>(其中$S\ge \sqrt{P}$是一个常数，$0 \leq A_i,B_i,C_i,D_i&lt;S$)</p>
 <p>目的是转化后使系数值域变小，double精度可以承受</p>
 <p>则最后的答案转化为求解$A_iB_jS^2+(C_iB_j+A_iD_j)S+C_iD_j$</p>
 <p>即求解$A_iB_j,C_iB_j,A_iD_j,C_iD_j$，此时值域已经大大缩小</p>
 <p>如果直接求解，可以看出要求解4次卷积，需要进行$12$次<strong>FFT</strong>，不可接受</p>
 <p>利用复数的一些性质，有些东西我们可以一起算</p>
 <p>构造</p>
-$f(x)=\sum (A_i,C_i)x^i$
-$g(x)=\sum(B_i,D_i)x^i$
-$f(x)g(x)=\sum \sum (A_iB_j-C_iD_j, A_iD_j+C_iB_j)x^{i+j}$
+<p>$f(x)=\sum (A_i,C_i)x^i$</p>
+<p>$g(x)=\sum(B_i,D_i)x^i$</p>
+<p>$f(x)g(x)=\sum \sum (A_iB_j-C_iD_j, A_iD_j+C_iB_j)x^{i+j}$</p>
 <p>此时已经得到大部分值了，再构造</p>
-$h(x)=\sum B_ix^i$
-$f(x)h(x)=\sum \sum (A_iB_j,C_iB_j)x^{i+j}$
+<p>$h(x)=\sum B_ix^i$</p>
+<p>$f(x)h(x)=\sum \sum (A_iB_j,C_iB_j)x^{i+j}$</p>
 <p>取一部分即可</p>
 <p>最终一共有5次FFT</p>
 <p>Tips:</p>

@@ -163,53 +163,52 @@
             </div>
             <h2 class="post-title">杜教筛小记</h2>
             <div class="post-meta">
-                本文共计1736个字 |
+                本文共计1748个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="杜教筛小记"><a href="#杜教筛小记" class="headerlink" title="杜教筛小记"></a>杜教筛小记</h1><p>对于一个函数$F(n)$，要在较低时间内求前缀和$S_F(n)=\sum_{i=1}^nF(i)$</p>
 <p>假设我们能找到一个函数$G(n)$使得$G(n),S_{F \oplus G}(n)$能在较短时间内算出</p>
-<p>其中$\oplus$表示狄利克雷卷积，$(F\oplus G)(n)=\sum_{d|n}F(d)G(\frac{n}{d})$</p>
+<p>其中$\oplus$表示狄利克雷卷积，$(F\oplus G)(n)=\sum_{d|n}F(d)G(\frac{n} {d})$</p>
 <p>那么就有</p>
-$\displaystyle S_{F\oplus G}(n)=\sum_1^n G(i)S_F(\lfloor\frac{n}{i}\rfloor)$
-$\displaystyle G(1)F(n)=S_{F\oplus G}(n)-\sum_2^nG(i)S_F(\lfloor\frac{n}{i}\rfloor)$
-<p>这个$\lfloor\frac{n}{i}\rfloor$的个数是$O(\sqrt n)$的，数论分段求解</p>
+<p>$\displaystyle S_{F\oplus G}(n)=\sum_1^n G(i)S_F(\lfloor\frac{n} {i}\rfloor)$</p>
+<p>$\displaystyle G(1)F(n)=S_{F\oplus G}(n)-\sum_2^nG(i)S_F(\lfloor\frac{n} {i}\rfloor)$</p>
+<p>这个$\lfloor\frac{n} {i}\rfloor$的个数是$O(\sqrt n)$的，数论分段求解</p>
 <p>由于每次从$2$开始枚举，每次子问题大小至少减半</p>
 <p><del>(然而并没有分析复杂度)</del></p>
 <p>当$n$较小时可以直接预处理出来前$m$个($m$为以常数)</p>
 <p>不要存状态$\text{dp}$，直接递归求解用$\text{map}$维护记录即可</p>
-<p>ps:实际上对于一个固定的$n$，每次计算$x$的答案时，可以根据当前的$\lfloor \cfrac{n}{x}\rfloor$为状态编号，去掉了$\text{map}$</p>
-<p>当$m=n^{\frac{2}{3}}$时，复杂度最优为$O(n^{\frac{2}{3}})$</p>
+<p>ps:实际上对于一个固定的$n$，每次计算$x$的答案时，可以根据当前的$\lfloor \cfrac{n} {x}\rfloor$为状态编号，去掉了$\text{map}$</p>
+<p>当$m=n^{\frac{2} {3} }$时，复杂度最优为$O(n^{\frac{2} {3} })$</p>
 <hr>
 <h3 id="例子1："><a href="#例子1：" class="headerlink" title="例子1："></a>例子1：</h3><p>对于$F(n)=\mu(n)$，求$S_\mu(n)$</p>
 <p>由于$\sum_{d|n}\mu(d)=[n=1]$</p>
 <p>那么就知道可以构造$G(n)=1$</p>
 <p>则$(F\oplus G)(n)=[n=1]$</p>
-$S_{F\oplus G}(n)=1$
-$\displaystyle S_F(n)=S_{F\oplus G}(n)-\sum_2^nS_F(\lfloor\frac{n}{i}\rfloor)$
+<p>$S_{F\oplus G}(n)=1$</p>
+<p>$\displaystyle S_F(n)=S_{F\oplus G}(n)-\sum_2^nS_F(\lfloor\frac{n} {i}\rfloor)$</p>
 <p><br></p>
 <hr>
-<h3 id="例子1-5"><a href="#例子1-5" class="headerlink" title="例子1.5"></a>例子1.5</h3>$F(n)=\mu(n)n^k$，求$S_F(n)$
+<h3 id="例子1-5"><a href="#例子1-5" class="headerlink" title="例子1.5"></a>例子1.5</h3><p>$F(n)=\mu(n)n^k$，求$S_F(n)$</p>
 <p>令$G(n)=n^k$</p>
-<p>则$\displaystyle (F\oplus G)(n)=\sum _{d|n} \mu(d)d^k (\frac{n}{d})^k=n^k\sum_{d|n} \mu(d)=[n=1]\cdot n^k$</p>
-$\displaystyle S_F(n)=1-\sum_{i=2}^n i^kS_F(\lfloor \frac{n}{i}\rfloor )$
+<p>则$\displaystyle (F\oplus G)(n)=\sum _{d|n} \mu(d)d^k (\frac{n} {d})^k=n^k\sum_{d|n} \mu(d)=[n=1]\cdot n^k$</p>
+<p>$\displaystyle S_F(n)=1-\sum_{i=2}^n i^kS_F(\lfloor \frac{n} {i}\rfloor )$</p>
 <p>只要通过一些手段得到$i^k$前缀和即可</p>
 <p><br></p>
 <hr>
-<h3 id="例子2："><a href="#例子2：" class="headerlink" title="例子2："></a>例子2：</h3><p>对于任何$F(n)=\sum_{d|n}\mu(d)H(\frac{n}{d})$，其中$H(n)$前缀和可以求</p>
+<h3 id="例子2："><a href="#例子2：" class="headerlink" title="例子2："></a>例子2：</h3><p>对于任何$F(n)=\sum_{d|n}\mu(d)H(\frac{n} {d})$，其中$H(n)$前缀和可以求</p>
 <p>类似上面的，构造$G(n)=1$</p>
-$(F\oplus G)(n)=\sum_{d|n}H(d)\sum_{k|\frac{n}{d}}\mu(k)=H(n)$
-$\displaystyle S_F(n)=S_{H}(n)-\sum_2^nS_F(\lfloor\frac{n}{i}\rfloor)$
-$$ \ $$
-<h3 id="例子3-3-5"><a href="#例子3-3-5" class="headerlink" title="例子3+3.5:"></a>例子3+3.5:</h3>$F(n)=\varphi(n)\cdot n^k$，求$S_F(n)$
+<p>$(F\oplus G)(n)=\sum_{d|n}H(d)\sum_{k|\frac{n} {d} }\mu(k)=H(n)$</p>
+<p>$\displaystyle S_F(n)=S_{H}(n)-\sum_2^nS_F(\lfloor\frac{n} {i}\rfloor)$</p>
+<script type="math/tex; mode=display">\</script><h3 id="例子3-3-5"><a href="#例子3-3-5" class="headerlink" title="例子3+3.5:"></a>例子3+3.5:</h3><p>$F(n)=\varphi(n)\cdot n^k$，求$S_F(n)$</p>
 <p>性质：$\displaystyle \sum_{d|n}\varphi(d)=n$</p>
-<p>原理简要证明：满足$\gcd(i,n)=\frac{n}{d}$的$i$共有$\varphi(d)$个，则累和就是枚举了所有$\gcd(i,n)$进行统计</p>
+<p>原理简要证明：满足$\gcd(i,n)=\frac{n} {d}$的$i$共有$\varphi(d)$个，则累和就是枚举了所有$\gcd(i,n)$进行统计</p>
 <p>所以构造$G(n)=n^{k}$</p>
-$\displaystyle (F\oplus G)(n)=\sum_{d|n}F(d)G(\frac{n}{d})=\sum_{d|n} \varphi(d)d^k(\frac{n}{d})^{k}=\sum_{d|n} \varphi(d) n^{k}=n^{k+1}$
+<p>$\displaystyle (F\oplus G)(n)=\sum_{d|n}F(d)G(\frac{n} {d})=\sum_{d|n} \varphi(d)d^k(\frac{n} {d})^{k}=\sum_{d|n} \varphi(d) n^{k}=n^{k+1}$</p>
 <p>同样的只需要求出</p>
-$\displaystyle S_{F\oplus G}(n)=\sum_{i=1}^n i^{k+1}$
-$\displaystyle S_G(n)=\sum_{i=1}^n i^k$
+<p>$\displaystyle S_{F\oplus G}(n)=\sum_{i=1}^n i^{k+1}$</p>
+<p>$\displaystyle S_G(n)=\sum_{i=1}^n i^k$</p>
 
             
                 

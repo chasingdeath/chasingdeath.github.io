@@ -163,16 +163,16 @@
             </div>
             <h2 class="post-title">「APIO2019」桥梁(询问分块+并查集)</h2>
             <div class="post-meta">
-                本文共计2399个字 |
+                本文共计2401个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            <h1 id="「APIO2019」桥梁-询问分块-并查集"><a href="#「APIO2019」桥梁-询问分块-并查集" class="headerlink" title="「APIO2019」桥梁(询问分块+并查集)"></a>「APIO2019」桥梁(询问分块+并查集)</h1><p>询问每$S$个分块后，每次对于所有块内未被更改的边 及 所有询问 排序，然后依次加入并查集，这一部分复杂度为$O(m \frac{q}{S}(\log m+\alpha(n)))$</p>
+            <h1 id="「APIO2019」桥梁-询问分块-并查集"><a href="#「APIO2019」桥梁-询问分块-并查集" class="headerlink" title="「APIO2019」桥梁(询问分块+并查集)"></a>「APIO2019」桥梁(询问分块+并查集)</h1><p>询问每$S$个分块后，每次对于所有块内未被更改的边 及 所有询问 排序，然后依次加入并查集，这一部分复杂度为$O(m \frac{q} {S}(\log m+\alpha(n)))$</p>
 <p>对于$S$条被改变的边，对于每个询问分别考虑这些边的贡献，复杂度为$O(qS)$，由于涉及到并查集回撤的问题，可以使用按秩合并，复杂度为$O(qS\log S)$</p>
 <p>按照上面两步暴力实现，复杂度大概可以做到$O((m+q)\sqrt{q}\log n)$</p>
 <p>实际可行的优化有：</p>
-<p>用平衡树实现排序，每次暴力遍历，第一部分复杂度降为$O(q\log m+m\frac{q}{S} \alpha(n))$</p>
+<p>用平衡树实现排序，每次暴力遍历，第一部分复杂度降为$O(q\log m+m\frac{q} {S} \alpha(n))$</p>
 <p>由于最多访问到$O(S)$个联通块，第二部分用$dfs$遍历来实现，复杂度降为$O(q S \alpha(n))$(遍历过程中要访问联通块编号)</p>
 <p>复杂度可以降到约$O((m+q)\sqrt {q} \cdot \alpha(n))$</p>
 <p>以下是暴力实现的代码</p>

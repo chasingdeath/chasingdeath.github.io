@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">「JOISC 2020 Day3」星座 3 (Dp)</h2>
             <div class="post-meta">
-                本文共计3451个字 |
+                本文共计3450个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -171,11 +171,10 @@
             <h1 id="「JOISC-2020-Day3」星座-3-dp"><a href="#「JOISC-2020-Day3」星座-3-dp" class="headerlink" title="「JOISC 2020 Day3」星座 3 (dp)"></a>「JOISC 2020 Day3」星座 3 (dp)</h1><p>考虑根据$A_i$的值建立笛卡尔树，此时平面被划分为个矩形空间</p>
 <p>下称选择一个点为保留一个星星</p>
 <p><img src="https://i.loli.net/2021/03/13/SLHx8PR4rwIo1h3.png" alt="Snipaste_2021-03-13_11-21-27.png"></p>
-<p>具体的，对于笛卡尔树上的节点$(u,l,r)$，它的矩形就是父节点矩形以下，且满足$x\in[l,r],y>A_u$的部分</p>
-<p>可以用一个线段树来查询矩形内部的点，线段树上每个节点维护$y_{max}$，每次剥掉$y_{max}>A_u$的部分</p>
+<p>具体的，对于笛卡尔树上的节点$(u,l,r)$，它的矩形就是父节点矩形以下，且满足$x\in[l,r],y&gt;A_u$的部分</p>
+<p>可以用一个线段树来查询矩形内部的点，线段树上每个节点维护$y_{max}$，每次剥掉$y_{max}&gt;A_u$的部分</p>
 <p>复杂度为均摊$O(n\log n)$</p>
-$$ \ $$
-<p>观察笛卡尔树的树形，容易发现，</p>
+<script type="math/tex; mode=display">\</script><p>观察笛卡尔树的树形，容易发现，</p>
 <p>1.笛卡尔树左右子树的矩形之间不会产生贡献</p>
 <p>2.每个节点对应的矩形区间内最多选择一个点</p>
 <p>3.如果一个节点$(u,l,r)$的祖先中有一个$x_i\in[l,r]$的点选择了，那么自己的矩形内不能选择点</p>
@@ -183,7 +182,7 @@ $$ \ $$
 <p>对于$i\in[l,r]$的情况，可以直接将儿子的值合并，加上自己区间内部的权值总和$C_i$</p>
 <p>对于$i\not \in[l,r]$的情况，这一部分答案相同</p>
 <p>可以从自己子区间内选择一个点$(x_i,y_i,c_i)$下传，此时沿用上面合并得到的$dp$值</p>
-$outans=\min\{dp_{x_i}+sum-c_i\}$
+<p>$outans=\min\{dp_{x_i}+sum-c_i\}$</p>
 <p>如何实现这个奇怪的$dp$过程？</p>
 <p>考虑子树的区间不交，因此对于$(u,l,r)$，只维护$l,r$内部的答案，对于$i\not \in[l,r]$的部分额外记录一个值$dp_u$</p>
 <p>考虑用一棵静态的线段树维护$dp$，线段树上存储$i\in[l,r]$的答案</p>

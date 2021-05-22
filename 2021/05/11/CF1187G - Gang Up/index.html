@@ -175,8 +175,8 @@
 <p><br></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>无法贪心，无法最短路的题目，那就先试试网络流</p>
 <p>考虑将时间和位置压在一起建立节点，时间$\leq n+k$</p>
-$(t,u)\rightarrow (t+1,u) $
-$(t,u)\rightarrow (t+1,v)$
+<p>$(t,u)\rightarrow (t+1,u) $</p>
+<p>$(t,u)\rightarrow (t+1,v)$</p>
 <p>在原地保持的边代价为$c$，流量$\infty$</p>
 <p>在两点间移动的代价由于与个数有关，可以建立$k$条边</p>
 <p>每条代价是$d(i^2-(i-1)^2)+c=c+(2i-1)d$</p>

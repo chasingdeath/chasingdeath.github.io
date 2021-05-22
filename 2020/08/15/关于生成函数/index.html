@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">关于生成函数</h2>
             <div class="post-meta">
-                本文共计2902个字 |
+                本文共计2849个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -174,57 +174,47 @@
 <h4 id="常见背包的生成函数"><a href="#常见背包的生成函数" class="headerlink" title="常见背包的生成函数"></a>常见背包的生成函数</h4><p>我们让$x^i$项表示选择了$i$个物品，则可以构造生成函数</p>
 <p>一个01背包，每一个物品的生成函数为$A(x)=x+1$，其中$x$项表示多选了一个，1项表示空着不选</p>
 <p>同理，对于一个有限背包，每个物品上限$m_i$，则$A_i(x)=\sum_{j=0}^{m_i} x^j$</p>
-<p>一个完全背包的生成函数为$\begin{aligned} A(x)=\sum_{i=0}^{\infty} x^i=\frac{1-x^{\infty}}{1-x}=\frac{1}{1-x}\end{aligned} $(因为我们所求的答案是前若干项，无穷项没有意义)</p>
+<p>一个完全背包的生成函数为$\begin{aligned} A(x)=\sum_{i=0}^{\infty} x^i=\frac{1-x^{\infty} } {1-x}=\frac{1} {1-x}\end{aligned} $(因为我们所求的答案是前若干项，无穷项没有意义)</p>
 <p>那么多个物品的组合就可以通过这些生成函数相乘来轻松表示，因此也容易被多项式的快速运算优化</p>
 <h3 id="用生成函数描述递推关系"><a href="#用生成函数描述递推关系" class="headerlink" title="用生成函数描述递推关系"></a>用生成函数描述递推关系</h3><p>一个最简单的例子，设斐波那契数列的普通生成函数为$F(x)$</p>
 <p>我们知道$F_i=F_{i-1}+F_{i-2},F_0=0,F_1=1$</p>
 <p>则可以用生成函数表示斐波那契数列的递推关系$F(x)=x F(x)+x^2 F(x)+x$</p>
 <p>其中$xF(x)$对应递推式的$F_{i-1}$，$x^2F(x)$对应递推式的$F_{i-2}$，$x$对应$F_1$的值</p>
 <p>类似的问题还包括数列的线性递推，即$a_i=\sum b_ja_{i-j}$，但是这个求解比较复杂。。。</p>
-$$  \ $$
-<h4 id="基于概率期望的生成函数"><a href="#基于概率期望的生成函数" class="headerlink" title="基于概率期望的生成函数"></a>基于概率期望的生成函数</h4><p>取自 集训队论文 2018 - 1 浅谈生成函数在掷骰子问题上的应用长沙市长郡中学杨懋龙</p>
+<script type="math/tex; mode=display">\</script><h4 id="基于概率期望的生成函数"><a href="#基于概率期望的生成函数" class="headerlink" title="基于概率期望的生成函数"></a>基于概率期望的生成函数</h4><p>取自 集训队论文 2018 - 1 浅谈生成函数在掷骰子问题上的应用长沙市长郡中学杨懋龙</p>
 <p>对于随机非负离散变量$x$，令它的概率生成函数是$F(z)=\begin{aligned}\sum_{i=0}^{\infty}P(x=i)z^i\end{aligned}$，则可以看到这里的指数代表$x$的值</p>
-$x$的值不一定能够相加，但是利用这个生成函数，可以快速表达期望，方差等，具体见下式
-
-1.$F(1)=\begin{aligned}\sum_{i=0}^{\infty}P(x=i)=1\end{aligned}$
+<p>$x$的值不一定能够相加，但是利用这个生成函数，可以快速表达期望，方差等，具体见下式</p>
+<p>1.$F(1)=\begin{aligned}\sum_{i=0}^{\infty}P(x=i)=1\end{aligned}$</p>
 <p>2.$F'(1)=\begin{aligned}\sum_{i=0}^{\infty}P(x=i)\cdot i=E(x)\end{aligned}$</p>
-<p>3.$E(x^{\underline{k}})=F^{(k)}(1)$ ($x$的$k$阶下降幂，($k$)表示$k$阶导数)</p>
+<p>3.$E(x^{\underline{k} })=F^{(k)}(1)$ ($x$的$k$阶下降幂，($k$)表示$k$阶导数)</p>
 <p>4.$x$的方差$=\begin{aligned}\sum_{i=0}^{\infty}P(x=i)\cdot (i-E(x))^2\end{aligned}=\begin{aligned}\sum_{i=0}^{\infty}P(x=i)\cdot i^2-2P(x=i)\cdot i\cdot E(x)+P(x=i)\cdot E^2(x)\end{aligned}$</p>
-$=E(x^2)-2E^2(x)+E^2(x)=E(x^2)-E^2(x)=E(x^{\underline{2}})+E(x)-E^2(x)=F''(1)+F'(1)-(F'(1))^2$
+<p>$=E(x^2)-2E^2(x)+E^2(x)=E(x^2)-E^2(x)=E(x^{\underline{2} })+E(x)-E^2(x)=F’’(1)+F’(1)-(F’(1))^2$</p>
 <p>可以作为导数在生成函数推导中应用的一个例子</p>
-$$  \ $$
-<h3 id="指数生成函数"><a href="#指数生成函数" class="headerlink" title="指数生成函数"></a>指数生成函数</h3><p>对于数列$a_i$，它的指数生成函数($\text{EGF}$)为$\begin{aligned} A(x)=\sum \frac{a_ix^i}{i!}\end{aligned} $</p>
+<script type="math/tex; mode=display">\</script><h3 id="指数生成函数"><a href="#指数生成函数" class="headerlink" title="指数生成函数"></a>指数生成函数</h3><p>对于数列$a_i$，它的指数生成函数($\text{EGF}$)为$\begin{aligned} A(x)=\sum \frac{a_ix^i} {i!}\end{aligned} $</p>
 <p>指数型生成函数是处理有序排列问题的一大利器，因此，指数上的$i$通常表示个数</p>
-<p>为什么$\frac{1}{i!}$可以简化排列问题，可以参见这样的一个例子</p>
-<p>用若干类物品排成一个排列，每一类有$m_i$个，则不同的排列个数为 $\begin{aligned} \frac{(\sum m_i)!}{\prod m_i!}\end{aligned} $</p>
+<p>为什么$\frac{1} {i!}$可以简化排列问题，可以参见这样的一个例子</p>
+<p>用若干类物品排成一个排列，每一类有$m_i$个，则不同的排列个数为 $\begin{aligned} \frac{(\sum m_i)!} {\prod m_i!}\end{aligned} $</p>
 <p>这个式子的意义就是: 假设先随便排列，由于每一类相同，因此类之内的排列都要除掉</p>
-<p>可以看到，$\frac{1}{i!}$描述的就是类内的排列，因此最后求得答案项还要乘上$n!$</p>
-<p>如果一类物品任意个数加入排列，则其指数生成函数为$\begin{aligned} A(x)=\sum_{i=0}^{\infty}\frac{x^i}{i!}=e^x\end{aligned} $</p>
-<p>根据$e^{-x}=\sum_i \frac{(-x)^i}{i!}$,还能得到:</p>
-<p>限制为偶数个的指数生成函数$\begin{aligned} A(x)=\sum_{2|i}^{\infty}\frac{x^i}{i!}=\frac{e^x+e^{-x}}{2}\end{aligned} $</p>
-<p>限制为奇数个的指数生成函数$\begin{aligned} A(x)=\sum_{2|i}^{\infty}\frac{x^i}{i!}=\frac{e^x-e^{-x}}{2}\end{aligned} $</p>
+<p>可以看到，$\frac{1} {i!}$描述的就是类内的排列，因此最后求得答案项还要乘上$n!$</p>
+<p>如果一类物品任意个数加入排列，则其指数生成函数为$\begin{aligned} A(x)=\sum_{i=0}^{\infty}\frac{x^i} {i!}=e^x\end{aligned} $</p>
+<p>根据$e^{-x}=\sum_i \frac{(-x)^i} {i!}$,还能得到:</p>
+<p>限制为偶数个的指数生成函数$\begin{aligned} A(x)=\sum_{2|i}^{\infty}\frac{x^i} {i!}=\frac{e^x+e^{-x} } {2}\end{aligned} $</p>
+<p>限制为奇数个的指数生成函数$\begin{aligned} A(x)=\sum_{2|i}^{\infty}\frac{x^i} {i!}=\frac{e^x-e^{-x} } {2}\end{aligned} $</p>
 <p>限制为$n$的倍数个，较为复杂，需要用到<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chasedeath/p/13499214.html">单位根反演</a></p>
-<h4 id="在排列问题叠加上的应用"><a href="#在排列问题叠加上的应用" class="headerlink" title="在排列问题叠加上的应用"></a>$e^{x}$在排列问题叠加上的应用</h4><p>若有一类等价排列子问题，其指数型生成函数为$F(x)$，则任意叠加其得到的排列问题指数型生成函数为</p>
-$\begin{aligned} \sum_{i=0}^{\infty} \frac{F^i(x)}{i!}=e^{F(x)}\end{aligned} $，其中$\frac{1}{i!}$表示除去子问题之间等价
-
-$$\ $$
-<h2 id="更多常用技巧"><a href="#更多常用技巧" class="headerlink" title="更多常用技巧"></a>更多常用技巧</h2><p>1.分治NTT解决多个多项式卷积问题</p>
+<h4 id="e-x-在排列问题叠加上的应用"><a href="#e-x-在排列问题叠加上的应用" class="headerlink" title="$e^{x}$在排列问题叠加上的应用"></a>$e^{x}$在排列问题叠加上的应用</h4><p>若有一类等价排列子问题，其指数型生成函数为$F(x)$，则任意叠加其得到的排列问题指数型生成函数为</p>
+<p>$\begin{aligned} \sum_{i=0}^{\infty} \frac{F^i(x)} {i!}=e^{F(x)}\end{aligned} $，其中$\frac{1} {i!}$表示除去子问题之间等价</p>
+<script type="math/tex; mode=display">\</script><h2 id="更多常用技巧"><a href="#更多常用技巧" class="headerlink" title="更多常用技巧"></a>更多常用技巧</h2><p>1.分治NTT解决多个多项式卷积问题</p>
 <p>2.CDQ分治NTT解决有序递推问题</p>
-$$ \ $$
-<p>3.推导生成函数的关系</p>
+<script type="math/tex; mode=display">\</script><p>3.推导生成函数的关系</p>
 <p>3-1.树的递归关系</p>
 <p>问题: 计算合法树的数量，如树上染色问题等</p>
 <p>这一类问题可以表示为 一种递归关系，即 枚举根的状态 加上根的儿子对应的生成函数</p>
 <p>例子 [Codeforces Round #250]小朋友和二叉树 </p>
 <p>设一个点的生成函数为$G$，整棵数的生成函数为$F$，其中幂指数代表权值和，则$G$是我们已知的，且有关系</p>
-$F=G\cdot F^2+1$，其中$F^2$表示枚举两个子树的状态，$G$表示枚举根的状态，$+1$表示空树
-
-类似这样的问题还有 [烷基计数加强版加强版](https://loj.ac/problem/6538) 这个方程要用到牛顿迭代求解
-
-3-2.
-
-$$ \ $$
-<p>4.集合幂指数在处理01状态上的应用</p>
+<p>$F=G\cdot F^2+1$，其中$F^2$表示枚举两个子树的状态，$G$表示枚举根的状态，$+1$表示空树</p>
+<p>类似这样的问题还有 <a target="_blank" rel="noopener" href="https://loj.ac/problem/6538">烷基计数加强版加强版</a> 这个方程要用到牛顿迭代求解</p>
+<p>3-2.</p>
+<script type="math/tex; mode=display">\</script><p>4.集合幂指数在处理01状态上的应用</p>
 <p>如果用整数指数形式表示的生成函数解决01状态上的or,and,xor操作</p>
 <p>我们通常需要把这个过程转化为对$0,1$个数来做</p>
 <p>但是这一类的问题，通常可以用<strong>集合幂指数</strong>轻松表示，前提是你了解$\text{FWT}$卷积三种类型的本质过程</p>

@@ -163,62 +163,23 @@
             </div>
             <h2 class="post-title">类欧几里得</h2>
             <div class="post-meta">
-                本文共计427个字 |
+                本文共计521个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="类欧几里得"><a href="#类欧几里得" class="headerlink" title="类欧几里得"></a>类欧几里得</h1><p>对于给定的元$a,b,c,n$</p>
-<p>设$f(i)=\lfloor\frac{ai+b}{c}\rfloor$</p>
+<p>设$f(i)=\lfloor\frac{ai+b} {c}\rfloor$</p>
 <p>求</p>
-$$F(a,b,c,n)=\sum_0^nf(i)$$
-$$G(a,b,c,n)=\sum_0^nf(i)^2$$
-$$H(a,b,c,n)=\sum_0^ni\cdot f(i)$$
-<h1 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h1><h3 id="或"><a href="#或" class="headerlink" title=" 或 "></a>$a\ge c$ 或 $b\ge c$</h3>$$\lfloor\frac{ai+b}{c}\rfloor=\lfloor\frac{(a \mod c)i+(b \mod c)}{c}\rfloor+i\lfloor \frac{a}{c}\rfloor +\lfloor \frac{b}{c}\rfloor $$
-$$F(a,b,c,n)=F(a\mod c,b\mod c,c,n)+\frac{n(n+1)\lfloor\frac{a}{c}\rfloor}{2}+(n+1)\lfloor\frac{b}{c}\rfloor$$
-<h3 id="且"><a href="#且" class="headerlink" title=" 且 "></a>$a<c$ 且 $b<c$</h3>$$F(a,b,c,n) =\sum_0^n f(i)$$ 
-$$= \sum_{i=0}^n\sum_{j=0}^{f(i)-1} 1  $$
-$$= \sum_{i=0}^n\sum_{j=0}^{\infty}[j<f(i)] $$
-$$= \sum_{j=0}^{f(n) -1}\sum_{i=0}^{n}[j<f(i)] $$
-<p>其中</p>
-$$[j<\lfloor\frac{ai+b}{c}\rfloor] =[j<\lceil\frac{ai+b-c+1}{c}\rceil]$$
-$$=[cj<ai+b-c+1]$$
-$$=[ai>cj-b+c-1]$$
-$$=[i>\lfloor\frac{cj-b+c-1}{a}\rfloor]$$
-$$F(a,b,c,n)= \sum_{j=0}^{f(n)-1 }\sum_{i=0}^{n}[i>\lfloor\frac{cj-b+c-1}{a}\rfloor] $$
-$$=\sum_{j=0}^{f(n)-1} n-\lfloor\frac{cj-b+c-1}{a}\rfloor$$
-$$F(a,b,c,n)=n\cdot f(n)-F(c,-b+c-1,a,f(n)-1)$$
-<p>每次操作交换了$a,c$然后再次取模，复杂度是$O(\log n)$</p>
+<script type="math/tex; mode=display">F(a,b,c,n)=\sum_0^nf(i)</script><script type="math/tex; mode=display">G(a,b,c,n)=\sum_0^nf(i)^2</script><script type="math/tex; mode=display">H(a,b,c,n)=\sum_0^ni\cdot f(i)</script><h1 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h1><h3 id="a-ge-c-或-b-ge-c"><a href="#a-ge-c-或-b-ge-c" class="headerlink" title="$a\ge c$ 或 $b\ge c$"></a>$a\ge c$ 或 $b\ge c$</h3><script type="math/tex; mode=display">\lfloor\frac{ai+b} {c}\rfloor=\lfloor\frac{(a \mod c)i+(b \mod c)} {c}\rfloor+i\lfloor \frac{a} {c}\rfloor +\lfloor \frac{b} {c}\rfloor</script><script type="math/tex; mode=display">F(a,b,c,n)=F(a\mod c,b\mod c,c,n)+\frac{n(n+1)\lfloor\frac{a} {c}\rfloor} {2}+(n+1)\lfloor\frac{b} {c}\rfloor</script><h3 id="a-lt-c-且-b-lt-c"><a href="#a-lt-c-且-b-lt-c" class="headerlink" title="$a&lt;c$ 且 $b&lt;c$"></a>$a&lt;c$ 且 $b&lt;c$</h3><script type="math/tex; mode=display">F(a,b,c,n) =\sum_0^n f(i)</script><script type="math/tex; mode=display">= \sum_{i=0}^n\sum_{j=0}^{f(i)-1} 1</script><script type="math/tex; mode=display">= \sum_{i=0}^n\sum_{j=0}^{\infty}[j<f(i)]</script><script type="math/tex; mode=display">= \sum_{j=0}^{f(n) -1}\sum_{i=0}^{n}[j<f(i)]</script><p>其中</p>
+<script type="math/tex; mode=display">[j<\lfloor\frac{ai+b} {c}\rfloor] =[j<\lceil\frac{ai+b-c+1} {c}\rceil]</script><script type="math/tex; mode=display">=[cj<ai+b-c+1]</script><script type="math/tex; mode=display">=[ai>cj-b+c-1]</script><script type="math/tex; mode=display">=[i>\lfloor\frac{cj-b+c-1} {a}\rfloor]</script><script type="math/tex; mode=display">F(a,b,c,n)= \sum_{j=0}^{f(n)-1 }\sum_{i=0}^{n}[i>\lfloor\frac{cj-b+c-1} {a}\rfloor]</script><script type="math/tex; mode=display">=\sum_{j=0}^{f(n)-1} n-\lfloor\frac{cj-b+c-1} {a}\rfloor</script><script type="math/tex; mode=display">F(a,b,c,n)=n\cdot f(n)-F(c,-b+c-1,a,f(n)-1)</script><p>每次操作交换了$a,c$然后再次取模，复杂度是$O(\log n)$</p>
 <p>递归边界是$a=0$</p>
 <hr>
-<h2 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h2>$G(a,b,c,n)=\sum_0^nf(i)^2$
-<h3 id="或-1"><a href="#或-1" class="headerlink" title=" 或 "></a>$a\ge c$ 或 $b\ge c$</h3><p>设$\lfloor \frac{a}{c}\rfloor=x,\lfloor \frac{b}{c}\rfloor=y$</p>
-$$\lfloor\frac{ai+b}{c}\rfloor^2=(\lfloor\frac{(a \mod c)i+(b \mod c)}{c}\rfloor+ix+y)^2$$
-$$=\lfloor\frac{(a \mod c)i+(b \mod c)}{c}\rfloor^2+2\lfloor\frac{(a \mod c)i+(b \mod c)}{c}\rfloor\cdot (ix+y)+(ix+y)^2 $$
-$$G(a,b,c,n)=$$
-$$G(a\mod c,b\mod c,c,n)+2x H(a\mod c,b\mod c,n)+2y F(a\mod c,b\mod c,c,n)$$
-$$+\frac{n(n+1)(2n+1)x^2}{6}+(n+1)y^2+n(n+1)xy$$
-<h3 id="且-1"><a href="#且-1" class="headerlink" title=" 且 "></a>$a<c$ 且 $b<c$</h3>$$G(a,b,c,n) =\sum_0^nf(i)^2$$ 
-$$= 2 \sum_{i=0}^n\frac{f(i)(f(i)-1)}{2}+\frac{f(i)}{2} $$
-$$=2 \sum_{i=0}^n\sum_{j=0}^{f(i)-1}j+\frac{1}{2}$$
-$$= 2\sum_{i=0}^n\sum_{j=0}^{\infty}(j+\frac{1}{2})[j<f(i)] $$
-$$= 2\sum_{j=0}^{f(n)-1}\sum_{i=0}^{n}(j+\frac{1}{2})[j<f(i)] $$
-$$=2 \sum_{j=0}^{f(n)-1}\sum_{i=0}^{n}(j+\frac{1}{2})[i>\lfloor\frac{cj-b+c-1}{a}\rfloor] $$
-$$=2\sum_{j=0}^{f(n)-1} (j+\frac{1}{2})(n-\lfloor\frac{cj-b+c-1}{a}\rfloor)$$
-$$G(a,b,c,n)=nf(n)^2-2H(c,-b+c-1,a,f(n)-1)-F(c,-b+c-1,a,f(n)-1)$$
-<h2 id="Part3"><a href="#Part3" class="headerlink" title="Part3"></a>Part3</h2>$H(a,b,c,n)=\sum_0^ni\cdot f(i)$
-<h3 id="或-2"><a href="#或-2" class="headerlink" title=" 或 "></a>$a\ge c$ 或 $b\ge c$</h3>$$i\cdot \lfloor\frac{ai+b}{c}\rfloor=i\cdot (\lfloor\frac{(a \mod c)i+(b \mod c)}{c}\rfloor+i\lfloor \frac{a}{c}\rfloor +\lfloor \frac{b}{c}\rfloor) $$
-$$i\cdot \lfloor\frac{ai+b}{c}\rfloor=i\cdot \lfloor\frac{(a \mod c)i+(b \mod c)}{c}\rfloor+i^2\lfloor \frac{a}{c}\rfloor +i\lfloor \frac{b}{c}\rfloor$$
-$$H(a,b,c,n)=H(a\mod c,b\mod c,c,n)+\frac{n(n+1)(2n+1)\lfloor\frac{a}{c}\rfloor}{6}+\frac{n(n+1)\lfloor\frac{b}{c}\rfloor}{2}$$
-<h3 id="且-2"><a href="#且-2" class="headerlink" title=" 且 "></a>$a<c$ 且 $b<c$</h3>$$H(a,b,c,n)=\sum_i^n i\cdot f(i)$$
-$$= \sum_{i=0}^n\sum_{j=0}^{f(i)-1} i  $$
-$$= \sum_{j=0}^{f(n) -1}\sum_{i=0}^{n}i\cdot [j<\lfloor\frac{ai+b}{c}\rfloor] $$
-$$=\sum_0^{f(n)-1}\sum_{i=0}^n i\cdot [i>\lfloor\frac{cj-b+c-1}{a}\rfloor]$$
-<p>设$f'(i)=\lfloor\frac{ci-b+c-1}{a}\rfloor$</p>
-$$H(a,b,c,n)= \sum_{j=0}^{f(n)-1 }\sum_{i=f'(j)+1}^{n}i $$
-$$= \sum_{j=0}^{f(n)-1 }\frac{(f'(j)+1+n)(n-f'(j))}{2} $$
-$$= \sum_{j=0}^{f(n)-1 } \frac{-f'(j)^2-f'(j)+n(n+1)}{2} $$
-$H(a,b,c,n)=\frac{f(n)n(n+1)-G(c,-b+c-1,a,f(n)-1)-F(c,-b+c-1,a,f(n)-1)}{2}$
+<h2 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h2><p>$G(a,b,c,n)=\sum_0^nf(i)^2$</p>
+<h3 id="a-ge-c-或-b-ge-c-1"><a href="#a-ge-c-或-b-ge-c-1" class="headerlink" title="$a\ge c$ 或 $b\ge c$"></a>$a\ge c$ 或 $b\ge c$</h3><p>设$\lfloor \frac{a} {c}\rfloor=x,\lfloor \frac{b} {c}\rfloor=y$</p>
+<script type="math/tex; mode=display">\lfloor\frac{ai+b} {c}\rfloor^2=(\lfloor\frac{(a \mod c)i+(b \mod c)} {c}\rfloor+ix+y)^2</script><script type="math/tex; mode=display">=\lfloor\frac{(a \mod c)i+(b \mod c)} {c}\rfloor^2+2\lfloor\frac{(a \mod c)i+(b \mod c)} {c}\rfloor\cdot (ix+y)+(ix+y)^2</script><script type="math/tex; mode=display">G(a,b,c,n)=</script><script type="math/tex; mode=display">G(a\mod c,b\mod c,c,n)+2x H(a\mod c,b\mod c,n)+2y F(a\mod c,b\mod c,c,n)</script><script type="math/tex; mode=display">+\frac{n(n+1)(2n+1)x^2} {6}+(n+1)y^2+n(n+1)xy</script><h3 id="a-lt-c-且-b-lt-c-1"><a href="#a-lt-c-且-b-lt-c-1" class="headerlink" title="$a&lt;c$ 且 $b&lt;c$"></a>$a&lt;c$ 且 $b&lt;c$</h3><script type="math/tex; mode=display">G(a,b,c,n) =\sum_0^nf(i)^2</script><script type="math/tex; mode=display">= 2 \sum_{i=0}^n\frac{f(i)(f(i)-1)} {2}+\frac{f(i)} {2}</script><script type="math/tex; mode=display">=2 \sum_{i=0}^n\sum_{j=0}^{f(i)-1}j+\frac{1} {2}</script><script type="math/tex; mode=display">= 2\sum_{i=0}^n\sum_{j=0}^{\infty}(j+\frac{1} {2})[j<f(i)]</script><script type="math/tex; mode=display">= 2\sum_{j=0}^{f(n)-1}\sum_{i=0}^{n}(j+\frac{1} {2})[j<f(i)]</script><script type="math/tex; mode=display">=2 \sum_{j=0}^{f(n)-1}\sum_{i=0}^{n}(j+\frac{1} {2})[i>\lfloor\frac{cj-b+c-1} {a}\rfloor]</script><script type="math/tex; mode=display">=2\sum_{j=0}^{f(n)-1} (j+\frac{1} {2})(n-\lfloor\frac{cj-b+c-1} {a}\rfloor)</script><script type="math/tex; mode=display">G(a,b,c,n)=nf(n)^2-2H(c,-b+c-1,a,f(n)-1)-F(c,-b+c-1,a,f(n)-1)</script><h2 id="Part3"><a href="#Part3" class="headerlink" title="Part3"></a>Part3</h2><p>$H(a,b,c,n)=\sum_0^ni\cdot f(i)$</p>
+<h3 id="a-ge-c-或-b-ge-c-2"><a href="#a-ge-c-或-b-ge-c-2" class="headerlink" title="$a\ge c$ 或 $b\ge c$"></a>$a\ge c$ 或 $b\ge c$</h3><script type="math/tex; mode=display">i\cdot \lfloor\frac{ai+b} {c}\rfloor=i\cdot (\lfloor\frac{(a \mod c)i+(b \mod c)} {c}\rfloor+i\lfloor \frac{a} {c}\rfloor +\lfloor \frac{b} {c}\rfloor)</script><script type="math/tex; mode=display">i\cdot \lfloor\frac{ai+b} {c}\rfloor=i\cdot \lfloor\frac{(a \mod c)i+(b \mod c)} {c}\rfloor+i^2\lfloor \frac{a} {c}\rfloor +i\lfloor \frac{b} {c}\rfloor</script><script type="math/tex; mode=display">H(a,b,c,n)=H(a\mod c,b\mod c,c,n)+\frac{n(n+1)(2n+1)\lfloor\frac{a} {c}\rfloor} {6}+\frac{n(n+1)\lfloor\frac{b} {c}\rfloor} {2}</script><h3 id="a-lt-c-且-b-lt-c-2"><a href="#a-lt-c-且-b-lt-c-2" class="headerlink" title="$a&lt;c$ 且 $b&lt;c$"></a>$a&lt;c$ 且 $b&lt;c$</h3><script type="math/tex; mode=display">H(a,b,c,n)=\sum_i^n i\cdot f(i)</script><script type="math/tex; mode=display">= \sum_{i=0}^n\sum_{j=0}^{f(i)-1} i</script><script type="math/tex; mode=display">= \sum_{j=0}^{f(n) -1}\sum_{i=0}^{n}i\cdot [j<\lfloor\frac{ai+b} {c}\rfloor]</script><script type="math/tex; mode=display">=\sum_0^{f(n)-1}\sum_{i=0}^n i\cdot [i>\lfloor\frac{cj-b+c-1} {a}\rfloor]</script><p>设$f’(i)=\lfloor\frac{ci-b+c-1} {a}\rfloor$</p>
+<script type="math/tex; mode=display">H(a,b,c,n)= \sum_{j=0}^{f(n)-1 }\sum_{i=f'(j)+1}^{n}i</script><script type="math/tex; mode=display">= \sum_{j=0}^{f(n)-1 }\frac{(f'(j)+1+n)(n-f'(j))} {2}</script><script type="math/tex; mode=display">= \sum_{j=0}^{f(n)-1 } \frac{-f'(j)^2-f'(j)+n(n+1)} {2}</script><p>$H(a,b,c,n)=\frac{f(n)n(n+1)-G(c,-b+c-1,a,f(n)-1)-F(c,-b+c-1,a,f(n)-1)} {2}$</p>
 <h3 id="Tip"><a href="#Tip" class="headerlink" title="Tip:"></a>Tip:</h3><p>这个多个函数的情况，如果直接递归写复杂度极高</p>
 <p>所以需要把访问到的所有状态存下来递推，就能保证复杂度$O(\log n)$</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/34149443">模板题传送门</a></p>

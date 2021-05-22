@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">线性递推的求解</h2>
             <div class="post-meta">
-                本文共计2040个字 |
+                本文共计2017个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -177,53 +177,47 @@
 <p>序列$a_0,a_1,\cdots,a_n$的线性递推的定义应当是</p>
 <p>对于一个常数列$r_0,r_1,\cdots,r_m(r_0=1)$ </p>
 <p>为了便于表示，令</p>
-$\lambda(i,r)=\sum_{j=1}^{m}a_{i-j}r_j$
-$\Delta(i,r)=\sum_{j=0}^m a_{i-j}$
+<p>$\lambda(i,r)=\sum_{j=1}^{m}a_{i-j}r_j$</p>
+<p>$\Delta(i,r)=\sum_{j=0}^m a_{i-j}$</p>
 <p>满足$\forall i\ge m,\Delta(i,r)=0$</p>
 <p>这似乎与与平常的认知有一些冲突</p>
-$$ \ $$
-<h2 id="求解序列的最短线性递推-Berlekamp-Massey-算法"><a href="#求解序列的最短线性递推-Berlekamp-Massey-算法" class="headerlink" title="求解序列的最短线性递推: Berlekamp-Massey 算法"></a>求解序列的最短线性递推: Berlekamp-Massey 算法</h2><p>对于一个$n$个元素的数列$a_{1,\cdots, n}$，求出它的<strong>最短线性递推式</strong></p>
+<script type="math/tex; mode=display">\</script><h2 id="求解序列的最短线性递推-Berlekamp-Massey-算法"><a href="#求解序列的最短线性递推-Berlekamp-Massey-算法" class="headerlink" title="求解序列的最短线性递推: Berlekamp-Massey 算法"></a>求解序列的最短线性递推: Berlekamp-Massey 算法</h2><p>对于一个$n$个元素的数列$a_{1,\cdots, n}$，求出它的<strong>最短线性递推式</strong></p>
 <p>为了便于理解约定下文求出的是最小的$m$和对应的$r_1,\cdots r_m$使得$\forall i\in [m+1,n],a_i=\sum_{j=1}^{m}a_{i-j}r_j$</p>
 <p>很显然使用<strong>高斯消元</strong>可以在$O(n^3)$的时间内求解</p>
 <p>而$\text{Berlekamp-Massey(BM)}$算法是通过依次对于前$i$项构造，</p>
 <p>添加每一项时在$O(n)$的时间内找到一个可行的构造方法，将复杂度降低到了$O(n^2)$</p>
-$$ \ $$
-$$ \ $$
-<h3 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h3><p>为了更好描述，设$r$的阶为$d(r)$</p>
+<script type="math/tex; mode=display">\</script><script type="math/tex; mode=display">\</script><h3 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h3><p>为了更好描述，设$r$的阶为$d(r)$</p>
 <p>考虑依次加入每个数$a_i$，设当前$d(r)=m$，上一次的递推是$p$,$p$出现不匹配的位置是$f$</p>
-<p>特别的，初始状态的递推是$r=\{\},f=0$</p>
-$1.\Delta(i,r)=0$，那么不需要扩展
-
-2.$\Delta(i,r)\ne 0$
-$\text{i}.m=0$，此时只有一种情况即插入了第一个$a_i\ne 0$，唯一的递推序列就是$d(r')=i,r_j=0(j>0)$，此时显然成立
-
-$\text{ii}.m\ne 0$
-<p>构造思路是找到一个$r'$使得$\forall j\in[d(r'),i-1],\lambda(j,r')=0\and \lambda (n,r')=\Delta(i-1,r)$</p>
-<p>那么当前合法的转移就是$r+r'$</p>
-<p>设$t=\frac{\Delta(n,r)}{\Delta(f,p)}$</p>
-<p>构造$r'=t \cdot x^{i-f-1}(1-p)$</p>
+<p>特别的，初始状态的递推是$r=\{ \},f=0$</p>
+<p>$1.\Delta(i,r)=0$，那么不需要扩展</p>
+<p>2.$\Delta(i,r)\ne 0$</p>
+<p>$\text{i}.m=0$，此时只有一种情况即插入了第一个$a_i\ne 0$，唯一的递推序列就是$d(r’)=i,r_j=0(j&gt;0)$，此时显然成立</p>
+<p>$\text{ii}.m\ne 0$</p>
+<p>构造思路是找到一个$r’$使得$\forall j\in[d(r’),i-1],\lambda(j,r’)=0\and \lambda (n,r’)=\Delta(i-1,r)$</p>
+<p>那么当前合法的转移就是$r+r’$</p>
+<p>设$t=\frac{\Delta(n,r)} {\Delta(f,p)}$</p>
+<p>构造$r’=t \cdot x^{i-f-1}(1-p)$</p>
 <p>写出来就是</p>
-$r'=\{\underbrace{0,\cdots,0},t\cdot (1-p)\}$
-$ \ \ \ \ \ \ \ \ i-f-1$个$0$
-$r'=\{\underbrace{0,\cdots,0},t,-t\cdot p_{1},-t\cdot p_{2}\cdots,-t\cdot p_{d(p)}\}$
-$ \ \ \ \ \ \ \ \ i-f-1$个$0$
-<p>此时，$d(r')=i-f+d(p)$</p>
-<p>当$j\in [d(r')+1,i-1]$时，$\lambda(j,r')=\sum_{k=i-f}^{d(r')}a_{j-k}r'_k$</p>
-$=t\cdot( a_{j-(i-f)}-\lambda(j-(i-f),p))$
-<p>由于$p$对于$j\in[d(r')+1-(i-f),i-1-(i-f)]=[d(p)+1,f-1]$，$p$这个递推式成立</p>
-<p>即$\lambda(j,r')=0$</p>
+<p>$r’=\{\underbrace{0,\cdots,0},t\cdot (1-p)\}$</p>
+<p>$ \ \ \ \ \ \ \ \ i-f-1$个$0$</p>
+<p>$r’=\{\underbrace{0,\cdots,0},t,-t\cdot p_{1},-t\cdot p_{2}\cdots,-t\cdot p_{d(p)} \}$</p>
+<p>$ \ \ \ \ \ \ \ \ i-f-1$个$0$</p>
+<p>此时，$d(r’)=i-f+d(p)$</p>
+<p>当$j\in [d(r’)+1,i-1]$时，$\lambda(j,r’)=\sum_{k=i-f}^{d(r’)}a_{j-k}r’_k$</p>
+<p>$=t\cdot( a_{j-(i-f)}-\lambda(j-(i-f),p))$</p>
+<p>由于$p$对于$j\in[d(r’)+1-(i-f),i-1-(i-f)]=[d(p)+1,f-1]$，$p$这个递推式成立</p>
+<p>即$\lambda(j,r’)=0$</p>
 <p>当$j=i$时，</p>
-$\lambda(i,r')=t\cdot (a_{i-(i-f)}+\lambda(i-(i-f),p))=t\cdot \Delta(f,p)$
-<p>即$\lambda (i,r')=\Delta(n,r)$</p>
+<p>$\lambda(i,r’)=t\cdot (a_{i-(i-f)}+\lambda(i-(i-f),p))=t\cdot \Delta(f,p)$</p>
+<p>即$\lambda (i,r’)=\Delta(n,r)$</p>
 <p>完成了我们想要的构造，所以每次记录上一次的失配位置，即可找到最小递推式</p>
 <p>关于为什么求得的就是最小递推，可以看论文里的证明</p>
 <h2 id="求解向量序列的线性递推"><a href="#求解向量序列的线性递推" class="headerlink" title="求解向量序列的线性递推"></a>求解向量序列的线性递推</h2><p>对于长度为$n$的向量序列$\{v_0,v_1,\cdots\}$</p>
 <p>在模$P$意义下，随机一个向量$u$，构造标量序列$\{v_0u,v_1u,\cdots\}$</p>
 <p>构造和求解这个标量序列的线性递推，复杂度均为$O(n^2)$</p>
-<p>求得的线性递推也为向量序列的线性递推的概率为$1-\frac{n}{P}$，通常认为不会错</p>
+<p>求得的线性递推也为向量序列的线性递推的概率为$1-\frac{n} {P}$，通常认为不会错</p>
 <p><del>(可以认为复杂度与读入同阶?)</del></p>
-$$ \ $$
-<h2 id="求解矩阵序列的线性递推"><a href="#求解矩阵序列的线性递推" class="headerlink" title="求解矩阵序列的线性递推"></a>求解矩阵序列的线性递推</h2><p>对于长度为$n$的矩阵序列$\{M_0,M_1,\cdots\}$</p>
+<script type="math/tex; mode=display">\</script><h2 id="求解矩阵序列的线性递推"><a href="#求解矩阵序列的线性递推" class="headerlink" title="求解矩阵序列的线性递推"></a>求解矩阵序列的线性递推</h2><p>对于长度为$n$的矩阵序列$\{M_0,M_1,\cdots\}$</p>
 <p>同样在模$P$意义下，随机两个向量$u,v$，构造标量序列$\{uM_0v,uM_1v,\cdots\}$</p>
 <p>求解线性递推的复杂度为$O(n^2)$</p>
 <p>但是构造标量序列需要计算$n$次向量与矩阵的乘法，复杂度为$O(n^3)$</p>

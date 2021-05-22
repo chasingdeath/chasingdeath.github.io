@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">[BZOJ2688]Green Hackenbush</h2>
             <div class="post-meta">
-                本文共计4826个字 |
+                本文共计4841个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -175,7 +175,7 @@
 <p>1.只有一个点的树的$\text{SG}$值为0</p>
 <p>2.多个树组合的问题为$\text{SG}$值异或</p>
 <p>暴力$dp$，对于树$T$求答案，设$T$所有可行的后继状态集合为$N(T)$，则得到$\text{SG}$值的表达式为</p>
-$\text{SG}(T)=\text{mex}_{R\in N(T)}\lbrace\text{SG(R)}\rbrace $
+<p>$\text{SG}(T)=\text{mex}_{R\in N(T)}\lbrace\text{SG(R)}\rbrace $</p>
 <p>直接求解复杂度过高，考虑归纳性质</p>
 <p>性质:</p>
 <p>1.一棵根节点只有一个儿子的树，其$\text{SG}$值为儿子的$\text{SG}$值+1</p>
@@ -183,9 +183,9 @@ $\text{SG}(T)=\text{mex}_{R\in N(T)}\lbrace\text{SG(R)}\rbrace $
 <p>设子树为$T$，令$T+u$表示$T$子树上面接上自己作为根，问题变为求证$\text{SG}(T+u)=\text{SG}(T)+1$</p>
 <p>设已经归纳证明所有$T$的子联通块成立</p>
 <p>我们要求$\text{SG}(T+u)$</p>
-$\text{SG}(T+u)=\text{mex}\{\text{SG}(u),\forall _{R\in N(T)}\text{SG}(R+u)\}$
+<p>$\text{SG}(T+u)=\text{mex} \{\text{SG}(u),\forall _{R\in N(T)}\text{SG}(R+u)\}$</p>
 <p>由归纳的性质有</p>
-$\forall _{R\subsetneq T}\text{SG}(R+T)=\text{SG}(R)+1$
+<p>$\forall _{R\subsetneq T}\text{SG}(R+T)=\text{SG}(R)+1$</p>
 <p>又因为$\text{SG}(u)=0$，看做把所有儿子的情况平移了1，0的位置由自己占据，因而上式成立</p>
 <p>2.多叉树的问题可以归纳为 <strong>根分别接上每个儿子得到的树</strong> 的问题的组合</p>
 <p>因为儿子之间实际互不干扰，比较容易理解</p>
@@ -194,15 +194,15 @@ $\forall _{R\subsetneq T}\text{SG}(R+T)=\text{SG}(R)+1$
 <p>考虑直接枚举两棵子树的大小和$\text{SG}$值</p>
 <p>考虑对于$n$个节点的二叉树，设其左儿子为$i$时的总概率为$F_i$</p>
 <p>得到的$\text{dp}$转移是</p>
-$dp_{n,(a+1)\oplus (b+1)}\leftarrow {dp_{i,a}\cdot dp_{n-i-1,b}\cdot F_i}$
-<p>我们知道$n$个节点的二叉树方案数为$Catalan(n)=\frac{(2n)!}{n!(n+1)!}$</p>
-<p>由此得到$\begin{aligned} F_i=\frac{Catalan(i)Catalan(n-i-1)}{Catalan(n)}\end{aligned} $</p>
+<p>$dp_{n,(a+1)\oplus (b+1)}\leftarrow {dp_{i,a}\cdot dp_{n-i-1,b}\cdot F_i}$</p>
+<p>我们知道$n$个节点的二叉树方案数为$Catalan(n)=\frac{(2n)!} {n!(n+1)!}$</p>
+<p>由此得到$\begin{aligned} F_i=\frac{Catalan(i)Catalan(n-i-1)} {Catalan(n)}\end{aligned} $</p>
 <p>此题范围可以直接带入$Catalan(i)$求解，但是依然要提一下递推的做法（似乎精度更有保障?）</p>
-$\begin{aligned} F_i=\frac{\frac{(2i)!}{i!(i+1)!}\cdot \frac{(2n-i-2)!}{(n-i-1)!(n-i)!}}{\frac{(2n)}{n!(n+1)!}}\end{aligned} $
+$\begin{aligned} F_i=\frac{\frac{(2i)!} {i!(i+1)!}\cdot \frac{(2n-i-2)!} {(n-i-1)!(n-i)!} } {\frac{(2n)} {n!(n+1)!} }\end{aligned} $
 <p>递推求解$F_i$，每次$i$改变一阶乘只会改变1或者2，因此由$F_{i-1}$得到$F_i$的递推式为</p>
-$F_i=\left\{ \begin{aligned}\frac{n(n+1)}{2n(2n-1)}&& i=0\\ F_{i-1}\cdot \frac{2i(2i-1)}{(i+1)i}\frac{(n-i+1)(n-i)}{2(n-i)(2n-2i-1)} && i\in[1,n-1]\end{aligned}\right.$
+$F_i=\left\{ \begin{aligned}\frac{n(n+1)} {2n(2n-1)}&& i=0\\ F_{i-1}\cdot \frac{2i(2i-1)} {(i+1)i}\frac{(n-i+1)(n-i)} {2(n-i)(2n-2i-1)} && i\in[1,n-1]\end{aligned}\right.$
 <p>化简之后应该是</p>
-$F_i=\left\{ \begin{aligned}\frac{(n+1)}{2(2n-1)}&& i=0\\ F_{i-1}\cdot \frac{(2i-1)}{(i+1)}\frac{(n-i+1)}{(2n-2i-1)} && i\in[1,n-1]\end{aligned}\right.$
+$F_i=\left\{ \begin{aligned}\frac{(n+1)} {2(2n-1)}&& i=0\\ F_{i-1}\cdot \frac{(2i-1)} {(i+1)}\frac{(n-i+1)} {(2n-2i-1)} && i\in[1,n-1]\end{aligned}\right.$
 <p>至此得到一个朴素的$O(n^4)$预处理，由于是异或，可以用$\text{FWT}_{\oplus}$求解，复杂度为$O(n^3)$</p>
 <p>对于输入的每棵树，类似背包地叠加概率即可，复杂度为$O(n^3)$</p>
 <p>以下是朴素dp代码</p>

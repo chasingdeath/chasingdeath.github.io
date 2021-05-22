@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">[[HDU-6791] 2020HDU多校第三场T1](回文自动机)</h2>
             <div class="post-meta">
-                本文共计3582个字 |
+                本文共计3588个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -189,10 +189,14 @@
 2.设所有长度下不合法的串集合为$G$(每个不合法串有概率$G(T)$)，合法的串集合为$F$(每个合法串也有概率$F(T)$)
 
 由第一步$E(S)=\sum G(T)$，合法串的概率不会重复，所以$\sum F(T)=1$
-<p>考虑$G$中所有的串，如果在后面接上$S$必然合法，但是可能在更早的时候就结束了，这是必然满足接上的前缀是$\text{Border}$</p>
-<p>也就是说，在$G$集合后面接上$S$后，不仅会得到$F$集合，还会得到$F$集合后面额外接上$|S|-|R|,(R\in B(S))$长度字符的状态</p>
-<p>所以有$\sum G(T)\cdot (\frac{1}{|\Sigma|})^{|S|}=\sum_{R\in B(S)}\sum F(T)\cdot (\frac{1}{|\Sigma|})^{|S|-|R|}$</p>
-<p>化简且带入$\sum F(T)=1$，得到$E(S)=\sum G(T)=\begin{aligned}\sum_{R\in B(S)}|\Sigma|^{|R|}\end{aligned}$</p>
+
+考虑$G$中所有的串，如果在后面接上$S$必然合法，但是可能在更早的时候就结束了，这是必然满足接上的前缀是$\text{Border}$
+
+也就是说，在$G$集合后面接上$S$后，不仅会得到$F$集合，还会得到$F$集合后面额外接上$|S|-|R|,(R\in B(S))$长度字符的状态
+
+所以有$\sum G(T)\cdot (\frac{1} {|\Sigma|})^{|S|}=\sum_{R\in B(S)}\sum F(T)\cdot (\frac{1} {|\Sigma|})^{|S|-|R|}$
+
+化简且带入$\sum F(T)=1$，得到$E(S)=\sum G(T)=\begin{aligned}\sum_{R\in B(S)}|\Sigma|^{|R|}\end{aligned}$
 <p>那么比较问题就落到了比较$\text{Border}$上面</p>
 <p>视答案为为一个$26$进制数从高位到低位比较，转化为直接从大到小比较$\text{Border}$序列的字典序即可</p>
 <p>建出回文自动机后，倍增找到当前查询串对应的状态，所有的$\text{Border}$就是$fail$链上所有非空状态长度</p>

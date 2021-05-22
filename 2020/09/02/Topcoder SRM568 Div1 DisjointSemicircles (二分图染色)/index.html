@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">Topcoder SRM568 Div1 DisjointSemicircles (二分图染色)</h2>
             <div class="post-meta">
-                本文共计2771个字 |
+                本文共计2764个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -180,10 +180,9 @@
 <p>一种合法的构造方法是:</p>
 <p>按照$L$从左到右，遍历每个已匹配的半圆，如果包含同向子半圆优先解决同向的子半圆</p>
 <p>剩下的点依然是偶数个，从左到右依次和上一个匹配即可</p>
-$$\  $$
-<h3 id="判断是否存在合法方案"><a href="#判断是否存在合法方案" class="headerlink" title="判断是否存在合法方案"></a>判断是否存在合法方案</h3><p>那么问题转化为判断是否存在一种合法的定向方案，使得某一些区间里0/1的个数为偶数</p>
-<p>考虑构建二分图染色，令点集$V=\{0,1,\cdots,n,0',1',\cdots,n'\}$，则$(u,v)\in E$表示$col(u)\ne col(v)$</p>
-<p>其中$i$号节点表示$1-i$中所有未匹配节点方向的异或和，$i'$表示$i$的反点$(i,i')\in E$</p>
+<script type="math/tex; mode=display">\</script><h3 id="判断是否存在合法方案"><a href="#判断是否存在合法方案" class="headerlink" title="判断是否存在合法方案"></a>判断是否存在合法方案</h3><p>那么问题转化为判断是否存在一种合法的定向方案，使得某一些区间里0/1的个数为偶数</p>
+<p>考虑构建二分图染色，令点集$V=\{0,1,\cdots,n,0’,1’,\cdots,n’\}$，则$(u,v)\in E$表示$col(u)\ne col(v)$</p>
+<p>其中$i$号节点表示$1-i$中所有未匹配节点方向的异或和，$i’$表示$i$的反点$(i,i’)\in E$</p>
 <p>(到这里可以自己想一下怎么连边)</p>
 <p>对于已匹配圆$[L,R]$ (注意不要忘了$[1,n]$)</p>
 <p>如果它方向为$1$，显然只需要$col(L-1)=col(R)$</p>

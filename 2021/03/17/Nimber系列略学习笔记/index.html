@@ -163,66 +163,57 @@
             </div>
             <h2 class="post-title">Nimber系列略学习笔记</h2>
             <div class="post-meta">
-                本文共计323个字 |
+                本文共计2428个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            <h1 id="Nimber系列略学习笔记"><a href="#Nimber系列略学习笔记" class="headerlink" title="Nimber系列略学习笔记"></a>Nimber系列略学习笔记</h1><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4>$\text{Nim+Number=Nimber}$
+            <h1 id="Nimber系列略学习笔记"><a href="#Nimber系列略学习笔记" class="headerlink" title="Nimber系列略学习笔记"></a>Nimber系列略学习笔记</h1><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>$\text{Nim+Number=Nimber}$</p>
 <p>基于我们熟悉的博弈问题$\text{Nim}$问题，我们定义了多$\text{Nim}$问题的和，即$\text{Nim}$和</p>
 <p>我们知道$\text{Nim}$和就是异或运算，为了构成一个更完整的$\text{Number}$域，又引入一种新的运算</p>
 <p>即$\text{Nim}$积</p>
-$$ \ $$
-$$ \ $$
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>对于在$[0,2^{2^m})$上的整数，定义两种$\text{Nim}$运算，构成一个封闭的域</p>
-<p>1.$\text{Nim}$和$\oplus$，$\displaystyle x\oplus y=\text{mex}\{\{a\oplus y|a<x\}\cup\{x\oplus b|b<y\}\}$</p>
+<script type="math/tex; mode=display">\</script><script type="math/tex; mode=display">\</script><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>对于在$[0,2^{2^m})$上的整数，定义两种$\text{Nim}$运算，构成一个封闭的域</p>
+<p>1.$\text{Nim}$和$\oplus$，$\displaystyle x\oplus y=\text{mex} \{ \{a\oplus y|a&lt;x\}\cup\{x\oplus b|b&lt;y\} \}$</p>
 <p>其中对于非负整数集合的$\text{mex}$运算即求不在集合中的最小非负整数</p>
 <p>也就是$\text{Nim}$游戏的”和”</p>
-$$ \ $$
-<p>2.$\text{Nim}$积$\otimes$</p>
+<script type="math/tex; mode=display">\</script><p>2.$\text{Nim}$积$\otimes$</p>
 <p>需要先介绍高维$\text{Nim}$游戏</p>
 <p>对于一维情况：</p>
-<p>数轴上整点处有若干黑点$x_i$，每次操作可以选择一个黑点$x_i$，找到$a<x_i$</p>
+<p>数轴上整点处有若干黑点$x_i$，每次操作可以选择一个黑点$x_i$，找到$a&lt;x_i$</p>
 <p>将线段$[a,x_i]$两端点的黑白翻转</p>
 <p>对于二维情况：</p>
-<p>平面上整点处有若干黑点$(x_i,y_i)$，每次选择一个黑点$(x_i,y_i)$，找到另一个点$(a,b),a<x_i,b<y_i$</p>
+<p>平面上整点处有若干黑点$(x_i,y_i)$，每次选择一个黑点$(x_i,y_i)$，找到另一个点$(a,b),a&lt;x_i,b&lt;y_i$</p>
 <p>将矩形$(a,b)-(x_i,y_i)$四个顶点的颜色翻转</p>
 <p>对于三维情况：</p>
-<p>空间上整点处有若干黑点$(x_i,y_i,z_i)$，每次选择一个黑点$(x_i,y_i,z_i)$，找到另一个点$(a,b,c),a<x_i,b<y_i,c<z_i$</p>
+<p>空间上整点处有若干黑点$(x_i,y_i,z_i)$，每次选择一个黑点$(x_i,y_i,z_i)$，找到另一个点$(a,b,c),a&lt;x_i,b&lt;y_i,c&lt;z_i$</p>
 <p>将长方体$(a,b,c)-(x_i,y_i,z_i)$八个顶点的颜色翻转</p>
-$\ldots$
-$\text{Nim}$积是高维$\text{Nim}$游戏的降维操作，显然各个维度之间无序，每个黑点之间可以通过$\text{Nim}$和相加
-
-由此定义在二维$\text{Nim}$游戏上的$\text{Nim}$积运算
-
-$x\otimes y=\text{mex}\{(a\otimes y)\oplus (x\otimes b)\oplus(a\otimes b)|a<x,b<y\}$
+<p>$\ldots$</p>
+<p>$\text{Nim}$积是高维$\text{Nim}$游戏的降维操作，显然各个维度之间无序，每个黑点之间可以通过$\text{Nim}$和相加</p>
+<p>由此定义在二维$\text{Nim}$游戏上的$\text{Nim}$积运算</p>
+<p>$x\otimes y=\text{mex} \{(a\otimes y)\oplus (x\otimes b)\oplus(a\otimes b)|a&lt;x,b&lt;y\}$</p>
 <p>相较于$\text{Nim}$和，$\text{Nim}$积运算十分复杂，需要若干性质简化运算</p>
 <p>1.基础运算律</p>
-$x\otimes 1=x$
-$x\otimes y=y\otimes x$
-$(x\otimes y)\otimes z=x\otimes (y\otimes z)$
+<p>$x\otimes 1=x$</p>
+<p>$x\otimes y=y\otimes x$</p>
+<p>$(x\otimes y)\otimes z=x\otimes (y\otimes z)$</p>
 <p>2.$2^{2^n}\otimes 2^{2^m}=\left\{\begin{aligned}2^{2^n+2^m} && n\ne m\\ 3\cdot 2^{2^n-1} && n=m\end{aligned}\right.$</p>
-<p>3.$2^{2^n}\otimes x=2^{2^n}\times x\ (x<2^{2^n})$</p>
+<p>3.$2^{2^n}\otimes x=2^{2^n}\times x\ (x&lt;2^{2^n})$</p>
 <p>对于$x,y\in [0,2^{2^m})$，利用性质3，用减半的方法优化运算，令$n=2^{m-1}$</p>
-$x=a\cdot 2^n+b,y=c\cdot 2^n+d,a,b,c,d\in[0,2^n)$
-$x\otimes y=(a\otimes 2^n\oplus b)\otimes (c\otimes 2^n\oplus d)$
-$=((a\otimes c)\otimes (3\cdot 2^{n-1}))\oplus  (2^n\cdot ((a\otimes d)\oplus (b\otimes c))\ ) \oplus (b\otimes d)$
-$=((a\otimes c)\otimes (2^{n}\oplus 2^{n-1}))\oplus  (2^n\cdot ((a\otimes d)\oplus (b\otimes c))\ ) \oplus (b\otimes d)$
-$=((a\otimes c)\otimes 2^{n-1})\oplus  (2^n\cdot ((a\otimes c)\oplus (a\otimes d)\oplus (b\otimes c))\ ) \oplus (b\otimes d)$
-$=((a\otimes c)\otimes 2^{n-1})\oplus  (2^n\cdot ((a\oplus b)\otimes (c\oplus d)\oplus (b\otimes d))) \oplus (b\otimes d)$
+<p>$x=a\cdot 2^n+b,y=c\cdot 2^n+d,a,b,c,d\in[0,2^n)$</p>
+<p>$x\otimes y=(a\otimes 2^n\oplus b)\otimes (c\otimes 2^n\oplus d)$</p>
+<p>$=((a\otimes c)\otimes (3\cdot 2^{n-1}))\oplus  (2^n\cdot ((a\otimes d)\oplus (b\otimes c))\ ) \oplus (b\otimes d)$</p>
+<p>$=((a\otimes c)\otimes (2^{n}\oplus 2^{n-1}))\oplus  (2^n\cdot ((a\otimes d)\oplus (b\otimes c))\ ) \oplus (b\otimes d)$</p>
+<p>$=((a\otimes c)\otimes 2^{n-1})\oplus  (2^n\cdot ((a\otimes c)\oplus (a\otimes d)\oplus (b\otimes c))\ ) \oplus (b\otimes d)$</p>
+<p>$=((a\otimes c)\otimes 2^{n-1})\oplus  (2^n\cdot ((a\oplus b)\otimes (c\oplus d)\oplus (b\otimes d))) \oplus (b\otimes d)$</p>
 <p>由此进行暴力递归需要依次计算$a\otimes c,(a\otimes c)\otimes 2^{n-1},b\otimes d,(a\oplus b)\otimes (c\oplus d)$</p>
 <p>复杂度为$O(4^{m})$，由于$2^{n-1}$</p>
 <p>对于$2^{32}$以内的运算，即$m=5$，看起来已经可以接受?</p>
-$$\ $$
-$$ \ $$
-<h3 id="应用原根的优化"><a href="#应用原根的优化" class="headerlink" title="应用原根的优化"></a>应用原根的优化</h3>$\text{Nimber}$域内是存在原根的，$[0,2^{16})$域内最小的原根是$258$
+<script type="math/tex; mode=display">\</script><script type="math/tex; mode=display">\</script><h3 id="应用原根的优化"><a href="#应用原根的优化" class="headerlink" title="应用原根的优化"></a>应用原根的优化</h3><p>$\text{Nimber}$域内是存在原根的，$[0,2^{16})$域内最小的原根是$258$</p>
 <p>如果预处理出$[0,2^{16})$以内所有数的原根指标和乘法表，即可$O(1)$查询$[0,2^{16})$任意数的$\text{Nimber}$积</p>
 <p>由此也可以仅通过一次递归计算$[0,2^{32})$域内的$\text{Nimber}$积</p>
-$$ \ $$
-$$ \ $$
-<h3 id="更多运算"><a href="#更多运算" class="headerlink" title="更多运算"></a>更多运算</h3><p>对于$[0,2^{2^m})$域内的$\text{Nimber}$，由性质$x^{2^m}=x$导出的运算有</p>
-$\displaystyle \frac{1}{x}=x^{2^m-2}$ 
-$\sqrt x=x^{2^{m-1}}$
+<script type="math/tex; mode=display">\</script><script type="math/tex; mode=display">\</script><h3 id="更多运算"><a href="#更多运算" class="headerlink" title="更多运算"></a>更多运算</h3><p>对于$[0,2^{2^m})$域内的$\text{Nimber}$，由性质$x^{2^m}=x$导出的运算有</p>
+<p>$\displaystyle \frac{1} {x}=x^{2^m-2}$ </p>
+<p>$\sqrt x=x^{2^{m-1} }$</p>
 
             
                 

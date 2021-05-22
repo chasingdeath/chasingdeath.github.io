@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">「ROI 2019 Day2」模式串查找 (口胡)</h2>
             <div class="post-meta">
-                本文共计1101个字 |
+                本文共计1085个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -189,10 +189,8 @@
 <p>取模板串反向后缀数组，求出与$R$匹配长度超过$R-L+1$的$rank$区间$[l,r]$</p>
 <p>则我们需要找到$[l,r]$中$sa[i]+1$与$P$最长的$LCP$，显然是一个求临近$rank$的问题，可以在线主席树二分解决</p>
 <p>由此得到最长前缀为$A$串再加上额外匹配得到的部分</p>
-$O(\log m)$完成
-
-$$ \ $$
-<p>2.求出跨过两个串的完美匹配个数</p>
+<p>$O(\log m)$完成</p>
+<script type="math/tex; mode=display">\</script><p>2.求出跨过两个串的完美匹配个数</p>
 <p>容易得到前串后缀对应的$\text{kmp}$指针，后串前缀对应反向的$\text{kmp}$指针</p>
 <p>实际上就是求出这两个指针不断失配时相加恰好完全匹配的个数</p>
 <p>注意到，实际上这个询问是完全可以<strong>离线</strong>的</p>
@@ -200,8 +198,7 @@ $$ \ $$
 <p>比较暴力的做法是：</p>
 <p>建立两棵$\text{kmp}$树，在第一棵树上$\text{dfs}$，加入祖先对应的位置，然后再第二棵树上查询祖先匹配的个数</p>
 <p>可以用$\text{dfs}$序+差分树状数组维护，复杂度为$O(\log m)$</p>
-$$  \ $$
-<p>因此总体复杂度为$O((S+n\log S)\log m)$  <del>实际上常数非常大？</del></p>
+<script type="math/tex; mode=display">\</script><p>因此总体复杂度为$O((S+n\log S)\log m)$  <del>实际上常数非常大？</del></p>
 
             
                 

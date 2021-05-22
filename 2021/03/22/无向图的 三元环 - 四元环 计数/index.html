@@ -163,29 +163,28 @@
             </div>
             <h2 class="post-title">无向图的 三元环 - 四元环 计数</h2>
             <div class="post-meta">
-                本文共计416个字 |
+                本文共计714个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="无向图的-三元环-四元环-计数"><a href="#无向图的-三元环-四元环-计数" class="headerlink" title="无向图的 三元环 - 四元环 计数"></a>无向图的 三元环 - 四元环 计数</h1><p>问题描述：</p>
 <p>给定一个$n$个点$m$条边的无向图，统计其中三元环/四元环的个数</p>
-<h3 id="三元环"><a href="#三元环" class="headerlink" title="三元环"></a>三元环</h3><p>考虑枚举一条边$(u,v)$，为了避免重复我们可能令$u<v$</p>
+<h3 id="三元环"><a href="#三元环" class="headerlink" title="三元环"></a>三元环</h3><p>考虑枚举一条边$(u,v)$，为了避免重复我们可能令$u&lt;v$</p>
 <p>然后暴力枚举求出$u,v$两个点出边的交点个数</p>
 <p>具体的，先对于$u$的出点打标记，然后查询$v$的出点中被标记的个数</p>
 <p>tips:当然每个三元环会被算三次</p>
 <p>这样复杂度显然是$O(nm)$的，当$v$点度数大时就可以卡掉</p>
-<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><p>强制$deg_u>deg_v\or deg_u=deg_v,u<v$</p>
+<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><p>强制$deg_u&gt;deg_v\or deg_u=deg_v,u&lt;v$</p>
 <p>考虑先固定$u$，预处理出标记情况，然后枚举每个合法的$(u,v)$</p>
 <p>再去枚举$v$的出边</p>
 <p>考虑证明这个复杂度上限为$O(m\sqrt m)$级别</p>
 <p>假设对于$(u,v)$</p>
 <p>1.如果$deg_v\leq \sqrt m$，显然它们被枚举的次数总和$\leq m$，枚举复杂度为$O(m\sqrt m)$</p>
-<p>2.对于$deg_v>\sqrt m$，则显然有$deg_u\ge deg_v>\sqrt m$</p>
+<p>2.对于$deg_v&gt;\sqrt m$，则显然有$deg_u\ge deg_v&gt;\sqrt m$</p>
 <p>会枚举到$v$的$u$显然不超过$\sqrt m$个，因此这样的$v$遍历次数为$O(m\sqrt m)$</p>
 <p>故复杂度为$O(m\sqrt m)$</p>
-$$ \ $$
-<h3 id="四元环"><a href="#四元环" class="headerlink" title="四元环"></a>四元环</h3><p>类似三元环的方法，同样按照$(deg_u,u)$二元组递减的顺序设定排名</p>
+<script type="math/tex; mode=display">\</script><h3 id="四元环"><a href="#四元环" class="headerlink" title="四元环"></a>四元环</h3><p>类似三元环的方法，同样按照$(deg_u,u)$二元组递减的顺序设定排名</p>
 <p>强制$u$为四元环中排名最小的点，枚举合法的边$(u,v)$，那么我们计算的实际上是每个$v$的出边的交的个数</p>
 <p>依次枚举每个$v$的过程中，对于出边$(v,w)$维护$w$出现次数，即可求出交点个数</p>
 <p>容易发现这样的计算不会出现重复</p>

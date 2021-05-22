@@ -163,54 +163,43 @@
             </div>
             <h2 class="post-title">组合数公式</h2>
             <div class="post-meta">
-                本文共计1633个字 |
+                本文共计1578个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h2 id="组合数公式"><a href="#组合数公式" class="headerlink" title="组合数公式"></a>组合数公式</h2><hr>
-<p>组合数$\displaystyle C(n,m)=C_n^m=\binom{n}{m}$</p>
-<h3 id="递推式"><a href="#递推式" class="headerlink" title="递推式"></a>递推式</h3>$$ C(n,m)=C(n-1,m-1)+C(n-1,m)$$
-<hr>
-<h3 id="组合数完全累和"><a href="#组合数完全累和" class="headerlink" title="组合数完全累和"></a>组合数完全累和</h3>$$\displaystyle \sum_{i=0}^n C(n,i) =2^n$$
-<hr>
-<h3 id="奇偶累和"><a href="#奇偶累和" class="headerlink" title="奇偶累和"></a>奇偶累和</h3>$$\displaystyle \sum_0^n (-1)^i C(n,i)=[n=0]$$
-<hr>
-<h3 id="型"><a href="#型" class="headerlink" title="型"></a>$\sum\cdots\sum \rightarrow C() $型</h3><p>我们熟知的有</p>
-$$\displaystyle \sum_{i=1}^{n}1=n = C(n,1)$$
-$$ \displaystyle\sum _{i=1}^{n} \sum_{j=i+1}^{n} 1= \frac{n(n-1)}{2}$$
-<p>更一般的</p>
-$$\displaystyle\underbrace {\sum \sum ... \sum} 1 =C(n,k)$$
-$$ (k个\sum) \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $$
-<hr>
-<h3 id="型-1"><a href="#型-1" class="headerlink" title="型"></a>$ ...  \ \cdot  C(n,i)$型</h3>$\displaystyle \sum i \cdot C(n,i) $
-$\displaystyle = \sum {i \cdot  \frac{n!}{i! \cdot (n-i)!}}$
-$\displaystyle = \sum {  \frac{n!}{(i-1)! \cdot (n-i)!}}$
-$\displaystyle=\sum {n \cdot \frac {(n-1)!} {(i-1)! \cdot (n-i)!}}$
-$\displaystyle=n\cdot \sum  C(n-1,i-1)$
+<p>组合数$\displaystyle C(n,m)=C_n^m=\binom{n} {m}$</p>
+<h3 id="递推式"><a href="#递推式" class="headerlink" title="递推式"></a>递推式</h3><script type="math/tex; mode=display">C(n,m)=C(n-1,m-1)+C(n-1,m)</script><hr>
+<h3 id="组合数完全累和"><a href="#组合数完全累和" class="headerlink" title="组合数完全累和"></a>组合数完全累和</h3><script type="math/tex; mode=display">\displaystyle \sum_{i=0}^n C(n,i) =2^n</script><hr>
+<h3 id="奇偶累和"><a href="#奇偶累和" class="headerlink" title="奇偶累和"></a>奇偶累和</h3><script type="math/tex; mode=display">\displaystyle \sum_0^n (-1)^i C(n,i)=[n=0]</script><hr>
+<h3 id="sum-cdots-sum-rightarrow-C-型"><a href="#sum-cdots-sum-rightarrow-C-型" class="headerlink" title="$\sum\cdots\sum \rightarrow C() $型"></a>$\sum\cdots\sum \rightarrow C() $型</h3><p>我们熟知的有</p>
+<script type="math/tex; mode=display">\displaystyle \sum_{i=1}^{n}1=n = C(n,1)</script><script type="math/tex; mode=display">\displaystyle\sum _{i=1}^{n} \sum_{j=i+1}^{n} 1= \frac{n(n-1)} {2}</script><p>更一般的</p>
+<script type="math/tex; mode=display">\displaystyle\underbrace {\sum \sum ... \sum} 1 =C(n,k)</script><script type="math/tex; mode=display">(k个\sum) \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \</script><hr>
+<h3 id="…-cdot-C-n-i-型"><a href="#…-cdot-C-n-i-型" class="headerlink" title="$ …  \ \cdot  C(n,i)$型"></a>$ …  \ \cdot  C(n,i)$型</h3><p>$\displaystyle \sum i \cdot C(n,i) $</p>
+<p>$\displaystyle = \sum {i \cdot  \frac{n!} {i! \cdot (n-i)!} }$</p>
+<p>$\displaystyle = \sum {  \frac{n!} {(i-1)! \cdot (n-i)!} }$</p>
+<p>$\displaystyle=\sum {n \cdot \frac {(n-1)!} {(i-1)! \cdot (n-i)!} }$</p>
+<p>$\displaystyle=n\cdot \sum  C(n-1,i-1)$</p>
 <p>同理的</p>
-$$\sum i\cdot (i-1)\cdot C(n,i)=n \cdot (n-1) \cdot \sum C(n-2,i-2)$$
-<p>带入还能得到</p>
-$$\sum i^2 \cdot  C(n,i)  = n \cdot (n-1) \cdot \sum C(n-2,i-2)+n \cdot \sum C(n-1,i-1)  $$
-<p>更一般的，可以表示成<br>$$ \sum C(i,k) \cdot C(n,i) =C(n,k) \cdot \sum C(n-k,i-k)$$</p>
-<hr>
-<h3 id="多组合数相乘型"><a href="#多组合数相乘型" class="headerlink" title="多组合数相乘型"></a>多组合数相乘型</h3>$\displaystyle \sum_{i=0}^{k} C(n,i)\cdot C(m,k-i) = C(n+m,k)$
+<script type="math/tex; mode=display">\sum i\cdot (i-1)\cdot C(n,i)=n \cdot (n-1) \cdot \sum C(n-2,i-2)</script><p>带入还能得到</p>
+<script type="math/tex; mode=display">\sum i^2 \cdot  C(n,i)  = n \cdot (n-1) \cdot \sum C(n-2,i-2)+n \cdot \sum C(n-1,i-1)</script><p>更一般的，可以表示成</p>
+<script type="math/tex; mode=display">\sum C(i,k) \cdot C(n,i) =C(n,k) \cdot \sum C(n-k,i-k)</script><hr>
+<h3 id="多组合数相乘型"><a href="#多组合数相乘型" class="headerlink" title="多组合数相乘型"></a>多组合数相乘型</h3><p>$\displaystyle \sum_{i=0}^{k} C(n,i)\cdot C(m,k-i) = C(n+m,k)$</p>
 <p>其实就是两个组合问题的组合，可以直接通过实际意义得到</p>
 <hr>
-<h3 id="Lucas定理"><a href="#Lucas定理" class="headerlink" title="Lucas定理"></a>Lucas定理</h3>$ C(n,m) \mod p = C(n \mod p,m \mod p) \cdot C(\lfloor\frac{n} {p}\rfloor, \lfloor \frac{m} {p}\rfloor) \mod p$
+<h3 id="Lucas定理"><a href="#Lucas定理" class="headerlink" title="Lucas定理"></a>Lucas定理</h3><p>$ C(n,m) \mod p = C(n \mod p,m \mod p) \cdot C(\lfloor\frac{n} {p}\rfloor, \lfloor \frac{m} {p}\rfloor) \mod p$</p>
 <p>预处理阶乘逆元后，可以用于解决模数较小而$n,m$较大的组合数问题</p>
 <hr>
-<h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2><h3 id="列"><a href="#列" class="headerlink" title="列"></a>列</h3>$\displaystyle \sum_{i=0}^n \binom{i}{m}=\binom{n+1}{m+1}$
-<p>由递推式$\displaystyle \binom{i}{m}=\binom{i-1}{m}+\binom{i-1}{m-1}$容易迭代发现</p>
-$$  \ $$
-<h3 id="行"><a href="#行" class="headerlink" title="行"></a>行</h3><p>令 $S(n,m)=\sum_{i=0}^{m} C(n,i)$</p>
-$S(n,m)+S(n,m+1)$
-$=\sum_{i=0}^{m}(C(n,i)+C(n,i+1))+C(n,0)$
-$=\sum C(n+1,i+1)+C(n,0)$ (带入递推公式)
-
-$=S(n+1,m+1)$
+<h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2><h3 id="列"><a href="#列" class="headerlink" title="列"></a>列</h3><p>$\displaystyle \sum_{i=0}^n \binom{i} {m}=\binom{n+1} {m+1}$</p>
+<p>由递推式$\displaystyle \binom{i} {m}=\binom{i-1} {m}+\binom{i-1} {m-1}$容易迭代发现</p>
+<script type="math/tex; mode=display">\</script><h3 id="行"><a href="#行" class="headerlink" title="行"></a>行</h3><p>令 $S(n,m)=\sum_{i=0}^{m} C(n,i)$</p>
+<p>$S(n,m)+S(n,m+1)$</p>
+<p>$=\sum_{i=0}^{m}(C(n,i)+C(n,i+1))+C(n,0)$</p>
+<p>$=\sum C(n+1,i+1)+C(n,0)$ (带入递推公式)</p>
+<p>$=S(n+1,m+1)$</p>
 <p>又$\because S(n,m)+S(n,m+1)=2S(n,m+1)-C(n,m+1)$</p>
-$\therefore S(n,m)=2S(n-1,m)-C(n-1,m)$
+<p>$\therefore S(n,m)=2S(n-1,m)-C(n-1,m)$</p>
 <p>(待补。。。)</p>
 
             

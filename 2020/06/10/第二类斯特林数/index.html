@@ -168,41 +168,37 @@
             </div>
         </div>
         <div class="post-content markdown-body">
-            <h2 id="第二类斯特林数"><a href="#第二类斯特林数" class="headerlink" title="第二类斯特林数"></a>第二类斯特林数</h2>$S(n,m): n$个点分成$m$个相同集合
-
-带入定义，递推式为$S(n,m)=S(n-1,m-1)+m\cdot S(n-1,m)$
+            <h2 id="第二类斯特林数"><a href="#第二类斯特林数" class="headerlink" title="第二类斯特林数"></a>第二类斯特林数</h2><p>$S(n,m): n$个点分成$m$个相同集合</p>
+<p>带入定义，递推式为$S(n,m)=S(n-1,m-1)+m\cdot S(n-1,m)$</p>
 <p>转化$x^n$</p>
-$x^n$的组合意义是把$n$个点随意放到$x$个不同位置里，枚举那些位置放了点，则
-
-$$x^n=\sum_0^x C(x,i)i!S(n,i)$$
-<p>有一些涉及到$x^n\rightarrow (x+1)^n$可以展开之后带入递推式快速转移</p>
+<p>$x^n$的组合意义是把$n$个点随意放到$x$个不同位置里，枚举那些位置放了点，则</p>
+<script type="math/tex; mode=display">x^n=\sum_0^x C(x,i)i!S(n,i)</script><p>有一些涉及到$x^n\rightarrow (x+1)^n$可以展开之后带入递推式快速转移</p>
 <p>容斥/二项式反演得到</p>
-$$S(n,m)=\frac{\sum_{i=0}^m (-1)^{m-i}C(m,i) i^n}{m!}$$
-<p>即$S(n,m)$的通项公式</p>
-<h2 id="下降幂多项式卷积"><a href="#下降幂多项式卷积" class="headerlink" title="下降幂多项式卷积"></a>下降幂多项式卷积</h2>$x^{\underline n}=\frac{x!}{(x-n)!}$
+<script type="math/tex; mode=display">S(n,m)=\frac{\sum_{i=0}^m (-1)^{m-i}C(m,i) i^n} {m!}</script><p>即$S(n,m)$的通项公式</p>
+<h2 id="下降幂多项式卷积"><a href="#下降幂多项式卷积" class="headerlink" title="下降幂多项式卷积"></a>下降幂多项式卷积</h2><p>$x^{\underline n}=\frac{x!} {(x-n)!}$</p>
 <p>下降幂多项式$F(x)$的$EGF$是</p>
-$EGF(F(x))=\sum_{i=0}^{\infty}\frac{x^i}{i!}\sum_{j=0}^{n} \frac{i!}{(i-j)!}\cdot F_j$
-$EGF(F(x))=\sum_{i=0}^{\infty}x^i \sum_{j=0}^{n} \frac{1}{(i-j)!}\cdot F_j$
+<p>$EGF(F(x))=\sum_{i=0}^{\infty}\frac{x^i} {i!}\sum_{j=0}^{n} \frac{i!} {(i-j)!}\cdot F_j$</p>
+<p>$EGF(F(x))=\sum_{i=0}^{\infty}x^i \sum_{j=0}^{n} \frac{1} {(i-j)!}\cdot F_j$</p>
 <p>换一下顺序</p>
-$EGF(F(x))=\sum_{i=0}^{n} F_i \sum_{j=i}^{\infty}\frac{1}{(j-i)!} x^j$
-$EGF(F(x))=\sum_{i=0}^{n} F_i \cdot x^i \sum_{j=0}^{\infty}\frac{1}{j!} x^j$
-$EGF(F(x))=\sum_{i=0}^{n} F_i \cdot x^i e^x$
+<p>$EGF(F(x))=\sum_{i=0}^{n} F_i \sum_{j=i}^{\infty}\frac{1} {(j-i)!} x^j$</p>
+<p>$EGF(F(x))=\sum_{i=0}^{n} F_i \cdot x^i \sum_{j=0}^{\infty}\frac{1} {j!} x^j$</p>
+<p>$EGF(F(x))=\sum_{i=0}^{n} F_i \cdot x^i e^x$</p>
 <p>那么直接卷积就可以得到$F(x)$的$EGF$，然后点值对应相乘</p>
 <p>卷回来的时候</p>
-$EGF(F(x))=\sum_{i=0}^{n} F_i \cdot x^ie^x$
-$F_i=\frac{EGF(F(x))}{x^ie^x}$
+<p>$EGF(F(x))=\sum_{i=0}^{n} F_i \cdot x^ie^x$</p>
+<p>$F_i=\frac{EGF(F(x))} {x^ie^x}$</p>
 <p>那么就直接卷上$e^{-x}$就可以了</p>
 <h2 id="普通多项式转下降幂多项式"><a href="#普通多项式转下降幂多项式" class="headerlink" title="普通多项式转下降幂多项式"></a>普通多项式转下降幂多项式</h2><p>带入$x^n$的第二类斯特林数展开式，$x^n=\sum C(x,i)i!S(n,i)=\sum x^{\underline i}S(n,i)$</p>
-$G(x)=\sum [x^i]F(x)\sum x^{\underline j}S(i,j)$
-$G(x)=\sum [x^i]F(x)\sum x^{\underline j}\sum \frac{(-1)^{j-k} C(j,k) k^i}{j!}$
-$G(x)=\sum [x^i]F(x)\sum x^{\underline j}\sum \frac{(-1)^{j-k} k^i}{k!(j-k)!}$
+<p>$G(x)=\sum [x^i]F(x)\sum x^{\underline j}S(i,j)$</p>
+<p>$G(x)=\sum [x^i]F(x)\sum x^{\underline j}\sum \frac{(-1)^{j-k} C(j,k) k^i} {j!}$</p>
+<p>$G(x)=\sum [x^i]F(x)\sum x^{\underline j}\sum \frac{(-1)^{j-k} k^i} {k!(j-k)!}$</p>
 <p>是一个三元的卷积优化，比较复杂</p>
-$i\rightarrow j,[x^{\underline j}]G(x)=\frac{(-1)^{j-k}[x^i]F(x) k^i}{(j-k)!k!}$
+<p>$i\rightarrow j,[x^{\underline j}]G(x)=\frac{(-1)^{j-k}[x^i]F(x) k^i} {(j-k)!k!}$</p>
 <p>考虑分步优化</p>
-<h4 id="Part1"><a href="#Part1" class="headerlink" title="Part1 "></a>Part1 $i\rightarrow k$</h4><p>先计算出$H(k)=\sum [x^i]F(x) k^i$</p>
+<h4 id="Part1-i-rightarrow-k"><a href="#Part1-i-rightarrow-k" class="headerlink" title="Part1 $i\rightarrow k$"></a>Part1 $i\rightarrow k$</h4><p>先计算出$H(k)=\sum [x^i]F(x) k^i$</p>
 <p>发现$[x^i]H(x)=F(i)$，多项式多点求值得到</p>
-<h4 id="Part2"><a href="#Part2" class="headerlink" title="Part2 "></a>Part2 $k\rightarrow j$</h4><p>对于已经得到的$H(x)$</p>
-$[x^{\underline j}]G(x)=\sum \frac{(-1)^{j-k}[x^k]H(x)}{k!(j-k)!}$
+<h4 id="Part2-k-rightarrow-j"><a href="#Part2-k-rightarrow-j" class="headerlink" title="Part2 $k\rightarrow j$"></a>Part2 $k\rightarrow j$</h4><p>对于已经得到的$H(x)$</p>
+<p>$[x^{\underline j}]G(x)=\sum \frac{(-1)^{j-k}[x^k]H(x)} {k!(j-k)!}$</p>
 <p>可以直接卷积得到</p>
 <h2 id="下降幂多项式转普通多项式"><a href="#下降幂多项式转普通多项式" class="headerlink" title="下降幂多项式转普通多项式"></a>下降幂多项式转普通多项式</h2><p>求出$F(x)$的$EGF$，然后带入前$n$项的值，快速插值回来即可</p>
 

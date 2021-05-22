@@ -163,18 +163,18 @@
             </div>
             <h2 class="post-title">[NOI Online 2021 提高组] 积木小赛</h2>
             <div class="post-meta">
-                本文共计2203个字 |
+                本文共计2204个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="NOI-Online-2021-提高组-积木小赛"><a href="#NOI-Online-2021-提高组-积木小赛" class="headerlink" title="[NOI Online 2021 提高组] 积木小赛"></a>[NOI Online 2021 提高组] 积木小赛</h1><p>题目大意：给定串$A$,$B$，求$B$中有多少本质不同的连续子段是$A$的子序列</p>
-$n\leq 3000$
+<p>$n\leq 3000$</p>
 <p>暴力枚举$B$中的子段，同步维护与$A$的匹配指针$p$</p>
 <p>每次插入一个字符$c$，找到$A$中$p+1$之后第一个字符$c$，令匹配指针跳过去</p>
 <p>可以预处理出这样的下一个字符$nxt_{i,c}$，完成$O(1)$匹配</p>
 <p>除此以外，我们还需要对于本质不同去重</p>
-<p>如果用$\text{trie}$树去重，需要开一个$\frac{n^2}{2}\cdot 26$的数组，面临着内存不够的问题</p>
+<p>如果用$\text{trie}$树去重，需要开一个$\frac{n^2} {2}\cdot 26$的数组，面临着内存不够的问题</p>
 <p><del>你可以信仰不开这么大</del></p>
 <p>也可以去学习一下$\text{DAT(Double Array Trie)}$算法</p>
 <p>也可以用$\text{hash+set/map/hash table/sort unique}$</p>

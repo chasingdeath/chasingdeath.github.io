@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">Topcoder SRM 569 Div1 - MegaFactorial (矩阵)</h2>
             <div class="post-meta">
-                本文共计3063个字 |
+                本文共计3061个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -172,24 +172,18 @@
 <p>对于$B=2,3,5,7$的情况，可以直接计算答案$\sum_{i=1}\sum_{j=1}F(j\cdot B^i)$</p>
 <p>对于$B$为质因子组合的情况，即$B=6(2\times 3),10(2\times 5)$，因为$F(i)$实际有单调性，可以直接取较大的质因子</p>
 <p>对于$B$为质因子次方的情况，即$B=2^2,2^3,3^2$的情况，设$B=p^k$则答案可以表示为</p>
-$\begin{aligned} \lfloor \frac{\sum_{i=1}\sum_{j=1}F(j\cdot p^i)}{k}\rfloor \end{aligned} $
+$\begin{aligned} \lfloor \frac{\sum_{i=1}\sum_{j=1}F(j\cdot p^i)} {k}\rfloor \end{aligned} $
 <p>由于要取模，实际上要做一点魔改，设模数为$m$，答案可以表示为$c=ak+b$的形式，这个式子求出的是$a$</p>
-<p>则$\lfloor \frac{(ak+b)\mod km }{k}\rfloor =a+\lfloor \frac{(b\mod km)}{k}\rfloor =a$</p>
+<p>则$\lfloor \frac{(ak+b)\mod km } {k}\rfloor =a+\lfloor \frac{(b\mod km)} {k}\rfloor =a$</p>
 <p>由于$k\leq 3$，扩大模数后可以用unsigned int 存</p>
 <p>下面考虑用矩阵求解上式</p>
-$nk!$(下面用$f(n,k)$表示)这个东西可以看作从$n$向下的一个递推式
-
-因此考虑以$k$为矩阵元素，求出每个$f(n,k)$被调用的次数
-
-注意这样递推就是反向的了
-
-递推的转移式子是$f(n,k)\rightarrow f(n,k-1),f(n-1,k)$，其中$f(n,k-1)$的转移需要在层内完成
-
-据此构造矩阵即可，注意$f(n,0)$不能向$f(n-1,0)$转移
-
-考虑对于$\sum_{i=1}\sum_{j=1}F(j\cdot B^i)$的每个$i$求解，一共有$\frac{n}{B^i}$个$j$，每个$j$出现的递推层数为等差数列
-
-即$n\mod B^i,n\mod B^i+B^i,n\mod B^i +2 \cdot B^i\cdots $
+<p>$nk!$(下面用$f(n,k)$表示)这个东西可以看作从$n$向下的一个递推式</p>
+<p>因此考虑以$k$为矩阵元素，求出每个$f(n,k)$被调用的次数</p>
+<p>注意这样递推就是反向的了</p>
+<p>递推的转移式子是$f(n,k)\rightarrow f(n,k-1),f(n-1,k)$，其中$f(n,k-1)$的转移需要在层内完成</p>
+<p>据此构造矩阵即可，注意$f(n,0)$不能向$f(n-1,0)$转移</p>
+<p>考虑对于$\sum_{i=1}\sum_{j=1}F(j\cdot B^i)$的每个$i$求解，一共有$\frac{n} {B^i}$个$j$，每个$j$出现的递推层数为等差数列</p>
+<p>即$n\mod B^i,n\mod B^i+B^i,n\mod B^i +2 \cdot B^i\cdots $</p>
 <p>我们要求的其实是每一层的$f(i,0)$，所以考虑求出每次$B^i$层的转移矩阵</p>
 <p>然后是依次累和，把矩阵的转移中$0\rightarrow 0$的转移赋为1即可做到</p>
 <p>tips:首项是$n\mod B^i$</p>

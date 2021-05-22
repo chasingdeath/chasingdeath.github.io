@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">「USACO 2021.1 Platinum」Paint by Letters</h2>
             <div class="post-meta">
-                本文共计2822个字 |
+                本文共计2820个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -173,15 +173,14 @@
 <p>下文和代码中，$V,E,F$分别为点集，边集，区域集合</p>
 <p>其中$|V|$可以直接得到，$|E|$可以$O(n^2)$前缀和预处理出来，$O(1)$查询</p>
 <p>下面处理区域个数</p>
-<h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h3><p>前缀和所有大小为1（即被四个点包住的）区域，暴力预处理所有大小$>1$的区域，个数为$O(\frac{nm}{4})$</p>
+<h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h3><p>前缀和所有大小为1（即被四个点包住的）区域，暴力预处理所有大小$&gt;1$的区域，个数为$O(\frac{nm} {4})$</p>
 <p>然后可以转化为一个对于给定矩形查询包含的 矩形个数 的问题</p>
 <p>实际上这个题目$q$小直接枚举就是了。。</p>
-<p>复杂度为$O(nm+q\frac{nm}{4})$，足够通过时限</p>
+<p>复杂度为$O(nm+q\frac{nm} {4})$，足够通过时限</p>
 <p>写的够丑可以得到这个<a target="_blank" rel="noopener" href="https://loj.ac/s/1080403">代码</a></p>
 <p>矩形区间查询问题 ，不知道有没有什么更好的方法</p>
 <p>ps:垃圾数据没有卡，因此实际上数据中的空白块数量非常少，预处理写得稍微好一点可能还比下面的做法常数小</p>
-$$ \ $$
-<h3 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h3><p>用$(x,y)$表示$(x,y),(x+1,y),(x,y+1),(x+1,y+1)$中间的一个空白区域</p>
+<script type="math/tex; mode=display">\</script><h3 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h3><p>用$(x,y)$表示$(x,y),(x+1,y),(x,y+1),(x+1,y+1)$中间的一个空白区域</p>
 <p>这些空白块会被染色块之间的边隔开，但是依然可以形成四联通块</p>
 <p>预处理出所有空白区域的连通块，每个连通块选取一个代表点$S_i$</p>
 <p>我们要统计一个区域中的空白连通块个数，注意到</p>

@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">反演</h2>
             <div class="post-meta">
-                本文共计1442个字 |
+                本文共计2198个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -171,25 +171,19 @@
             <h1 id="反演"><a href="#反演" class="headerlink" title="反演"></a>反演</h1><hr>
 <h2 id="什么是反演"><a href="#什么是反演" class="headerlink" title="什么是反演"></a>什么是反演</h2><p>对于已知$F_i=\sum a_{i,j}\cdot G_j$</p>
 <p>反演得到$G_i=\sum b_{i,j} \cdot F_j$</p>
-$\text{NTT,FFT,FWT}$的逆卷积都可以认为是一种反演
-
--------------------------------------
-
-## 子集反演
-
-即反解高位前缀和
-
-常见我们写成代码是
-
+<p>$\text{NTT,FFT,FWT}$的逆卷积都可以认为是一种反演</p>
+<hr>
+<h2 id="子集反演"><a href="#子集反演" class="headerlink" title="子集反演"></a>子集反演</h2><p>即反解高位前缀和</p>
+<p>常见我们写成代码是</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> *a,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>) </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;n;++j) <span class="keyword">if</span>(j&amp;i) </span><br><span class="line">            a[j]+=a[j^i]*f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-$F_S=\sum_{T\subset S}G_T$
+<p>$F_S=\sum_{T\subset S}G_T$</p>
 <p>则$G_S=\sum_{T\subset S}(-1)^{|T\oplus S|} F_S$</p>
 <p>证明</p>
-$G_S=\sum_{T\subset S}(-1)^{|T\oplus S|} F_S$
-$\Leftrightarrow G_S=\sum_{T\subset S}(-1)^{|T\oplus S|} \sum _{R\subset T}F_R$
-$\Leftrightarrow G_S=\sum_{T\subset S}G_R\sum _{T\subset R,R\subset S}(-1)^{|S\oplus R|}$
-$\Leftrightarrow G_S=\sum_{T\subset S}G_R\sum _{R\subset (S\oplus T)}(-1)^{|R|}$
-$\Leftrightarrow \sum _{T\subset S}G_T[S\oplus T=\empty]$
+<p>$G_S=\sum_{T\subset S}(-1)^{|T\oplus S|} F_S$</p>
+<p>$\Leftrightarrow G_S=\sum_{T\subset S}(-1)^{|T\oplus S|} \sum _{R\subset T}F_R$</p>
+<p>$\Leftrightarrow G_S=\sum_{T\subset S}G_R\sum _{T\subset R,R\subset S}(-1)^{|S\oplus R|}$</p>
+<p>$\Leftrightarrow G_S=\sum_{T\subset S}G_R\sum _{R\subset (S\oplus T)}(-1)^{|R|}$</p>
+<p>$\Leftrightarrow \sum _{T\subset S}G_T[S\oplus T=\empty]$</p>
 <p>成立</p>
 <hr>
 <h2 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h2><p>设$n$的质因数分解为$n=\Pi_1^m p_i^{c_i}$</p>
@@ -197,34 +191,33 @@ $\Leftrightarrow \sum _{T\subset S}G_T[S\oplus T=\empty]$
 $\mu(n)=\left\{ \begin{aligned} 1 && n=1 \\ (-1)^m && c_i=1 \\ 0 && \exists c_i>1\end{aligned} \right.$
 <p>性质：$\sum_{i|n}\mu(i)=[n=1]$</p>
 <p>证明：</p>
-$\because c_i>1\Rightarrow \mu(n)=0$
-$\therefore c_i\in \{0,1\}$
-$\therefore \sum _{i|n} \mu(i)=\sum_{S\in\{p_i\}}(-1)^{|S|}=[m=0]$
+<p>$\because c_i&gt;1\Rightarrow \mu(n)=0$</p>
+<p>$\therefore c_i\in \{0,1\}$</p>
+<p>$\therefore \sum _{i|n} \mu(i)=\sum_{S\in\{p_i\} }(-1)^{|S|}=[m=0]$</p>
 <hr>
 <p>若$F_i=\sum _{j|i}G_i$</p>
-<p>则$G_i=\sum_{j|i}\mu(\frac{i}{j})F(j)$</p>
+<p>则$G_i=\sum_{j|i}\mu(\frac{i} {j})F(j)$</p>
 <p>证明</p>
-$G_i=\sum_{j|i}\mu(\frac{i}{j})F(j)$
-$\Leftrightarrow G_i=\sum_{j|i}\mu(\frac{i}{j})\sum _{k|j}G_k$
-$\Leftrightarrow G_i=\sum_{j|i}G_j\sum _{k|\frac{i}{j}}\mu(k)$
+<p>$G_i=\sum_{j|i}\mu(\frac{i} {j})F(j)$</p>
+<p>$\Leftrightarrow G_i=\sum_{j|i}\mu(\frac{i} {j})\sum _{k|j}G_k$</p>
+<p>$\Leftrightarrow G_i=\sum_{j|i}G_j\sum _{k|\frac{i} {j} }\mu(k)$</p>
 <p>带入上面的$\mu(n)$性质，这个式子成立</p>
 <hr>
-$$ \ $$
-<h2 id="二项式反演"><a href="#二项式反演" class="headerlink" title="二项式反演"></a>二项式反演</h2><h4 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识 "></a>前置知识 $\sum_0^nC(n,i)=[n=0]$</h4>$G_i=\sum _{0}^{i}C(i,j)\cdot F_j$
+<script type="math/tex; mode=display">\</script><h2 id="二项式反演"><a href="#二项式反演" class="headerlink" title="二项式反演"></a>二项式反演</h2><h4 id="前置知识-sum-0-nC-n-i-n-0"><a href="#前置知识-sum-0-nC-n-i-n-0" class="headerlink" title="前置知识 $\sum_0^nC(n,i)=[n=0]$"></a>前置知识 $\sum_0^nC(n,i)=[n=0]$</h4><p>$G_i=\sum _{0}^{i}C(i,j)\cdot F_j$</p>
 <p>直接容斥这个式子，就能得到</p>
-$F_i=G_i-\sum_{j<i}C(i,j)\cdot F_j$
+<p>$F_i=G_i-\sum_{j&lt;i}C(i,j)\cdot F_j$</p>
 <p>但是容斥过程是$n^2$的，如果$n$较大，用分治$\text{NTT}$实现也是$n\log ^2n$</p>
 <p>所以需要二项式反演</p>
 <p>反演:$G_i=\sum _{0}^{i}C(i,j)\cdot F_j\Leftrightarrow F_i=\sum_0^i (-1)^{i-j}\cdot C(i,j)\cdot G_j$</p>
 <p>有时候看到是$G_i=\sum _{i}^{n}C(j,i)\cdot F_j\Leftrightarrow F_i=\sum_i^n (-1)^{i-j}\cdot C(j,i)\cdot G_j$</p>
 <p>证明</p>
-$F_i=\sum_i^n (-1)^{i-j} \cdot C(j,i)\cdot G_j$
-$\Leftrightarrow F_i=\sum_i^n(-1)^{i-j}\cdot C(i,j)\sum_j^nC(j,k)\cdot F_k$
-$\Leftrightarrow F_i=\sum_0^i F_j\sum_j^iC(i,k)\cdot C(k,j) \cdot (-1)^{i-k}$
-$\Leftrightarrow \sum_j^iC(i,k)\cdot C(k,j) \cdot (-1)^{i-k}=[i=j]$
-$\because C(i,k)\cdot C(k,j)=\frac{i!}{j!(i-k)!(k-j)!}$
-$=\frac{i!}{j!(i-j)!}\cdot \frac{(i-j)!}{(i-k)!(k-j)!}=C(i,j)\cdot C(i-j,i-k)$
-$\sum_j^iC(i,k)\cdot C(k,j) \cdot (-1)^{i-k}=C(i,j)\sum_0^{i-j}(-1)^kC(i-j,k)=[i=j]C(i,j)=[i=j]$
+<p>$F_i=\sum_i^n (-1)^{i-j} \cdot C(j,i)\cdot G_j$</p>
+<p>$\Leftrightarrow F_i=\sum_i^n(-1)^{i-j}\cdot C(i,j)\sum_j^nC(j,k)\cdot F_k$</p>
+<p>$\Leftrightarrow F_i=\sum_0^i F_j\sum_j^iC(i,k)\cdot C(k,j) \cdot (-1)^{i-k}$</p>
+<p>$\Leftrightarrow \sum_j^iC(i,k)\cdot C(k,j) \cdot (-1)^{i-k}=[i=j]$</p>
+<p>$\because C(i,k)\cdot C(k,j)=\frac{i!} {j!(i-k)!(k-j)!}$</p>
+<p>$=\frac{i!} {j!(i-j)!}\cdot \frac{(i-j)!} {(i-k)!(k-j)!}=C(i,j)\cdot C(i-j,i-k)$</p>
+<p>$\sum_j^iC(i,k)\cdot C(k,j) \cdot (-1)^{i-k}=C(i,j)\sum_0^{i-j}(-1)^kC(i-j,k)=[i=j]C(i,j)=[i=j]$</p>
 <hr>
 <p>待补。。。</p>
 

@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">单位根反演</h2>
             <div class="post-meta">
-                本文共计700个字 |
+                本文共计709个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -171,12 +171,12 @@
             <h1 id="单位根反演"><a href="#单位根反演" class="headerlink" title="单位根反演"></a>单位根反演</h1><p>最基础的用途是用于FFT中点值式转多项式</p>
 <p>即对于$G(i)=F(\omega_n^i)$，由$G(i)$反演得到$[x^i]F(i)$的过程，称之为单位根反演</p>
 <p>式子非常简单</p>
-$\sum_{j=0}^{n-1}\omega_n^{ij}= \left\{\begin{aligned} \frac{\omega_n^{in}-1}{\omega_n^i-1}=0  && i\ne 0\\ n  && i=0\end{aligned} \right.$
-<p>更简洁的式子为$\begin{aligned}\frac{\sum_{j=0}^{n-1}\omega_n^{ij}}{n}=[n|i]\end{aligned}$</p>
+$\sum_{j=0}^{n-1}\omega_n^{ij}= \left\{\begin{aligned} \frac{\omega_n^{in}-1} {\omega_n^i-1}=0  && i\ne 0\\ n  && i=0\end{aligned} \right.$
+<p>更简洁的式子为$\begin{aligned}\frac{\sum_{j=0}^{n-1}\omega_n^{ij} } {n}=[n|i]\end{aligned}$</p>
 <p>在生成函数的化简与构造中，常用于解决$\mod n=0$的限制</p>
-<p>如$\sum_{n|i}\frac{x^i}{i!}$</p>
+<p>如$\sum_{n|i}\frac{x^i} {i!}$</p>
 <p>通过单位根反演转化为 </p>
-$ \begin{aligned}\sum_{n|i}\frac{x^i}{i!}=\sum_{i=0}^{\infty}\frac{\sum_{j=0}^{n-1}\omega_n^{ij}}{n} \cdot \frac{x^i}{i!}=\sum_{i=0}^{\infty}\sum_{j=0}^{n-1} \frac{(x\omega_n^j)^i}{i!}=\sum_{j=0}^{n-1}e^{x\omega_n^j}\end{aligned}$
+$ \begin{aligned}\sum_{n|i}\frac{x^i} {i!}=\sum_{i=0}^{\infty}\frac{\sum_{j=0}^{n-1}\omega_n^{ij} } {n} \cdot \frac{x^i} {i!}=\sum_{i=0}^{\infty}\sum_{j=0}^{n-1} \frac{(x\omega_n^j)^i} {i!}=\sum_{j=0}^{n-1}e^{x\omega_n^j}\end{aligned}$
 <p>作为无穷级数压缩的一种方法</p>
 <p>但是单位根反演转化有一个非常明显的局限，就是在模意义下，$n$阶单位根很可能无法求解</p>
 <p>现在笔者还不会求模意义下特定的$n$阶单位根。。。</p>

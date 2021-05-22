@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">「清华集训 2017」小 Y 和恐怖的奴隶主</h2>
             <div class="post-meta">
-                本文共计1159个字 |
+                本文共计1152个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -178,8 +178,7 @@
 <p>如果预处理出转移矩阵的幂次，每次查询时只有列向量与方阵的乘法，所以复杂度是$O(\log n\cdot S^3+T\log n\cdot S^2)$</p>
 <p>实际极限的复杂度预估在$60\cdot 166^3+500\cdot 60\cdot 166^2\approx 11\cdot 10^8$</p>
 <p>官方题解提供的做法就是在在这个算法上进行常数优化，这<del>wtm</del></p>
-$$ \ $$
-<h2 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h2><p>对于已知$m,k$来说，设每个$n$构成的答案数列为$a_n$</p>
+<script type="math/tex; mode=display">\</script><h2 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h2><p>对于已知$m,k$来说，设每个$n$构成的答案数列为$a_n$</p>
 <p>预先处理一部分的答案$a_1\cdots a_n$，使用$\text{Berlekamp-Massey }$算法求出序列的最短线性递推</p>
 <p>发现总是在$O(S)$的长度以后，递推序列不再改变，即总能得到一个长度为$O(S)$的全局线性递推</p>
 <p>即总可以在$O(S^2)$的时间内求出答案序列$a_n$的<strong>线性递推式</strong></p>

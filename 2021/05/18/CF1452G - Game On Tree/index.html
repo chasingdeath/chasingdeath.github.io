@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">CF1452G - Game on Tree</h2>
             <div class="post-meta">
-                本文共计372个字 |
+                本文共计1963个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -178,12 +178,12 @@
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>由于B的操作显然是不停向A收缩直到碰到</p>
 <p>那么可以广搜求出每个点原地不动时被B干掉的时间$F_i$</p>
 <p>那么考虑A的移动过程，每一步可以到达一个点$u$</p>
-<p>必须满足在第$i$步所在的点$u$，$F_u>i$，否则结束游戏</p>
+<p>必须满足在第$i$步所在的点$u$，$F_u&gt;i$，否则结束游戏</p>
 <p>对于初始节点$u$，不妨设最终结束的节点为$t$，我们希望一路跑到$t$然后站住不动，此时答案就是$F_t$</p>
-<p>而实际上，任何一个点$u$能够跑到$t$，等价于$dis(u,t)<F_t$</p>
+<p>而实际上，任何一个点$u$能够跑到$t$，等价于$dis(u,t)&lt;F_t$</p>
 <p>Proof:</p>
 <p>由最短路三角不等式可知</p>
-$\forall (u,v)\in Tree, dis_{v}-1\leq dis_u\leq dis_{v}+1$
+<p>$\forall (u,v)\in Tree, dis_{v}-1\leq dis_u\leq dis_{v}+1$</p>
 <p>即$dis_e$在树的路径上连续变化，不妨设移动路径为$p_i,i\in[1,k],p_k=t,k\leq F_t$</p>
 <p>若能在$F_t-1$的时间内到达$p_k$，那么必然能在$F_t-2$的时间内到达$p_{k-1}$</p>
 <p>进而归纳得到</p>

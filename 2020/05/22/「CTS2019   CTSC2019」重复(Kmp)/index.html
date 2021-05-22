@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">「CTS2019 | CTSC2019」重复(Kmp)</h2>
             <div class="post-meta">
-                本文共计2895个字 |
+                本文共计4472个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -171,7 +171,7 @@
             <h1 id="「CTS2019-CTSC2019」重复-Kmp"><a href="#「CTS2019-CTSC2019」重复-Kmp" class="headerlink" title="「CTS2019 | CTSC2019」重复(Kmp)"></a>「CTS2019 | CTSC2019」重复(Kmp)</h1><hr>
 <h2 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h2><p>首先我们考虑对于一个已经确定的$t$串，如何检查是否合法</p>
 <p>对于$s$串建立$\text{kmp}$($\text{kmp}$自动机当然可以)，</p>
-<p>如果当前$\text{kmp}$指针$j$在$\text{fail}$树上的祖先所对应的所有下一个位置$s[ancestor+1]$中，存在一个字符，$t$中当前位置的字符$t[i]<s[ancestor+1]$</p>
+<p>如果当前$\text{kmp}$指针$j$在$\text{fail}$树上的祖先所对应的所有下一个位置$s[ancestor+1]$中，存在一个字符，$t$中当前位置的字符$t[i]&lt;s[ancestor+1]$</p>
 <p>那么就是存在一个”有意义的串”,并且这个串和s串第一个不同的位置就是$ancestor+1$</p>
 <p>所以可以预处理一个$fail$树上祖先最大的$s[ancestor+1],Max[state]$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rep</span>(i,<span class="number">1</span>,n) Max[i<span class="number">-1</span>]=s[i];</span><br><span class="line">Max[n]=<span class="string">&#x27;a&#x27;</span>;<span class="comment">//边界条件</span></span><br><span class="line"><span class="built_in">cmax</span>(Max[<span class="number">1</span>],Max[<span class="number">0</span>]);</span><br><span class="line"><span class="built_in">rep</span>(i,<span class="number">2</span>,n) &#123;</span><br><span class="line">	<span class="keyword">int</span> j=nxt[i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">while</span>(j &amp;&amp; s[i]!=s[j+<span class="number">1</span>]) j=nxt[j];</span><br><span class="line">	<span class="keyword">if</span>(s[i]==s[j+<span class="number">1</span>]) ++j;</span><br><span class="line">	nxt[i]=j;</span><br><span class="line">	<span class="built_in">cmax</span>(Max[i],Max[j]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//预处理Max</span></span><br><span class="line"><span class="built_in">rep</span>(i,<span class="number">0</span>,n) &#123;</span><br><span class="line">	<span class="keyword">if</span>(i&lt;n) Trans[i][s[i+<span class="number">1</span>]-<span class="string">&#x27;a&#x27;</span>]=i+<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(j,<span class="number">0</span>,<span class="number">25</span>) <span class="keyword">if</span>(j!=s[i+<span class="number">1</span>]-<span class="string">&#x27;a&#x27;</span>) Trans[i][j]=Trans[nxt[i]][j];</span><br><span class="line">&#125;<span class="comment">//kmp自动机，不要再暴力了</span></span><br><span class="line"><span class="built_in">rep</span>(i,m+<span class="number">1</span>,n+m) t[i]=t[i-m]; <span class="comment">// 延长到n+m就够了</span></span><br><span class="line"><span class="keyword">int</span> j=<span class="number">0</span>,f=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">rep</span>(i,<span class="number">1</span>,n+m)&#123;</span><br><span class="line">	<span class="keyword">if</span>(t[i]&lt;Max[j]) &#123; <span class="comment">// 存在一个位置满足即可</span></span><br><span class="line">		f=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	j=Trans[j][t[i]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -183,21 +183,19 @@
 <p>那么跑够长度之后，后面的任意加入$m$次字符都会构成一个循环</p>
 <p>枚举循环开始状态为$st$，$\text{dp}$走了$m$步回到$st$的方案数</p>
 <p>如果计算合法方案数，那么还要多一维，所以直接计算不合法方案，也就是</p>
-$Trans[state][Max[state]..25]$这一段转移是不会出现合法情况的
-
-最后减一下
-
-复杂度$O(m\cdot n^2)$
+<p>$Trans[state][Max[state]..25]$这一段转移是不会出现合法情况的</p>
+<p>最后减一下</p>
+<p>复杂度$O(m\cdot n^2)$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> pt2&#123;</span><br><span class="line">	<span class="keyword">int</span> dp[<span class="number">2</span>][N];</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> cur=<span class="number">0</span>,ans=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">rep</span>(st,<span class="number">0</span>,n) &#123; <span class="comment">// 枚举初始状态</span></span><br><span class="line">			<span class="built_in">rep</span>(i,<span class="number">0</span>,n) dp[cur][i]=dp[!cur][i]=<span class="number">0</span>;</span><br><span class="line">			dp[cur][st]=<span class="number">1</span>;</span><br><span class="line">			<span class="built_in">rep</span>(t,<span class="number">1</span>,m) &#123;</span><br><span class="line">				cur^=<span class="number">1</span>;</span><br><span class="line">				<span class="built_in">rep</span>(i,<span class="number">0</span>,n) <span class="keyword">if</span>(dp[!cur][i])&#123;</span><br><span class="line">					<span class="built_in">rep</span>(c,Max[i]-<span class="string">&#x27;a&#x27;</span>,<span class="number">25</span>) &#123;<span class="comment">//只转移不合法的</span></span><br><span class="line">						dp[cur][Trans[i][c]]+=dp[!cur][i];</span><br><span class="line">						<span class="built_in">Mod1</span>(dp[cur][Trans[i][c]]);</span><br><span class="line">					&#125;</span><br><span class="line">					dp[!cur][i]=<span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;<span class="comment">// 走m步回到st</span></span><br><span class="line">			ans+=dp[cur][st],<span class="built_in">Mod1</span>(ans);</span><br><span class="line">		&#125;</span><br><span class="line">		ans=(<span class="built_in">qpow</span>(<span class="number">26</span>,m)-ans+P)%P;<span class="comment">//减一下</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="Part3"><a href="#Part3" class="headerlink" title="Part3"></a>Part3</h2><p>观察上面一档情况，合法的转移$Trans[state][Max[state]..25]$</p>
-<p>如果枚举下一个字符$c>Max[state]$，那么在$s$串中就找不到任何匹配了，下一个状态就是$0$</p>
+<p>如果枚举下一个字符$c&gt;Max[state]$，那么在$s$串中就找不到任何匹配了，下一个状态就是$0$</p>
 <p>否则，下一个状态就是$Trans[state][c]$</p>
 <p>也就是说，每个点出发其实只有两种情况，一种是一定会经过$0$的</p>
 <p>所以对于这个环是否经过$0$进行讨论</p>
 <p>如果不经过$0$，那么考虑直接从$st$出发走$m$步非0转移即可</p>
 <p>经过$0$的，预处理一个从$0$出发，走了$i$步第一次回到$0$的方案数</p>
-$[st\rightarrow 0,0\rightarrow 0,0\rightarrow 0...,0\rightarrow st]$
+<p>$[st\rightarrow 0,0\rightarrow 0,0\rightarrow 0…,0\rightarrow st]$</p>
 <p>长成这个样子的转移</p>
 <p>枚举第一个$st\rightarrow 0$的时间，后面可以预处理出来</p>
 <p>复杂度$O(n\cdot m)$</p>

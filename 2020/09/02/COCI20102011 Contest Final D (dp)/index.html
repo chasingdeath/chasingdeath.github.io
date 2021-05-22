@@ -169,7 +169,7 @@
         </div>
         <div class="post-content markdown-body">
             <h1 id="COCI20102011-Contest-Final-D-dp"><a href="#COCI20102011-Contest-Final-D-dp" class="headerlink" title="COCI20102011 Contest#Final D (dp)"></a>COCI20102011 Contest#Final D (dp)</h1><p>我们将一个操作序列看做由左右括号，空格构成的字符串，则序列大致长这个样子</p>
-$\text{_ ( ( ) _ ( ) ) ( _ ( ( ) ) ( }$
+<p>$\text{_ ( ( ) _ ( ) ) ( _ ( ( ) ) ( }$</p>
 <p>很显然，一个失配的左括号只能在最外层出现，而空格可以出现在任意位置</p>
 <p>dp一个括号序列让人想到区间dp，但是这个题目的区间实际只需要用长度就可以描述</p>
 <p>令$dp[t][l][r][f1][f2]$表示用$t$的时间从$l$走到$r$，$f1$表示是不是最外层括号，$f2$表示当前$dp$是否受到<strong>单纯括号序列</strong>的限制</p>

@@ -163,16 +163,16 @@
             </div>
             <h2 class="post-title">CF1519E - Off by One</h2>
             <div class="post-meta">
-                本文共计1807个字 |
+                本文共计1812个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            <h1 id="CF1519E-Off-by-One"><a href="#CF1519E-Off-by-One" class="headerlink" title="CF1519E - Off by One"></a>CF1519E - Off by One</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定$n$个点$(x_i,y_i)=(\frac{a_i}{b_i},\frac{c_i}{d_i})$，求一个最大的匹配</p>
+            <h1 id="CF1519E-Off-by-One"><a href="#CF1519E-Off-by-One" class="headerlink" title="CF1519E - Off by One"></a>CF1519E - Off by One</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定$n$个点$(x_i,y_i)=(\frac{a_i} {b_i},\frac{c_i} {d_i})$，求一个最大的匹配</p>
 <p>满足匹配的点对$(x_i,y_i),(x_j,y_j)$每个点经过如下操作</p>
-$(x,y)\rightarrow (x+1,y) or (x,y+1)$
-<p>之后可能满足$\frac{y_i'}{x_i'}=\frac{y'_j}{x_j'}$</p>
-<h3 id="模型简化"><a href="#模型简化" class="headerlink" title="模型简化"></a>模型简化</h3><p>按照$\frac{y'}{x'}$对于每个点经过两种可能变换的值分类，建立节点</p>
+<p>$(x,y)\rightarrow (x+1,y) or (x,y+1)$</p>
+<p>之后可能满足$\frac{y_i’} {x_i’}=\frac{y’_j} {x_j’}$</p>
+<h3 id="模型简化"><a href="#模型简化" class="headerlink" title="模型简化"></a>模型简化</h3><p>按照$\frac{y’} {x’}$对于每个点经过两种可能变换的值分类，建立节点</p>
 <p>我们需要决策每个$P_i$选的变换种类</p>
 <p>显然每个斜率对应的个数为偶数时，都可以完成匹配</p>
 <p>对于每一个$P_i$，设其两种变换之后变成的斜率对应节点为$(u,v)$，那么连一条无向边</p>

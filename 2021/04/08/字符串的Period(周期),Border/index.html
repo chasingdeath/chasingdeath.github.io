@@ -163,26 +163,22 @@
             </div>
             <h2 class="post-title">字符串的Period(周期),Border</h2>
             <div class="post-meta">
-                本文共计1958个字 |
+                本文共计1938个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="字符串的Period-周期-Border"><a href="#字符串的Period-周期-Border" class="headerlink" title="字符串的Period(周期),Border"></a>字符串的Period(周期),Border</h1><p>前置知识：$\text{kmp}$，$\text{AC}$自动机</p>
 <p>约定：字符串$S$的长度为$|S|$，原串的长度为$n$，$[l,r]$的子串为$S_{l,r}$，下标从$1$开始，前缀$S_{1,i}=pre_i$,后缀$S_{i,n}=suf_i$，设$S$的$\text{Border}$集合为$B(S)$，设最长的$\text{Border}$为$\text{LBorder}$</p>
-$\text{Border}$:
-
-定义字符串$S$的一个$\text{Border}$为一个满足$pre_i=suf_{n-i+1}$的前缀，$S$和$\empty$也是一个$\text{Border}$
-$\text{kmp,AC}$自动机的$fail$指针均指向当前串的$\text{LBorder}$
-$$ \ $$
-$\text{Period}$(周期):
-
-若$\exists |T|\in B(S), 2|T|\ge n$,则$S$的一个周期是$n-|T|+1$
-$\text{Periodicity Lemma}:$ 
+<p>$\text{Border}$:</p>
+<p>定义字符串$S$的一个$\text{Border}$为一个满足$pre_i=suf_{n-i+1}$的前缀，$S$和$\empty$也是一个$\text{Border}$</p>
+<p>$\text{kmp,AC}$自动机的$fail$指针均指向当前串的$\text{LBorder}$</p>
+<script type="math/tex; mode=display">\</script><p>$\text{Period}$(周期):</p>
+<p>若$\exists |T|\in B(S), 2|T|\ge n$,则$S$的一个周期是$n-|T|+1$</p>
+<p>$\text{Periodicity Lemma}:$ </p>
 <p>若$p,q$是$S$的周期，且$p+q+\gcd(p,q)\leq |S|$,则$\gcd(p,q)$也是$|S|$的一个周期</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/89385360">证明的话</a></p>
-$$ \ $$
-<p>关于$\text{Border}$的推论:</p>
+<script type="math/tex; mode=display">\</script><p>关于$\text{Border}$的推论:</p>
 <p>1.$B(S)=B(\text{LBorder})\cup\{S\}$</p>
 <p>2.串$S$的所有$\text{Border}$长度构成了不超过$\log n$个等差数列</p>
 <p>证明：</p>
@@ -194,9 +190,8 @@ $$ \ $$
 <p>所以实际上不止是$2|R|\ge |S|$的串，而是所有$\forall|R|\equiv |S|\pmod {|S|-|T|}$的$R$都是$S$的$\text{Border}$</p>
 <p>这样的失配过程就可以归纳为：</p>
 <p>每次$mod$最短周期$|T|-|S|$，而取模使得长度至少减半，故可以分成$\log n$段等差数列</p>
-$$ \ $$
-<p>并且任意一段最大项为$x$，差为$d$的等差数列，最小项是$x\mod d+d$ </p>
-<p>($+d$是因为在$x\mod d+d$下一次可能跳的位置$>x\mod d$)</p>
+<script type="math/tex; mode=display">\</script><p>并且任意一段最大项为$x$，差为$d$的等差数列，最小项是$x\mod d+d$ </p>
+<p>($+d$是因为在$x\mod d+d$下一次可能跳的位置$&gt;x\mod d$)</p>
 <p><strong>应用</strong>：对于$\text{kmp,AC}$自动机的字符集过大导致无法存储每种字符的转移，而又有类似可持久化的匹配操作时，</p>
 <p>直接暴力跳$fail$会导致复杂度退化，但是可以用等差数列的性质来快速跳</p>
 <p>每次形成等差数列时，周期中失配位置的下一个字符都相同</p>

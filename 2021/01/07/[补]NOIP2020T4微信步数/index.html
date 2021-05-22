@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">[补]NOIP2020T4微信步数</h2>
             <div class="post-meta">
-                本文共计2788个字 |
+                本文共计2781个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -174,8 +174,7 @@
 <p>行走是循环的，每一维可以先看做独立，然后离开范围的时间就是每一维取$\min$</p>
 <h3 id="一个简单的思路："><a href="#一个简单的思路：" class="headerlink" title="一个简单的思路："></a>一个简单的思路：</h3><p>求出每一维每一个位置离开的时间，然后$k$路归并得到答案，复杂度为$O((\sum W_i)k+nk)$</p>
 <p>容易想到根据循环来优化计算，但是如果以每一个位置为元素进行考虑，难以处理不同长度循环之间的合并</p>
-$$ \ $$
-<h3 id="更换思路："><a href="#更换思路：" class="headerlink" title="更换思路："></a>更换思路：</h3><p>简单的计数方法的转换：</p>
+<script type="math/tex; mode=display">\</script><h3 id="更换思路："><a href="#更换思路：" class="headerlink" title="更换思路："></a>更换思路：</h3><p>简单的计数方法的转换：</p>
 <p>从初始位置离开的时间之和 = 前$i(i\ge 0)$步还未离开空间的初始位置个数之和</p>
 <p>令$F_{i,j}$为$i$这一维$j$步还未离开的初始位置个数，则答案就是 $\begin{aligned} \sum_{i\ge 0}\prod F_{i,j}\end{aligned}$</p>
 <p>此时观察发现除了第一轮需要特殊考虑以外，其它的$F_{i,j}$可以表示为$\max\lbrace0,F_{i,j-n}-D_i\rbrace$(其中$D_i$为每一轮$i$这一维偏移的量)</p>

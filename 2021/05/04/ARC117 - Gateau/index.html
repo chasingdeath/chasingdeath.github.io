@@ -163,29 +163,28 @@
             </div>
             <h2 class="post-title">ARC117 - Gateau</h2>
             <div class="post-meta">
-                本文共计228个字 |
+                本文共计2373个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="ARC117-Gateau"><a href="#ARC117-Gateau" class="headerlink" title="ARC117 - Gateau"></a>ARC117 - Gateau</h1><p>题目大意：给定一个长度为$2n$的非负环序列$x_0,x_1,\cdots x_{2n-1}$，以及$2n$条限制，每条都是</p>
-$\forall A_i,\sum_{j=0}^{n-1} x_{i+j\mod 2n}\ge A_i $
+<p>$\forall A_i,\sum_{j=0}^{n-1} x_{i+j\mod 2n}\ge A_i $</p>
 <p>求最小化$\sum x_i$</p>
 <hr>
-$$  \ $$
-<p>转化为前缀和作差之后，令人联想到差分约束，但是难以处理跨过环末的限制</p>
+<script type="math/tex; mode=display">\</script><p>转化为前缀和作差之后，令人联想到差分约束，但是难以处理跨过环末的限制</p>
 <p>于是二分答案$s=x_{2n-1}$，建立最长路图</p>
-$\forall i<n,dis_{i+n}\ge dis_{i}+A_i$
-$\forall i\ge n,dis_{i-n}\ge dis_{i}+A_i-s$
-$\forall i<2n-1,dis_{i+1}\leq dis_i$
-<p>那么无解的条件就是：存在正环或者求得$dis_{2n-1}>s$</p>
+<p>$\forall i&lt;n,dis_{i+n}\ge dis_{i}+A_i$</p>
+<p>$\forall i\ge n,dis_{i-n}\ge dis_{i}+A_i-s$</p>
+<p>$\forall i&lt;2n-1,dis_{i+1}\leq dis_i$</p>
+<p>那么无解的条件就是：存在正环或者求得$dis_{2n-1}&gt;s$</p>
 <p>自然无法直接通过$\text{SPFA}$来跑。。。</p>
 <p>考虑所有的边构成了一条$0-2n-1$的零链 和若干极小的二元环</p>
 <p>如果二元环出现正环则无解，否则任意一条最长路路径总是可以描述为</p>
-$i<j<n , i(+n)\rightarrow j(+n)$
+<p>$i&lt;j&lt;n , i(+n)\rightarrow j(+n)$</p>
 <p>在中间点$k$可以选择花费0的代价向后走，或者</p>
-$k<n:k\rightarrow k+n,cost=A_k$
-$k\ge n:k\rightarrow k-n,cost=A_k-s$
+<p>$k&lt;n:k\rightarrow k+n,cost=A_k$</p>
+<p>$k\ge n:k\rightarrow k-n,cost=A_k-s$</p>
 <p>也就是在$k,k+n$之间反复横跳，由此发现一条路径就是</p>
 <p>从$0-n-1$进行扫描，并且允许中间$\pm n$横跳</p>
 <p>（当然这里漏掉了一个特殊边，即$dis_{n}\ge dis_{n-1}$，这是构成环的边）</p>

@@ -163,33 +163,21 @@
             </div>
             <h2 class="post-title">零化多项式/特征多项式/最小多项式/常系数线性齐次递推</h2>
             <div class="post-meta">
-                本文共计3223个字 |
+                本文共计3171个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            <h1 id="零化多项式-特征多项式-最小多项式-常系数线性齐次递推"><a href="#零化多项式-特征多项式-最小多项式-常系数线性齐次递推" class="headerlink" title="零化多项式/特征多项式/最小多项式/常系数线性齐次递推"></a>零化多项式/特征多项式/最小多项式/常系数线性齐次递推</h1><h3 id="约定"><a href="#约定" class="headerlink" title="约定:"></a>约定:</h3>$I_n$是$n$阶单位矩阵，即主对角线是$1$的$n$阶矩阵
-
-一个矩阵$A$的$|A|$是$A$的行列式
-
-默认$A$是一个$n\times n$的矩阵
-
-------
-
-### 定义
-
-#### 零化多项式:
-
-对于一个矩阵$A$，它的一个零化多项式$f(\lambda)$是满足$f(A)=0$的多项式，定义域包含矩阵
-
-$$ \ $$
-<h4 id="最小多项式-次数最低的零化多项式"><a href="#最小多项式-次数最低的零化多项式" class="headerlink" title="最小多项式:次数最低的零化多项式"></a>最小多项式:次数最低的零化多项式</h4><h4 id="特征多项式"><a href="#特征多项式" class="headerlink" title="特征多项式"></a>特征多项式</h4><p>对于一个$n$阶的矩阵$A$，它的特征多项式</p>
-$p(\lambda)=|\lambda I_n-A|$
-$\lambda$定义域不止是$\R$，还可以是矩阵
-
-$p(\lambda)$是关于$\lambda$的一个不超过$n+1$次的多项式
-
-即$p(\lambda )=\sum_0^{n}a_ix^i$
+            <h1 id="零化多项式-特征多项式-最小多项式-常系数线性齐次递推"><a href="#零化多项式-特征多项式-最小多项式-常系数线性齐次递推" class="headerlink" title="零化多项式/特征多项式/最小多项式/常系数线性齐次递推"></a>零化多项式/特征多项式/最小多项式/常系数线性齐次递推</h1><h3 id="约定"><a href="#约定" class="headerlink" title="约定:"></a>约定:</h3><p>$I_n$是$n$阶单位矩阵，即主对角线是$1$的$n$阶矩阵</p>
+<p>一个矩阵$A$的$|A|$是$A$的行列式</p>
+<p>默认$A$是一个$n\times n$的矩阵</p>
+<hr>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><h4 id="零化多项式"><a href="#零化多项式" class="headerlink" title="零化多项式:"></a>零化多项式:</h4><p>对于一个矩阵$A$，它的一个零化多项式$f(\lambda)$是满足$f(A)=0$的多项式，定义域包含矩阵</p>
+<script type="math/tex; mode=display">\</script><h4 id="最小多项式-次数最低的零化多项式"><a href="#最小多项式-次数最低的零化多项式" class="headerlink" title="最小多项式:次数最低的零化多项式"></a>最小多项式:次数最低的零化多项式</h4><h4 id="特征多项式"><a href="#特征多项式" class="headerlink" title="特征多项式"></a>特征多项式</h4><p>对于一个$n$阶的矩阵$A$，它的特征多项式</p>
+<p>$p(\lambda)=|\lambda I_n-A|$</p>
+<p>$\lambda$定义域不止是$\R$，还可以是矩阵</p>
+<p>$p(\lambda)$是关于$\lambda$的一个不超过$n+1$次的多项式</p>
+<p>即$p(\lambda )=\sum_0^{n}a_ix^i$</p>
 <hr>
 <h3 id="Cayley-Hamilton定理-矩阵的特征多项式也是它的零化多项式"><a href="#Cayley-Hamilton定理-矩阵的特征多项式也是它的零化多项式" class="headerlink" title="Cayley-Hamilton定理:矩阵的特征多项式也是它的零化多项式"></a>Cayley-Hamilton定理:矩阵的特征多项式也是它的零化多项式</h3><hr>
 <h3 id="求解特征多项式"><a href="#求解特征多项式" class="headerlink" title="求解特征多项式"></a>求解特征多项式</h3><p>带入$n$个数，求出得$|x I_n-A|$,得到$n$个矩阵，通过高斯消元可以$O(n^3)$地求出行列式</p>
@@ -205,21 +193,19 @@ $\begin{aligned} \therefore  \sum_{j=0}^m r_{m-j}A^j=0\end{aligned}$
 <p>求这个递推式需要用到$a_i$前$2n$项，求解复杂度为$O(n^3)$</p>
 <p>因此总复杂度为$O(n^3)$</p>
 <p>(但是如果只是求出来并没有什么用，因为求解方法是随机的，甚至连检查一次保证正确都需要$O(n^2(n+e))$的时间($e$为矩阵非0位置个数))</p>
-$$ \ $$
-<h2 id="求解稀疏方程组"><a href="#求解稀疏方程组" class="headerlink" title="求解稀疏方程组"></a>求解稀疏方程组</h2><p>设方程系数用矩阵$A$表示，右侧每个方程的常数用向量$b$表示，答案用向量$x$表示，则满足关系式</p>
-$Ax=b$，即$x=A^{-1}b$
+<script type="math/tex; mode=display">\</script><h2 id="求解稀疏方程组"><a href="#求解稀疏方程组" class="headerlink" title="求解稀疏方程组"></a>求解稀疏方程组</h2><p>设方程系数用矩阵$A$表示，右侧每个方程的常数用向量$b$表示，答案用向量$x$表示，则满足关系式</p>
+<p>$Ax=b$，即$x=A^{-1}b$</p>
 <p>求出$\{A^ib\}$线性递推式，反推出$A^{-1}b$即可</p>
 <p>反推方法:</p>
 <p>带入线性递推的$m$项，则$\sum_{i=0}^{m} A^{m-i}b\cdot r_i=0$</p>
 <p>两边同乘$A^{-1}$，得到$A^{-1}b\cdot r_m +\sum_{i=0}^{m-1}A^{m-i}br_i=0$</p>
-$$ \ $$
-<hr>
-<h3 id="求解矩阵次幂"><a href="#求解矩阵次幂" class="headerlink" title="求解矩阵次幂"></a>求解矩阵$k$次幂</h3><p>我们要求解$A^k$，常规做法是直接用快速幂</p>
+<script type="math/tex; mode=display">\</script><hr>
+<h3 id="求解矩阵-k-次幂"><a href="#求解矩阵-k-次幂" class="headerlink" title="求解矩阵$k$次幂"></a>求解矩阵$k$次幂</h3><p>我们要求解$A^k$，常规做法是直接用快速幂</p>
 <p>设矩阵$A$的一个零化多项式是$f(\lambda)$</p>
 <p>显然，$A^k$可以用一个多项式表示$A^k=\sum_0^k w_i A^i$</p>
-$\{w_i\}$构成了一个$k+1$次多项式$F_k(x)$
+<p>$\{w_i\}$构成了一个$k+1$次多项式$F_k(x)$</p>
 <p>存在一种合法的表示是$F_k(x)=x^k$</p>
-$\because f(A)=0 \therefore \forall i, f(A)A^i=0$
+<p>$\because f(A)=0 \therefore \forall i, f(A)A^i=0$</p>
 <p>也就是相当于我们要求出$x^k$对于$f(x)$这个$n+1$多项式取模</p>
 <p>显然可以通过类似快速幂的方式倍增求解这个多项式，每次对$f(x)$取模复杂度是$O(n\log n)$</p>
 <p>就能在$O(n\log m\log n)$时间得求出$F(x)$</p>
@@ -231,8 +217,7 @@ $\because f(A)=0 \therefore \forall i, f(A)A^i=0$
 <p>求解零化多项式的复杂度也是$O(n^2(n+e))$的，因此总复杂度为$O(n^2(n+e))$</p>
 <p>而一般的矩阵快速幂是$O(n^3\log k)$的，这种方法适用情况非常特殊</p>
 <p>另外，对于并不需要知道整个矩阵的答案，并且$A^0,A^1,\cdots,A^{n-1}$特殊的具体问题，这个方法也十分有效</p>
-$$  \ $$
-<hr>
+<script type="math/tex; mode=display">\</script><hr>
 <h3 id="求解常系数线性齐次递推"><a href="#求解常系数线性齐次递推" class="headerlink" title="求解常系数线性齐次递推"></a>求解常系数线性齐次递推</h3><p>问题是要求数列$f_i=\sum _{j=1}^{n}a_j\cdot f_{i-j}$</p>
 <p>给出$f_0,f_1,\cdots,f_{n-1}$，求第$k$项的值</p>
 <p>线性递推显然可以用 <strong>初始向量列</strong> 与 <strong>转移矩阵的幂次</strong> 的乘积表示，即$f_i=(S \cdot A^i)_n$，其中$A$为转移矩阵，$S$为初始向量列，我们求的是第$n$项</p>
@@ -333,13 +318,13 @@ $$  \ $$
 <p>枚举$p_i=n$</p>
 <p>那么$p_j=\left\{\begin{aligned} j && j<i \\ n && j=i \\ j-1 && j> i\end{aligned}\right.$</p>
 <p>当$i=n$时，$(-1)^{f(p)} \Pi A_{i,p_i}=\lambda ^n-a_1\lambda ^{n-1}$</p>
-<p>当$i>1$时，</p>
-$f(p)=n-i$
-$\Pi A_{i,p_i}=(-1)^{n-i+1}\lambda^i\cdot a_{n-i+1}$
-$(-1)^{f(p)} \Pi A_{i,p_i}=-\lambda^i a_{n-i+1}$
+<p>当$i&gt;1$时，</p>
+<p>$f(p)=n-i$</p>
+<p>$\Pi A_{i,p_i}=(-1)^{n-i+1}\lambda^i\cdot a_{n-i+1}$</p>
+<p>$(-1)^{f(p)} \Pi A_{i,p_i}=-\lambda^i a_{n-i+1}$</p>
 <p>综上,转移矩阵$A$的特征多项式有简单的表达</p>
 <blockquote>
- $p(\lambda) = |\lambda I_n-A|=\lambda^n-a_1\lambda^{n-1} -a_2\lambda^{n-2} -\cdots -a^n$
+<p> $p(\lambda) = |\lambda I_n-A|=\lambda^n-a_1\lambda^{n-1} -a_2\lambda^{n-2} -\cdots -a^n$</p>
 </blockquote>
 <p>假设有$f_0$这一项(不需要知道是多少)，那么认为初始向量列为$S=(f_{-(n-1)},f_{-(n-2)},\cdots ,f_{0})$</p>
 <p>这个问题，<strong>我们要求的是$S\cdot A^k$的第$n$项，不需要知道整个矩阵</strong></p>

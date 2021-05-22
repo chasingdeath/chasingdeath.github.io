@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">拟阵</h2>
             <div class="post-meta">
-                本文共计7096个字 |
+                本文共计6977个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -177,39 +177,25 @@
 <p>拟阵的应用，更多还是用 <strong>诸多的性质</strong> 把复杂,抽象问题向更简单的方向转化<del>(便于乱搞)</del></p>
 <p>也可以便于简化问题的证明，所以这个东西了解一下也差不多了</p>
 <p><del>(不会有人丧心病狂到专门出一个拟阵交的题吧)</del></p>
-$$ \ $$
-<h3 id="符号及约定"><a href="#符号及约定" class="headerlink" title="符号及约定"></a>符号及约定</h3>$|S|$集合大小
-
-$S-T$，删除$S$中在$T$中的元素
-
-$a\Rightarrow b$若$a$则$b$
-$a\Leftrightarrow b$，$a,b$等价
-
-$a\in b$元素$a$是集合$b$中的一个元素
-
-$a\sube b$，集合$a$是集合$b$的子集
-
-$\exists$ 存在
-
-$\forall$ 任意
-
-### 幂集
-
-一个集合$S$的所有$2^{|S|}$个子集构成的集合是$S$的幂即$P(S)$或者$2^S$
+<script type="math/tex; mode=display">\</script><h3 id="符号及约定"><a href="#符号及约定" class="headerlink" title="符号及约定"></a>符号及约定</h3><p>$|S|$集合大小</p>
+<p>$S-T$，删除$S$中在$T$中的元素</p>
+<p>$a\Rightarrow b$若$a$则$b$</p>
+<p>$a\Leftrightarrow b$，$a,b$等价</p>
+<p>$a\in b$元素$a$是集合$b$中的一个元素</p>
+<p>$a\sube b$，集合$a$是集合$b$的子集</p>
+<p>$\exists$ 存在</p>
+<p>$\forall$ 任意</p>
+<h3 id="幂集"><a href="#幂集" class="headerlink" title="幂集"></a>幂集</h3><p>一个集合$S$的所有$2^{|S|}$个子集构成的集合是$S$的幂即$P(S)$或者$2^S$</p>
 <h3 id="集族"><a href="#集族" class="headerlink" title="集族"></a>集族</h3><p>给定集合$S$ 的<strong>一些子集</strong>构成的类$F$叫做$S$的<strong>子集族</strong>（或称<em>S</em> 上的<strong>集合族</strong>）,$F \sube 2^S$</p>
-$$ \ $$
-<h3 id="用独立集定义拟阵-似乎是最直观的定义"><a href="#用独立集定义拟阵-似乎是最直观的定义" class="headerlink" title="用独立集定义拟阵(似乎是最直观的定义)"></a>用独立集定义拟阵(似乎是最直观的定义)</h3><p> 一个二元组$M=(E,I)$，其中$E$是<strong>基础集</strong>，$I$是$E$的<strong>一些子集构成的集族</strong>(即$I\sube 2^S$)，称之为<strong>独立集</strong>，在独立集中的子集称之为独立的</p>
+<script type="math/tex; mode=display">\</script><h3 id="用独立集定义拟阵-似乎是最直观的定义"><a href="#用独立集定义拟阵-似乎是最直观的定义" class="headerlink" title="用独立集定义拟阵(似乎是最直观的定义)"></a>用独立集定义拟阵(似乎是最直观的定义)</h3><p> 一个二元组$M=(E,I)$，其中$E$是<strong>基础集</strong>，$I$是$E$的<strong>一些子集构成的集族</strong>(即$I\sube 2^S$)，称之为<strong>独立集</strong>，在独立集中的子集称之为独立的</p>
 <p>拟阵可以用独立集$I$定义，则$I$需满足性质:</p>
 <p>1.空集：有$\emptyset \in I$，所以有$I\ne \emptyset$</p>
 <p>2.遗传性：若$A\sube B,B\in I$，则$ A\in I$</p>
-<p>3.扩充性：若$\exists A,B\in I,|A|>|B|$，则$\exists i\in A,(B\cup \{i\}) \in I$</p>
-<p>例子：对于$S=\{1,2,3\}$，$\{\emptyset \},\{\emptyset,\{1\}\}$是合法的独立集，但$\{\emptyset,\{1\},\{2\},\{3\},\{2,3\}\}$不是，因为它不满足扩充性</p>
-$\{\{1,2\},\{2,3\},\{1\},\{2\},\{3\},\{\emptyset \}\}$也是合法的独立集
-
-对于$S=\{1,2,3,4,5\}$,$I=\{\{1,2,3\},\{3,4,5\},\{1,2\},\{2,3\},\{1,3\},\{3,4\},\{3,5\},\{4,5\},\{1\},\{2\},\{3\},\{5\},\{\emptyset\}\}$不是合法的独立集，因为它不满足扩充性($A=\{1,2,3\},B=\{3,4\}$时)
-
-$$ \ $$
-<h3 id="用基底和基定义拟阵-似乎是最简洁的描述"><a href="#用基底和基定义拟阵-似乎是最简洁的描述" class="headerlink" title="用基底和基定义拟阵(似乎是最简洁的描述)"></a>用基底和基定义拟阵(似乎是最简洁的描述)</h3><p>基底:$E$的一个<strong>独立的极大子集</strong>称为其的一个基底，独立的极大子集即其加入任意元素得到的子集不独立</p>
+<p>3.扩充性：若$\exists A,B\in I,|A|&gt;|B|$，则$\exists i\in A,(B\cup \{i\}) \in I$</p>
+<p>例子：对于$S=\{1,2,3\}$，$\{\emptyset \},\{\emptyset,\{1\} \}$是合法的独立集，但$\{\emptyset,\{1\},\{2\},\{3\},\{2,3\} \}$不是，因为它不满足扩充性</p>
+<p>$\{ \{1,2\},\{2,3\},\{1\},\{2\},\{3\},\{\emptyset \} \}$也是合法的独立集</p>
+<p>对于$S=\{1,2,3,4,5\}$,$I=\{ \{1,2,3\},\{3,4,5\},\{1,2\},\{2,3\},\{1,3\},\{3,4\},\{3,5\},\{4,5\},\{1\},\{2\},\{3\},\{5\},\{\emptyset\} \}$不是合法的独立集，因为它不满足扩充性($A=\{1,2,3\},B=\{3,4\}$时)</p>
+<script type="math/tex; mode=display">\</script><h3 id="用基底和基定义拟阵-似乎是最简洁的描述"><a href="#用基底和基定义拟阵-似乎是最简洁的描述" class="headerlink" title="用基底和基定义拟阵(似乎是最简洁的描述)"></a>用基底和基定义拟阵(似乎是最简洁的描述)</h3><p>基底:$E$的一个<strong>独立的极大子集</strong>称为其的一个基底，独立的极大子集即其加入任意元素得到的子集不独立</p>
 <p>基:$E$的基$B$为其所有基底构成的集合</p>
 <p>拟阵可以用基$B$定义，则$B$需满足性质:</p>
 <p>1.非空：$B\ne \emptyset$，最小的$B=\{\emptyset\}$</p>
@@ -217,30 +203,25 @@ $$ \ $$
 <p>推论：基底等大，即$\forall a\in B,b\in B,|a|=|b|$(否则就不满足扩充性)</p>
 <p>例如：若$\{1,2\},\{1,3\}$是基底，则$\{2,3\}$也是基底(否则不满足扩充性)</p>
 <p>可以得到拟阵的等价定义，且$I=\bigcup _{T\in B} 2^T$</p>
-$$ \ $$
-<h3 id="用环路集定义拟阵"><a href="#用环路集定义拟阵" class="headerlink" title="用环路集定义拟阵"></a>用环路集定义拟阵</h3><p>环路:$S$的一个子集是环路，则这个子集是一个极小的<strong>非独立集</strong>，即去掉任意一个元素都会称为独立集</p>
-<p>所有环路构成的集合称为环路集$C$，如对于$E=\{1,2\},I=\{\emptyset,\{1\}\}$，环路集为$\{\{2\}\}$</p>
+<script type="math/tex; mode=display">\</script><h3 id="用环路集定义拟阵"><a href="#用环路集定义拟阵" class="headerlink" title="用环路集定义拟阵"></a>用环路集定义拟阵</h3><p>环路:$S$的一个子集是环路，则这个子集是一个极小的<strong>非独立集</strong>，即去掉任意一个元素都会称为独立集</p>
+<p>所有环路构成的集合称为环路集$C$，如对于$E=\{1,2\},I=\{\emptyset,\{1\} \}$，环路集为$\{ \{2\} \}$</p>
 <p>拟阵可以用环路集$C$定义，则$C$需满足性质：</p>
 <p>1.$C$可以为空(此时$I=P(S)$)，且$\emptyset \not \in C$</p>
 <p>2.环路互相之间不是真子集，即$\exists a\in C,b\in C,a\sube b\Rightarrow a=b$ (否则不满足遗传性)</p>
 <p>3.若$\exists a\in C,b\in C,a\ne b$以及一个元素$i\in a\cap b$，则$a\cup b-\{i\}$不是独立集</p>
 <p>推论：$A\sube I \Leftrightarrow \nexists B\in C,B\sube A$</p>
 <p>环路不一定等大</p>
-$$ \ $$
-<h3 id="环路和基底的一些关系"><a href="#环路和基底的一些关系" class="headerlink" title="环路和基底的一些关系"></a>环路和基底的一些关系</h3><p>1.环路和基底之间不能通过加减一个元素转化</p>
+<script type="math/tex; mode=display">\</script><h3 id="环路和基底的一些关系"><a href="#环路和基底的一些关系" class="headerlink" title="环路和基底的一些关系"></a>环路和基底的一些关系</h3><p>1.环路和基底之间不能通过加减一个元素转化</p>
 <p>2.基底加上一个元素得到的非独立集恰好包含一个环路</p>
-$$ \ $$
-<h3 id="拟阵的秩"><a href="#拟阵的秩" class="headerlink" title="拟阵的秩"></a>拟阵的秩</h3><p>拟阵的秩：拟阵的任意一个<strong>基底的元素个数</strong>是其秩$r$</p>
-<p>为了同下文的秩函数相对应，也可说$\begin{aligned}r=\max_{R\in I}\{|R|\}\end{aligned}$，即最大的独立集大小</p>
-$$ \ $$
-<h3 id="用秩函数定义拟阵"><a href="#用秩函数定义拟阵" class="headerlink" title="用秩函数定义拟阵"></a>用秩函数定义拟阵</h3><p>对于元素集$S$</p>
+<script type="math/tex; mode=display">\</script><h3 id="拟阵的秩"><a href="#拟阵的秩" class="headerlink" title="拟阵的秩"></a>拟阵的秩</h3><p>拟阵的秩：拟阵的任意一个<strong>基底的元素个数</strong>是其秩$r$</p>
+<p>为了同下文的秩函数相对应，也可说$\begin{aligned}r=\max_{R\in I} \{|R|\}\end{aligned}$，即最大的独立集大小</p>
+<script type="math/tex; mode=display">\</script><h3 id="用秩函数定义拟阵"><a href="#用秩函数定义拟阵" class="headerlink" title="用秩函数定义拟阵"></a>用秩函数定义拟阵</h3><p>对于元素集$S$</p>
 <p>若可以定义一个在$2^S$上的秩函数$r(T)$，满足以下性质:</p>
 <p>1.大小有界:$r(T)\in[0,|T|]$</p>
 <p>2.大小传递性:$A\sube B\Rightarrow r(A)\le r(B)$</p>
 <p>3.次模性:$r(A\cup B)+r(A\cap B)\le r(A)+r(B)$</p>
 <p>那么可以用这样的一个秩函数定义一个拟阵$M=(S,r)$，此时$r(T)$为$2^T$中极大的独立集大小，且拟阵的独立集就是$I=\{T|T\sube S,r(T)=|T|\}$</p>
-$$ \ $$
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>均匀拟阵：$U_n^k=(S,I),|S|=n,I=\{T|T\sube S,|T|\leq k\}$</p>
+<script type="math/tex; mode=display">\</script><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>均匀拟阵：$U_n^k=(S,I),|S|=n,I=\{T|T\sube S,|T|\leq k\}$</p>
 <p>图拟阵：</p>
 <p>对于无向图$G=(V,E)$，它的生成拟阵是$M=(E,\{T|T\sube E,T无环\})$</p>
 <p>它的最大独立子集大小为$G$的最大生成森林边数，每个最大生成森林都是基底</p>
@@ -250,27 +231,22 @@ $$ \ $$
 <p>异或线性基：</p>
 <p>对于非负整数可重集合$S$，拟阵是$M=(S,\{T|T\sube S,T中的元素任意异或不会得到0\})$</p>
 <p>(这是向量空间的线性基问题的一种)</p>
-$$ \ $$
-$$ \ $$
-<hr>
+<script type="math/tex; mode=display">\</script><script type="math/tex; mode=display">\</script><hr>
 <p>注意分清楚 <strong>定义需要满足的条件</strong> 和 <strong>通过条件推导得到的性质</strong> 的区别 ，上面几种拟阵定义是等价的</p>
-$$ \ $$
-$$ \ $$
-<h2 id="一些应用"><a href="#一些应用" class="headerlink" title="一些应用"></a>一些应用</h2><h3 id="求最大权值独立子集"><a href="#求最大权值独立子集" class="headerlink" title="求最大权值独立子集"></a>求最大权值独立子集</h3><p>对于拟阵$M=(S,I)$，给每个$S$中每个元素一个非负权值，定义一个集合的权值为所有元素权值和，要求最大权值的独立子集</p>
+<script type="math/tex; mode=display">\</script><script type="math/tex; mode=display">\</script><h2 id="一些应用"><a href="#一些应用" class="headerlink" title="一些应用"></a>一些应用</h2><h3 id="求最大权值独立子集"><a href="#求最大权值独立子集" class="headerlink" title="求最大权值独立子集"></a>求最大权值独立子集</h3><p>对于拟阵$M=(S,I)$，给每个$S$中每个元素一个非负权值，定义一个集合的权值为所有元素权值和，要求最大权值的独立子集</p>
 <p>这是一个非常简单的问题，直接从大到小能加入就加入即可，设最终选出的集合为$P$</p>
 <p>证明:</p>
 <p>1.$P\in B$，否则可以再加入元素</p>
 <p>2.假设存在更优解$Q\in B$，根据基底交换公理，一定可以用$P$中一个权值更大的元素换掉$Q$中一个元素，所以$Q$不是合法集合</p>
 <p>在连通图拟阵上使用该算法，就是$\text{Kruskal}$最小生成数算法</p>
 <p>在异或线性基上使用该算法，可以求得最大权值线性基</p>
-$$ \ $$
-<h3 id="拟阵交"><a href="#拟阵交" class="headerlink" title="拟阵交"></a>拟阵交</h3><p>对于同基础集的拟阵$M_1=(S,I_1),M_2=(S,I_2)$，它们的交是独立集的交</p>
+<script type="math/tex; mode=display">\</script><h3 id="拟阵交"><a href="#拟阵交" class="headerlink" title="拟阵交"></a>拟阵交</h3><p>对于同基础集的拟阵$M_1=(S,I_1),M_2=(S,I_2)$，它们的交是独立集的交</p>
 <p>但是它们的交不一定是拟阵</p>
 <p>求解最大交:最小最大定理:</p>
-$\begin{aligned} \max_{A\in (I_1\cup I_2)}\{|T|\}=\min_{R\in S}\{r_1(R)+r_2(S-R)\}\end{aligned}$
+$\begin{aligned} \max_{A\in (I_1\cup I_2)} \{|T|\}=\min_{R\in S} \{r_1(R)+r_2(S-R)\}\end{aligned}$
 <p>这个东西的证明分为两步:</p>
 <p>1.证明$\max\leq \min$</p>
-$|T|=|T\cap R|+|T\cap (S-R)|\leq r_1(R)+r_2(S-R)$
+<p>$|T|=|T\cap R|+|T\cap (S-R)|\leq r_1(R)+r_2(S-R)$</p>
 <p>2.介绍找到两个最值的算法</p>
 <p>这个算法的中心是，从空集开始扩展$T$，并且相应找到对应的$R$使得$|T|=r_1(R)+r_2(S-R)$，此时答案已经充分了</p>
 <p>求解拟阵交的算法基于一个构造的图</p>
@@ -284,22 +260,18 @@ $|T|=|T\cap R|+|T\cap (S-R)|\leq r_1(R)+r_2(S-R)$
 <p>2.构图，找到一条从$X_1$的点出发，到达$X_2$的的<strong>最短的</strong>路径$P$(广搜即可)，将$I$变为$I\bigoplus P$ (这里原文是对称差，但是异或大家都懂哈)</p>
 <p>当不存在增广时，找到了最大的$T$，此时对应合法的$R$为$\{e\in S|在图中存在e到达X_2的路径\}$</p>
 <p>由于每次增广至少增加一个元素，该算法的复杂度上限为$O(r|S|^2)$，其中$r$为拟阵的秩，$|S|^2$为边数</p>
-$$ \ $$
-<h4 id="带权拟阵交"><a href="#带权拟阵交" class="headerlink" title="带权拟阵交"></a>带权拟阵交</h4><p>每个元素带权</p>
+<script type="math/tex; mode=display">\</script><h4 id="带权拟阵交"><a href="#带权拟阵交" class="headerlink" title="带权拟阵交"></a>带权拟阵交</h4><p>每个元素带权</p>
 <p>在增广时，图上每个点加上点权(加入为正，删除为负)，每次求出点权最短路进行增广即可</p>
-$$ \ $$
-<h3 id="拟阵交的应用"><a href="#拟阵交的应用" class="headerlink" title="拟阵交的应用"></a>拟阵交的应用</h3><h4 id="二分图匹配问题"><a href="#二分图匹配问题" class="headerlink" title="二分图匹配问题"></a>二分图匹配问题</h4><p>二分图匹配匈牙利算法 是 求解拟阵交的问题 的一种特殊情况</p>
+<script type="math/tex; mode=display">\</script><h3 id="拟阵交的应用"><a href="#拟阵交的应用" class="headerlink" title="拟阵交的应用"></a>拟阵交的应用</h3><h4 id="二分图匹配问题"><a href="#二分图匹配问题" class="headerlink" title="二分图匹配问题"></a>二分图匹配问题</h4><p>二分图匹配匈牙利算法 是 求解拟阵交的问题 的一种特殊情况</p>
 <p>对于二分图$G=(V_1,V_2,E)$，构造</p>
-$M_1=(E,I=\{T\sube E|T中的边在V_1上没有公共点\})$
-$M_2=(E,I=\{T\sube E|T中的边在V_2上没有公共点\})$
+<p>$M_1=(E,I=\{T\sube E|T中的边在V_1上没有公共点\})$</p>
+<p>$M_2=(E,I=\{T\sube E|T中的边在V_2上没有公共点\})$</p>
 <p>答案就是$M_1,M_2$交的最大值，匈牙利算法增广的过程是依次考虑$X_1$中的元素进行增广</p>
 <p>(带权的二分图匹配问题，实际也是可以用拟阵解决的，但是好像$\text{KM}$还是最棒的)</p>
-$$ \ $$
-<p>拟阵交还可以解决一些看起来很抽象的 <strong>带有两个限制的</strong> (可能带权) 的问题，比如论文里下面的这个例子</p>
+<script type="math/tex; mode=display">\</script><p>拟阵交还可以解决一些看起来很抽象的 <strong>带有两个限制的</strong> (可能带权) 的问题，比如论文里下面的这个例子</p>
 <p>(Colorful Tree): 对于一个无向图，每条边给定一个颜色和一个权值，求颜色不能重复的最大生成树</p>
 <p>类似这样的问题可以转化为拟阵交问题，但是这个东西的局限性实在太大，也没有人敢动</p>
-$$ \ $$
-<p>update:</p>
+<script type="math/tex; mode=display">\</script><p>update:</p>
 <p><del>有生之年竟然用上了这个东西？</del></p>
 <p>**模拟赛有人搞了一个题:</p>
 <p>对于一个无向图$G=(V,E),E=(u,v,w)$，其中$w$为每条边的颜色</p>

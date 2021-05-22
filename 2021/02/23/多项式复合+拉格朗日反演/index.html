@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">多项式复合+拉格朗日反演</h2>
             <div class="post-meta">
-                本文共计950个字 |
+                本文共计945个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -171,25 +171,22 @@
             <h1 id="多项式复合-拉格朗日反演"><a href="#多项式复合-拉格朗日反演" class="headerlink" title="多项式复合+拉格朗日反演"></a>多项式复合+拉格朗日反演</h1><h2 id="多项式复合"><a href="#多项式复合" class="headerlink" title="多项式复合"></a>多项式复合</h2><p>多项式复合形如$F(G(x))$，即复合函数，较为数学的形式可以写作$u=F(v),v=G(x)$</p>
 <p>在符号上，记做$F\circ G=F(G(x))$</p>
 <p>稍微展开一下就是$\begin{aligned} F(G(x))=\sum_i [x^i]F(x)\cdot G^i(x)\end{aligned}$</p>
-$$ \ $$
-<h2 id="拉格朗日-Lagrange-反演"><a href="#拉格朗日-Lagrange-反演" class="headerlink" title="拉格朗日(Lagrange)反演"></a>拉格朗日(Lagrange)反演</h2><p>数学上，拉格朗日反演揭示了幂函数的反函数的形式</p>
+<script type="math/tex; mode=display">\</script><h2 id="拉格朗日-Lagrange-反演"><a href="#拉格朗日-Lagrange-反演" class="headerlink" title="拉格朗日(Lagrange)反演"></a>拉格朗日(Lagrange)反演</h2><p>数学上，拉格朗日反演揭示了幂函数的反函数的形式</p>
 <p>OI上，拉格朗日反演是复合逆/反函数的反演</p>
 <p>对于多项式$F(x),G(x)$，若他们的复合满足$F(G(x))=x$，则$F(x)$与$G(x)$互为复合逆(若在非模意义下，$y=F(x),y=G(x)$的图像关于直线$y=x$对称，即反函数)，此时也有$G(F(x))=x$</p>
 <p>拉格朗日反演用于求解复合逆的<strong>一项的值</strong>:</p>
-$\begin{aligned} [][x^n]F(x)=\frac{1}{n}[x^{-1}](\frac{1}{G(x)})^n\end{aligned} $
+$\begin{aligned} [][x^n]F(x)=\frac{1} {n}[x^{-1}](\frac{1} {G(x)})^n\end{aligned} $
 <p>显然，存在复合逆的多项式必然没有常数项</p>
-<p>所以上式写成更阳间的样子就是$\begin{aligned}[] [x^n]F(x)=\frac{1}{n}[x^{n-1}](\frac{x}{G(x)})^n\end{aligned} $</p>
+<p>所以上式写成更阳间的样子就是$\begin{aligned}[] [x^n]F(x)=\frac{1} {n}[x^{n-1}](\frac{x} {G(x)})^n\end{aligned} $</p>
 <p>由于证明太~~，咕了</p>
 <p>另外还有扩展拉格朗日反演</p>
-$\begin{aligned} [][x^n]H(F(x))=\frac{1}{n}[x^{n-1}]H'(x)(\frac{x}{G(x)})^n\end{aligned}$
-$$ \ $$
-<h2 id="多项式复合逆"><a href="#多项式复合逆" class="headerlink" title="多项式复合逆"></a>多项式复合逆</h2><p>对于给定的$F(x)$，求其复合逆</p>
+$\begin{aligned} [][x^n]H(F(x))=\frac{1} {n}[x^{n-1}]H'(x)(\frac{x} {G(x)})^n\end{aligned}$
+<script type="math/tex; mode=display">\</script><h2 id="多项式复合逆"><a href="#多项式复合逆" class="headerlink" title="多项式复合逆"></a>多项式复合逆</h2><p>对于给定的$F(x)$，求其复合逆</p>
 <p>带入拉格朗日反演的式子</p>
-$\begin{aligned} F(x)=\sum \frac{1}{i}[x^{i-1}](\frac{x}{G(x)})^i x^i\end{aligned} $
+$\begin{aligned} F(x)=\sum \frac{1} {i}[x^{i-1}](\frac{x} {G(x)})^i x^i\end{aligned} $
 <p>求这个式子的核心是 分块+暴力</p>
-$i=a\cdot S+b$，求出$(\frac{x}{G(x)})^{Sa},(\frac{x}{G(x)})^b$，然后直接对于每个位置把两个式子暴力合并即可
-
-两部分复杂度总和为$O(n\sqrt n\log n+n^2)$
+<p>$i=a\cdot S+b$，求出$(\frac{x} {G(x)})^{Sa},(\frac{x} {G(x)})^b$，然后直接对于每个位置把两个式子暴力合并即可</p>
+<p>两部分复杂度总和为$O(n\sqrt n\log n+n^2)$</p>
 
             
                 

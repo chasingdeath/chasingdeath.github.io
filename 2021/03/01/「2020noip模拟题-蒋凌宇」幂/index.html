@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">「2020noip模拟题-蒋凌宇」幂</h2>
             <div class="post-meta">
-                本文共计1479个字 |
+                本文共计1447个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -173,36 +173,33 @@
 <p>定义一个辅助计数：<strong>不可分割</strong> 的合法括号序列</p>
 <p>这样的括号序列，满足：其恰好为$x$，或者序列两端是一对匹配的左右括号</p>
 <p>而实际要求的括号序列 的就是这样的 <strong>不可分割</strong>括号序列 去掉两端的匹配括号</p>
-$$\  $$
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>设$a_n$为长度为$n$的<strong>不可分割</strong> 的合法括号序列数量</p>
+<script type="math/tex; mode=display">\</script><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>设$a_n$为长度为$n$的<strong>不可分割</strong> 的合法括号序列数量</p>
 <p>括号序列并非排列问题，因此我们用普通生成函数计算</p>
 <p>设$\text{OGF(a)}=A(x)$，$A(x)$容易发现$A(x)$满足下面的递归式</p>
-$\displaystyle A(x)=x^2(\sum_{i=0}^{\infty} A^i(x))+x^1$
+<p>$\displaystyle A(x)=x^2(\sum_{i=0}^{\infty} A^i(x))+x^1$</p>
 <p>其中$x^2$表示在外层加一对匹配括号，$\sum_{i=0}^{\infty} A^i(x)$枚举子括号中的分裂段，$x^1$表示单个$x$</p>
 <p>容易得到下面的化简过程</p>
-$\displaystyle A(x)=\frac{x^2}{1-A(x)}+x$
-$A(x)-A^2(x)=x^2+xA(x)$
-$A^2(x)-(x+1)A(x)+x^2+x=0$
+<p>$\displaystyle A(x)=\frac{x^2} {1-A(x)}+x$</p>
+<p>$A(x)-A^2(x)=x^2+xA(x)$</p>
+<p>$A^2(x)-(x+1)A(x)+x^2+x=0$</p>
 <p>带入求根公式，得到$A(x)$的 <strong>收敛形式</strong></p>
-$\displaystyle A_1(x)=\frac{x+1+\sqrt{-3x^2-2x+1}}{2},A_2(x)=\frac{x+1-\sqrt{-3x^2-2x+1}}{2}$
+<p>$\displaystyle A_1(x)=\frac{x+1+\sqrt{-3x^2-2x+1} } {2},A_2(x)=\frac{x+1-\sqrt{-3x^2-2x+1} } {2}$</p>
 <p>令$\displaystyle F(x)=-3x^2-2x+1,G(x)=\sqrt{F(x)}$</p>
 <p>容易手玩发现：$[x^0]G(x)=1$</p>
 <p>而根据定义，我们知道$[x^0]A(x)=0$，因此$A(x)=A_2(x)$</p>
-<p>接下来我们要求$\displaystyle G(x)=F^\frac{1}{2}(x)$</p>
-$$ \ $$
-<p>下面介绍对于短多项式$F(x)$，设$\text{deg}(F(x))=m$，有理数$k(k\ne 1)$</p>
+<p>接下来我们要求$\displaystyle G(x)=F^\frac{1} {2}(x)$</p>
+<script type="math/tex; mode=display">\</script><p>下面介绍对于短多项式$F(x)$，设$\text{deg}(F(x))=m$，有理数$k(k\ne 1)$</p>
 <p>求解$G(x)=F^k(x)$的前$n$项的$O(m^2+nm)$递推做法</p>
-<h4 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h4>$G(x)=F^k(x)$
-$\displaystyle G'(x)=kF^{k-1}(x)F'(x)$
-$G'(x)F(x)=kF^k(x)F'(x)$
-$G'(x)F(x)=kG(x)F'(x)$
-$$ \ $$
-<h4 id="求解递推式"><a href="#求解递推式" class="headerlink" title="求解递推式"></a>求解递推式</h4><p>对于等号两边，考虑$[x^n]$一项的系数，容易求出$F'(x)=-6x-2$</p>
-$\displaystyle \sum_{i=0}^m [x^{n-i}]G'(x)F_i=k\sum_{i=0}^{m-1}[x^{n-i}]G(x)F'_i$
-$\displaystyle \sum_{i=0}^m [x^{n-i+1}](n-i+1)G(x)F_i=k\sum_{i=0}^{m-1}[x^{n-i}]G(x)F'_i$
-$\displaystyle (n+1)[x^{n+1}]G(x)=k\sum_{i=0}^{m-1}[x^{n-i}]G(x)F'_i-\sum_{i=1}^m [x^{n-i+1}](n-i+1)G(x)F_i$
+<h4 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h4><p>$G(x)=F^k(x)$</p>
+<p>$\displaystyle G’(x)=kF^{k-1}(x)F’(x)$</p>
+<p>$G’(x)F(x)=kF^k(x)F’(x)$</p>
+<p>$G’(x)F(x)=kG(x)F’(x)$</p>
+<script type="math/tex; mode=display">\</script><h4 id="求解递推式"><a href="#求解递推式" class="headerlink" title="求解递推式"></a>求解递推式</h4><p>对于等号两边，考虑$[x^n]$一项的系数，容易求出$F’(x)=-6x-2$</p>
+<p>$\displaystyle \sum_{i=0}^m [x^{n-i}]G’(x)F_i=k\sum_{i=0}^{m-1}[x^{n-i}]G(x)F’_i$</p>
+<p>$\displaystyle \sum_{i=0}^m <a href="n-i+1">x^{n-i+1}</a>G(x)F_i=k\sum_{i=0}^{m-1}[x^{n-i}]G(x)F’_i$</p>
+<p>$\displaystyle (n+1)[x^{n+1}]G(x)=k\sum_{i=0}^{m-1}[x^{n-i}]G(x)F’_i-\sum_{i=1}^m <a href="n-i+1">x^{n-i+1}</a>G(x)F_i$</p>
 <p>带入这题的$k$，得到</p>
-$\displaystyle [x^n]=\frac{3(n-3)[x^{n-2}]+(2n-3)[x^{n-1}]}{n}$
+<p>$\displaystyle [x^n]=\frac{3(n-3)[x^{n-2}]+(2n-3)[x^{n-1}]} {n}$</p>
 <p>递推边界$[x^0]G(x)=1,[x^1]G(x)=-1$</p>
 <p>然后由$G(x)$得到$A(x)$再得到最终答案即可</p>
 

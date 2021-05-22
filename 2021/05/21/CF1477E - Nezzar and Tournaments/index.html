@@ -163,24 +163,24 @@
             </div>
             <h2 class="post-title">CF1477E - Nezzar and Tournaments</h2>
             <div class="post-meta">
-                本文共计296个字 |
+                本文共计3215个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="CF1477E-Nezzar-and-Tournaments"><a href="#CF1477E-Nezzar-and-Tournaments" class="headerlink" title="CF1477E - Nezzar and Tournaments"></a>CF1477E - Nezzar and Tournaments</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>有两队人$a_i,i\in[1,n],b_j,j\in[1,m]$，现在把他们放在一起排成一行$c_i$</p>
 <p>顺次给每个人计分，初始$s_0=k$</p>
-$s_i=\max\{0,s_{i-1}+c_i-c_{\max\{i-1,1\}}\}$
+<p>$s_i=\max\{0,s_{i-1}+c_i-c_{\max\{i-1,1\} } \}$</p>
 <p>现在要最大化每个$a_i$所在位置的$s_i$之和 与 $b_i$所在$s_i$之和 的差</p>
 <p>支持修改和对于不同$k$查询</p>
 <p><br></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>考虑$k=0$简单情况</p>
 <p>1.若$s_i$不清零，则$s_i=c_i-lst$，其中$lst$表示上一个被清零位置的$c_j$</p>
-<p>2.$s_i$清零，则$c_i<lst$</p>
-<p>容易发现，$\displaystyle s_i=c_i-\min_{j\leq i}\{ c_j\}$</p>
+<p>2.$s_i$清零，则$c_i&lt;lst$</p>
+<p>容易发现，$\displaystyle s_i=c_i-\min_{j\leq i} \{ c_j\}$</p>
 <p><br></p>
 <p>那么对于含$k$的情况，类似可以得到</p>
-$\displaystyle s_i=k-c_1+c_i+\max\{0,c_1-k-\min_{j\leq i}\{c_j\}\}$
+<p>$\displaystyle s_i=k-c_1+c_i+\max\{0,c_1-k-\min_{j\leq i} \{c_j\} \}$</p>
 <p>假设我们固定了一个$c_1$，现在考虑对于剩下的$a_i,b_j$排出一个最优的排列</p>
 <p>容易发现，$k-c_1+c_i$的贡献时固定的，只有前缀最小值会影响答案</p>
 <p>我们希望对于$b_i$，前缀最小值较大，$a_i$反之</p>
@@ -192,7 +192,7 @@ $\displaystyle s_i=k-c_1+c_i+\max\{0,c_1-k-\min_{j\leq i}\{c_j\}\}$
 <p>1.对于每个$a_i$，若它没有被放在$c_1$，则贡献$k-t+a_i+\max\{0,t-k-Min\}$</p>
 <p>2.对于每个$b_i$（不特殊考虑第一个），则贡献$-(k-t+b_i+\max\{0,t-k-b_i\})$（忽略最小值为$t$的情况）</p>
 <p>则最终式子为</p>
-$\displaystyle f(t)=(n-[t\in a_i])\cdot  \max\{0,t-k-Min\}-\sum \max\{0,t-k-b_i\}+(m-n)t+C$
+<p>$\displaystyle f(t)=(n-[t\in a_i])\cdot  \max\{0,t-k-Min\}-\sum \max\{0,t-k-b_i\}+(m-n)t+C$</p>
 <p>其中$C=(n-m)k+\sum a_i-\sum b_i$</p>
 <p>容易发现$f(t)$是关于$t$的分段一次函数，根据斜率变化情况分析，极值位置仅$O(1)$个</p>
 <p>那么对于$a_i$作为$t$和$b_j$作为$t$的情况，分别计算$f(t)$的极值位置</p>

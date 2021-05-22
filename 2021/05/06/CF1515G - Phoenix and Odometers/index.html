@@ -163,15 +163,14 @@
             </div>
             <h2 class="post-title">CF1515G - Phoenix and Odometers</h2>
             <div class="post-meta">
-                本文共计1430个字 |
+                本文共计1423个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="CF1515G-Phoenix-and-Odometers"><a href="#CF1515G-Phoenix-and-Odometers" class="headerlink" title="CF1515G - Phoenix and Odometers"></a>CF1515G - Phoenix and Odometers</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一张带权有向图，每次查询$v,s,t$表示从$v$出发并且回到$v$，可以经过重边</p>
 <p>判断是否存在经过路径总长$l$满足$l+s\equiv 0 \pmod t$</p>
-$$ \ $$
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>显然$v$只能在其自己的强连通分量里走，并且分量内部的任意一个环都是可达的</p>
+<script type="math/tex; mode=display">\</script><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>显然$v$只能在其自己的强连通分量里走，并且分量内部的任意一个环都是可达的</p>
 <p>由于是模意义下，所以环的贡献可以抵消，环之间可以无限叠加</p>
 <p>根据裴蜀定理，能够生成的数就是是$\gcd(len_i)$的倍数</p>
 <p>只需预处理强连通分量内部的环，判断$\gcd(len_i,t)|\gcd(s,t)$即可</p>

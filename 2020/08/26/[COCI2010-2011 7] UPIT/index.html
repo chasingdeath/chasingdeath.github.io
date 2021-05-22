@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">[COCI2010-2011 7] UPIT</h2>
             <div class="post-meta">
-                本文共计12900个字 |
+                本文共计12889个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -184,17 +184,15 @@
 <p>同时需要对于块的$Size$累前缀和$SumSize$，则块$i$内编号为$j$的元素在数组中的实际编号为$SumSize_{i-1}+j$</p>
 <p>插入时把整个块内的元素取出重新标号即可</p>
 <p>但是这样插入后，一个块的$Size$会变大，再实现分块的操作时复杂度没有保证</p>
-<p>因此需要加入一个操作:当$Size_i>2\sqrt n$时,$O(n)$重构整个序列，这样每$\sqrt n$次插入操作会导致一次重构，复杂度为均摊的$O(n\sqrt n)$</p>
+<p>因此需要加入一个操作:当$Size_i&gt;2\sqrt n$时,$O(n)$重构整个序列，这样每$\sqrt n$次插入操作会导致一次重构，复杂度为均摊的$O(n\sqrt n)$</p>
 <p>然后可以用类似分块的方法来直接维护</p>
-$$ \ $$
-<h3 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h3><p>静态的操作线段树可以直接维护</p>
+<script type="math/tex; mode=display">\</script><h3 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h3><p>静态的操作线段树可以直接维护</p>
 <p>在线段树上额外维护一个01，表示这个元素是否出现</p>
 <p>将插入操作转化为在让对应位置的0变为1，但是由于不知道插入后的位置，所以不能直接操作</p>
 <p>于是有两种解决办法</p>
 <h4 id="暴力值域"><a href="#暴力值域" class="headerlink" title="暴力值域"></a>暴力值域</h4><p>静态情况下我们对于$[1,n]$建树，但是动态可以对于$[1,n\cdot q]$建函数式线段树</p>
 <h3 id="离线"><a href="#离线" class="headerlink" title="离线"></a>离线</h3><p>离线维护，预处理出插入的位置</p>
-$$ \ $$
-<h3 id="平衡树"><a href="#平衡树" class="headerlink" title="平衡树"></a>平衡树</h3><p><del>下面是安利时间</del></p>
+<script type="math/tex; mode=display">\</script><h3 id="平衡树"><a href="#平衡树" class="headerlink" title="平衡树"></a>平衡树</h3><p><del>下面是安利时间</del></p>
 <p>来学Treap吧</p>
 <p>它可以 </p>
 <p>1.查询k大</p>

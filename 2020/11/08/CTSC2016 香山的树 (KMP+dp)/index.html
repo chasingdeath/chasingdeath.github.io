@@ -163,21 +163,21 @@
             </div>
             <h2 class="post-title">CTSC2016 香山的树 (KMP+dp)</h2>
             <div class="post-meta">
-                本文共计3373个字 |
+                本文共计3377个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="CTSC2016-香山的树-KMP-dp"><a href="#CTSC2016-香山的树-KMP-dp" class="headerlink" title="CTSC2016 香山的树 (KMP+dp)"></a>CTSC2016 香山的树 (KMP+dp)</h1><p>我的做法比较奇怪</p>
 <p>约定$\Sigma$为字符集</p>
-<p>显然是要枚举答案，不断增大答案$S$的字典序，求出字典序$>S$的个数，考虑$dp$求解</p>
+<p>显然是要枚举答案，不断增大答案$S$的字典序，求出字典序$&gt;S$的个数，考虑$dp$求解</p>
 <p>比较大小可以想到要不断进行前缀匹配，因此考虑 $\text{kmp}$</p>
 <p>因为要 $dp$ 的是一个循环同构串，不妨直接扩展为无限循环的串，$dp$一个 <strong>最小</strong> 的循环节</p>
 <p>不妨先考虑没有字典序限制的简单情形，也就是抛开$\text{kmp}$判断字典序，计算长度为$i$的方案数</p>
 <p>显然此时一个合法的长度为$i$的串只需要满足$i$中不会出现循环</p>
 <p>设$f_i$为最小循环节为$i$的答案，一种Naive的思路是直接拿$|\Sigma|^i$计算，但是显然长度为$i$的会包含长度为$\forall d,d|i$的</p>
 <p>即$g_i=|\Sigma|^i=\sum_{d|i}f(d)$，然后直接$O(n\ln n)$减去重复部分即可</p>
-<p>由于题目要求是最小的循环，因此实际上每个循环有$i$中不同开始位置，所以答案应是$\frac{f_i}{i}$</p>
+<p>由于题目要求是最小的循环，因此实际上每个循环有$i$中不同开始位置，所以答案应是$\frac{f_i} {i}$</p>
 <p>接下来考虑字典序的问题：不妨枚举一个无限循环串$S$的<strong>最优匹配位置</strong>为$st$，然后$dp$一个长度为$i$的循环节</p>
 <p>显然要满足的条件是：</p>
 <p>1.$dp$了$i$个字符之后匹配状态为$st$</p>

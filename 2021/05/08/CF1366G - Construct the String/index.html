@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">CF1366G - Construct the String</h2>
             <div class="post-meta">
-                本文共计1364个字 |
+                本文共计1313个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -171,72 +171,37 @@
             <h1 id="CF1366G-Construct-the-String"><a href="#CF1366G-Construct-the-String" class="headerlink" title="CF1366G - Construct the String"></a>CF1366G - Construct the String</h1><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一个初始串$S$和目标串$T$</p>
 <p>其中$S$除了包含字母外还包含删除标记’.’</p>
 <p>具体的$S$表示的字符串$f(S)$，就是依次加入每个字母，或者在删除标记处删除上一个字符（不存在这个字符则非法）</p>
-<p>求删除$S$中最少的字符，使得$f(S')=T$</p>
+<p>求删除$S$中最少的字符，使得$f(S’)=T$</p>
 <p><br></p>
-<h3 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h3>$O(n^2)$出$n\leq 10^4$???
-
-<br>
-
-<br>
-
-### 朴素dp分析
-
-这种题目容易想到记录在$T$中匹配位置的$dp$，通过枚举$S$的每一个字符
-
-1.匹配
-
-2.手动删除
-
-3.被'.'删除
-
-然而被'.'删除的情况实际难以处理，因为无法额外记录待定的'.'个数
-
-<br>
-
-### 基于括号树的思路
-
-考虑对于不完全的括号序列的包含关系建立树，注意到
-
-1.一个已经和'.'匹配的字符，不需要考虑它被手动删除的情况
-
-2.一个字符能够保留，当且仅当所有跨过其的右括号被删除
-
-跨过其的右括号即祖先中的右括号
-
-所以此时dp决策可以简单地归纳为
-
-1.保留一整个匹配括号的子树，进入后面的匹配
-
-2.否则，删除右括号，并且决定自己这个字符是否匹配，然后递归进入子树
-
-~~代码没写~~
-
-<br>
-
-### 更简洁的表述
-
-实际上与上面类似，但是更加简化了模型，转移可以简单归纳为
-
-1.匹配当前字符
-
-2.删除当前字符
-
-3.找到当前字符匹配右括号，跳过这一段
-
-原理：
-
-实际上朴素dp缺陷就在于：
-
-如果当前这个字符被后面的某一个'.'删除，却又无法匹配时，无法被加入状态
-
-此时手动补充直接跳到删除这个字符的位置
-
-充分性理解：在新串中匹配该字符的右括号 和 当前后缀中匹配该字符的括号相同
-
-如果要让这个字符被'.'删除，那么到当前后缀中匹配该字符的括号为止，中间的部分不可能保留
-
-手动删除只会让匹配该字符的括号右移，这不会更优
-
+<h3 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h3><p>$O(n^2)$出$n\leq 10^4$???</p>
+<p><br></p>
+<p><br></p>
+<h3 id="朴素dp分析"><a href="#朴素dp分析" class="headerlink" title="朴素dp分析"></a>朴素dp分析</h3><p>这种题目容易想到记录在$T$中匹配位置的$dp$，通过枚举$S$的每一个字符</p>
+<p>1.匹配</p>
+<p>2.手动删除</p>
+<p>3.被’.’删除</p>
+<p>然而被’.’删除的情况实际难以处理，因为无法额外记录待定的’.’个数</p>
+<p><br></p>
+<h3 id="基于括号树的思路"><a href="#基于括号树的思路" class="headerlink" title="基于括号树的思路"></a>基于括号树的思路</h3><p>考虑对于不完全的括号序列的包含关系建立树，注意到</p>
+<p>1.一个已经和’.’匹配的字符，不需要考虑它被手动删除的情况</p>
+<p>2.一个字符能够保留，当且仅当所有跨过其的右括号被删除</p>
+<p>跨过其的右括号即祖先中的右括号</p>
+<p>所以此时dp决策可以简单地归纳为</p>
+<p>1.保留一整个匹配括号的子树，进入后面的匹配</p>
+<p>2.否则，删除右括号，并且决定自己这个字符是否匹配，然后递归进入子树</p>
+<p><del>代码没写</del></p>
+<p><br></p>
+<h3 id="更简洁的表述"><a href="#更简洁的表述" class="headerlink" title="更简洁的表述"></a>更简洁的表述</h3><p>实际上与上面类似，但是更加简化了模型，转移可以简单归纳为</p>
+<p>1.匹配当前字符</p>
+<p>2.删除当前字符</p>
+<p>3.找到当前字符匹配右括号，跳过这一段</p>
+<p>原理：</p>
+<p>实际上朴素dp缺陷就在于：</p>
+<p>如果当前这个字符被后面的某一个’.’删除，却又无法匹配时，无法被加入状态</p>
+<p>此时手动补充直接跳到删除这个字符的位置</p>
+<p>充分性理解：在新串中匹配该字符的右括号 和 当前后缀中匹配该字符的括号相同</p>
+<p>如果要让这个字符被’.’删除，那么到当前后缀中匹配该字符的括号为止，中间的部分不可能保留</p>
+<p>手动删除只会让匹配该字符的括号右移，这不会更优</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">10010</span>,P=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">char</span> s[N],t[N];</span><br><span class="line"><span class="keyword">int</span> dp[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s%s&quot;</span>,s,t),n=<span class="built_in">strlen</span>(s),m=<span class="built_in">strlen</span>(t);</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,n) <span class="built_in">memset</span>(dp[i],<span class="number">63</span>,(<span class="built_in">min</span>(m,i)+<span class="number">2</span>)&lt;&lt;<span class="number">2</span>);</span><br><span class="line">	<span class="built_in">rep</span>(i,*dp[<span class="number">0</span>]=<span class="number">0</span>,n<span class="number">-1</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(s[i]!=<span class="string">&#x27;.&#x27;</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> j=i,c=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">do</span> c+=s[j++]==<span class="string">&#x27;.&#x27;</span>?<span class="number">-1</span>:<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span>(c &amp;&amp; j&lt;n);</span><br><span class="line">			<span class="keyword">if</span>(!c) <span class="built_in">rep</span>(k,<span class="number">0</span>,<span class="built_in">min</span>(m,i)) <span class="built_in">cmin</span>(dp[j][k],dp[i][k]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">rep</span>(j,<span class="number">0</span>,<span class="built_in">min</span>(m,i)) &#123;</span><br><span class="line">			<span class="built_in">cmin</span>(dp[i+<span class="number">1</span>][j],dp[i][j]+<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">if</span>(s[i]==t[j]) <span class="built_in">cmin</span>(dp[i+<span class="number">1</span>][j+<span class="number">1</span>],dp[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,dp[n][m]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
             

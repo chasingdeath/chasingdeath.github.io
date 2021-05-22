@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">[水]整数拆分积</h2>
             <div class="post-meta">
-                本文共计129个字 |
+                本文共计722个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -172,19 +172,19 @@
 <p>问题：对于$n(n\ge 3)$，要求构造拆分$n=\sum_{i=1}^m a_i$，最大化$\prod a_i$</p>
 <p>最优情况下，满足</p>
 <p>1.$n\mod 3=0$，$a_i=3$</p>
-<p>2.$n\mod 3=2$，$i<m,a_i=3 ; a_m=2$</p>
-<p>3.$n\mod 3=1$，$i<m,a_i=3 ; a_m=4$或$i<m-1,a_i=3 ;a_{m-1}=a_m=2$</p>
+<p>2.$n\mod 3=2$，$i&lt;m,a_i=3 ; a_m=2$</p>
+<p>3.$n\mod 3=1$，$i&lt;m,a_i=3 ; a_m=4$或$i&lt;m-1,a_i=3 ;a_{m-1}=a_m=2$</p>
 <p>容易发现$a_i=2,a_i=4$的都是边界情况，我们只需要分析为何$a_i=3$能够最大化答案</p>
-<p>考虑由高维均值不等式  $\displaystyle \sqrt[m]{\prod a_i}\leq \frac{\sum a_i}{m}$</p>
-$\displaystyle \prod a_i\leq (\frac{\sum a_i}{m})^m$
+<p>考虑由高维均值不等式  $\displaystyle \sqrt[m]{\prod a_i}\leq \frac{\sum a_i} {m}$</p>
+<p>$\displaystyle \prod a_i\leq (\frac{\sum a_i} {m})^m$</p>
 <p>故知在$a_i$尽量平均时取到最值</p>
 <p>现在只需分析$a_i=x$在何时取到最值</p>
-<p>不妨用一个函数$g(x)=x^{\frac{n}{x}}$来描述问题</p>
-<p>由于上标中的$n$不影响单调性，不妨分析$\displaystyle f(x)=g^{\frac{1}{n}}(x)=x^{\frac{1}{x}}$</p>
-$f(x)=e^{\frac{\ln x}{x}}$
-$f'(x)=e^{\frac{\ln x}{x}}\cdot \frac{1-\ln x}{x^2}$
+<p>不妨用一个函数$g(x)=x^{\frac{n} {x} }$来描述问题</p>
+<p>由于上标中的$n$不影响单调性，不妨分析$\displaystyle f(x)=g^{\frac{1} {n} }(x)=x^{\frac{1} {x} }$</p>
+<p>$f(x)=e^{\frac{\ln x} {x} }$</p>
+<p>$f’(x)=e^{\frac{\ln x} {x} }\cdot \frac{1-\ln x} {x^2}$</p>
 <p>容易发现$f(x)$在$x_0=e$处取极大值</p>
-<p>由于$x'\in \Z$，带入$f(2)\approx 1.414,f(3)\approx 1.442$</p>
+<p>由于$x’\in \Z$，带入$f(2)\approx 1.414,f(3)\approx 1.442$</p>
 <p>故取$a_i=3$</p>
 
             

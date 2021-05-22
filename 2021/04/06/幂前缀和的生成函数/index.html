@@ -163,33 +163,29 @@
             </div>
             <h2 class="post-title">幂前缀和的生成函数</h2>
             <div class="post-meta">
-                本文共计818个字 |
+                本文共计817个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="幂前缀和的生成函数"><a href="#幂前缀和的生成函数" class="headerlink" title="幂前缀和的生成函数"></a>幂前缀和的生成函数</h1><p>问题描述：</p>
 <p>对于给定的大数$m$，求$\displaystyle k\in[1,n],F_k=\sum _{i=1}^m i^k$</p>
-$F_k=\sum _{i=1}^m i^k$，每一项的组合意义即：为$k$个元素每个染上$i$种颜色中的一个
-
-#### 下面是用斯特林数的推导
-
-带入第二类斯特林数的组合意义，得到
-
-$\displaystyle F_k=\sum_{i=1}^m \sum_{j=0}^{\infty} \binom{i}{j}\begin{Bmatrix}k\\ j\end{Bmatrix}j!$
+<p>$F_k=\sum _{i=1}^m i^k$，每一项的组合意义即：为$k$个元素每个染上$i$种颜色中的一个</p>
+<h4 id="下面是用斯特林数的推导"><a href="#下面是用斯特林数的推导" class="headerlink" title="下面是用斯特林数的推导"></a>下面是用斯特林数的推导</h4><p>带入第二类斯特林数的组合意义，得到</p>
+<p>$\displaystyle F_k=\sum_{i=1}^m \sum_{j=0}^{\infty} \binom{i} {j}\begin{Bmatrix}k\\ j\end{Bmatrix}j!$</p>
 <p>合并外层循环的组合数前缀和</p>
-$\displaystyle F_k=\sum_{i=0}^{\infty} \binom{m+1}{i+1}\begin{Bmatrix}k\\ i\end{Bmatrix}i!$
+<p>$\displaystyle F_k=\sum_{i=0}^{\infty} \binom{m+1} {i+1}\begin{Bmatrix}k\\ i\end{Bmatrix}i!$</p>
 <p>我们知道第二类斯特林数的$\text{EGF}$</p>
-$\displaystyle S(x)=\sum \begin{Bmatrix}i\\m \end{Bmatrix}\frac{x^i}{i!}=\frac{1}{m!}(e^x-1)^m$
+<p>$\displaystyle S(x)=\sum \begin{Bmatrix}i\\m \end{Bmatrix}\frac{x^i} {i!}=\frac{1} {m!}(e^x-1)^m$</p>
 <p>其意义是合并每一种颜色的元素的$\text{EGF}$，要求每种颜色个数$\ge 1$，同时颜色之间无序，最后除掉</p>
 <p>带入$F_k$的式子，得到$F_k$的$\text{EGF}$</p>
-$\displaystyle F(x)=\sum \binom{m+1}{i+1}(e^x-1)^i$
+<p>$\displaystyle F(x)=\sum \binom{m+1} {i+1}(e^x-1)^i$</p>
 <p>带入二项展开</p>
-$\displaystyle F(x)=\frac{e^{(m+1)x}-1}{e^x-1}$
+<p>$\displaystyle F(x)=\frac{e^{(m+1)x}-1} {e^x-1}$</p>
 <hr>
 <p>停停停</p>
-<p>这个东西不是直接根据$[x^n]e^{ax}=\cfrac{a^n}{n!}$</p>
-<p>就会发现是$\displaystyle \sum_{i=0}^m e^{ix}=\frac{e^{(m+1)x}-1}{e^x-1}$吗</p>
+<p>这个东西不是直接根据$[x^n]e^{ax}=\cfrac{a^n} {n!}$</p>
+<p>就会发现是$\displaystyle \sum_{i=0}^m e^{ix}=\frac{e^{(m+1)x}-1} {e^x-1}$吗</p>
 <h4 id="线性解法"><a href="#线性解法" class="headerlink" title="线性解法"></a>线性解法</h4><p>待补。。。</p>
 
             

@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">[USACO 2020 February Platinum]Help Yourself</h2>
             <div class="post-meta">
-                本文共计140个字 |
+                本文共计2974个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -172,7 +172,7 @@
 <p>考虑将区间$(L_i,R_i)$按照左端点排序，依次考虑每个区间的贡献</p>
 <p>令$dp_i$表示当前所有选择的右端点中最大的为$i$时的方案数</p>
 <p>加入区间$(L,R)$时</p>
-<p>1.所有$i<L$的部分一定会断开成两个区间，转移时个数+1</p>
+<p>1.所有$i&lt;L$的部分一定会断开成两个区间，转移时个数+1</p>
 <p>2.当$i\ge L$时，$dp_i$向$dp_{\max\lbrace R,i\rbrace}$转移，分两类讨论即可</p>
 <p>不考虑个数的问题，直接转移是$O(n^2)$的，但是可以用线段树优化到$n\log n$</p>
 <p>(比较麻烦，需要实现区间查询，单点修改，区间乘法)</p>

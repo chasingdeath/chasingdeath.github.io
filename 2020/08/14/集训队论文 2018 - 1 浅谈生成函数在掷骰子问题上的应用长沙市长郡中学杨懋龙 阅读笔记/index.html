@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">集训队论文 2018 - 1 浅谈生成函数在掷骰子问题上的应用长沙市长郡中学杨懋龙 阅读笔记</h2>
             <div class="post-meta">
-                本文共计1030个字 |
+                本文共计1034个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -172,18 +172,18 @@
 <p>有性质</p>
 <p>1.$F(1)=\begin{aligned}\sum_{i=0}^{\infty}P(x=i)=1\end{aligned}$</p>
 <p>2.$F'(1)=\begin{aligned}\sum_{i=0}^{\infty}P(x=i)\cdot i=E(x)\end{aligned}$</p>
-<p>3.$E(x^{\underline{k}})=F^{(k)}(1)$($x$的$k$阶下降幂)</p>
+<p>3.$E(x^{\underline{k} })=F^{(k)}(1)$($x$的$k$阶下降幂)</p>
 <p>4.$x$的方差$=\begin{aligned}\sum_{i=0}^{\infty}P(x=i)\cdot (i-E(x))^2\end{aligned}=\begin{aligned}\sum_{i=0}^{\infty}P(x=i)\cdot i^2-2P(x=i)\cdot i\cdot E(x)+P(x=i)\cdot E^2(x)\end{aligned}$</p>
-$=E(x^2)-2E^2(x)+E^2(x)=E(x^2)-E^2(x)=E(x^{\underline{2}})+E(x)-E^2(x)=F''(1)+F'(1)-(F'(1))^2$
+<p>$=E(x^2)-2E^2(x)+E^2(x)=E(x^2)-E^2(x)=E(x^{\underline{2} })+E(x)-E^2(x)=F’’(1)+F’(1)-(F’(1))^2$</p>
 <p>CTSC2006 歌唱王国</p>
 <p>给定序列$A_{1.. n}$</p>
 <p>求从一个空序列每次放$[1,m]$随机，第一次出现$A$的期望长度</p>
 <p>设当前对应$\text{kmp}$位置为$i$，每次都可以转移一下</p>
-$F(n)=0$
-$F(i)=\frac{\sum_{j=1}^m F(nxt_{i,j})}{m}+1$
-$nxt$非拓扑关系，且无法枚举$1..m$
+<p>$F(n)=0$</p>
+<p>$F(i)=\frac{\sum_{j=1}^m F(nxt_{i,j})} {m}+1$</p>
+<p>$nxt$非拓扑关系，且无法枚举$1..m$</p>
 <p>考虑每次$\text{kmp}$合法匹配指针最多位移一位，令$G(i)$为匹配变为$i+1$的期望次数</p>
-$G(i)=\sum_{j=1}^{m}\sum_{k=nxt_{i,j}}^{i} G(k)$
+<p>$G(i)=\sum_{j=1}^{m}\sum_{k=nxt_{i,j} }^{i} G(k)$</p>
 <p>设$sum_i=\sum_1^{i}G(i)$，依次求出$[1,n-1]$所有的$G(i)$</p>
 <p>并不需要知道真的$nxt$数组，只需要知道$-sum_{nxt_{i,j}-1}$，每次从$fail_i$转移过来，改变一个位置的值，可以$O(1)$完成计算</p>
 <p>即可做到$O(n)$</p>

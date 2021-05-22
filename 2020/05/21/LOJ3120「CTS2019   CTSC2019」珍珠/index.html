@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">LOJ3120「CTS2019 | CTSC2019」珍珠</h2>
             <div class="post-meta">
-                本文共计1501个字 |
+                本文共计1515个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -171,33 +171,30 @@
             <h1 id="LOJ3120「CTS2019-CTSC2019」珍珠"><a href="#LOJ3120「CTS2019-CTSC2019」珍珠" class="headerlink" title="LOJ3120「CTS2019 | CTSC2019」珍珠"></a>LOJ3120「CTS2019 | CTSC2019」珍珠</h1><p>只是想要祭奠做的时候死去的我</p>
 <p>约定下文中的$d$为题目中的$D$</p>
 <h2 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h2><p>先从最最暴力的定义转移(可以跳过这个)</p>
-$S$表示个数为奇数的颜色集合
-
-转移多项式(集合幂指数)$F(x)=\sum_0^d x^{\{i\}}$
-$\text{FWT}$得到
-
-$F'(x)=\sum (d-2|S|)x^S$
-$(F(x)^n)'=\sum (d-2|S|)^nx^S$
-$\text{IFWT}$得到
-
-$2^d F(x)^n=\sum_S \sum_T (-1)^{|S\cap T|}(d-2|T|)^n x^{S} $
+<p>$S$表示个数为奇数的颜色集合</p>
+<p>转移多项式(集合幂指数)$F(x)=\sum_0^d x^{ \{i\} }$</p>
+<p>$\text{FWT}$得到</p>
+<p>$F’(x)=\sum (d-2|S|)x^S$</p>
+<p>$(F(x)^n)’=\sum (d-2|S|)^nx^S$</p>
+<p>$\text{IFWT}$得到</p>
+<p>$2^d F(x)^n=\sum_S \sum_T (-1)^{|S\cap T|}(d-2|T|)^n x^{S} $</p>
 <p>答案就是 </p>
-$2^d Ans=\sum_S\sum_T(-1)^{|S\cap T|}(d-2|T|)^n[|S|\leq Lim]$
+<p>$2^d Ans=\sum_S\sum_T(-1)^{|S\cap T|}(d-2|T|)^n[|S|\leq Lim]$</p>
 <p>如果枚举$|S|,|T|,|S\cap T|$进行统计，会出现3个元，无法直接优化到$O(n\log n)$</p>
 <hr>
 <h2 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h2><p>设最后得到每一种颜色的个数为$c_i,\sum c_i=n$</p>
-<p>方案数就是$\frac{n!}{\Pi c_i!}$，很符合指数型生成函数吧</p>
+<p>方案数就是$\frac{n!} {\Pi c_i!}$，很符合指数型生成函数吧</p>
 <p>考虑最朴素的生成函数表示法，考虑每种颜色的选的个数</p>
-<p>个数无限制的生成函数$F_0(x)=\sum \frac{x^i}{i!}=e^x$</p>
-<p>个数为奇数的生成函数$F_1(x)=\frac{x^{1}}{1!}+\frac{x^{3}}{3!}+\cdots=\frac{e^x-e^{-x}}{2}$</p>
-<p>个数为偶数的生成函数$F_2(x)=\frac{x^0}{0!}+\frac{x^2}{2!}+\cdots=\sum \frac{e^x+e^{-x}}{2}$</p>
-$F_1^i=2^{-i}\sum (-1)^jC(i,j)e^{(i-2j)x}$
-$F_2^i=2^{-i}\sum C(i,j)e^{(i-2j)x}$
+<p>个数无限制的生成函数$F_0(x)=\sum \frac{x^i} {i!}=e^x$</p>
+<p>个数为奇数的生成函数$F_1(x)=\frac{x^{1} } {1!}+\frac{x^{3} } {3!}+\cdots=\frac{e^x-e^{-x} } {2}$</p>
+<p>个数为偶数的生成函数$F_2(x)=\frac{x^0} {0!}+\frac{x^2} {2!}+\cdots=\sum \frac{e^x+e^{-x} } {2}$</p>
+<p>$F_1^i=2^{-i}\sum (-1)^jC(i,j)e^{(i-2j)x}$</p>
+<p>$F_2^i=2^{-i}\sum C(i,j)e^{(i-2j)x}$</p>
 <p>设选中$i$个奇数的答案为$G_i$</p>
-$G_i=n!C(n,i)[x^n]F_1^iF_2^{d-i}$
-$=n!C(n,i)[x^n]2^{-d}\sum_j\sum_k C(i,j)(-1)^je^{(i-2j)x} C(n-i,k)e^{(n-i-2k)x}$
-<p>代$e^{ax}=\sum \frac{(ax)^i}{i!}$，约去$n!$</p>
-$=C(n,i)[x^n]2^{-d}\sum_j\sum_k C(i,j)C(n-i,k)(-1)^j (n-2k-2j)^n$
+<p>$G_i=n!C(n,i)[x^n]F_1^iF_2^{d-i}$</p>
+<p>$=n!C(n,i)[x^n]2^{-d}\sum_j\sum_k C(i,j)(-1)^je^{(i-2j)x} C(n-i,k)e^{(n-i-2k)x}$</p>
+<p>代$e^{ax}=\sum \frac{(ax)^i} {i!}$，约去$n!$</p>
+<p>$=C(n,i)[x^n]2^{-d}\sum_j\sum_k C(i,j)C(n-i,k)(-1)^j (n-2k-2j)^n$</p>
 <p>诶好像和Part1一样。。。</p>
 <p>暴毙结束。。。。</p>
 <hr>
@@ -205,14 +202,13 @@ $=C(n,i)[x^n]2^{-d}\sum_j\sum_k C(i,j)C(n-i,k)(-1)^j (n-2k-2j)^n$
 <p>计算$\ge i$个方案数，然后容斥回去</p>
 <p>设最终答案序列为$H$</p>
 <p>我们可以快速求出选中$i$个奇数且带重复的方案数$G_i$</p>
-$G_i=\sum C(j,i)H_j=[x^n]C(d,i)F_1(x)^iF_0(x)^{d-i}$(强制选$i$个剩下未知)
-
-$G_i=C(d,i) \cdot n! \cdot  [x^n]\sum (-1)^je^{(d-2j)x}\cdot C(i,j)\cdot {2^{-i}}$
-<p>代$e^{ax}=\sum \frac{(ax)^i}{i!}$，约去$n!$</p>
-$G_i=C(d,i)  \cdot  \sum (-1)^j(d-2j)^n\cdot C(i,j)\cdot {2^{-i}}$
+<p>$G_i=\sum C(j,i)H_j=[x^n]C(d,i)F_1(x)^iF_0(x)^{d-i}$(强制选$i$个剩下未知)</p>
+<p>$G_i=C(d,i) \cdot n! \cdot  [x^n]\sum (-1)^je^{(d-2j)x}\cdot C(i,j)\cdot {2^{-i} }$</p>
+<p>代$e^{ax}=\sum \frac{(ax)^i} {i!}$，约去$n!$</p>
+<p>$G_i=C(d,i)  \cdot  \sum (-1)^j(d-2j)^n\cdot C(i,j)\cdot {2^{-i} }$</p>
 <p>卷积一次可以得到$G$</p>
 <p>最后的容斥就是二项式反演</p>
-$H_i=\sum_{j\ge i}(-1)^{j-i}G_jC(j,i)$
+<p>$H_i=\sum_{j\ge i}(-1)^{j-i}G_jC(j,i)$</p>
 <p>再卷积求出$H$</p>
 
             

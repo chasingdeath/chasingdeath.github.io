@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">CF1456E - XOR-Ranges</h2>
             <div class="post-meta">
-                本文共计376个字 |
+                本文共计2024个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -177,7 +177,7 @@
 <p>容易发现，$L_i,R_i$中某一个先被解除的限制一定是在第一个$\text{bit}(L_{i},p)\ne \text{bit}(R_i,p)$的位置 （实际上是小于号）</p>
 <p>此后，选择的数一直跟着剩下的限制直到下一个位置解除</p>
 <p>不妨考虑$L_i,R_i$中限制时间较长的一个限制，设在$p$这一位解除，那么</p>
-<p>1.$\exists k<p,\text{bit}(L_i,k)\ne \text{bit}(R_i,k)$ </p>
+<p>1.$\exists k&lt;p,\text{bit}(L_i,k)\ne \text{bit}(R_i,k)$ </p>
 <p>2.如果是$R_i$，那么$\text{bit}(R_i,p)=1,\text{bit}(a_i,p)=0$</p>
 <p>如果是$L_i$，那么$\text{bit}(R_i,p)=0,\text{bit}(a_i,p)=1$</p>
 <p>如果最终每个数解除限制的位置如下</p>
@@ -189,16 +189,11 @@
 <p>从低位到高位，这就是一个不断将$(a_l,a_r)$分裂为$(a_l,a_k),(a_k,a_r)$的过程</p>
 <p>也就是一个 <strong>笛卡尔树上的区间dp</strong></p>
 <p>对于当前二进制位$p$和数对$a_l,a_r$，我们需要知道的是</p>
-$a_l$是受到$L_l$还是$R_l$的限制，且是否$p$这一位它解除了限制 （因为解除贡献的这一位与$L_l / R_l$相反）
-
-$a_r$是同理
-
-转移可以直接进入下一个二进制位，计算$a_l,a_r$的贡献
-
-或者分裂区间枚举中点$k$，$a_k$恰好在这一位解除限制（或者$a_k$一直都没有解除限制，此时$p=0$）
-
-此时$L_k,R_k$必然满足前面提到的限制，并且根据$\text{bit}(L_k,p)$和$\text{bit}(R_k,p)$枚举$k$受到$L_k$或者$R_k$的限制
-
+<p>$a_l$是受到$L_l$还是$R_l$的限制，且是否$p$这一位它解除了限制 （因为解除贡献的这一位与$L_l / R_l$相反）</p>
+<p>$a_r$是同理</p>
+<p>转移可以直接进入下一个二进制位，计算$a_l,a_r$的贡献</p>
+<p>或者分裂区间枚举中点$k$，$a_k$恰好在这一位解除限制（或者$a_k$一直都没有解除限制，此时$p=0$）</p>
+<p>此时$L_k,R_k$必然满足前面提到的限制，并且根据$\text{bit}(L_k,p)$和$\text{bit}(R_k,p)$枚举$k$受到$L_k$或者$R_k$的限制</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">55</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,k;</span><br><span class="line">ll L[N][<span class="number">2</span>],C[N];</span><br><span class="line">ll dp[N][N][N][<span class="number">2</span>][<span class="number">2</span>][<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bit</span><span class="params">(ll x,<span class="keyword">int</span> p)</span></span>&#123; <span class="keyword">return</span> (x&gt;&gt;p)&amp;<span class="number">1</span>; &#125;</span><br><span class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> f,<span class="keyword">int</span> x,<span class="keyword">int</span> g,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p==k) <span class="keyword">return</span> r-l==<span class="number">1</span>?<span class="number">0</span>:<span class="number">1e18</span>;</span><br><span class="line">	ll &amp;res=dp[p][l][r][f][x][g][y];</span><br><span class="line">	<span class="keyword">if</span>(~res) <span class="keyword">return</span> res;</span><br><span class="line">	res=<span class="built_in">dfs</span>(p+<span class="number">1</span>,l,r,f,<span class="number">0</span>,g,<span class="number">0</span>)+(l &amp;&amp; r&lt;=n &amp;&amp; (x^y^<span class="built_in">bit</span>(L[l][f]^L[r][g],p)))*C[p];</span><br><span class="line">	<span class="built_in">rep</span>(k,l+<span class="number">1</span>,r<span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="comment">// a[k] is limited all time</span></span><br><span class="line">		<span class="keyword">if</span>(!p) <span class="built_in">rep</span>(j,<span class="number">0</span>,<span class="number">1</span>) <span class="built_in">cmin</span>(res,<span class="built_in">dfs</span>(p,l,k,f,x,j,<span class="number">0</span>)+<span class="built_in">dfs</span>(p,k,r,j,<span class="number">0</span>,g,y));</span><br><span class="line">        <span class="comment">// a[k] frees at p</span></span><br><span class="line">		<span class="keyword">if</span>((L[k][<span class="number">0</span>]^L[k][<span class="number">1</span>])&gt;&gt;(p+<span class="number">1</span>)) &#123; <span class="comment">// L,R has some different bits before p</span></span><br><span class="line">			<span class="built_in">rep</span>(j,<span class="number">0</span>,<span class="number">1</span>) <span class="keyword">if</span>(<span class="built_in">bit</span>(L[k][j],p)==j) </span><br><span class="line">				<span class="built_in">cmin</span>(res,<span class="built_in">dfs</span>(p,l,k,f,x,j,<span class="number">1</span>)+<span class="built_in">dfs</span>(p,k,r,j,<span class="number">1</span>,g,y));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) <span class="built_in">rep</span>(j,<span class="number">0</span>,<span class="number">1</span>) <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,L[i]+j);</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">0</span>,k<span class="number">-1</span>) <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,C+i);</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="keyword">sizeof</span> dp);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,<span class="built_in">dfs</span>(<span class="number">0</span>,<span class="number">0</span>,n+<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
             

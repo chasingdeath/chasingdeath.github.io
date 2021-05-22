@@ -163,19 +163,18 @@
             </div>
             <h2 class="post-title">Codeforces1508D -  Tree Calendar</h2>
             <div class="post-meta">
-                本文共计113个字 |
+                本文共计3164个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="Codeforces1508D-Tree-Calendar"><a href="#Codeforces1508D-Tree-Calendar" class="headerlink" title="Codeforces1508D -  Tree Calendar"></a>Codeforces1508D -  Tree Calendar</h1><p>题目大意：</p>
 <p>有一棵已知的有根树和一个未知的$\text{dfs}$序，且做了若干次操作，每次操作是</p>
-<p>对于所有的$(u,fa_u)\and label_{fa_u}<label_{u}$，找到最小的二元组$(label_{fa_u},lable_u)$，交换二元组的$label$</p>
+<p>对于所有的$(u,fa_u)\and label_{fa_u}&lt;label_{u}$，找到最小的二元组$(label_{fa_u},lable_u)$，交换二元组的$label$</p>
 <p>给定最终的序列，求复原一个$\text{dfs}$序并且给出操作次数，或者确定不存在这样的$\text{dfs}$序</p>
-$$ \ $$
-<p>模拟这样的过程，容易发现：</p>
+<script type="math/tex; mode=display">\</script><p>模拟这样的过程，容易发现：</p>
 <p>1号节点沿着最小$\text{dfs}$序路径走下去，直到叶子，同时将路径上的点推上来，一共推了$dep_{leaf}$次</p>
-<p>2号节点沿着最小$\text{dfs}$序路径走下去，直到叶子，同时将路径上的点推上来，一共推了$dep_{leaf'}$次</p>
+<p>2号节点沿着最小$\text{dfs}$序路径走下去，直到叶子，同时将路径上的点推上来，一共推了$dep_{leaf’}$次</p>
 <p>….</p>
 <p>考虑每个节点都已经推到最底下的情况，则最终所有的节点有两种情况</p>
 <p>1.是推下来的节点，则其$label$恰好为原树上出栈序列的标号</p>

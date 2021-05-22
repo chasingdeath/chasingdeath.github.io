@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">「BalticOI 2020」小丑</h2>
             <div class="post-meta">
-                本文共计692个字 |
+                本文共计672个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -171,29 +171,15 @@
             <h1 id="「BalticOI-2020」小丑"><a href="#「BalticOI-2020」小丑" class="headerlink" title="「BalticOI 2020」小丑"></a>「BalticOI 2020」小丑</h1><h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p>问题即考虑加入一个边集，判断是否是二分图</p>
 <p>容易想到用带权并查集/LCT 之类的结构维护</p>
 <p>考虑对于每个左端点/右端点 维护最长的有解区间$R_i/L_i$</p>
-$L_i,R_i$显然具有单调性
-
-就可以$O(1)$完成查询
-
-下文认为$n,m$同阶
-
-## Sol1 LCT
-
-考虑尺取，同时用$\text{LCT}$暴力维护答案合法性，下面只讲$\text{LCT}$实现
-
-考虑对于所有的边，优先加入树上，对于每一个环，只保留最后被删除的边
-
-这样可以保证一条边被删除时，两个连通块之间没有边
-
-同时，维护每一个连通块内的奇环边 最优集合 即可
-
-复杂度为$O(n\log n)$，速度。。。。
-
-
-
-## Sol2 分治决策单调性/整体二分
-
-考虑用并查集维护二分图，求出$R_i$，对于$i\in [l,r]$，已知答案区间为$[L,R]$
+<p>$L_i,R_i$显然具有单调性</p>
+<p>就可以$O(1)$完成查询</p>
+<p>下文认为$n,m$同阶</p>
+<h2 id="Sol1-LCT"><a href="#Sol1-LCT" class="headerlink" title="Sol1 LCT"></a>Sol1 LCT</h2><p>考虑尺取，同时用$\text{LCT}$暴力维护答案合法性，下面只讲$\text{LCT}$实现</p>
+<p>考虑对于所有的边，优先加入树上，对于每一个环，只保留最后被删除的边</p>
+<p>这样可以保证一条边被删除时，两个连通块之间没有边</p>
+<p>同时，维护每一个连通块内的奇环边 最优集合 即可</p>
+<p>复杂度为$O(n\log n)$，速度。。。。</p>
+<h2 id="Sol2-分治决策单调性-整体二分"><a href="#Sol2-分治决策单调性-整体二分" class="headerlink" title="Sol2 分治决策单调性/整体二分"></a>Sol2 分治决策单调性/整体二分</h2><p>考虑用并查集维护二分图，求出$R_i$，对于$i\in [l,r]$，已知答案区间为$[L,R]$</p>
 <p>通过枚举来找到$[l,r]$中答案分别为$[L,mid),[mid,R]$的两部分的界点$p$</p>
 <p>为此我们加入$[mid+1,m]$的边，然后依次加入$[1,r]$的边，直到出现方案</p>
 <p>直接维护复杂度显然是错的</p>

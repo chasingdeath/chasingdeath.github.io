@@ -163,73 +163,66 @@
             </div>
             <h2 class="post-title">FWT (快速沃尔什变换)详解</h2>
             <div class="post-meta">
-                本文共计3679个字 |
+                本文共计3632个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            <h1 id="FWT-快速沃尔什变换-详解"><a href="#FWT-快速沃尔什变换-详解" class="headerlink" title="FWT (快速沃尔什变换)详解"></a>FWT (快速沃尔什变换)详解</h1><p>约定：$F'=FWT(F)$</p>
-<p>卷积的问题，事实上就是要构造$F'G'=(FG)'$</p>
-$\text{FWT}$涉及的问题，我们看到是二进制位上的or ,and ,xor 
-
-但正式来说，是**集合幂指数** 上的 **并 ， 交 ， 对称差**
-
-为了说人话，这里就不带入集合幂指数的概念了
-
-> 一个常识：$\sum_{T\sube S}(-1)^{|T|}=[S=\empty]$
+            <h1 id="FWT-快速沃尔什变换-详解"><a href="#FWT-快速沃尔什变换-详解" class="headerlink" title="FWT (快速沃尔什变换)详解"></a>FWT (快速沃尔什变换)详解</h1><p>约定：$F’=FWT(F)$</p>
+<p>卷积的问题，事实上就是要构造$F’G’=(FG)’$</p>
+<p>$\text{FWT}$涉及的问题，我们看到是二进制位上的or ,and ,xor </p>
+<p>但正式来说，是<strong>集合幂指数</strong> 上的 <strong>并 ， 交 ， 对称差</strong></p>
+<p>为了说人话，这里就不带入集合幂指数的概念了</p>
+<blockquote>
+<p>一个常识：$\sum_{T\sube S}(-1)^{|T|}=[S=\empty]$</p>
+</blockquote>
 <hr>
 <h2 id="or-和-and-卷积"><a href="#or-和-and-卷积" class="headerlink" title="or 和 and 卷积"></a>or 和 and 卷积</h2><p>这两种卷积的本质是相同的，所以只解释$or$卷积</p>
 <p><strong>or卷积的本质就是高位前缀和</strong></p>
-<p>即:$F'_S=\sum _{T\sube S}F_T$</p>
-<h4 id="正确性："><a href="#正确性：" class="headerlink" title="正确性："></a>正确性：</h4><p>即$\forall S,F'_S \cdot G'_S=(F\cup G)'_S$</p>
+<p>即:$F’_S=\sum _{T\sube S}F_T$</p>
+<h4 id="正确性："><a href="#正确性：" class="headerlink" title="正确性："></a>正确性：</h4><p>即$\forall S,F’_S \cdot G’_S=(F\cup G)’_S$</p>
 <p>左边=</p>
-$F'_S \cdot G'_S=\sum _{T\sube S}\sum _{R\sube S}F_T\cdot G_R$
+<p>$F’_S \cdot G’_S=\sum _{T\sube S}\sum _{R\sube S}F_T\cdot G_R$</p>
 <p>右边=</p>
-$(F\cup G)'_S=\sum_{T\sube S}(F \cup G)_S$
-$=\sum_{T\sube S}\sum_{A,B,A\cup B=S}F_A\cdot G_B$
-$=\sum_{T \sube S}\sum_{R \sube S}F_T \cdot G_R$
-$$ \ $$
-<h3 id="卷积实现"><a href="#卷积实现" class="headerlink" title="卷积实现"></a>卷积实现</h3><p>其实第一次层循环的意思是<strong>枚举子集中和自己不同的位最高是</strong>$i$</p>
+<p>$(F\cup G)’_S=\sum_{T\sube S}(F \cup G)_S$</p>
+<p>$=\sum_{T\sube S}\sum_{A,B,A\cup B=S}F_A\cdot G_B$</p>
+<p>$=\sum_{T \sube S}\sum_{R \sube S}F_T \cdot G_R$</p>
+<script type="math/tex; mode=display">\</script><h3 id="卷积实现"><a href="#卷积实现" class="headerlink" title="卷积实现"></a>卷积实现</h3><p>其实第一次层循环的意思是<strong>枚举子集中和自己不同的位最高是</strong>$i$</p>
 <p>让$0$向$1$转移即可</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>) </span><br><span class="line">        <span class="built_in">rep</span>(j,i,n<span class="number">-1</span>) <span class="keyword">if</span>(j&amp;i) s[j]+=s[j^i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;n;l+=i*<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;l+i;++j) </span><br><span class="line">                s[j+i]+=s[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Tips:如果要卡常，可以写成类似$\text{FFT}$的形式，因为优化了访问顺序会快一些</p>
-$$\ $$
-<h3 id="实现逆卷积"><a href="#实现逆卷积" class="headerlink" title="实现逆卷积"></a>实现逆卷积</h3><p>把上面的加换成减，这是一个类似容斥的东西</p>
+<script type="math/tex; mode=display">\</script><h3 id="实现逆卷积"><a href="#实现逆卷积" class="headerlink" title="实现逆卷积"></a>实现逆卷积</h3><p>把上面的加换成减，这是一个类似容斥的东西</p>
 <p>但是因为是反解，所以这个过程我么通常称为<strong>子集反演</strong></p>
 <p>那么每次$0$向$1$的转移意味着多了一个不同的位置</p>
-<p>设$F'_S=\sum_{T\sube S}F_T$</p>
-<p>实际逆卷积就是$F_S=\sum_{T\sube S}(-1)^{|T\oplus S|} F'_S$</p>
+<p>设$F’_S=\sum_{T\sube S}F_T$</p>
+<p>实际逆卷积就是$F_S=\sum_{T\sube S}(-1)^{|T\oplus S|} F’_S$</p>
 <p>证明如下：</p>
-$\Leftrightarrow F_S=\sum_{T\sube S}(-1)^{|T\oplus S|} \sum _{R\in T}F_R$
-$\Leftrightarrow F_S=\sum_{T\sube S}F_R\sum _{T\sube R,R\sube S}(-1)^{|S\oplus R|}$
-$\Leftrightarrow F_S=\sum_{T\sube S}F_R\sum _{R\sube (S\oplus T)}(-1)^{|R|}$
+<p>$\Leftrightarrow F_S=\sum_{T\sube S}(-1)^{|T\oplus S|} \sum _{R\in T}F_R$</p>
+<p>$\Leftrightarrow F_S=\sum_{T\sube S}F_R\sum _{T\sube R,R\sube S}(-1)^{|S\oplus R|}$</p>
+<p>$\Leftrightarrow F_S=\sum_{T\sube S}F_R\sum _{R\sube (S\oplus T)}(-1)^{|R|}$</p>
 <p>带入上面所提到的$\sum_{T\sube S}(-1)^{|T|}=[S=\empty]$，成立</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>) </span><br><span class="line">        <span class="built_in">rep</span>(j,i,n<span class="number">-1</span>) <span class="keyword">if</span>(j&amp;i) s[j]+=f*s[j^i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;n;l+=i*<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;l+i;++j) </span><br><span class="line">                s[j+i]+=f*s[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-$$ \ $$
-$$ \ $$
-<hr>
+<script type="math/tex; mode=display">\</script><script type="math/tex; mode=display">\</script><hr>
 <h2 id="Xor-卷积"><a href="#Xor-卷积" class="headerlink" title="Xor 卷积"></a>Xor 卷积</h2><p>这里要用到一个小性质</p>
-$|A\cap B|+|A\cap C|\equiv |A\cap (B\bigoplus C)| \pmod 2$
-<p>构造$F'_S=\sum_{T}(-1)^{|S\cap T|}F_T$</p>
-<h4 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h4><p>即$\forall S,F'_S \cdot G'_S=(F\bigoplus G)'_S$</p>
-$F'_S\cdot G'_S=\sum_{T} \sum_{R}(-1)^{|S\cap T|+|S\cap R|}F_T\cdot G_R$
-$=\sum _T\sum _R(-1)^{|(T\bigoplus R)\cap S|}F_T\cdot G_R$
+<p>$|A\cap B|+|A\cap C|\equiv |A\cap (B\bigoplus C)| \pmod 2$</p>
+<p>构造$F’_S=\sum_{T}(-1)^{|S\cap T|}F_T$</p>
+<h4 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h4><p>即$\forall S,F’_S \cdot G’_S=(F\bigoplus G)’_S$</p>
+<p>$F’_S\cdot G’_S=\sum_{T} \sum_{R}(-1)^{|S\cap T|+|S\cap R|}F_T\cdot G_R$</p>
+<p>$=\sum _T\sum _R(-1)^{|(T\bigoplus R)\cap S|}F_T\cdot G_R$</p>
 <p>显然这个式子与右边相同</p>
-$$ \  $$
-<h3 id="卷积实现-1"><a href="#卷积实现-1" class="headerlink" title="卷积实现"></a>卷积实现</h3><p>考虑和前面相同的方法，枚举二进制位上最高的$1$</p>
+<script type="math/tex; mode=display">\</script><h3 id="卷积实现-1"><a href="#卷积实现-1" class="headerlink" title="卷积实现"></a>卷积实现</h3><p>考虑和前面相同的方法，枚举二进制位上最高的$1$</p>
 <p>之前由于转移是单向的，所以只需要一次加法，这里由于有了系数同时还是双向的转移，所以要格外注意</p>
 <p>转移系数也是比较明显的</p>
-$0\rightarrow 0 = 1$
-$0\rightarrow 1 = 1$
-$1\rightarrow 0 = 1$
-$1\rightarrow 1 = -1$
+<p>$0\rightarrow 0 = 1$</p>
+<p>$0\rightarrow 1 = 1$</p>
+<p>$1\rightarrow 0 = 1$</p>
+<p>$1\rightarrow 1 = -1$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">rep</span>(j,<span class="number">0</span>,n<span class="number">-1</span>) <span class="keyword">if</span>(i&amp;j) &#123;</span><br><span class="line">            ll t=a[j+i];</span><br><span class="line">            a[j+i]=a[j]-t;</span><br><span class="line">            a[j]=a[j]+t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;n;l+=i*<span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=l;j&lt;l+i;++j)&#123;</span><br><span class="line">                ll t=a[j+i];</span><br><span class="line">                a[j+i]=a[j]-t;</span><br><span class="line">                a[j]+=t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="实现逆卷积-1"><a href="#实现逆卷积-1" class="headerlink" title="实现逆卷积"></a>实现逆卷积</h3><p>考虑再卷一次</p>
-$F''_S=\sum_T\sum_R(-1)^{|S\cap R|+|T\cap R|}F_T$
-$=\sum_T \sum_R (-1)^{|(S\bigoplus T)\cap R|}F_T$
-$\because \sum_T (-1)^{|S\cap T|}=\sum_{T\sube S}(-1)^{|T|}2^{|U|-|S|}=[S=\empty]2^{|U|-|S|}$(其中$U$是全集)
-
-$\therefore F''_S=\sum_S2^{|U|}F_S$
+<p>$F’’_S=\sum_T\sum_R(-1)^{|S\cap R|+|T\cap R|}F_T$</p>
+<p>$=\sum_T \sum_R (-1)^{|(S\bigoplus T)\cap R|}F_T$</p>
+<p>$\because \sum_T (-1)^{|S\cap T|}=\sum_{T\sube S}(-1)^{|T|}2^{|U|-|S|}=[S=\empty]2^{|U|-|S|}$(其中$U$是全集)</p>
+<p>$\therefore F’’_S=\sum_S2^{|U|}F_S$</p>
 <p>所以逆卷积就是再卷一遍，最后除去$n$即可</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">rep</span>(j,<span class="number">0</span>,n<span class="number">-1</span>) <span class="keyword">if</span>(i&amp;j) &#123;</span><br><span class="line">            ll t=a[j+i];</span><br><span class="line">            a[j+i]=a[j]-t;</span><br><span class="line">            a[j]=a[j]+t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">if</span>(f==<span class="number">-1</span>) <span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>) a[i]/=n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(<span class="keyword">int</span> n,ll *a,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;n;l+=i*<span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=l;j&lt;l+i;++j)&#123;</span><br><span class="line">                ll t=a[j+i];</span><br><span class="line">                a[j+i]=a[j]-t;</span><br><span class="line">                a[j]+=t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(f==<span class="number">-1</span>) <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i) a[i]/=n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>和上面一样的，可以写成类似$\text{FFT}$的形式卡常</p>

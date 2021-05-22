@@ -163,70 +163,60 @@
             </div>
             <h2 class="post-title">求导/泰勒展开</h2>
             <div class="post-meta">
-                本文共计2884个字 |
+                本文共计2881个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="求导-泰勒展开"><a href="#求导-泰勒展开" class="headerlink" title="求导/泰勒展开"></a>求导/泰勒展开</h1><p>前言:求导是为泰勒展开铺路的。。</p>
-<h2 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h2>$f'(x)$为$f(x)$的导数，即$f(x)$在$x$上的变化率
-
-$\begin{aligned} f'(x)=\lim_{\Delta x\rightarrow 0} \frac{f(x+\Delta x)-f(x)}{\Delta x}\end{aligned}$
-$f(x)$在$x$上可导的前提是$f(x)$在$x$上是连续的
-
-一种不完善的判定条件是$\begin{aligned} \lim_{\Delta x\rightarrow 0^+} \frac{f(x+\Delta x)-f(x)}{\Delta x}=\lim_{\Delta x\rightarrow 0^+} \frac{f(x)-f(x-\Delta x)}{\Delta x}\end{aligned}$
-$$ \ $$
-<h2 id="求导法则"><a href="#求导法则" class="headerlink" title="求导法则"></a>求导法则</h2>$1.(x^n)'=n \cdot x^{n-1}$$(n\in \R$,但是要注意定义域)
-
-$2.(\sin x)'=\cos x,(\cos x)'=-\sin x$
-$3.(e^x)'=e^x$
-$4.(a^x)'=\ln a\cdot a^x$
-$5.(\ln x)'=\frac{1}{x}$
-$6.\log_a x=\frac{1}{x\ln a}$
-$7.(f(x)g(x))'=f'(x)g(x)+f(x)g'(x)$
-$8.\displaystyle (\frac{f(x)}{g(x)})'=\frac{f'(x)g(x)-f(x)g'(x)}{g^2(x)}$
-$9.(f(g(x)))'=f'(g(x))\cdot g'(x)$
+<h2 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h2><p>$f’(x)$为$f(x)$的导数，即$f(x)$在$x$上的变化率</p>
+$\begin{aligned} f'(x)=\lim_{\Delta x\rightarrow 0} \frac{f(x+\Delta x)-f(x)} {\Delta x}\end{aligned}$
+<p>$f(x)$在$x$上可导的前提是$f(x)$在$x$上是连续的</p>
+<p>一种不完善的判定条件是$\begin{aligned} \lim_{\Delta x\rightarrow 0^+} \frac{f(x+\Delta x)-f(x)} {\Delta x}=\lim_{\Delta x\rightarrow 0^+} \frac{f(x)-f(x-\Delta x)} {\Delta x}\end{aligned}$</p>
+<script type="math/tex; mode=display">\</script><h2 id="求导法则"><a href="#求导法则" class="headerlink" title="求导法则"></a>求导法则</h2><p>$1.(x^n)’=n \cdot x^{n-1}$$(n\in \R$,但是要注意定义域)</p>
+<p>$2.(\sin x)’=\cos x,(\cos x)’=-\sin x$</p>
+<p>$3.(e^x)’=e^x$</p>
+<p>$4.(a^x)’=\ln a\cdot a^x$</p>
+<p>$5.(\ln x)’=\frac{1} {x}$</p>
+<p>$6.\log_a x=\frac{1} {x\ln a}$</p>
+<p>$7.(f(x)g(x))’=f’(x)g(x)+f(x)g’(x)$</p>
+<p>$8.\displaystyle (\frac{f(x)} {g(x)})’=\frac{f’(x)g(x)-f(x)g’(x)} {g^2(x)}$</p>
+<p>$9.(f(g(x)))’=f’(g(x))\cdot g’(x)$</p>
 <p>如$f(x)=\ln x,g(x)=ax-1$</p>
-$f'(x)=\frac{1}{x},f'(g(x))=\frac{1}{ax-1}$
-$g'(x)=a$
-$(\ln (ax-1))'=\frac{a}{ax-1}$
-<h1 id=""><a href="#" class="headerlink" title=""></a>$$ \ $$</h1><h2 id="泰勒-Taylor-展开"><a href="#泰勒-Taylor-展开" class="headerlink" title="泰勒 Taylor 展开"></a>泰勒 Taylor 展开</h2>$\text{Taylor}$展开是用函数$f(x)$在某个点$x_0$上不断求导之后的函数值表示出函数本身
-
-从而将任何一个函数表示成(可能不是有穷的)多项式函数形式
-
-$\begin{aligned} f(x)=\sum _{i=0}^{\infty}\frac{f^{(i)}(x_0)}{i!}(x-x_0)^i\end{aligned}$
+<p>$f’(x)=\frac{1} {x},f’(g(x))=\frac{1} {ax-1}$</p>
+<p>$g’(x)=a$</p>
+<p>$(\ln (ax-1))’=\frac{a} {ax-1}$</p>
+<h1 id=""><a href="#" class="headerlink" title="\"></a><script type="math/tex">\</script></h1><h2 id="泰勒-Taylor-展开"><a href="#泰勒-Taylor-展开" class="headerlink" title="泰勒 Taylor 展开"></a>泰勒 Taylor 展开</h2><p>$\text{Taylor}$展开是用函数$f(x)$在某个点$x_0$上不断求导之后的函数值表示出函数本身</p>
+<p>从而将任何一个函数表示成(可能不是有穷的)多项式函数形式</p>
+$\begin{aligned} f(x)=\sum _{i=0}^{\infty}\frac{f^{(i)}(x_0)} {i!}(x-x_0)^i\end{aligned}$
 <p>其中$f^{(i)}$表示$f$的$i$阶导数</p>
 <p>当$x_0=0$时，这个展开被称为麦克劳林 $\text{Maclaurin}$展开，即</p>
-$\begin{aligned} f(x)=\sum _{i=0}^{\infty}\frac{f^{(i)}(0)}{i!}x^i\end{aligned}$
+$\begin{aligned} f(x)=\sum _{i=0}^{\infty}\frac{f^{(i)}(0)} {i!}x^i\end{aligned}$
 <h3 id="Taylor-展开的证明"><a href="#Taylor-展开的证明" class="headerlink" title="Taylor 展开的证明"></a>Taylor 展开的证明</h3><p>为了便于描述，下面直接对于$\text{Maclaurin}$ 展开叙述 ， $\text{Taylor}$展开相当于平移了$x_0$</p>
 <p>不妨设$f(x)$展开后的多项式函数系数为$a_i$，即设$\begin{aligned} f(x)=\sum_{i=0}^{\infty}a_ix^i\end{aligned}$</p>
 <p>不断对于$f(x)$求导得到下式</p>
 $\begin{aligned} f^{(0)}(x)= a_0+a_1x+a_2x^2+a_3x^3\cdots \end{aligned}$
 $\begin{aligned} f^{(1)}(x)= a_1+2a_2x+3a_3x^2+4a_4x^3\cdots \end{aligned}$
 $\begin{aligned} f^{(2)}(x)= 2a_2+6a_3x^1+12a_4x^2+20a_5x^3\cdots \end{aligned}$
-$\cdots$
+<p>$\cdots$</p>
 $\begin{aligned} f^{(n)}(x)= n!a_n+\prod_{i=2}^{n+1}i\cdot a_{n+1}x^1+\prod_{i=3}^{n+2}i\cdot a_{n+2}x^2\cdots \end{aligned}$
 <p>带入这些函数在0上的取值，得到</p>
-$f^{(i)}(0)=i!\cdot a_i$
-<p>因此$\begin{aligned} f(x)=a_ix^i=\sum _{i=0}^{\infty}\frac{f^{(i)}(0)}{i!}x^i\end{aligned}$</p>
-$$ \  $$
-<h3 id="常见的Taylor展开"><a href="#常见的Taylor展开" class="headerlink" title="常见的Taylor展开"></a>常见的Taylor展开</h3><h4 id="如果你是数学生"><a href="#如果你是数学生" class="headerlink" title="如果你是数学生"></a>如果你是数学生</h4>$\displaystyle e^x= 1+x+\frac{x^2}{2}+\ldots+ \frac{x^n}{n!}+\theta\frac{x^{n+1}}{(n+1)!},\theta\in (0,1)$
+<p>$f^{(i)}(0)=i!\cdot a_i$</p>
+<p>因此$\begin{aligned} f(x)=a_ix^i=\sum _{i=0}^{\infty}\frac{f^{(i)}(0)} {i!}x^i\end{aligned}$</p>
+<script type="math/tex; mode=display">\</script><h3 id="常见的Taylor展开"><a href="#常见的Taylor展开" class="headerlink" title="常见的Taylor展开"></a>常见的Taylor展开</h3><h4 id="如果你是数学生"><a href="#如果你是数学生" class="headerlink" title="如果你是数学生"></a>如果你是数学生</h4><p>$\displaystyle e^x= 1+x+\frac{x^2} {2}+\ldots+ \frac{x^n} {n!}+\theta\frac{x^{n+1} } {(n+1)!},\theta\in (0,1)$</p>
 <p>所以实际上是</p>
-$\left\{\begin{aligned}e^x\ge 1+x+\frac{x^2}{2}+\ldots+\frac{x^n}{n!}&& 2\not |n\text{  or }\ge 0\\ e^x\leq 1+x+\frac{x^2}{2}+\ldots+\frac{x^n}{n!}&& \text{otherwise}\end{aligned}\right.$
-$\ln x\leq x-1$
+$\left\{\begin{aligned}e^x\ge 1+x+\frac{x^2} {2}+\ldots+\frac{x^n} {n!}&& 2\not |n\text{  or }\ge 0\\ e^x\leq 1+x+\frac{x^2} {2}+\ldots+\frac{x^n} {n!}&& \text{otherwise}\end{aligned}\right.$
+<p>$\ln x\leq x-1$</p>
 <p>诸如此类，常用于$e^x,\ln x$的放缩处理</p>
-$$ \ $$
-<h4 id="如果你是OIer-ACMer"><a href="#如果你是OIer-ACMer" class="headerlink" title="如果你是OIer/ACMer"></a>如果你是OIer/ACMer</h4><p>带入$f(x)=e^x,x_0=0$，得到</p>
-$\begin{aligned} f(x)=e^x=\sum _{i=0}^{\infty}\frac{x^i}{i!}\end{aligned}$
+<script type="math/tex; mode=display">\</script><h4 id="如果你是OIer-ACMer"><a href="#如果你是OIer-ACMer" class="headerlink" title="如果你是OIer/ACMer"></a>如果你是OIer/ACMer</h4><p>带入$f(x)=e^x,x_0=0$，得到</p>
+$\begin{aligned} f(x)=e^x=\sum _{i=0}^{\infty}\frac{x^i} {i!}\end{aligned}$
 <p>类似的</p>
-$$1+\frac{x^2}{2!}+\frac{x^4}{4!}+\frac{x^6}{6!} ... =\frac{e^x+e^{-x}}{2}$$
-$$\frac{x^1}{1!}+\frac{x^3}{3!}+\frac{x^5}{5!}...=\frac{e^x-e^{-x}}{2}$$
-$\displaystyle [x^n]e^{ax}=\frac{a^n}{n!}$
+<script type="math/tex; mode=display">1+\frac{x^2} {2!}+\frac{x^4} {4!}+\frac{x^6} {6!} ... =\frac{e^x+e^{-x} } {2}</script><script type="math/tex; mode=display">\frac{x^1} {1!}+\frac{x^3} {3!}+\frac{x^5} {5!}...=\frac{e^x-e^{-x} } {2}</script><p>$\displaystyle [x^n]e^{ax}=\frac{a^n} {n!}$</p>
 <p>还有很多都可以自己代入一下，比如</p>
-$\begin{aligned} \frac{1}{1-x}=\sum_{i=0}^{\infty} x^i\end{aligned}$
-$\begin{aligned} -\ln (1-x)=\ln \frac{1}{1-x}=\sum_{i=1}^{\infty}\frac{x^i}{i}\end{aligned}$
-$\begin{aligned}\sin x =\sum_{i=1}(-1)^{i+1}\frac{x^{2i+1}}{(2i+1)!}\end{aligned}$
-$\begin{aligned}\cos x=\sum_{i=0}(-1)^{i}\frac{x^{2i}}{(2i)!}\end{aligned}$
+$\begin{aligned} \frac{1} {1-x}=\sum_{i=0}^{\infty} x^i\end{aligned}$
+$\begin{aligned} -\ln (1-x)=\ln \frac{1} {1-x}=\sum_{i=1}^{\infty}\frac{x^i} {i}\end{aligned}$
+$\begin{aligned}\sin x =\sum_{i=1}(-1)^{i+1}\frac{x^{2i+1} } {(2i+1)!}\end{aligned}$
+$\begin{aligned}\cos x=\sum_{i=0}(-1)^{i}\frac{x^{2i} } {(2i)!}\end{aligned}$
 <p>应用:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chasedeath/p/12859142.html">牛顿迭代法</a></p>
 
             

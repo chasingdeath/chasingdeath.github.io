@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">堆</h2>
             <div class="post-meta">
-                本文共计2049个字 |
+                本文共计2034个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -180,8 +180,7 @@
 <p>2.删除特定元素</p>
 <p>删除后，把$a[n]$元素放到空的位置，然后向下走，注意每次一定是把左右儿子中比较小的换上来</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="built_in">swap</span>(a[x],a[n--]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> p=x;(p&lt;&lt;<span class="number">1</span>)&lt;=n;)&#123;</span><br><span class="line">		<span class="keyword">int</span> nxt=p&lt;&lt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>((p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>)&lt;=n &amp;&amp; a[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]&lt;a[p&lt;&lt;<span class="number">1</span>]) nxt=p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(a[nxt]&lt;a[p]) <span class="built_in">swap</span>(a[p],a[nxt]);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-$$  \ $$
-<h2 id="配对堆"><a href="#配对堆" class="headerlink" title="配对堆"></a>配对堆</h2><p>配对堆不是一个二叉树结构，所以在存储上，使用左儿子右兄弟来存储树形结构</p>
+<script type="math/tex; mode=display">\</script><h2 id="配对堆"><a href="#配对堆" class="headerlink" title="配对堆"></a>配对堆</h2><p>配对堆不是一个二叉树结构，所以在存储上，使用左儿子右兄弟来存储树形结构</p>
 <p>可以实现的操作有</p>
 <p>1.插入/删除元素，查询堆顶</p>
 <p>2.查询堆顶</p>
@@ -203,8 +202,7 @@ $$  \ $$
 <p>把被删除元素的儿子合并之后接到父亲上面</p>
 <p>4.查询堆顶</p>
 <p>如果是查询某个特定元素所在堆的堆顶，需要用并查集来维护</p>
-$$ \ $$
-<h2 id="左偏树"><a href="#左偏树" class="headerlink" title="左偏树"></a>左偏树</h2><p>左偏树是一个二叉堆结构，顾名思义，向左边偏的树</p>
+<script type="math/tex; mode=display">\</script><h2 id="左偏树"><a href="#左偏树" class="headerlink" title="左偏树"></a>左偏树</h2><p>左偏树是一个二叉堆结构，顾名思义，向左边偏的树</p>
 <p>左偏树判断左偏的方法是定义了一个$dis$数组，满足$\forall dis_{lson}\ge dis_{rson},dis_x=dis_{rson}+1$</p>
 <p>因此一直走右儿子的链长度就是$O(\log n)$的</p>
 <p>利用这个性质完成操作，每次合并之后检查$dis_{lson},dis_{rson}$是否满足条件</p>

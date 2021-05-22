@@ -163,26 +163,26 @@
             </div>
             <h2 class="post-title">「USACO 2021 US Open Platinum」Routing Schemes</h2>
             <div class="post-meta">
-                本文共计3702个字 |
+                本文共计4061个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            <h1 id="「USACO-2021-US-Open-Platinum」Routing-Schemes"><a href="#「USACO-2021-US-Open-Platinum」Routing-Schemes" class="headerlink" title="「USACO 2021 US Open Platinum」Routing Schemes"></a>「USACO 2021 US Open Platinum」Routing Schemes</h1><h2 id=""><a href="#" class="headerlink" title=""></a>$K=0$</h2><p>此时，我们只需要求合法的匹配路径数量，并且一个路径是从小到大的</p>
-<p>由于题目保证一定存在合法路径，从$1$到$n$考虑每一条$(u,v),(v>u)$</p>
+            <h1 id="「USACO-2021-US-Open-Platinum」Routing-Schemes"><a href="#「USACO-2021-US-Open-Platinum」Routing-Schemes" class="headerlink" title="「USACO 2021 US Open Platinum」Routing Schemes"></a>「USACO 2021 US Open Platinum」Routing Schemes</h1><h2 id="K-0"><a href="#K-0" class="headerlink" title="$K=0$"></a>$K=0$</h2><p>此时，我们只需要求合法的匹配路径数量，并且一个路径是从小到大的</p>
+<p>由于题目保证一定存在合法路径，从$1$到$n$考虑每一条$(u,v),(v&gt;u)$</p>
 <p>我们可以看成是很多个$S$在路径上被从$1-n$不断地推过去</p>
 <p>设一个点的入度为</p>
-$ind_v=\sum_{(u,v)} 1+[v为S]$
-$outd_u=\sum_{(u,v)} 1+[u为R]$
+<p>$ind_v=\sum_{(u,v)} 1+[v为S]$</p>
+<p>$outd_u=\sum_{(u,v)} 1+[u为R]$</p>
 <p>每次到达一个点，必然有其$ind_u=outd_u$，即推进来的$S$个数恰好等于出边个数</p>
 <p>此时合法的分配这$outd_u$个$S$的方案数就是$outd_u!$</p>
 <p>直接求$\prod outd_i!$即可</p>
 <p><br></p>
-<h2 id="-1"><a href="#-1" class="headerlink" title=""></a>$K=1$</h2><p>存在反边的图看起来十分难处理，不妨直接把反边断掉</p>
-<p>假设断掉前包含环的路径为 $S_1\rightarrow a\rightarrow b\rightarrow R_1 (a>b)$</p>
+<h2 id="K-1"><a href="#K-1" class="headerlink" title="$K=1$"></a>$K=1$</h2><p>存在反边的图看起来十分难处理，不妨直接把反边断掉</p>
+<p>假设断掉前包含环的路径为 $S_1\rightarrow a\rightarrow b\rightarrow R_1 (a&gt;b)$</p>
 <p>则断掉后的路径变成$S_1\rightarrow a$，$b\rightarrow R$</p>
 <p>不妨将在$a$上额外添加一个$R$，在$b$上额外添加一个$S$</p>
-<p>此时，新的问题又只包含$(u,v)(u<v)$，同$K=0$求解</p>
+<p>此时，新的问题又只包含$(u,v)(u&lt;v)$，同$K=0$求解</p>
 <p>理想情况下，新问题中的所有方案均可以通过将$a,b$相接还原</p>
 <p>但是显然如果最终方案上$b\rightarrow a$相接就会成环</p>
 <p>所以需要额外$dp$出包含$b\rightarrow a$的非法方案</p>
@@ -193,10 +193,10 @@ $outd_u=\sum_{(u,v)} 1+[u为R]$
 <p>考虑$j=i$时，需要为$j$找一个归宿$k$，或者判定$j=a$时结束路径</p>
 <p>此时，相当于在原图上使$outd_i$减少了$1$</p>
 <p>得到转移$dp_k\leftarrow dp_j\cdot (outd_i-1)!$</p>
-<p>当$j>i$时，不需要考虑$j$的变化</p>
+<p>当$j&gt;i$时，不需要考虑$j$的变化</p>
 <p>得到转移$dp_j\leftarrow dp_j\cdot outd_i!$</p>
 <p><br></p>
-<h2 id="-2"><a href="#-2" class="headerlink" title=""></a>$K=2$</h2><p>有了$K=1$的铺垫，想必这里十分简单</p>
+<h2 id="K-2"><a href="#K-2" class="headerlink" title="$K=2$"></a>$K=2$</h2><p>有了$K=1$的铺垫，想必这里十分简单</p>
 <p>设反边为$(a,b),(c,d)$，显然加入两组$S,R$</p>
 <p>考虑新图上什么样的情况是不合法的</p>
 <p>1.$b\rightarrow a$</p>

@@ -163,30 +163,27 @@
             </div>
             <h2 class="post-title">多项式指定大小的单位根点值式求解(含Bluestein’s Algorithm)</h2>
             <div class="post-meta">
-                本文共计987个字 |
+                本文共计971个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
             <h1 id="多项式指定大小的单位根点值式求解-含Bluestein’s-Algorithm"><a href="#多项式指定大小的单位根点值式求解-含Bluestein’s-Algorithm" class="headerlink" title="多项式指定大小的单位根点值式求解(含Bluestein’s Algorithm)"></a>多项式指定大小的单位根点值式求解(含Bluestein’s Algorithm)</h1><p>下面的阐述建立于存在$n$阶单位根的前提下</p>
 <p>(如果是NTT，必须满足$n|(P-1)$ ，否则单位根可能会变成一个复杂的<strong>多维向量</strong>)</p>
-$$ \ $$
-<h2 id="用卷积解决多项式与点值式的转化-Bluestein’s-Algorithm"><a href="#用卷积解决多项式与点值式的转化-Bluestein’s-Algorithm" class="headerlink" title="用卷积解决多项式与点值式的转化:Bluestein’s Algorithm"></a>用卷积解决多项式与点值式的转化:Bluestein’s Algorithm</h2><p>设最终求得的点值式为$f(x^k)=\sum a_i\cdot \omega_n^{i k}$</p>
-<p>其中指数为$ik$，有一种简单的转化$i\cdot k=\cfrac{i^2+k^2-(i-k)^2}{2}$</p>
-<p>由于在模意义下，$x^{\frac{i}{2}}$次(二次剩余)是一个非常麻烦的东西，所以考虑一个更优的转化</p>
-$i\cdot k=C(i+k,2)-C(i,2)-C(k,2)$
+<script type="math/tex; mode=display">\</script><h2 id="用卷积解决多项式与点值式的转化-Bluestein’s-Algorithm"><a href="#用卷积解决多项式与点值式的转化-Bluestein’s-Algorithm" class="headerlink" title="用卷积解决多项式与点值式的转化:Bluestein’s Algorithm"></a>用卷积解决多项式与点值式的转化:Bluestein’s Algorithm</h2><p>设最终求得的点值式为$f(x^k)=\sum a_i\cdot \omega_n^{i k}$</p>
+<p>其中指数为$ik$，有一种简单的转化$i\cdot k=\cfrac{i^2+k^2-(i-k)^2} {2}$</p>
+<p>由于在模意义下，$x^{\frac{i} {2} }$次(二次剩余)是一个非常麻烦的东西，所以考虑一个更优的转化</p>
+<p>$i\cdot k=C(i+k,2)-C(i,2)-C(k,2)$</p>
 <p>这条式子的组合意义是：从集合$i,k$分别选一个，等价于从$i+k$选两个减去在$i,k$内部选两个</p>
 <p>通过这样的转化，我们可以对于每一个$a_i$计算其对于每个$f(x^k)$的贡献</p>
 <p>具体过程是简单的构造卷积，这里省略</p>
-$$ \ $$
-<h2 id="适用于特殊情况的转化方法"><a href="#适用于特殊情况的转化方法" class="headerlink" title="适用于特殊情况的转化方法"></a>适用于特殊情况的转化方法</h2><p>需要了解的是，多项式卷积的FFT/NTT不止适用与于二元分治</p>
-<p>对于多项式$F(x)$的$d$元分治，设分治子问题的答案为$G_j(x'_i),j\in[0,d-1]$，可以得到合并式子</p>
-$\begin{aligned} F(x_i)=\sum_{j=0}^{d-1}x_i^jG_j(x_i^d)=\sum_{i=0}^{d-1}x_i^jG_j(x'_{i\mod \frac{n}{d}})\end{aligned}$
+<script type="math/tex; mode=display">\</script><h2 id="适用于特殊情况的转化方法"><a href="#适用于特殊情况的转化方法" class="headerlink" title="适用于特殊情况的转化方法"></a>适用于特殊情况的转化方法</h2><p>需要了解的是，多项式卷积的FFT/NTT不止适用与于二元分治</p>
+<p>对于多项式$F(x)$的$d$元分治，设分治子问题的答案为$G_j(x’_i),j\in[0,d-1]$，可以得到合并式子</p>
+$\begin{aligned} F(x_i)=\sum_{j=0}^{d-1}x_i^jG_j(x_i^d)=\sum_{i=0}^{d-1}x_i^jG_j(x'_{i\mod \frac{n} {d} })\end{aligned}$
 <p>对于$n$进行质因数分解，得到$n=\prod p_i$，带入上面的式子，带入$p_i$元分治强行求解，可以认为最终复杂度为</p>
-$O(n\sum p_i)=O(n\cdot \max\{p_i\} \log n)$
+<p>$O(n\sum p_i)=O(n\cdot \max\{p_i\} \log n)$</p>
 <p>因此，这种方法使用于$p_i$较小的情况</p>
-$$ \ $$
-<h2 id="n元点值式的用途"><a href="#n元点值式的用途" class="headerlink" title="n元点值式的用途"></a>n元点值式的用途</h2><p>DFT的卷积是溢出的，$x^i$会溢出到$x^{i\mod n}$，系数之间存在着循环关系</p>
+<script type="math/tex; mode=display">\</script><h2 id="n元点值式的用途"><a href="#n元点值式的用途" class="headerlink" title="n元点值式的用途"></a>n元点值式的用途</h2><p>DFT的卷积是溢出的，$x^i$会溢出到$x^{i\mod n}$，系数之间存在着循环关系</p>
 <p>我们可以利用$n$元卷积做到指定大小的循环卷积，可以处理一些特定问题</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4191">例题:  [CTSC2010]性能优化</a>(使用$O(n\log n\log C)$的快速幂无法通过，尚未尝试Bluestein’s Algorithm)</p>
 

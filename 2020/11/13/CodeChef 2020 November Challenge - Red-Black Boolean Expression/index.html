@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">CodeChef 2020 November Challenge - Red-Black Boolean Expression</h2>
             <div class="post-meta">
-                本文共计3668个字 |
+                本文共计3658个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -174,12 +174,9 @@
 <p>有$n$组关系$a_i,b_i$，要求$a_i\lor b_i$为真</p>
 <p>并且保证所有$a_i,b_i$关系构成一张二分图，其中$x_i$与$\overline{x_i}$有一条边相连</p>
 <p>给定每个变量的初始值$s_i$，以及翻转其所需的代价$C_i$，求最小满足条件的代价</p>
-$$  \ $$
-$a_i\lor b_i$为真即不存在$a_i,b_i$均为假的情况
-
-如果是2-sat上的理解，即可以由$a_i$假推$b_i$真，$b_i$假推$a_i$真，但是$2-sat$没法带权
-
-由于题目保证了关系的二分图性质，不妨把所有变量分成两个集合$A,B$
+<script type="math/tex; mode=display">\</script><p>$a_i\lor b_i$为真即不存在$a_i,b_i$均为假的情况</p>
+<p>如果是2-sat上的理解，即可以由$a_i$假推$b_i$真，$b_i$假推$a_i$真，但是$2-sat$没法带权</p>
+<p>由于题目保证了关系的二分图性质，不妨把所有变量分成两个集合$A,B$</p>
 <p>这个问题令人联想到网络流最小割模型，我们用一条边$(u,v)$限制$(u,v)$不同时为假的情况</p>
 <p>对于$A$中的点，我们令源点$S$向$u$连的边$(S,u,w)$表示$u$变成$0$所需代价，令$(u,T,w)$表示$u$变成1的代价</p>
 <p>对于$B$中的点，采取相反的连接方式</p>

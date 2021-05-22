@@ -163,7 +163,7 @@
             </div>
             <h2 class="post-title">CF1450H2 - Multithreading (Hard Version)</h2>
             <div class="post-meta">
-                本文共计5347个字 |
+                本文共计5335个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -174,8 +174,8 @@
 <p>同时需要支持修改元素，求$f(c)$的期望</p>
 <p><br></p>
 <h3 id="贪心求解指定环"><a href="#贪心求解指定环" class="headerlink" title="贪心求解指定环"></a>贪心求解指定环</h3><p>首先考虑一个Naive的贪心，在环上一旦出现相邻两点同色，就将他们连线然后删除</p>
-<p>直到最后，就将变成01交替，设此时环长$n'$，考虑再让相邻的00,11连线</p>
-<p>则得到交叉个数为$\frac{n'}{4}$</p>
+<p>直到最后，就将变成01交替，设此时环长$n’$，考虑再让相邻的00,11连线</p>
+<p>则得到交叉个数为$\frac{n’} {4}$</p>
 <p><del>这个贪心甚至连不带修的情况都做不了</del></p>
 <h3 id="简化求解"><a href="#简化求解" class="headerlink" title="简化求解"></a>简化求解</h3><p>考虑上面贪心过程中被抵消的点</p>
 <p>容易发现一定是一个奇数位置的点去抵消一个偶数位置的点</p>
@@ -187,30 +187,30 @@
 <p>而一旦存在两个不同奇偶的黑点，若他们不相邻</p>
 <p>则他们之间一定存在一对相邻白点（否则奇偶性不对），进而不断合并白点使得它们相邻</p>
 <p>白点可以对称得到相同值的式子，最终得到答案就是</p>
-$\displaystyle \frac{|cnt_{odd}-cnt_{even}|}{2}$
+<p>$\displaystyle \frac{|cnt_{odd}-cnt_{even}|} {2}$</p>
 <p><br></p>
 <h3 id="答案式子"><a href="#答案式子" class="headerlink" title="答案式子"></a>答案式子</h3><p>设已经确定的部分$\delta=cnt_{odd}-cnt_{even}$，未确定的部分包含$x$个奇数位置，$y$个偶数位置</p>
 <p>则Naive的计算答案式子为</p>
-$\displaystyle Sum=\sum_{i=0}^x \sum_{j=0}^y \frac{1}{2}\cdot [2|i-j+\delta] \cdot |\delta+i-j|\binom{x}{i}\binom{y}{j}$
+<p>$\displaystyle Sum=\sum_{i=0}^x \sum_{j=0}^y \frac{1} {2}\cdot [2|i-j+\delta] \cdot |\delta+i-j|\binom{x} {i}\binom{y} {j}$</p>
 <p><del>NTT</del></p>
 <p>补上方案数$2^{x+y-1}$（因为只有一半的方案奇偶性相同），用$y-j$代换$j$</p>
-$\displaystyle E=\frac{1}{2^{x+y}}\sum_{i=0}^x \sum_{j=0}^y \cdot [2|i-y+j+\delta] \cdot |\delta+i-y+j|\binom{x}{i}\binom{y}{j}$
-<p>转换为$\displaystyle i+j\leftarrow \binom{x}{i}\binom{y}{j}$的形式后，带入组合意义合并$i,j$</p>
-$\displaystyle E=\frac{1}{2^{x+y}}\sum_{i=0}^{x+y} \cdot [2|\delta-y+i] \cdot |\delta-y+i|\binom{x+y}{i}$
-<p>不妨设$\delta'=\delta-y$</p>
-$\displaystyle E=\frac{1}{2^{x+y}}\sum_{i=0}^{x+y} \cdot [\delta'\equiv i\pmod 2] \cdot |\delta'+i|\binom{x+y}{i}$
-<p>根据$\delta'+i$的正负性容易确定一个范围，范围两边都是计算都转化为</p>
-$\displaystyle S(n,m)=\sum _{i=0}^m [2\not |i]\cdot  i\cdot \binom{n}{i}$
-$\displaystyle S(n,m)=\sum _{i=0}^m [2\not |i]\cdot  n\cdot \frac{(n-1)!}{(n-i)!(i-1)!}$
-$\displaystyle S(n,m)=n\sum _{i=0}^{m-1} [2 |i]\cdot \binom{n-1}{i}$
-<p>形如$\displaystyle m|2, S'(n,m)=\sum _{i=0}^m [2|i]\cdot \binom{n}{i} $，可以转化为</p>
-$\displaystyle S'(n,m)=\sum _{i=0}^m [2|i](\binom{n-1}{i}+\binom{n-1}{i-1})$
-$\displaystyle S'(n,m)=\sum _{i=0}^m \binom{n-1}{i}$
+<p>$\displaystyle E=\frac{1} {2^{x+y} }\sum_{i=0}^x \sum_{j=0}^y \cdot [2|i-y+j+\delta] \cdot |\delta+i-y+j|\binom{x} {i}\binom{y} {j}$</p>
+<p>转换为$\displaystyle i+j\leftarrow \binom{x} {i}\binom{y} {j}$的形式后，带入组合意义合并$i,j$</p>
+<p>$\displaystyle E=\frac{1} {2^{x+y} }\sum_{i=0}^{x+y} \cdot [2|\delta-y+i] \cdot |\delta-y+i|\binom{x+y} {i}$</p>
+<p>不妨设$\delta’=\delta-y$</p>
+<p>$\displaystyle E=\frac{1} {2^{x+y} }\sum_{i=0}^{x+y} \cdot [\delta’\equiv i\pmod 2] \cdot |\delta’+i|\binom{x+y} {i}$</p>
+<p>根据$\delta’+i$的正负性容易确定一个范围，范围两边都是计算都转化为</p>
+<p>$\displaystyle S(n,m)=\sum _{i=0}^m [2\not |i]\cdot  i\cdot \binom{n} {i}$</p>
+<p>$\displaystyle S(n,m)=\sum _{i=0}^m [2\not |i]\cdot  n\cdot \frac{(n-1)!} {(n-i)!(i-1)!}$</p>
+<p>$\displaystyle S(n,m)=n\sum _{i=0}^{m-1} [2 |i]\cdot \binom{n-1} {i}$</p>
+<p>形如$\displaystyle m|2, S’(n,m)=\sum _{i=0}^m [2|i]\cdot \binom{n} {i} $，可以转化为</p>
+<p>$\displaystyle S’(n,m)=\sum _{i=0}^m <a href="\binom{n-1} {i}+\binom{n-1} {i-1}">2|i</a>$</p>
+<p>$\displaystyle S’(n,m)=\sum _{i=0}^m \binom{n-1} {i}$</p>
 <p>组合数关于$m$一维的前缀和是一个经典的步移问题</p>
-$S(n,m-1)=S(n,m)-C(n,m)$
-$S(n,m+1)=S(n,m)+C(n,m+1)$
-$S(n+1,m)=\displaystyle \sum_{i=0}^m C(n+1,m)=\sum_{i=0}^mC(n,i)+\sum_{i=0}^{m-1}C(n,i-1)=2S(n,m)-C(n,m)$
-$\displaystyle S(n-1,m)=\frac{S(n,m)+C(n-1,m)}{2}$
+<p>$S(n,m-1)=S(n,m)-C(n,m)$</p>
+<p>$S(n,m+1)=S(n,m)+C(n,m+1)$</p>
+<p>$S(n+1,m)=\displaystyle \sum_{i=0}^m C(n+1,m)=\sum_{i=0}^mC(n,i)+\sum_{i=0}^{m-1}C(n,i-1)=2S(n,m)-C(n,m)$</p>
+<p>$\displaystyle S(n-1,m)=\frac{S(n,m)+C(n-1,m)} {2}$</p>
 <p>封装一下计算即可，复杂度为$O(n)$</p>
 <p><del>真的只是一点点麻烦</del></p>
 <p><img src="https://i.loli.net/2021/05/06/JKoODBXaQ3nA1Gr.jpg" alt="QQ图片20210506191744.jpg"></p>
